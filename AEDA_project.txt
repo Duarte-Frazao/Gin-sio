@@ -1,0 +1,42 @@
+- Implementacao de classes básicas
+
+- Gestão Básica do Ginásio
+	- Criar/Editar Ginásio
+	- Adicionar/Remver /Editar cliente
+	- Adicionar/Remver /Editar Staff
+	
+- Mecânica de entrada e saída das pessoas
+- Mecânica dos pagamentos
+- Mecânicas dos exercicios(maquinas)
+- Mecânica gestão dos horários
+	- Atribuição
+
+
+- Mecânica das avaliações, recomendações de treino
+
+- Marcar sessões cliente/professor 
+
+- Marcar tarefas aos membros do Staff
+
+- Mostrar informação do ginásio (numero clientes, finanças, lotação)
+
+- Adicionar eventos(resevar lugar)
+
+- Cativar clientes inativos (email)
+
+- Beneficiar clientes muito ativos (ordenação)
+
+- mini - Loja(opcional)
+
+
+
+
+Tópicos necessários cobrir:
+
+- Polimorfismo
+- Herança
+- Utilização de Ficheiros 
+- Exeções (Dá para colocar em tudo)
+- Algoritmos de pesquisa e ordenação ()
+- Doxygen
+

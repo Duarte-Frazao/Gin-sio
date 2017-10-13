@@ -10,10 +10,10 @@
   * Empregados
 
 #### Ginásio
-	* Criar, editar e remover Ginásio
- * 
-	* Adicionar/Remover /Editar cliente
-	* Adicionar/Remover /Editar Staff
+* Criar, editar e remover Ginásio
+*
+< Adicionar/Remover /Editar cliente
+* Adicionar/Remover /Editar Staff
 	
 - Mecânica de entrada e saída das pessoas
 - Mecânica dos pagamentos

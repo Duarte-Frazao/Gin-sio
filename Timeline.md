@@ -57,7 +57,7 @@
   * Fica para depois
 
 
-### Timeline
+## Timeline
 
   * -15
      - Classes base feitas ( Criar editar...)
@@ -78,7 +78,7 @@
      - Avaliação/testes ao trabalho
 
 
-##### Tópicos necessários cobrir:
+#### Tópicos necessários cobrir:
 
 - Polimorfismo
 - Herança

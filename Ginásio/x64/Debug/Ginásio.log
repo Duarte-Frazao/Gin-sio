@@ -1,12 +1,4 @@
 ﻿  stdafx.cpp
-  Staff.cpp
-  Schedule.cpp
-  PersonalTrainer.cpp
-  Gym.cpp
-  Ginásio.cpp
-  Finance.cpp
-  Date.cpp
-  Client.cpp
-  Generating Code...
-  Ginásio.vcxproj -> C:\Users\Duarte Frazão\Documents\GitHub\Ginasio\x64\Debug\Ginásio.exe
-  Ginásio.vcxproj -> C:\Users\Duarte Frazão\Documents\GitHub\Ginasio\x64\Debug\Ginásio.pdb (Partial PDB)
+c:\users\duarte frazão\documents\github\ginasio\ginásio\client.h(18): error C2061: syntax error: identifier 'string'
+c:\users\duarte frazão\documents\github\ginasio\ginásio\client.h(22): error C3646: 'name': unknown override specifier
+c:\users\duarte frazão\documents\github\ginasio\ginásio\client.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int

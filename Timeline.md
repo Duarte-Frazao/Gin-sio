@@ -4,7 +4,7 @@
 
 #### Criação das classes e idealização
   * Ginásio 
-  * Clientes
+  * Clientes (Duarte)
   * Trabalhador
   * Professores
   * Empregados
@@ -15,7 +15,7 @@
   * Criar, editar e remover Ginásio
   * Gestão das finanças
   * Inscrições no ginásio
-  * Adicionar e remover cliente
+  * Adicionar e remover cliente (Duarte)
   * Adicionar e remover professor
   * Adicionar e remover empregrado
   * Displays importantes, professores disponiveis... (maior parte vem depois)

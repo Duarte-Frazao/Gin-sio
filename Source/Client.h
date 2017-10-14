@@ -5,10 +5,11 @@
  *      Author: Sandro Ca
  */
 
-#include "PersonalTrainer.h"
-
 #ifndef CLIENT_H_
 #define CLIENT_H_
+
+#include "PersonalTrainer.h"
+class PersonalTrainer;
 
 class Client {
 public:

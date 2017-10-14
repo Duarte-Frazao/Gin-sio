@@ -7,12 +7,16 @@
 
 #include <vector>
 #include <string>
-#include "Staff.h"
-#include "Client.h"
+
 
 #ifndef PERSONALTRAINER_H_
 #define PERSONALTRAINER_H_
 
+#include "Staff.h"
+#include "Client.h"
+
+
+class Client;
 class PersonalTrainer : public Staff {
 public:
 	PersonalTrainer();

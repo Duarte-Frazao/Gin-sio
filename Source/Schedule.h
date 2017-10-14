@@ -6,11 +6,14 @@
  */
 #include <utility>
 #include <vector>
-#include "Date.h"
+
 
 
 #ifndef SCHEDULE_H_
 #define SCHEDULE_H_
+
+#include "Date.h"
+
 
 class Schedule {
 public:
@@ -29,6 +32,7 @@ private:
 	/**
 	 * Verifies if the date given as parameter has already something
 	 */
+	/*
 	bool overlapDate(const Date &date){
 		if(schedule.empty()) return false;
 
@@ -40,7 +44,7 @@ private:
 		}
 
 	}
-
+*/
 	std::vector<std::pair<Date,Date>*> schedule;
 
 };

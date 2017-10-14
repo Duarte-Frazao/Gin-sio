@@ -9,8 +9,8 @@
 #include "Date.h"
 
 
-#ifndef SOURCE_SCHEDULE_H_
-#define SOURCE_SCHEDULE_H_
+#ifndef SCHEDULE_H_
+#define SCHEDULE_H_
 
 class Schedule {
 public:
@@ -45,4 +45,4 @@ private:
 
 };
 
-#endif /* SOURCE_SCHEDULE_H_ */
+#endif /* SCHEDULE_H_ */

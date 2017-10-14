@@ -1,0 +1,16 @@
+// Ginásio.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "Gym.h"
+#include <ctime>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	Client Joao;
+    return 0;
+}
+

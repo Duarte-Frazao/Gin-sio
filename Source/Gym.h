@@ -11,9 +11,6 @@
 #ifndef GYM_H_
 #define GYM_H_
 
-class Staff {};
-class Finance {};
-
 class Gym {
 public:
 	Gym();

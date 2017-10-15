@@ -10,7 +10,6 @@ using namespace std;
 
 int main()
 {
-	Client Joao;
     return 0;
 }
 

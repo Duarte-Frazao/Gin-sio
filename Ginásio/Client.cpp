@@ -20,7 +20,7 @@ EntranceError::EntranceError(string rz) : reason(rz) {}
 string EntranceError::getReason() const { return reason; }
 
 //operator << overload
-ostream & operator << (ostream &out, EntranceError &error) {
+ostream & operator << (ostream &out, const EntranceError &error) {
 	out << "Error registring client's entry" << endl;
 	out << "Reason: " << error.reason << endl;
 	return out;

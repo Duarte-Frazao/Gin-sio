@@ -3,9 +3,9 @@
 // stdafx.obj will contain the pre-compiled type information
 
 #include "stdafx.h"
+#include "Staff.h"
 #include "Gym.h"
 #include "Client.h"
-#include "Staff.h"
 #include "Finance.h"
 #include "Schedule.h"
 // TODO: reference any additional headers you need in STDAFX.H

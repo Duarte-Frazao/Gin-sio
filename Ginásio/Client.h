@@ -18,7 +18,7 @@ class EntranceError {
 public:
 	EntranceError(string rz);
 	string getReason() const;
-	friend ostream & operator << (ostream &out, EntranceError &error);
+	friend ostream & operator << (ostream &out, const EntranceError &error);
 };
 
 class Client {

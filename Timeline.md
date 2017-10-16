@@ -1,5 +1,7 @@
 # Trabalho AEDA Ginásio 
 
+#### [Link de progresso](https://docs.google.com/spreadsheets/d/1BGYo7qWcP4LV0t1XWIw_WurBpQeuIjaBm1a2DR-6rew/edit?usp=sharing) 
+
 ### Implementacao de classes básicas
 
 #### Criação das classes e idealização

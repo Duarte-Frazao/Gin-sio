@@ -6,6 +6,7 @@
  */
 
 #include <vector>
+#include "Transaction.h"
 using namespace std;
 
 #ifndef FINANCE_H_

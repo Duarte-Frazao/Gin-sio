@@ -50,3 +50,15 @@ Ginásio/x64/Debug/
 \.vs/Gym/v15/
 
 Ginásio/\.vs/Ginásio/v15/
+
+latex/
+
+*.html
+
+*.png
+
+*.js
+
+*.css
+
+Ginásio/Doxyfile

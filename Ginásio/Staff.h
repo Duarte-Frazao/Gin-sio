@@ -12,13 +12,13 @@
 #include "Schedule.h"
 using namespace std;
 
-class InvalidWage {
+class InvalidValue {
 	string reason;
 public:
 
-	InvalidWage(string rz);
+	InvalidValue(string rz);
 	string getReason() const;
-	friend ostream & operator << (ostream &out, const InvalidWage &error);
+	friend ostream & operator << (ostream &out, const InvalidValue &error);
 };
 
 class Staff {

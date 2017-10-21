@@ -12,16 +12,16 @@ using namespace std;
 
 int Staff::staffId = 0;
 
-#pragma region InvalidWage
+#pragma region InvalidValue
 
 //InvalidWage constructor
-InvalidWage::InvalidWage(string rz) : reason(rz) {}
+InvalidValue::InvalidValue(string rz) : reason(rz) {}
 
 //getReason
-string InvalidWage::getReason() const { return reason; }
+string InvalidValue::getReason() const { return reason; }
 
 //operator << overload
-ostream & operator << (ostream &out, const InvalidWage &error) {
+ostream & operator << (ostream &out, const InvalidValue &error) {
 	out << "Error registring staff's wage!" << endl;
 	out << "Reason: " << error.reason << endl;
 	return out;
@@ -103,7 +103,7 @@ void Staff::setSchedule(Schedule workSchedule) {
 	@param Staff's wage
 */
 void Staff::setWage(int wage) {
-	if (wage < 0) throw InvalidWage("Negative wage inserted!");
+	if (wage < 0) throw InvalidValue("Negative wage inserted!");
 	else this->wage = wage;
 }
 

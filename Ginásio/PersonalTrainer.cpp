@@ -147,7 +147,8 @@ void PersonalTrainer::editPersonalTrainer() {
 		}
 		case 5:
 		{
-			
+			/* add or remove clients to personal trainer */
+			editAssociatedClients();
 		}
 		default:
 			cout << "Option unreachable ...\n";

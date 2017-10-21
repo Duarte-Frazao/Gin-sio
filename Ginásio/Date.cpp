@@ -8,5 +8,3 @@
 #include "Date.h"
 
 Date::Date(int hour, int min, int weekDay) : hour(hour), min(min), weekDay(weekDay){}
-
-

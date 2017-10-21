@@ -23,19 +23,23 @@ public:
 
 class Staff {
 public:
-	Staff(const int id, const int age, int wage);
+	Staff(int age, int wage);
 	virtual ~Staff();
 	virtual int getId() const;
 	virtual int getAge() const;
 	virtual int getWage() const;
+	bool isInsideGym() const;
+	void setAge(int age);
 	void setSchedule(Schedule workSchedule);
 	void setWage(int wage);
 	void changeLocation();
+	void editStaff();
 private:
-	const int id, age;
+	int id, age;
 	int wage;
 	bool insideGym;
 	Schedule workSchedule;
+	static int staffId;
 };
 
 #endif /* STAFF_H_ */

@@ -17,12 +17,15 @@ using namespace std;
 class Client;
 class PersonalTrainer : public Staff {
 public:
-	PersonalTrainer(int id, int age, int wage, string specializedArea);
+	PersonalTrainer(int age, int wage, string specializedArea);
 	virtual ~PersonalTrainer();
 	vector<Client *> getClients() const;
 	string getSpecializedArea() const;
 	void setSchedule(Schedule workSchedule);
 	void setClients(vector<Client *> clients);
+	void setSpecializedArea(string area);
+	void editPersonalTrainer();
+	void editAssociatedClients();
 private:
 	vector<Client *> clients;
 	string specializedArea;

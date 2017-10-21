@@ -28,6 +28,7 @@ public:
 	void setMaxNumClients(int);
 	void setMaxCapacity(int);
 	void setGymFinance(Finance);
+	void menuStaff();
 private:
 	vector<Client *> clients;
 	vector<Staff *> staff;

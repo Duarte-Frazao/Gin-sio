@@ -26,6 +26,7 @@ public:
 
 	Client(std::string clientName,int program, int clientAge, PersonalTrainer *PT);
 	~Client();
+	int getId() const;
 	string getName() const;
 	int getAge() const;
 	bool getLocation() const;
@@ -46,7 +47,8 @@ public:
 private:
 
 	std::string name;
-	int age;
+	int id, age;
+	static int clientId;
 	bool insideGym;
 	bool paymentsUpToDate;
 	int numLatePayments;

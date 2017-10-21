@@ -7,9 +7,9 @@
 #include "stdafx.h"
 #include "Gym.h"
 #include <iostream>
-
 using namespace std;
 
+int Client::clientId = 0;
 
 #pragma region EntranceError
 
@@ -29,7 +29,7 @@ ostream & operator << (ostream &out, const EntranceError &error) {
 #pragma endregion
 
 //Client constructor
-Client::Client(string clientName, int program, int clientAge, PersonalTrainer *PT):
+Client::Client(string clientName, int program, int clientAge, PersonalTrainer *PT): id(++clientId),
 	insideGym(false), paymentsUpToDate(true), numLatePayments(0), enrolledProgram(program),
 	age(clientAge), responsiblePT(PT){
 	//To-do initialize numDays remaining based on the program chosen
@@ -41,6 +41,11 @@ Client::~Client() {
 }
 
 #pragma region Gets
+//getId
+int Client::getId() const {
+	return id;
+}
+
 //getName
 string Client::getName() const
 {

@@ -7,13 +7,11 @@
 #include <utility>
 #include <vector>
 
-
-
 #ifndef SCHEDULE_H_
 #define SCHEDULE_H_
 
 #include "Date.h"
-
+using namespace std;
 
 class Schedule {
 public:
@@ -45,7 +43,7 @@ private:
 
 	}
 */
-	std::vector<std::pair<Date,Date>*> schedule;
+	vector<pair<Date,Date>*> schedule;
 
 };
 

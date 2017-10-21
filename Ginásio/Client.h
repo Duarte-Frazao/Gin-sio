@@ -10,7 +10,12 @@
 
 #include <string>
 #include "PersonalTrainer.h"
+#include "Gym.h"
+#include "Program.h"
+
 class PersonalTrainer;
+class Gym;
+
 using namespace std;
 
 class EntranceError {
@@ -21,22 +26,38 @@ public:
 	friend ostream & operator << (ostream &out, const EntranceError &error);
 };
 
+class EditingError {
+	vector<string> reasons;
+public:
+	EditingError(vector<string> rz);
+	vector<string> getReasons() const;
+	friend ostream & operator << (ostream &out, const EditingError &error);
+};
+
 class Client {
 public:
 
-	Client(std::string clientName,int program, int clientAge, PersonalTrainer *PT);
+	Client::Client(string clientName, Program *program, int clientAge, PersonalTrainer *PT);
 	~Client();
+
 	string getName() const;
-	int getAge() const;
+	int getAge() const; //TO-DO a way to update age
 	bool getLocation() const;
 	bool getPaymentStatus() const;
 	int getNumLatePayments() const;
-	int getProgram() const;
+	const Program *getProgram() const;
+	const Gym *getGym() const;
 	int getDaysRemaining() const;
 	const PersonalTrainer *getPT() const;
-	void setProgram(int newProgram);
+	void setProgram(Program *newProgram);
 	void setPT(PersonalTrainer *PT);
+	void setGym(Gym *prorgamGym);
+	void setName(string newName);
 	void changeLocation();
+	void editClient();
+	int Client::editClientMenu() const;
+	void problems(vector<string> &problems) const;
+	//void updateNumDaysRemaining(Program *newProgram);
 
 	//void updatePayments() const;
 	//void changeProgram() const;
@@ -45,14 +66,15 @@ public:
 
 private:
 
-	std::string name;
+	string name;
 	int age;
 	bool insideGym;
 	bool paymentsUpToDate;
 	int numLatePayments;
-	int enrolledProgram;
+	Program *enrolledProgram;
 	int numDaysRemaining;
 	PersonalTrainer *responsiblePT;
+	Gym *gym;
 };
 
 #endif /* CLIENT_H_ */

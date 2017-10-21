@@ -13,6 +13,7 @@ public:
 	Finance();
 	virtual ~Finance();
 private:
+	
 };
 
 #endif /* FINANCE_H_ */

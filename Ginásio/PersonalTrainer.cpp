@@ -149,6 +149,7 @@ void PersonalTrainer::editPersonalTrainer() {
 		{
 			/* add or remove clients to personal trainer */
 			editAssociatedClients();
+			break;
 		}
 		default:
 			cout << "Option unreachable ...\n";

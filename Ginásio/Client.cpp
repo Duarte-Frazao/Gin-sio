@@ -6,7 +6,6 @@
  */
 #include "stdafx.h"
 #include "Gym.h"
-#include <iostream>
 using namespace std;
 
 int Client::clientId = 0;
@@ -269,7 +268,7 @@ void Client::editClient()
 			setName(newName);
 			break;
 		case 2:
-
+			/*
 			//Error checking
 			problems(clientProblems);
 			if (clientProblems.size() != 0) throw EditingError(clientProblems);
@@ -289,6 +288,7 @@ void Client::editClient()
 			//setProgram(newProgram);
 			//updateNumDaysRemaining(newProgram.getDays());
 			break;
+			*/
 		case 3:
 			//viewInfo();
 			break;

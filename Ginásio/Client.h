@@ -12,11 +12,10 @@
 #include "PersonalTrainer.h"
 #include "Gym.h"
 #include "Program.h"
+using namespace std;
 
 class PersonalTrainer;
 class Gym;
-
-using namespace std;
 
 class EntranceError {
 	string reason;
@@ -55,7 +54,7 @@ public:
 	void setName(string newName);
 	void changeLocation();
 	void editClient();
-	int Client::editClientMenu() const;
+	int editClientMenu() const;
 	void problems(vector<string> &problems) const;
 	//void updateNumDaysRemaining(Program *newProgram);
 
@@ -66,7 +65,7 @@ public:
 
 private:
 
-	std::string name;
+	string name;
 	int id, age;
 	static int clientId;
 	bool insideGym;

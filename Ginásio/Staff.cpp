@@ -66,6 +66,15 @@ int Staff::getWage() const {
 }
 
 /**
+	Returns staff's log-in password
+
+	@return Returns staff's password
+*/
+string Staff::getPassword() const {
+	return password;
+}
+
+/**
 	Returns staff's location
 
 	@return Returns 1 if insideGym, 0 otherwise
@@ -107,6 +116,32 @@ void Staff::setWage(int wage) {
 	else this->wage = wage;
 }
 
+/**
+	Sets staff's password to the one
+	passed as the function's parameter
+
+	@param Staff's password
+*/
+void Staff::setPassword(string pass) {
+	password = pass;
+}
+
+#pragma endregion
+
+#pragma region Staff authentication 
+
+/**
+	Verifies if password is correct for the staff invoking the function
+
+	@param Staff's password
+	@return Returns true if password coincides, false otherwise
+*/
+bool Staff::auth(string pass)
+{
+	if (password == pass)
+		return true;
+	return false;
+}
 #pragma endregion
 
 /**

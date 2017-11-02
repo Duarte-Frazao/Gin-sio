@@ -5,12 +5,12 @@
  *      Author: Sandro Ca
  */
 
+#ifndef FINANCE_H_
+#define FINANCE_H_
+
 #include <vector>
 #include "Transaction.h"
 using namespace std;
-
-#ifndef FINANCE_H_
-#define FINANCE_H_
 
 class Finance {
 public:

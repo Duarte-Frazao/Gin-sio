@@ -8,7 +8,6 @@ Program::Program(int code, int programDays, float programCost): code(code), days
 {
 }
 
-
 Program::~Program()
 {
 }
@@ -48,5 +47,4 @@ void Program::displayProgram() const
 	cout << "Program " << code << "\n\n";
 	cout << "Monthly price: " << cost << "\n";
 	cout << "Number of times allowed to enter the gym: " << days << "\n\n\n";
-
 }

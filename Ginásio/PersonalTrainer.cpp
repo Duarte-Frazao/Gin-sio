@@ -200,7 +200,7 @@ void PersonalTrainer::editAssociatedClients() {
 			cout << "Insert the subscripted gym program: ";
 			cin >> program;
 
-			clients.push_back(new Client(name,program,age,this));
+			//clients.push_back(new Client(name,program,age,this));
 			cout << "Client added successfully to Personal Trainer!\n";
 		}
 			break;

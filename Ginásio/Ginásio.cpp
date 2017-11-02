@@ -6,14 +6,13 @@
 #include <ctime>
 #include <iostream>
 #include <string>
-#include <cstring>
 
 using namespace std;
 
 
 int main()
 {
-
+	/*
 	vector <Program *> programs
 	{
 		new Program(1, 10, 20.0),
@@ -22,8 +21,8 @@ int main()
 
 	vector <PersonalTrainer *> pts
 	{
-		new PersonalTrainer(1,30, 500, "Karate"),
-		new PersonalTrainer(2, 30, 500, "Jogging")
+		new PersonalTrainer(30, 500, "Karate"),
+		new PersonalTrainer(30, 500, "Jogging")
 	};
 
 	vector <Client *> clientes
@@ -36,8 +35,8 @@ int main()
 
 	vector<Staff *> staff
 	{
-		new PersonalTrainer(1,30, 500, "Karate"),
-		new PersonalTrainer(2, 30, 500, "Jogging")
+		new PersonalTrainer(30, 500, "Karate"),
+		new PersonalTrainer(30, 500, "Jogging")
 	};
 
 	std::string gymName = "GoGym";
@@ -48,9 +47,7 @@ int main()
 
 
 	GoGym.getClients().at(0)->editClient();
-
-	
+	*/
 
     return 0;
 }
-

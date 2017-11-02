@@ -9,7 +9,6 @@ Date::Date(int hour, int min, int weekDay){
 	this->weekDay = weekDay;
 }
 
-
 bool operator<(const Date & date1, const Date & date2){
 	if(date1.weekDay < date2.weekDay ||
 			(date1.weekDay == date2.weekDay && date1.hour < date2.hour) ||
@@ -26,4 +25,7 @@ bool operator==(const Date & date1, const Date & date2){
 	else return false;
 }
 
-
+ostream & operator<<(ostream & out, const ErrorDate & errorDate) {
+	out << errorDate.reason;
+	return out;
+}

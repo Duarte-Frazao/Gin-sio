@@ -74,23 +74,12 @@ int Client::getId() const {
 }
 
 //getName
-/**
-Returns the name of a Client
-
-@param 
-@return Name of Client
-*/
 string Client::getName() const
 {
 	return name;
 }
 
-/**
-Returns the age of a Client
-
-@param 
-@return returns the age of a Client
-*/
+//Returns the age of a Client
 int Client::getAge() const
 {
 	return age;
@@ -107,61 +96,40 @@ bool Client::getLocation() const
 	return insideGym;
 }
 
-/**
-Returns the status of the payments
+//Returns the status of the payments
 
-@param 
-@return Returns true if Client's payments are up to date, false if not
-*/
 bool Client::getPaymentStatus() const
 {
 	return paymentsUpToDate;
 }
 
-/**
-Returns the number of months not yet payed
-
-@param
-@return Returns the number of months not yet payed
-*/
+//Returns the number of months not yet payed
 int Client::getNumLatePayments() const
 {
 	return numLatePayments;
 }
 
-/**
-Returns the enrolled Program
+//Returns the enrolled Program
 
-@param
-@return Returns the enrolled Program 
-*/
 const Program *Client::getProgram() const
 {
 	return this->enrolledProgram;
 }
 
-/**
-Returns the number of days remaining
-
-@param
-@return Returns the number of days remaining
-*/
+//Returns the number of days remaining
 int Client::getDaysRemaining() const
 {
 	return numDaysRemaining;
 }
 
-/**
-Returns the personal trainer that is responsible for the Client
-
-@param
-@return Returns the personal trainer that is responsible for the Client
-*/
+//Returns the personal trainer that is responsible for the Client
 const PersonalTrainer *Client::getPT() const
 {
 	return this->responsiblePT;
 }
 
+
+//Returns the gym the client is signed
 const Gym *Client::getGym() const 
 {
 	return this->gym;
@@ -171,39 +139,25 @@ const Gym *Client::getGym() const
 
 #pragma region Sets
 
-/**
-Sets a new subscription to Client
-
-@param newProgram The new subscription the Client has choosen to replace the current one
-@return 
-*/
+//Sets a new subscription to Client
 void Client::setProgram(Program *newProgram)
 {
 	enrolledProgram = newProgram;
 }
 
-/**
-Sets a new PersonalTrainer to Client
-
-@param PT New Personal Trainer choosen to replace the current one
-@return
-*/
+//Sets a new PersonalTrainer to Client
 void Client::setPT(PersonalTrainer *PT)
 {
 	this->responsiblePT = PT;
 }
 
-void Client::setGym(Gym *programGym)
+//Sets a new gym to the Client
+void Client::setGym(Gym *newGym)
 {
-	gym = programGym;
+	gym = newGym;
 }
 
-/**
-Sets a new name to Client
-
-@param newName New name for Client
-@return
-*/
+//Sets a new name to Client
 void Client::setName(string newName)
 {
 	name = newName;
@@ -211,13 +165,7 @@ void Client::setName(string newName)
 
 #pragma endregion
 
-/**
-Changes the current location of Client.
-Checks if he's allowed to enter, if not throws an exception 
-
-@param
-@return
-*/
+//Changes the current location of Client.
 void Client::changeLocation()
 {
 	if (!paymentsUpToDate) throw EntranceError("Payments not up to date");
@@ -225,13 +173,7 @@ void Client::changeLocation()
 	else insideGym = !insideGym;
 }
 
-/**
-Returns in the argument vector problems the reasons for not being able to edit the Client
-If the vector wasn't empty it resets the vector to display only the current problems
-
-@param problems A vector to return the problems
-@return 
-*/
+//Returns in the argument vector problems the reasons for not being able to edit the Client
 void Client::problems(vector<string> &problems) const
 {
 	if (problems.size() != 0) problems.clear();
@@ -239,12 +181,7 @@ void Client::problems(vector<string> &problems) const
 	if (!paymentsUpToDate) problems.push_back("Payments not up to date");
 }
 
-/**
-Edits a Client
-
-@param
-@return
-*/
+//Edits a Client
 void Client::editClient()
 {
 	bool continueInMenu = true;
@@ -302,12 +239,7 @@ void Client::editClient()
 	//setPT(PersonalTrainer *PT);
 }
 
-/**
-Menu for editing client
-
-@param
-@return option The option to edit
-*/
+//Menu for editing client
 int Client::editClientMenu() const
 {
 	cout << "Select what you want to edit" << endl;
@@ -377,6 +309,7 @@ void Client::updateNumDaysRemaining()
 //	return out;
 //}
 
+//Displays information about Client
 void Client::viewInfo() const 
 {
 	cout << "Client " << id << " information\n";

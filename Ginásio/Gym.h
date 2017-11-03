@@ -18,8 +18,6 @@
 #include <conio.h>
 using namespace std;
 
-#ifndef GYM_H_
-#define GYM_H_
 
 class Client;
 class PersonalTrainer;
@@ -45,7 +43,6 @@ public:
 	void setMaxCapacity(int);
 	void setGymFinance(Finance);
 	void setName(string newName);
-	void displayPrograms() const;
 	Program* codeToProgram(int code);
 	bool findStaff(int staffId, Staff* staff_found);
 	void login(int staffId);

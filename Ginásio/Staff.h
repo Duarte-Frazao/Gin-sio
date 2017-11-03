@@ -86,6 +86,7 @@ public:
 
 		@param Staff's password
 	*/
+	void setPassword(std::string pass);
 
 	/**
 		Changes staff's location only if the hour of entrance
@@ -106,7 +107,6 @@ public:
 	*/
 	bool auth(std::string pass);
 
-	void setPassword(std::string pass);
 private:
 };
 

@@ -54,9 +54,9 @@ int main()
 
 	GoGym.setClients(clients);
 	GoGym.setStaff(staff);
+	staff.at(0)->setPassword("123");
 
-
-
+	GoGym.login();
 	mainMenu(GoGym);
     return 0;
 }

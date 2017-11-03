@@ -118,15 +118,17 @@ void clientMenu(Gym &gym)
 			gym.addClient();
 			break;
 		case 2:
+		{
 			int optionClient;
-			Client *clientToEdit;
+			Client *clientToEdit = NULL;
 			do
 			{
 				cin >> optionClient;
-			} while (!gym.findClient(optionClient, clientToEdit));
+			} while (!gym.findClient(optionClient, &clientToEdit));
 
 			clientToEdit->editClient();
 			break;
+		}
 		case 3:
 			gym.removeClient();
 			break;

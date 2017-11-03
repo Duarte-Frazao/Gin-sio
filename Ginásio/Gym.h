@@ -212,7 +212,7 @@ public:
 	- staff_found is a pointer to the found staff
 	@return Returns true if staff was found, false otherwise
 	*/
-	bool findStaff(int staffId, Staff* staff_found);
+	bool findStaff(int staffId, Staff** staff_found);
 
 	/**
 	Finds gym's client with a certain Id
@@ -221,14 +221,12 @@ public:
 	- client_found is a pointer to the found client
 	@return Returns true if client was found, false otherwise
 	*/
-	bool Gym::findClient(int clientId, Client* client_found);
+	bool findClient(int clientId, Client** client_found);
 
 	/**
-	Performs the login process for a certain staff's id
-
-	@param Staff's Id to be logged on
+	Performs the login process for a certain staff
 	*/
-	void login(int staffId);
+	void login();
 
 
 	/**
@@ -255,7 +253,6 @@ public:
 	*/
 	void menuClient();
 
-	void gymMenu(Gym &gym);
 };
 
 #endif /* GYM_H_ */

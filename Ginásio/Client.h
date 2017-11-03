@@ -12,6 +12,7 @@
 #include "PersonalTrainer.h"
 #include "Gym.h"
 #include "Program.h"
+using namespace std;
 
 /**
 Filters an option by giving two limits, makes the user input and integer between them
@@ -24,8 +25,6 @@ int filterInput(int inf, int sup);
 
 class PersonalTrainer;
 class Gym;
-
-using namespace std;
 
 class EntranceError {
 	string reason;
@@ -64,7 +63,7 @@ public:
 	void setName(string newName);
 	void changeLocation();
 	void editClient();
-	int Client::editClientMenu() const;
+	int editClientMenu() const;
 	void problems(vector<string> &problems) const;
 	void updateNumDaysRemaining();
 	friend std::ostream & operator<<(std::ostream & out, const Client &client);

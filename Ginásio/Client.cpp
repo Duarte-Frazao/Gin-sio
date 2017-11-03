@@ -267,7 +267,7 @@ void Client::editClient()
 			setName(newName);
 			break;
 		case 2:
-
+			/*
 			//Error checking
 			problems(clientProblems);
 			if (clientProblems.size() != 0) throw EditingError(clientProblems);
@@ -289,6 +289,7 @@ void Client::editClient()
 
 			cout << "Program sucessfully changed to program number " << enrolledProgram->getCode() << endl << endl;
 			break;
+			*/
 		case 3:
 			viewInfo();
 			break;

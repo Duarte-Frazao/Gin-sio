@@ -149,7 +149,116 @@ void Gym::setGymFinance(Finance gymFinance) {
 	this->gymFinance = gymFinance;
 }
 
-# pragma endregion
+#pragma endregion
+
+#pragma region Login authentication
+
+/**
+	Performs the login process for a certain staff's id
+
+	@param Staff's Id to be logged on
+*/
+void Gym::login(int staffId) {
+	cout << "    Welcome to Go Gym!      \n"
+		<< "--- AUTHENTICATION PORTAL ---\n";
+
+	Staff* staff_found;
+	bool staffFound = 0;
+	do
+	{
+		string staffName;
+		cout << "Login: ";
+		getline(cin, staffName);
+
+		if (findStaff(staffId, staff_found))
+		{
+			staffFound = 1;
+			bool access = 0;
+			do
+			{
+				string pass;
+				cout << "Password: ";
+				char ch = _getch();
+				while (ch != 13)
+				{
+					if (ch == 8)
+					{
+						if (pass.size() != 0)
+						{
+							pass.pop_back();
+							cout << "\b \b";
+						}
+					}
+					else
+					{
+						pass.push_back(ch);
+						cout << "*";
+					}
+					ch = _getch();
+				}
+
+				if (staff_found->auth(pass))
+				{
+					cout << "\n\nACCESS GRANTED!\n" << "WELCOME STAFF NUMBER " << staff_found->getId() << "!\n\n";
+					access = 1;
+				}
+				else {
+					cout << "\n\nACESS DENIED!\n";
+					cout << "Try again: press 0 or Exit: press 1\n" << "--> ";
+					int incorrect_option;
+					cin >> incorrect_option;
+					while (incorrect_option != 0 && incorrect_option != 1) {
+						cout << "Enter a correct command ...\n";
+						cin >> incorrect_option;
+					}
+					if (incorrect_option) exit(0);
+					cin.ignore();
+				}
+
+			} while (!access);
+		}
+		else
+		{
+			cout << endl << "STAFF NOT FOUND!" << endl;
+			cout << "Try again: press 0 or Exit: press 1\n" << "--> ";
+			int incorrect_option2;
+			cin >> incorrect_option2;
+			while (incorrect_option2 != 0 && incorrect_option2 != 1) {
+				cout << "Enter a correct command ...\n";
+				cin >> incorrect_option2;
+			}
+			if (incorrect_option2) exit(0);
+			cin.ignore();
+		}
+
+	} while (!staffFound);
+}
+
+#pragma endregion
+
+#pragma region Search algorithms
+
+/**
+	Finds gym's staff with a certain Id
+
+	@param 
+	- staffId is the staff's Id
+	- staff_found is a pointer to the found staff
+	@return Returns true if staff was found, false otherwise
+*/
+bool Gym::findStaff(int staffId, Staff* staff_found) {
+	for (auto staff_pointer : staff)
+	{
+		if (staff_pointer->getId() == staffId)
+		{
+			staff_found = staff_pointer;
+			return true;
+		}
+	}
+	return false;
+}
+
+#pragma endregion
 
 
 

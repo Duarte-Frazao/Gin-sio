@@ -1,21 +1,13 @@
-/*
-* Transaction.cpp
-*
-*  Created on: 21/10/2017
-*      Author: Sandro Ca
-*/
-
 #include "Transaction.h"
 
-// Transaction constructor
-Transaction::Transaction() {
 
-}
+using namespace std;
+
+// Transaction constructor
+Transaction::Transaction() {}
 
 // Transaction destructor
-Transaction::~Transaction() {
-
-}
+Transaction::~Transaction() {}
 
 #pragma region Gets
 

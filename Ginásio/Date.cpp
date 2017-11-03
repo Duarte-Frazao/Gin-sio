@@ -1,4 +1,5 @@
 #include "Date.h"
+#include "ErrorClasses.h"
 
 Date::Date(int hour, int min, int weekDay){
 	if(weekDay < 1 || weekDay > 7 || hour < 0 || hour > 24 || min < 0 || min > 60)

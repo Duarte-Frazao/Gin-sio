@@ -3,20 +3,6 @@
 #include <utility>
 #include <string>
 
-class ErrorDate{
-private:
-	std::string reason;
-
-public:
-	ErrorDate(std::string reason) : reason(reason){};
-	friend std::ostream & operator<<(std::ostream & out, const ErrorDate & errorDate);
-};
-
-std::ostream & operator<<(std::ostream & out, const ErrorDate & errorDate){
-	out << errorDate.reason;
-	return out;
-}
-
 
 class Date {
 friend class Schedule;

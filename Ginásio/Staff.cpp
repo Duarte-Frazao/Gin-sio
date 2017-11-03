@@ -1,13 +1,8 @@
-/*
-* Staff.cpp
-*
-*  Created on: 14/10/2017
-*      Author: Sandro Ca
-*/
 #include <iostream>
 #include "stdafx.h"
 #include "Gym.h"
 #include "Staff.h"
+
 using namespace std;
 
 int Staff::staffId = 0;
@@ -38,38 +33,20 @@ Staff::~Staff() {
 }
 
 #pragma region Gets
-/**
-	Returns staff's id
 
-	@return Returns staff's id
-*/
 int Staff::getId() const {
 	return id;
 }
 
-/**
-	Returns staff's age
-
-	@return Returns staff's age
-*/
 int Staff::getAge() const {
 	return age;
 }
 
-/**
-	Returns staff's wage
-
-	@return Returns staff's wage
-*/
 int Staff::getWage() const {
 	return wage;
 }
 
-/**
-	Returns staff's location
 
-	@return Returns 1 if insideGym, 0 otherwise
-*/
 bool Staff::isInsideGym() const {
 	return insideGym;
 }
@@ -78,30 +55,17 @@ bool Staff::isInsideGym() const {
 
 #pragma region Sets
 
-/**
-	Sets staff's age
 
-	@param Staff's age
-*/
 void Staff::setAge(int age) {
 	this->age = age;
 }
 
-/**
-	Sets staff's working schedule
 
-	@param Staff's working schedule
-*/
 void Staff::setSchedule(Schedule workSchedule) {
 	this->workSchedule = workSchedule;
 }
 
-/**
-	Sets staff's wage and throws an InvalidWage
-	if the wage passed as the parameter is negative
 
-	@param Staff's wage
-*/
 void Staff::setWage(int wage) {
 	if (wage < 0) throw InvalidValue("Negative wage inserted!");
 	else this->wage = wage;
@@ -109,10 +73,7 @@ void Staff::setWage(int wage) {
 
 #pragma endregion
 
-/**
-	Changes staff's location only if the hour of entrance
-	is in between staff's working hours 
-*/
+
 void Staff::changeLocation() {
 	insideGym = !insideGym;
 	// TO_DO: verify if hour of entry is in between this staff's schedule
@@ -125,6 +86,7 @@ void Staff::changeLocation() {
 
 	@return Returns chosen option for the edit staff menu
 */
+
 int editStaffMenu() {
 	
 	string options[] = { "1. Edit age", "2. Edit wage", "3. Edit location", "0. Return" };
@@ -139,9 +101,7 @@ int editStaffMenu() {
 	return option;
 }
 
-/**
-	Handles the editing of the staff's information
-*/
+
 void Staff::editStaff() {
 
 	int option;

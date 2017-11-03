@@ -1,4 +1,5 @@
 #include "Schedule.h"
+#include "ErrorClasses.h"
 
 Schedule::Schedule() {}
 

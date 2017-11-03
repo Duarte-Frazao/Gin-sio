@@ -4,47 +4,33 @@
 
 using namespace std;
 
-Program::Program(int code, int programDays, float programCost): code(code), days(programDays), cost(programCost)
-{
+Program::Program(int code) : code(code) {
+	switch(code){
+	case 1:
+		days = 31;
+		cost = 10;
+		break;
+
+	case 2:
+		days = 62;
+		cost = 15;
+		break;
+
+	//default:
+		//throw Invalid Code;
+	}
 }
 
 
-Program::~Program()
-{
-}
+Program::~Program(){}
 
-/**
-Returns the number of days a the Program gives
-
-@param
-@return Returns the number of days a the Program gives
-*/
 int Program::getDays() const  { return days; }
 
-/**
-Returns the cost of the Program 
-
-@param
-@return Returns the cost of the Program 
-*/
 float Program::getCost() const { return cost; }
 
-/**
-Returns the code of the Program
-
-@param
-@return Returns the code of the Program
-*/
 int Program::getCode() const { return code; }
 
-/**
-Prints the Program information
-
-@param
-@return 
-*/
-void Program::displayProgram() const
-{
+void Program::displayProgram() const{
 	cout << "Program " << code << "\n\n";
 	cout << "Monthly price: " << cost << "\n";
 	cout << "Number of times allowed to enter the gym: " << days << "\n\n\n";

@@ -19,7 +19,6 @@ class Client {
 	std::string name;
 	Program *enrolledProgram;
 	int age;
-	Gym *gym;
 	PersonalTrainer *responsiblePT;
 	int id;
 	int numDaysRemaining;
@@ -39,7 +38,7 @@ public:
 	@param PT		Professor responsible for the client
 	@return
 	*/
-	Client(std::string clientName, Program *program, int clientAge,Gym *gym,PersonalTrainer *PT);
+	Client(std::string clientName, Program *program, int clientAge, PersonalTrainer *PT);
 
 	/**Client destructor*/
 	~Client();
@@ -94,12 +93,6 @@ public:
 	*/
 	const Program *getProgram() const;
 
-	/**
-	Returns the gym the client is signed
-	@param
-	@return Returns the gym the client is signed
-	*/
-	const Gym *getGym() const;
 
 	/**
 	Returns the number of days remaining
@@ -132,14 +125,6 @@ public:
 	@return
 	*/
 	void setPT(PersonalTrainer *PT);
-
-	/**
-	Sets a new gym to the Client
-
-	@param newGym New gym for client 
-	@return
-	*/
-	void setGym(Gym *newGym);
 
 	/**
 	Sets a new name to Client

@@ -1,4 +1,5 @@
 //Library
+#include "stdafx.h"
 #include "Gym.h"
 #include <iostream>
 #include "Client.h"
@@ -14,8 +15,8 @@ int Client::clientId = 0;
 
 
 //Client constructor
-Client::Client(string clientName, Program *program, int clientAge,Gym *gym,PersonalTrainer *PT = NULL) :
-		name(clientName), enrolledProgram(program), age(clientAge),gym(gym), responsiblePT(
+Client::Client(string clientName, Program *program, int clientAge,PersonalTrainer *PT = NULL) :
+		name(clientName), enrolledProgram(program), age(clientAge), responsiblePT(
 				PT), id(++clientId), insideGym(false), paymentsUpToDate(
 				true), numLatePayments(0) {
 	//To-do initialize numDays remaining based on the program chosen
@@ -89,12 +90,6 @@ const PersonalTrainer *Client::getPT() const
 }
 
 
-//Returns the gym the client is signed
-const Gym *Client::getGym() const 
-{
-	return this->gym;
-}
-
 #pragma endregion
 
 #pragma region Sets
@@ -111,11 +106,6 @@ void Client::setPT(PersonalTrainer *PT)
 	this->responsiblePT = PT;
 }
 
-//Sets a new gym to the Client
-void Client::setGym(Gym *newGym)
-{
-	gym = newGym;
-}
 
 //Sets a new name to Client
 void Client::setName(string newName)
@@ -229,20 +219,20 @@ void Client::updateNumDaysRemaining()
 }
 
 
-//std::ostream & operator<<(std::ostream & out, const Client &client)
-//{
-//	out << "Client " << client.getId() << " information\n";
-//	out << "Name: " << client.getName()<< "\n";
-//	out << "Age: " << client.getAge() << "\n";
-//	out << "Location: ";
-//	if (client.getLocation()) out << "inside gym\n";
-//	else out << "outside gym\n";
-//	out << "Payment Status: ";
-//	if (client.getPaymentStatus()) out << "Up-to-date\n";
-//	else out << client.getDaysRemaining() << " late payments\n";
-//	//out << "Responsible professor: " << responsiblePT->getName() << "\n\n";
-//	return out;
-//}
+std::ostream & operator<<(std::ostream & out, const Client &client)
+{
+	out << "Client " << client.getId() << " information\n";
+	out << "Name: " << client.getName()<< "\n";
+	out << "Age: " << client.getAge() << "\n";
+	out << "Location: ";
+	if (client.getLocation()) out << "inside gym\n";
+	else out << "outside gym\n";
+	out << "Payment Status: ";
+	if (client.getPaymentStatus()) out << "Up-to-date\n";
+	else out << client.getDaysRemaining() << " late payments\n";
+	//out << "Responsible professor: " << responsiblePT->getName() << "\n\n";
+	return out;
+}
 
 //Displays information about Client
 void Client::viewInfo() const 

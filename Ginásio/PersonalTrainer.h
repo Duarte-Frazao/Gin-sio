@@ -16,7 +16,7 @@ class PersonalTrainer : public Staff {
 	Gym *gym;
 
 public:
-	PersonalTrainer(int age, int wage, std::string specializedArea,Gym *gym);
+	PersonalTrainer(int age, int wage, std::string specializedArea);
 
 	virtual ~PersonalTrainer();
 
@@ -27,12 +27,7 @@ public:
 	*/
 	std::vector<Client *> getClients() const;
 
-	/**
-	Returns the gym of the personal trainer
 
-	@return Returns the gym of the personal trainer
-	*/
-	Gym * getGym() const;
 
 	/**
 	Returns the specialized area of the personal trainer
@@ -64,12 +59,12 @@ public:
 	/**
 	Handles the editing of the personal trainer's information
 	*/
-	void editPersonalTrainer();
+	void editPersonalTrainer(Gym &gym);
 
 	/**
 	Handles the editing of the personal trainer's associated clients
 	*/
-	void editAssociatedClients();
+	void editAssociatedClients(Gym &gym);
 
 	virtual bool recognizeProf() const;
 };

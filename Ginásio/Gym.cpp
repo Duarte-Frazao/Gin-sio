@@ -224,6 +224,20 @@ bool Gym::findStaff(int staffId, Staff* staff_found) {
 	return false;
 }
 
+//Finds gym's client with a certain Id
+bool Gym::findClient(int clientId, Client* client_found) {
+	for (auto client_pointer : clients)
+	{
+		if (client_pointer->getId() == clientId)
+		{
+			client_found = client_pointer;
+			return true;
+		}
+	}
+
+	client_found = NULL;
+	return false;
+}
 #pragma endregion
 
 
@@ -306,7 +320,7 @@ void Gym::displayPrograms() const
 	cout << name << " has the following programs to offer\n\n\n";
 	for (unsigned int i = 0; i < programs.size(); i++)
 	{
-		programs.at(i)->displayProgram();
+		cout << programs.at(i);
 	}
 }
 
@@ -328,8 +342,9 @@ void Gym::displayProgramOptions()
 	cout << "---Programas disponiveis---" << endl;
 	for (unsigned int i = 0; i < programs.size(); i++)
 	{
-		cout << programs.at(i);
+		cout << *(this->getPrograms().at(i));
 	}
+	cout << endl;
 }
 
 //Adds a client to the gym
@@ -346,8 +361,7 @@ void Gym::addClient()
 
 	//Program subscription
 	displayProgramOptions();
-	cout << "Programa:" << endl;
-	displayProgramOptions();
+	cout << "Programa:";
 	program= filterInput(1, programs.size());
 
 	//age
@@ -355,9 +369,9 @@ void Gym::addClient()
 	cin >> age;
 
 	//To-do arranjar maneira de em vez de usar staff ser um professor, porque pode dar errado
-	PersonalTrainer *professor = profs.at(rand() % staff.size());
+	PersonalTrainer *professor = profs.at(rand() % profs.size());
 
-	Client novoCliente(name, codeToProgram(program), age, this, professor);
+	Client novoCliente(name, codeToProgram(program), age, professor);
 
 	clients.push_back(&novoCliente);
 	cout << "Cliente adicionado com sucesso" << endl;

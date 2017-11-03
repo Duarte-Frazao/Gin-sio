@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Program.h"
-#include <iostream>
 
 using namespace std;
 
@@ -30,9 +29,12 @@ float Program::getCost() const { return cost; }
 
 int Program::getCode() const { return code; }
 
-void Program::displayProgram() const{
-	cout << "Program " << code << "\n\n";
-	cout << "Monthly price: " << cost << "\n";
-	cout << "Number of times allowed to enter the gym: " << days << "\n\n\n";
 
+ostream & operator<<(ostream &out, const Program &program)
+{
+	cout << "Program " << program.code << "\n\n";
+	cout << "Monthly price: " << program.cost << "\n";
+	cout << "Number of times allowed to enter the gym: " << program.days << "\n\n\n";
+
+	return out;
 }

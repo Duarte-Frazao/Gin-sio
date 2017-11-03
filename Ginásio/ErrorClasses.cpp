@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "ErrorClasses.h"
 #include <iostream>
 

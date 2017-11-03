@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include <utility>
+
 class Program
 {
 public:
@@ -32,7 +35,7 @@ public:
 	/**
 	Prints the Program information
 	*/
-	void displayProgram() const;
+	friend std::ostream & operator<<(std::ostream &out, const Program &program);
 
 private:
 	int code;

@@ -215,6 +215,15 @@ public:
 	bool findStaff(int staffId, Staff* staff_found);
 
 	/**
+	Finds gym's client with a certain Id
+	@param
+	- clientId is the client's Id
+	- client_found is a pointer to the found client
+	@return Returns true if client was found, false otherwise
+	*/
+	bool Gym::findClient(int clientId, Client* client_found);
+
+	/**
 	Performs the login process for a certain staff's id
 
 	@param Staff's Id to be logged on
@@ -226,6 +235,7 @@ public:
 	Adds a client to the gym
 	*/
 	void addClient();
+
 
 	/**
 	Prints the programs the gym has to offer, as well as the conditions

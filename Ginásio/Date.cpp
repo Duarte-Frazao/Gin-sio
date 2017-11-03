@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Date.h"
 
 Date::Date(int hour, int min, int weekDay){

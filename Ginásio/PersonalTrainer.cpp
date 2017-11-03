@@ -4,8 +4,8 @@
 
 using namespace std;
 
-PersonalTrainer::PersonalTrainer(int age, int wage, string specializedArea, Gym *gym) :
-	Staff(age, wage), specializedArea(specializedArea) ,gym(gym){
+PersonalTrainer::PersonalTrainer(int age, int wage, string specializedArea) :
+	Staff(age, wage), specializedArea(specializedArea) {
 }
 
 PersonalTrainer::~PersonalTrainer() {
@@ -18,7 +18,6 @@ vector<Client *> PersonalTrainer::getClients() const {return clients;}
 
 string PersonalTrainer::getSpecializedArea() const {return specializedArea;}
 
-Gym * PersonalTrainer::getGym() const{return gym;}
 
 #pragma endregion
 
@@ -64,7 +63,7 @@ int editPersonalTrainerMenu() {
 	return option;
 }
 
-void PersonalTrainer::editPersonalTrainer() {
+void PersonalTrainer::editPersonalTrainer(Gym &gym) {
 
 	int option;
 	while ((option = editPersonalTrainerMenu()) != 0) {
@@ -117,7 +116,7 @@ void PersonalTrainer::editPersonalTrainer() {
 		case 5:
 		{
 			/* add or remove clients to personal trainer */
-			editAssociatedClients();
+			editAssociatedClients(gym);
 			break;
 		}
 		default:
@@ -147,7 +146,7 @@ int editAssociatedClientsMenu() {
 	return option;
 }
 
-void PersonalTrainer::editAssociatedClients() {
+void PersonalTrainer::editAssociatedClients(Gym &gym) {
 
 	int option;
 	while ((option = editAssociatedClientsMenu()) != 0) {
@@ -171,7 +170,7 @@ void PersonalTrainer::editAssociatedClients() {
 			bool clientExist = false;
 
 			//Search if the client already exists
-			for(auto pClient : this->getGym()->getClients()){
+			for(auto pClient : gym.getClients()){
 				if(pClient->getName() == name && pClient->getAge() == age && pClient->getProgram()->getCode() == program){
 					pClient->setPT(this);
 					clientExist = true;
@@ -181,8 +180,8 @@ void PersonalTrainer::editAssociatedClients() {
 
 			//If the client is new at the gym
 			if (!clientExist) {
-				Client * newClient = new Client(name, new Program(program), age, this->getGym(), this);
-				getGym()->addClient(newClient); //Also add the client to the gym's clients vector
+				Client * newClient = new Client(name, new Program(program), age, this);
+				gym.addClient(newClient); //Also add the client to the gym's clients vector
 			}
 
 			cout << "Client added successfully to Personal Trainer!\n";

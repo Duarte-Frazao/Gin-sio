@@ -9,6 +9,9 @@
 
 using namespace std;
 
+void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
+void inputClientId(int &optionClient, Gym &gym);
+
 // Gym Constructor
 Gym::Gym(string name, vector<Program *> &programs, vector<Client *> &clients,
 		vector<Staff *> &staff, vector<PersonalTrainer *> &profs,
@@ -338,12 +341,11 @@ Program* Gym::codeToProgram(int code)
 //Prints the programs the gym has to offer, as well as the conditions
 void Gym::displayProgramOptions()
 {
-	cout << "---Programas disponiveis---" << endl;
+	cout << "---Available program subscriptions---" << endl;
 	for (unsigned int i = 0; i < programs.size(); i++)
 	{
 		cout << *(this->getPrograms().at(i));
 	}
-	cout << endl;
 }
 
 //Adds a client to the gym
@@ -374,6 +376,8 @@ void Gym::addClient()
 
 	clients.push_back(&novoCliente);
 	cout << "Cliente adicionado com sucesso" << endl;
+	cout << "Informacao do novo cliente:" << endl;
+	cout << novoCliente;
 }
 
 //Shows the menu of options for adding or removing clients
@@ -391,46 +395,33 @@ int clientMenu() {
 }
 
 
-void Gym::menuClient() {
 
-	int option;
-	while ((option = staffMenu()) != 0) {
-		switch (option) {
-		case 1:
-		{
-			addClient();
-		}
-		break;
-		case 2:
-		{
-			removeClient();
-		}
-		break;
-		default:
-			cout << "Unreachable option ...\n";
-		}
+//Shows gym's clients id's
+void Gym::displayClientsIds()
+{
+	for (size_t i = 0; i < clients.size(); i++)
+	{
+		cout << clients.at(i)->getName() << " ID: " << clients.at(i)->getId() << endl;
 	}
 }
 
 /**
 Removes a client
 */
-void Gym::removeClient()
+void Gym::removeClient(Gym &gym)
 {
+	int optionClient;
+	Client *clientToEdit;
+	inputClientIdObj(optionClient, gym, &clientToEdit);
 
-	int id;
-	cout << "Insert client's id to remove: ";
 	//algo que mostre ids + fun��o que check ids
-	cin >> id;
-	cin.ignore();
+
 	vector<Client *>::iterator it_client;
 	for (it_client = clients.begin(); it_client != clients.end(); it_client++) {
-		if ((*it_client)->getId() == id) {
+		if ((*it_client)->getId() == optionClient) {
 			clients.erase(it_client);
-			cout << "Client with id " << id << " erased sucessfully!\n";
+			cout << "Client with id " << optionClient << " erased sucessfully!\n";
+			return;
 		}
-	}
-	if (it_client == clients.end()) {
-		cout << "Client with id " << id << " does not exist!\n";
 	}
 }

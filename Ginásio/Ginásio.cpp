@@ -50,13 +50,13 @@ int main()
 	Schedule sched;
 	Finance fin;
 
-	Gym GoGym("GoGym", programs, sched, 30, 30, fin);
+	Gym GoGym("GoGym", programs,clients, staff, pts, sched, 30, 30, fin);
 
 	GoGym.setClients(clients);
 	GoGym.setStaff(staff);
 	staff.at(0)->setPassword("123");
 
-	GoGym.login();
+	//GoGym.login();
 	mainMenu(GoGym);
     return 0;
 }

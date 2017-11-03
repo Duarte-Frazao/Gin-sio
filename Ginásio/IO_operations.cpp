@@ -15,6 +15,7 @@ int filterInput(int inf, int sup)
 
 	do
 	{
+		std::cout << "Selection: " ;
 		std::cin >> option;
 		if (std::cin.fail() || option< inf || option > sup)
 		{
@@ -26,6 +27,7 @@ int filterInput(int inf, int sup)
 		else if(validValue == false) validValue = true;
 
 	} while (!validValue);
+	std::cout << std::endl << std::endl;
 
 	return option;
 

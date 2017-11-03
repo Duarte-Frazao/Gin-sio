@@ -246,13 +246,16 @@ public:
 	/**
 	Removes a client
 	*/
-	void removeClient();
+	void removeClient(Gym &gym);
+
 
 	/**
-	Handles the editing of the Client in the gym
-	*/
-	void menuClient();
+	Prints the gym's clients ids
 
+	@param
+	@return
+	*/
+	void displayClientsIds();
 };
 
 #endif /* GYM_H_ */

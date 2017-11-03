@@ -1,65 +1,25 @@
-/*
- * Client.cpp
- *
- *  Created on: 14/10/2017
- *      Author: Sandro Ca
- */
-#include "stdafx.h"
+//Library
 #include "Gym.h"
+#include <iostream>
+#include "Client.h"
+#include "ErrorClasses.h"
+
+//Functions
+int filterInput(int inf, int sup);
+
 using namespace std;
+
 
 int Client::clientId = 0;
 
-#pragma region EntranceError
-
-//EntranceError constructor
-EntranceError::EntranceError(string rz) : reason(rz) {}
-
-//getReason
-string EntranceError::getReason() const { return reason; }
-
-//operator << overload
-ostream & operator << (ostream &out, const EntranceError &error) {
-	out << "Error registring client's entry" << endl;
-	out << "Reason: " << error.reason << endl;
-	return out;
-}
-
-#pragma endregion
-
-#pragma region EditingError
-
-//EntranceError constructor
-EditingError::EditingError(vector<string> rz) : reasons(rz) {}
-
-//getReason
-vector<string> EditingError::getReasons() const { return reasons; }
-
-//operator << overload
-ostream & operator << (ostream &out, const EditingError &error) {
-	out << "Error editing client" << endl;
-
-	if (error.reasons.size() == 1)out << "Reason: " << error.reasons.at(0) << endl;
-	else
-	{
-		out << "Reasons: " << endl;
-		for (size_t i = 0; i < error.reasons.size() - 1; i++)
-		{
-			out << error.reasons.at(i) << endl;
-		}
-	}
-	return out;
-}
-
-#pragma endregion
 
 //Client constructor
-Client::Client(string clientName, Program *program, int clientAge, PersonalTrainer *PT):
-	name(clientName), insideGym(false), paymentsUpToDate(true), numLatePayments(0), enrolledProgram(program),
-	age(clientAge), responsiblePT(PT), id(clientId) {
+Client::Client(string clientName, Program *program, int clientAge,Gym *gym,PersonalTrainer *PT = NULL) :
+		name(clientName), enrolledProgram(program), age(clientAge),gym(gym), responsiblePT(
+				PT), id(++clientId), insideGym(false), paymentsUpToDate(
+				true), numLatePayments(0) {
 	//To-do initialize numDays remaining based on the program chosen
 	numDaysRemaining = program->getDays();
-	clientId++;
 }
 
 //Client destructor
@@ -168,10 +128,15 @@ void Client::setName(string newName)
 //Changes the current location of Client.
 void Client::changeLocation()
 {
-	if (!paymentsUpToDate) throw EntranceError("Payments not up to date");
-	else if (numDaysRemaining == 0 && !insideGym) throw EntranceError("Maximum number of entrys excedeed, see our other program offers!");
-	else insideGym = !insideGym;
+	if(insideGym)  insideGym = !insideGym; //Can always get out of the gym
+
+	else{//But can only enter under some conditions
+		if (!paymentsUpToDate) throw EntranceError("Payments not up to date");
+		else if (numDaysRemaining == 0 && !insideGym) throw EntranceError("Maximum number of entries exceeded, see our other program offers!");
+		else insideGym = !insideGym;
+	}
 }
+
 
 //Returns in the argument vector problems the reasons for not being able to edit the Client
 void Client::problems(vector<string> &problems) const
@@ -255,36 +220,6 @@ int Client::editClientMenu() const
 	int option = filterInput(0, options.size() - 1);
 
 	return option;
-}
-
-/**
-Filters an option by giving two limits, makes the user input and integer between them
-
-@param inf Inferior limit
-@param sup superior limit
-@return option Valid option value
-*/
-int filterInput(int inf, int sup)
-{
-	int option;
-	bool validValue = true;
-
-	do
-	{
-		cin >> option;
-		if (cin.fail() || option< inf || option > sup)
-		{
-			cout << "Please enter a valid value\n";
-			cin.clear();
-			cin.ignore(100, '\n');
-			validValue = false;
-		}
-		else if (validValue == false) validValue = true;
-
-	} while (!validValue);
-
-	return option;
-
 }
 
 //Updates the number of days remaining after setting a new program

@@ -1,69 +1,40 @@
-/*
-* PersonalTrainer.cpp
-*
-*  Created on: 14/10/2017
-*      Author: Sandro Ca
-*/
 #include <iostream>
 #include "stdafx.h"
 #include "PersonalTrainer.h"
 
-// PersonalTrainer constructor
-PersonalTrainer::PersonalTrainer(int age, int wage, string specializedArea) :
-	Staff(age, wage), specializedArea(specializedArea) { /* vector<Client *> ? */
+using namespace std;
+
+PersonalTrainer::PersonalTrainer(int age, int wage, string specializedArea, Gym *gym) :
+	Staff(age, wage), specializedArea(specializedArea) ,gym(gym){
 }
 
-// PersonalTrainer destructor
 PersonalTrainer::~PersonalTrainer() {
 
 }
 
 #pragma region Gets
-/**
-	Returns the vector of clients of the personal trainer
 
-	@return Returns vector of pointers to clients of the personal trainer
-*/
-vector<Client *> PersonalTrainer::getClients() const {
-	return clients;
-}
+vector<Client *> PersonalTrainer::getClients() const {return clients;}
 
-/**
-	Returns the specialized area of the personal trainer
+string PersonalTrainer::getSpecializedArea() const {return specializedArea;}
 
-	@return Returns the specialized area as a string
-*/
-string PersonalTrainer::getSpecializedArea() const {
-	return specializedArea;
-}
+Gym * PersonalTrainer::getGym() const{return gym;}
 
 #pragma endregion
 
 # pragma region Sets
 
-/**
-	Sets the working schedule of the personal trainer
 
-	@param The working schedule of the personal trainer
-*/
 void PersonalTrainer::setSchedule(Schedule workSchedule) {
 	Staff::setSchedule(workSchedule);
 }
 
-/**
-	Sets the clients of the personal trainer
 
-	@param Vector of pointers to clients
-*/
 void PersonalTrainer::setClients(vector<Client *> clients) {
 	this->clients = clients;
 }
 
-/**
-	Sets the specialized area of the personal trainer
 
-	@param The specialized area of the personal trainer
-*/
 void PersonalTrainer::setSpecializedArea(string area) {
 	specializedArea = area;
 }
@@ -73,10 +44,10 @@ void PersonalTrainer::setSpecializedArea(string area) {
 #pragma region editPersonalTrainer
 
 /**
-	Shows the menu of options for editing the personal trainer
-	and returns the option chosen
+Shows the menu of options for editing the personal trainer
+and returns the option chosen
 
-	@return Returns the chosen option of the personal trainer's edit menu
+@return Returns the chosen option of the personal trainer's edit menu
 */
 int editPersonalTrainerMenu() {
 
@@ -93,9 +64,6 @@ int editPersonalTrainerMenu() {
 	return option;
 }
 
-/**
-	Handles the editing of the personal trainer's information
-*/
 void PersonalTrainer::editPersonalTrainer() {
 
 	int option;
@@ -144,6 +112,7 @@ void PersonalTrainer::editPersonalTrainer() {
 			getline(cin, area);
 			setSpecializedArea(area);
 			cout << "Specialized area modified successfully!\n";
+			break;
 		}
 		case 5:
 		{
@@ -158,7 +127,7 @@ void PersonalTrainer::editPersonalTrainer() {
 }
 
 /**
-	Shows the menu of options for editing the personal trainer's
+Shows the menu of options for editing the personal trainer's
 	associated clients and returns the option chosen
 
 	@return Returns the chosen option of the personal trainer's 
@@ -178,9 +147,6 @@ int editAssociatedClientsMenu() {
 	return option;
 }
 
-/**
-	Handles the editing of the personal trainer's associated clients
-*/
 void PersonalTrainer::editAssociatedClients() {
 
 	int option;
@@ -196,14 +162,35 @@ void PersonalTrainer::editAssociatedClients() {
 			cout << "Insert client's age: ";
 			cin >> age;
 			cin.ignore();
+
 			int program;
 			cout << "Insert the subscripted gym program: ";
 			cin >> program;
 
-			//clients.push_back(new Client(name,program,age,this));
+
+			bool clientExist = false;
+
+			//Search if the client already exists
+			for(auto pClient : this->getGym()->getClients()){
+				if(pClient->getName() == name && pClient->getAge() == age && pClient->getProgram()->getCode() == program){
+					pClient->setPT(this);
+					clientExist = true;
+					break;
+				}
+			}
+
+			//If the client is new at the gym
+			if (!clientExist) {
+				Client * newClient = new Client(name, new Program(program), age, this->getGym(), this);
+				getGym()->addClient(newClient); //Also add the client to the gym's clients vector
+			}
+
 			cout << "Client added successfully to Personal Trainer!\n";
-		}
 			break;
+
+		}
+
+
 		case 2:
 		{
 			/* remove client associated with Personal Trainer, by Id */
@@ -215,7 +202,7 @@ void PersonalTrainer::editAssociatedClients() {
 			for (it_clients = clients.begin(); it_clients != clients.end(); it_clients++) {
 				if ((*it_clients)->getId() == id) {
 					clients.erase(it_clients);
-					cout << "Client with id " << id << " erased sucessfully!\n";
+					cout << "Client with id " << id << " erased successfully!\n";
 				}
 				if (it_clients == clients.end()) {
 					cout << "Client with id " << id << " does not exist!\n";
@@ -229,6 +216,8 @@ void PersonalTrainer::editAssociatedClients() {
 		}
 	}
 }
+
+#pragma endregion
 
 bool PersonalTrainer::recognizeProf() const
 {

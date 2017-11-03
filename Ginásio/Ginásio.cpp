@@ -16,43 +16,44 @@ void staffMenu(Gym &gym);
 
 int main()
 {
+
 	vector <Program *> programs
 	{
-		new Program(1, 10, 20.0),
-		new Program(2, 20, 30.0)	
+		new Program(1),
+		new Program(2)
 	};
+
+	Schedule sched;
+	Finance fin;
+
+	Gym GoGym("GoGym", programs, sched, 30, 30, fin);
+
+
 
 	vector <PersonalTrainer *> pts
 	{
-		new PersonalTrainer(30, 500, "Karate"),
-		new PersonalTrainer(30, 500, "Jogging")
+		new PersonalTrainer(30, 500, "Karate", &GoGym),
+		new PersonalTrainer(30, 500, "Jogging", &GoGym)
 	};
 
 	vector <Client *> clientes
 	{
-		new Client("Sandro", programs.at(0), 20, pts.at(0)),
-		new Client("Duarte", programs.at(1), 20, pts.at(1)),
-		new Client("Cesar", programs.at(0), 20, pts.at(1)),
-		new Client("Ana", programs.at(1), 20, pts.at(0))
+		new Client("Sandro", programs.at(0), 20, &GoGym, pts.at(0)),
+		new Client("Duarte", programs.at(1), 20, &GoGym, pts.at(1)),
+		new Client("Cesar", programs.at(0), 20, &GoGym, pts.at(1)),
+		new Client("Ana", programs.at(1), 20, &GoGym, pts.at(0))
 	};
 
 	vector<Staff *> staff
 	{
-		new PersonalTrainer(30, 500, "Karate"),
-		new PersonalTrainer(30, 500, "Jogging")
+		pts.at(0),
+		pts.at(1)
 	};
 
-	std::string gymName = "GoGym";
-	Schedule sched;
-	Finance fin;
+	GoGym.setClients(clientes);
+	GoGym.setStaff(staff);
+	//Falta um set para os PersonalTrainer
 
-	Gym GoGym("GoGym", programs, clientes, staff, pts, sched, 30, 30, fin);
-
-	clientes.at(0)->setGym(&GoGym);
-
-
-	//GoGym.getClients().at(0)->editClient();
-	
 
     return 0;
 }

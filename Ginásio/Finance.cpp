@@ -1,9 +1,3 @@
-/*
- * Finance.cpp
- *
- *  Created on: 14/10/2017
- *      Author: Sandro Ca
- */
 #include "stdafx.h"
 #include "Finance.h"
 

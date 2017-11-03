@@ -1,6 +1,3 @@
-/*
-* Gym.cpp
-*/
 #include "stdafx.h"
 #include <iostream>
 #include <stdlib.h>     /* srand, rand */
@@ -8,11 +5,26 @@
 #include "Gym.h"
 #include "Client.h"
 
+
+using namespace std;
+
 // Gym Constructor
-Gym::Gym(string name, vector<Program *> &programs, vector<Client *> &clients, vector<Staff *> &staff, vector<PersonalTrainer *> &profs, Schedule &gymSchedule,
-	int maxNumClients, int maxCapacity, Finance &gymFinance) :name(name), programs(programs), clients(clients),
-	staff(staff), gymSchedule(gymSchedule), maxNumClients(maxNumClients),
-	maxCapacity(maxCapacity), gymFinance(gymFinance), profs(profs) {}
+Gym::Gym(string name, vector<Program *> &programs, vector<Client *> &clients,
+		vector<Staff *> &staff, vector<PersonalTrainer *> &profs,
+		Schedule &gymSchedule, int maxNumClients, int maxCapacity,
+		Finance &gymFinance) :
+		name(name), programs(programs), clients(clients), staff(staff), profs(
+				profs), gymSchedule(gymSchedule), maxNumClients(maxNumClients), maxCapacity(
+				maxCapacity), gymFinance(gymFinance) {
+}
+
+// Gym Constructor
+Gym::Gym(string name, vector<Program *> &programs, Schedule &gymSchedule,
+		int maxNumClients, int maxCapacity, Finance &gymFinance) :
+		name(name), programs(programs), gymSchedule(gymSchedule), maxNumClients(
+				maxNumClients), maxCapacity(maxCapacity), gymFinance(
+				gymFinance) {
+}
 
 // Gym Destructor
 Gym::~Gym() {
@@ -21,98 +33,39 @@ Gym::~Gym() {
 
 #pragma region Gets 
 
-/**
-Returns the vector of client pointers of the gym
-
-@return Returns vector of pointers to clients of the gym
-*/
 string Gym::getName() const { return name; }
 
-vector<Client *> Gym::getClients() const {
-	return clients;
-}
+vector<Client *> Gym::getClients() const {return clients;}
 
-/**
-Returns the vector of staff pointers of the gym
+vector<Program *> Gym::getPrograms() const {return programs;}
 
-@return Returns vector of pointers to staff of the gym
-*/
-vector<Program *> Gym::getPrograms() const {
-	return programs;
-}
+int Gym::getNumberPrograms() const{return programs.size();}
 
-int Gym::getNumberPrograms() const
-{
-	return programs.size();
-}
+vector<Staff *> Gym::getStaff() const {return staff;}
 
-vector<Staff *> Gym::getStaff() const {
-	return staff;
-}
+Schedule Gym::getGymSchedule() const {return gymSchedule;}
 
-/**
-Returns the gym schedule
+int Gym::getMaxNumClients() const {return maxNumClients;}
 
-@return Returns the gym schedule
-*/
-Schedule Gym::getGymSchedule() const {
-	return gymSchedule;
-}
+int Gym::getMaxCapacity() const {return maxCapacity;}
 
-/**
-Returns the max number of clients of the gym
-
-@return Returns the max number of clients of the gym
-*/
-int Gym::getMaxNumClients() const {
-	return maxNumClients;
-}
-
-/**
-Returns the max capacity of the gym
-
-@return Returns the max capacity of the gym
-*/
-int Gym::getMaxCapacity() const {
-	return maxCapacity;
-}
-
-/**
-Returns the finance of the gym
-
-@return Returns the finance of the gym
-*/
-Finance Gym::getGymFinance() const {
-	return gymFinance;
-}
+Finance Gym::getGymFinance() const {return gymFinance;}
 
 #pragma endregion
 
+
+
 #pragma region Sets
 
-/**
-Sets the vector of clients of the gym
 
-@param The vector of client pointers of the gym
-*/
 void Gym::setClients(vector<Client *> clients) {
 	this->clients = clients;
 }
 
-/**
-Sets the vector of staff of the gym
-
-@param The vector of staff pointers of the gym
-*/
 void Gym::setStaff(vector<Staff *> staff) {
 	this->staff = staff;
 }
 
-/**
-Sets the gym schedule
-
-@param The gym schedule
-*/
 void Gym::setName(string newName)
 {
 	name = newName;
@@ -122,34 +75,33 @@ void Gym::setGymSchedule(Schedule gymSchedule) {
 	this->gymSchedule = gymSchedule;
 }
 
-/**
-Sets the max number of clients of the gym
-
-@param The max number of clients of the gym
-*/
 void Gym::setMaxNumClients(int maxNumClients) {
 	this->maxNumClients = maxNumClients;
 }
 
-/**
-Sets the max capacity of the gym
-
-@param The max capacity of the gym
-*/
 void Gym::setMaxCapacity(int maxCapacity) {
 	this->maxCapacity = maxCapacity;
 }
 
-/**
-Sets the gym finance
-
-@param The gym finance
-*/
 void Gym::setGymFinance(Finance gymFinance) {
 	this->gymFinance = gymFinance;
 }
 
 #pragma endregion
+
+
+
+#pragma region Add
+
+void Gym::addClient(Client * client) {clients.push_back(client);}
+
+void Gym::addStaff(Staff * staff) {this->staff.push_back(staff);}
+
+void Gym::addProgram(Program* program) {programs.push_back(program);}
+
+# pragma endregion
+
+
 
 #pragma region Login authentication
 
@@ -162,7 +114,7 @@ void Gym::login(int staffId) {
 	cout << "    Welcome to Go Gym!      \n"
 		<< "--- AUTHENTICATION PORTAL ---\n";
 
-	Staff* staff_found;
+	Staff* staff_found = NULL;
 	bool staffFound = 0;
 	do
 	{
@@ -178,7 +130,7 @@ void Gym::login(int staffId) {
 			{
 				string pass;
 				cout << "Password: ";
-				char ch = _getch();
+				char ch = getchar(); //Now compatible with other compilers
 				while (ch != 13)
 				{
 					if (ch == 8)
@@ -194,7 +146,7 @@ void Gym::login(int staffId) {
 						pass.push_back(ch);
 						cout << "*";
 					}
-					ch = _getch();
+					ch = getchar();
 				}
 
 				if (staff_found->auth(pass))
@@ -238,14 +190,7 @@ void Gym::login(int staffId) {
 
 #pragma region Search algorithms
 
-/**
-	Finds gym's staff with a certain Id
 
-	@param 
-	- staffId is the staff's Id
-	- staff_found is a pointer to the found staff
-	@return Returns true if staff was found, false otherwise
-*/
 bool Gym::findStaff(int staffId, Staff* staff_found) {
 	for (auto staff_pointer : staff)
 	{
@@ -255,6 +200,8 @@ bool Gym::findStaff(int staffId, Staff* staff_found) {
 			return true;
 		}
 	}
+
+	staff_found = NULL;
 	return false;
 }
 
@@ -283,9 +230,7 @@ int staffMenu() {
 	return option;
 }
 
-/**
-Handles the editing of the staff in the gym
-*/
+
 void Gym::menuStaff() {
 
 	int option;
@@ -338,12 +283,7 @@ void Gym::menuStaff() {
 
 #pragma endregion
 
-/**
-Prints the programs the gym has to offer, as well as the conditions
 
-@param
-@return
-*/
 void Gym::displayPrograms() const
 {
 	cout << name << " has the following programs to offer\n\n\n";
@@ -353,12 +293,13 @@ void Gym::displayPrograms() const
 	}
 }
 
-Program* Gym::codeToProgram(int code)
-{
+Program* Gym::codeToProgram(int code){
 	for (unsigned int i = 0; i < programs.size(); i++)
-	{
-		if (code == programs.at(i)->getCode()) return programs.at(i);
-	}
+		if (code == programs.at(i)->getCode())
+			return programs.at(i);
+
+	return NULL;
+
 }
 
 void Gym::displayProgramOptions()
@@ -394,7 +335,7 @@ void Gym::addClient()
 	//To-do arranjar maneira de em vez de usar staff ser um professor, porque pode dar errado
 	PersonalTrainer *professor = profs.at(rand() % staff.size());
 
-	Client novoCliente(name, codeToProgram(program), age, professor);
+	Client novoCliente(name, codeToProgram(program), age, this, professor);
 
 	clients.push_back(&novoCliente);
 	cout << "Cliente adicionado com sucesso" << endl;
@@ -418,9 +359,7 @@ int clientMenu() {
 	return option;
 }
 
-/**
-Handles the editing of the Client in the gym
-*/
+
 void Gym::menuClient() {
 
 	int option;
@@ -448,7 +387,7 @@ void Gym::removeClient()
 
 	int id;
 	cout << "Insert client's id to remove: ";
-	//algo que mostre ids + função que check ids
+	//algo que mostre ids + funï¿½ï¿½o que check ids
 	cin >> id;
 	cin.ignore();
 	vector<Client *>::iterator it_client;

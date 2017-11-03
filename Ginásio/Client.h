@@ -1,10 +1,3 @@
-/*
-* Client.h
-*
-*  Created on: 14/10/2017
-*      Author: Sandro Ca
-*/
-
 #ifndef CLIENT_H_
 #define CLIENT_H_
 
@@ -12,73 +5,30 @@
 #include "PersonalTrainer.h"
 #include "Gym.h"
 #include "Program.h"
-using namespace std;
+#include "ErrorClasses.h"
 
-/**
-Filters an option by giving two limits, makes the user input and integer between them
-
-@param inf Inferior Limit
-@param sup Superior Limit
-@return
-*/
 int filterInput(int inf, int sup);
 
 class PersonalTrainer;
 class Gym;
 
-class EntranceError {
-	string reason;
-public:
-	/** Entrance error constructor
-	@param rz Reason for the error
-	@return 
-	*/
-	EntranceError(string rz);
 
-	/** Returns the reason for the error
-	@param
-	@return Reason causing the error
-	*/
-	string getReason() const;
-
-	/**Overload of the << operator
-	@param out Output Stream
-	@param error Entrance Error object
-	@return out Output Stream
-	*/
-	friend ostream & operator << (ostream &out, const EntranceError &error);
-};
-
-class EditingError {
-	vector<string> reasons;
-public:
-	/** Editing error constructor
-	@param rz Reason for the error
-	@return
-	*/
-	EditingError(vector<string> rz);
-
-	/** Returns the reasons for the error
-	@param
-	@return Reasons causing the error
-	*/
-	vector<string> getReasons() const;
-
-	/**Overload of the << operator
-	@param out Output Stream
-	@param error Editing Error object
-	@return out Output Stream
-	*/
-	friend ostream & operator << (ostream &out, const EditingError &error);
-};
-
-/**
-
-
-@param
-@return 
-*/
 class Client {
+	static int clientId ;
+
+	std::string name;
+	Program *enrolledProgram;
+	int age;
+	Gym *gym;
+	PersonalTrainer *responsiblePT;
+	int id;
+	int numDaysRemaining;
+	bool insideGym;
+	bool paymentsUpToDate;
+	int numLatePayments;
+
+
+
 public:
 
 	/**Client constructor
@@ -89,11 +39,9 @@ public:
 	@param PT		Professor responsible for the client
 	@return
 	*/
-	Client::Client(string clientName, Program *program, int clientAge, PersonalTrainer *PT);
+	Client(std::string clientName, Program *program, int clientAge,Gym *gym,PersonalTrainer *PT);
 
-	/**Client destructor
-
-	*/
+	/**Client destructor*/
 	~Client();
 
 	/** Returns the id of the client
@@ -106,7 +54,7 @@ public:
 	@param
 	@return Returns the name of the client
 	*/
-	string getName() const;
+	std::string getName() const;
 
 	/** Returns the age of the client
 	@param
@@ -199,7 +147,7 @@ public:
 	@param newName New name for Client
 	@return
 	*/
-	void setName(string newName);
+	void setName(std::string newName);
 
 	/**
 	Changes the current location of Client.
@@ -210,12 +158,7 @@ public:
 	*/
 	void changeLocation();
 
-	/** Enters a menu handler to edit client
-
-
-	@param 
-	@return
-	*/
+	/** Enters a menu handler to edit client*/
 	void editClient();
 
 	/**
@@ -233,7 +176,7 @@ public:
 	@param problems A vector to return the problems
 	@return
 	*/
-	void problems(vector<string> &problems) const;
+	void problems(std::vector<std::string> &problems) const;
 
 	/**
 	Updates the number of days remaining after setting a new program
@@ -260,19 +203,6 @@ public:
 	//void changeProgram() const;
 	//void changePT() const;
 	//void editBasicSettings() const; client, name age
-
-private:
-
-	string name;
-	int id, age;
-	static int clientId ;
-	bool insideGym;
-	bool paymentsUpToDate;
-	int numLatePayments;
-	Program *enrolledProgram;
-	int numDaysRemaining;
-	PersonalTrainer *responsiblePT;
-	Gym *gym;
 };
 
 #endif /* CLIENT_H_ */

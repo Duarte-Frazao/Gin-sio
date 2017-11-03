@@ -62,3 +62,6 @@ latex/
 *.css
 
 Ginásio/Doxyfile
+Ginásio/stdafx.h
+Ginásio/targetver.h
+Ginásio/targetver.h

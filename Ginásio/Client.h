@@ -1,9 +1,9 @@
 /*
- * Client.h
- *
- *  Created on: 14/10/2017
- *      Author: Sandro Ca
- */
+* Client.h
+*
+*  Created on: 14/10/2017
+*      Author: Sandro Ca
+*/
 
 #ifndef CLIENT_H_
 #define CLIENT_H_
@@ -12,6 +12,15 @@
 #include "PersonalTrainer.h"
 #include "Gym.h"
 #include "Program.h"
+
+/**
+Filters an option by giving two limits, makes the user input and integer between them
+
+@param inf Inferior Limit
+@param sup Superior Limit
+@return
+*/
+int filterInput(int inf, int sup);
 
 class PersonalTrainer;
 class Gym;
@@ -51,13 +60,15 @@ public:
 	const PersonalTrainer *getPT() const;
 	void setProgram(Program *newProgram);
 	void setPT(PersonalTrainer *PT);
-	void setGym(Gym *prorgamGym);
+	void setGym(Gym *programGym);
 	void setName(string newName);
 	void changeLocation();
 	void editClient();
 	int Client::editClientMenu() const;
 	void problems(vector<string> &problems) const;
-	//void updateNumDaysRemaining(Program *newProgram);
+	void updateNumDaysRemaining();
+	friend std::ostream & operator<<(std::ostream & out, const Client &client);
+	void viewInfo() const;
 
 	//void updatePayments() const;
 	//void changeProgram() const;
@@ -66,9 +77,9 @@ public:
 
 private:
 
-	std::string name;
+	string name;
 	int id, age;
-	static int clientId;
+	static int clientId ;
 	bool insideGym;
 	bool paymentsUpToDate;
 	int numLatePayments;

@@ -5,11 +5,11 @@
 *      Author: Sandro Ca
 */
 
-#include <string>
-using namespace std;
-
 #ifndef TRANSACTION_H_
 #define TRANSACTION_H_
+
+#include <string>
+using namespace std;
 
 class Transaction {
 public:

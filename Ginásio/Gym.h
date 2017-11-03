@@ -10,18 +10,19 @@
 #include "Program.h"
 #include <string>
 #include <iostream>
+#include "PersonalTrainer.h"
 
 using namespace std;
 
 #ifndef GYM_H_
 #define GYM_H_
 
-
 class Client;
+class PersonalTrainer;
 
 class Gym {
 public:
-	Gym(string name, vector<Program *> programs, vector<Client *> clients, vector<Staff *> staff, Schedule gymSchedule, int maxNumClients, int maxCapacity, Finance gymFinance);
+	Gym(string name, vector<Program *> &programs, vector<Client *> &clients, vector<Staff *> &staff, vector<PersonalTrainer *> &profs, Schedule &gymSchedule, int maxNumClients, int maxCapacity, Finance &gymFinance);
 	virtual ~Gym();
 	std::string getName() const;
 	vector<Client *> getClients() const;
@@ -40,12 +41,18 @@ public:
 	void setGymFinance(Finance);
 	void setName(string newName);
 	void displayPrograms() const;
-
+	Program* codeToProgram(int code);
 	void menuStaff();
+	void addClient();
+	void displayProgramOptions();
+	void removeClient();
+	void menuClient();
+	void gymMenu(Gym &gym);
 private:
 	string name;
 	vector<Client *> clients;
 	vector<Staff *> staff;
+	vector<PersonalTrainer *> profs;
 	Schedule gymSchedule;
 	int maxNumClients;
 	int maxCapacity;

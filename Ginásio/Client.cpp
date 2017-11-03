@@ -6,18 +6,9 @@
  */
 #include "stdafx.h"
 #include "Gym.h"
-#include <iostream>
 using namespace std;
 
 int Client::clientId = 0;
-/**
-Filters an option by giving two limits, makes the user input and integer between them
-
-@param inf Inferior Limit
-@param sup Superior Limit
-@return
-*/
-int filterInput(int inf, int sup);
 
 #pragma region EntranceError
 
@@ -65,8 +56,10 @@ ostream & operator << (ostream &out, const EditingError &error) {
 //Client constructor
 Client::Client(string clientName, Program *program, int clientAge, PersonalTrainer *PT):
 	name(clientName), insideGym(false), paymentsUpToDate(true), numLatePayments(0), enrolledProgram(program),
-	age(clientAge), responsiblePT(PT){
+	age(clientAge), responsiblePT(PT), id(clientId) {
 	//To-do initialize numDays remaining based on the program chosen
+	numDaysRemaining = program->getDays();
+	clientId++;
 }
 
 //Client destructor
@@ -169,7 +162,10 @@ const PersonalTrainer *Client::getPT() const
 	return this->responsiblePT;
 }
 
-const Gym *Client::getGym() const { return this->gym; }
+const Gym *Client::getGym() const 
+{
+	return this->gym;
+}
 
 #pragma endregion
 
@@ -252,11 +248,12 @@ Edits a Client
 void Client::editClient()
 {
 	bool continueInMenu = true;
-	string newName; 
+	string newName;
 	vector<string> clientProblems;
 	int newProgramCode;
 	do
 	{
+		int numProg;
 		int option = editClientMenu();
 		switch (option)
 		{
@@ -265,6 +262,7 @@ void Client::editClient()
 			break;
 		case 1:
 			cout << "What's the new Client's name? " << endl;
+			cout << "Previously: " << name << endl;
 			cin >> newName;
 			setName(newName);
 			break;
@@ -276,21 +274,23 @@ void Client::editClient()
 			cout << "What's the subscription you want to enrol?\n" << endl;
 
 			//Selection of the new program
-			
-			newProgramCode = filterInput(1,(int)this->getGym()->getNumberPrograms());
+			numProg = gym->getNumberPrograms();
+
+			newProgramCode = filterInput(1,(gym->getNumberPrograms()));
 
 			//Checks if the program is the current one
 			if (newProgramCode == enrolledProgram->getCode())  throw EditingError(vector<string>{"Trying to change program to the current one"});
-			
-			for (int i = 0; i < gym->getPrograms().size(); i++)
-			{
-				if (newProgramCode == gym->getPrograms().at(i)->getCode()) cout << "hell";
-			}
-			//setProgram(newProgram);
-			//updateNumDaysRemaining(newProgram.getDays());
+
+			//Gets the respective program of the code
+			setProgram(gym->codeToProgram(newProgramCode));
+
+			//Updates days, as there were changes to the program
+			updateNumDaysRemaining();
+
+			cout << "Program sucessfully changed to program number " << enrolledProgram->getCode() << endl << endl;
 			break;
 		case 3:
-			//viewInfo();
+			viewInfo();
 			break;
 		default:
 			cout << "Algum erro";
@@ -301,24 +301,36 @@ void Client::editClient()
 	//setPT(PersonalTrainer *PT);
 }
 
-int Client::editClientMenu() const 
+/**
+Menu for editing client
+
+@param
+@return option The option to edit
+*/
+int Client::editClientMenu() const
 {
 	cout << "Select what you want to edit" << endl;
 
-	vector<string> options = { "1 - Change name", "2 - Set a new program subscription", "3 - Choose another responsible Personal Trainer", "0 - Sair\n" };
+	vector<string> options = { "1 - Change name", "2 - Set a new program subscription", "3 - Show information", "0 - Sair\n" };
 
-	for (int i = 0; i < options.size(); i++)
+	for (unsigned int i = 0; i < options.size(); i++)
 	{
 		cout << options.at(i) << endl;
 	}
 
 
-	int option = filterInput(0, (int)options.size() -1);
+	int option = filterInput(0, options.size() - 1);
 
 	return option;
 }
 
-//Filters an option by giving two limits, makes the user input and integer between them
+/**
+Filters an option by giving two limits, makes the user input and integer between them
+
+@param inf Inferior limit
+@param sup superior limit
+@return option Valid option value
+*/
 int filterInput(int inf, int sup)
 {
 	int option;
@@ -334,7 +346,7 @@ int filterInput(int inf, int sup)
 			cin.ignore(100, '\n');
 			validValue = false;
 		}
-		else if(validValue == false) validValue = true;
+		else if (validValue == false) validValue = true;
 
 	} while (!validValue);
 
@@ -342,3 +354,38 @@ int filterInput(int inf, int sup)
 
 }
 
+//Updates the number of days remaining after setting a new program
+void Client::updateNumDaysRemaining()
+{
+	if (numDaysRemaining > enrolledProgram->getDays()) numDaysRemaining = enrolledProgram->getDays();
+}
+
+
+//std::ostream & operator<<(std::ostream & out, const Client &client)
+//{
+//	out << "Client " << client.getId() << " information\n";
+//	out << "Name: " << client.getName()<< "\n";
+//	out << "Age: " << client.getAge() << "\n";
+//	out << "Location: ";
+//	if (client.getLocation()) out << "inside gym\n";
+//	else out << "outside gym\n";
+//	out << "Payment Status: ";
+//	if (client.getPaymentStatus()) out << "Up-to-date\n";
+//	else out << client.getDaysRemaining() << " late payments\n";
+//	//out << "Responsible professor: " << responsiblePT->getName() << "\n\n";
+//	return out;
+//}
+
+void Client::viewInfo() const 
+{
+	cout << "Client " << id << " information\n";
+	cout << "Name: " << name << "\n";
+	cout << "Age: " << age << "\n";
+	cout << "Location: ";
+	if (insideGym) cout << "inside gym\n";
+	else cout << "outside gym\n";
+	cout << "Payment Status: ";
+	if (paymentsUpToDate) cout << "Up-to-date\n";
+	else cout << numDaysRemaining << " late payments\n";
+	//out << "Responsible professor: " << responsiblePT->getName() << "\n\n";
+}

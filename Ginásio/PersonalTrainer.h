@@ -26,6 +26,7 @@ public:
 	void setSpecializedArea(string area);
 	void editPersonalTrainer();
 	void editAssociatedClients();
+	virtual bool recognizeProf() const;
 private:
 	vector<Client *> clients;
 	string specializedArea;

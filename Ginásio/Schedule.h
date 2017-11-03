@@ -38,7 +38,6 @@ public:
 	void printSchedule(std::ostream &out);
 private:
 	std::set<std::pair<Date,Date>*,APtrComp> schedule;
-
 };
 
 #endif /* SCHEDULE_H_ */

@@ -143,6 +143,8 @@ public:
 	*/
 	void changeLocation();
 
+	void informationClient();
+
 	/** Enters a menu handler to edit client*/
 	void editClient();
 

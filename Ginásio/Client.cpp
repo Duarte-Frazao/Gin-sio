@@ -234,6 +234,14 @@ std::ostream & operator<<(std::ostream & out, const Client &client)
 	return out;
 }
 
+void Client::informationClient()
+{
+	cout << "teste" << endl;
+	//Pode-se adicionar mais opções como mostrar plano de treino
+	cout << *this;
+
+}
+
 //Displays information about Client
 void Client::viewInfo() const 
 {

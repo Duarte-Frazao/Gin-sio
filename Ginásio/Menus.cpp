@@ -107,7 +107,8 @@ void clientMenu(Gym &gym)
 		{
 			cout << sections.at(i) << endl;
 		}
-
+		int optionClient;
+		Client *clientToEdit;
 		int option = filterInput(1, sections.size());
 		switch (option)
 		{
@@ -118,20 +119,23 @@ void clientMenu(Gym &gym)
 			gym.addClient();
 			break;
 		case 2:
-			int optionClient;
-			Client *clientToEdit;
+			cout << "Insira o id do cliente a alterar" << endl;
 			do
 			{
 				cin >> optionClient;
 			} while (!gym.findClient(optionClient, clientToEdit));
-
 			clientToEdit->editClient();
 			break;
 		case 3:
 			gym.removeClient();
 			break;
 		case 4:
-			//clientInformation();
+			cout << "Insira o id do cliente" << endl;
+			do
+			{
+				cin >> optionClient;
+			} while (!gym.findClient(optionClient, clientToEdit));
+			clientToEdit->informationClient();
 			break;
 		default:
 			cout << "Algum erro";

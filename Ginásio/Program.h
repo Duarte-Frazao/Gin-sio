@@ -4,8 +4,14 @@
 
 class Program
 {
+	int code;
+	int days;
+	float cost;
+
+
 public:
 	Program(int code);
+	Program(int code, int days, float cost);
 	~Program();
 
 	/**
@@ -37,9 +43,5 @@ public:
 	*/
 	friend std::ostream & operator<<(std::ostream &out, const Program &program);
 
-private:
-	int code;
-	int days;
-	float cost;
 };
 

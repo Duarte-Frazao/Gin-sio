@@ -8,6 +8,11 @@ PersonalTrainer::PersonalTrainer(int age, int wage, string specializedArea) :
 	Staff(age, wage), specializedArea(specializedArea) {
 }
 
+PersonalTrainer::PersonalTrainer(int id, std::string name, int age, int wage, std::string pwd, std::string specializedArea) :
+	Staff(id, name, age, wage, pwd), specializedArea(specializedArea) {
+
+}
+
 PersonalTrainer::~PersonalTrainer() {
 
 }

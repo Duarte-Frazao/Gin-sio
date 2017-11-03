@@ -20,6 +20,8 @@ Program::Program(int code) : code(code) {
 	}
 }
 
+Program::Program(int code, int days, float cost) : code(code), days(days), cost(cost){}
+
 
 Program::~Program(){}
 

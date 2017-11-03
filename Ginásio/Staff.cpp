@@ -10,6 +10,8 @@ int Staff::staffId = 0;
 // Staff constructor
 Staff::Staff(int age, int wage) : id(++staffId), age(age), wage(wage), insideGym(false) {}
 
+Staff::Staff(int id, std::string name, int age, int wage, std::string pwd): id(id), name(name), age(age), wage(wage), password(pwd), insideGym(false) {}
+
 // Staff destructor
 Staff::~Staff() {
 
@@ -21,7 +23,9 @@ int Staff::getId() const {
 	return id;
 }
 
-
+std::string Staff::getName() const{
+	return name;
+}
 int Staff::getAge() const {
 	return age;
 }

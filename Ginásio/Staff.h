@@ -9,15 +9,18 @@
 
 
 class Staff {
-	int id, age;
+	int id;
+	std::string name;
+	int age;
 	int wage;
 	bool insideGym;
 	Schedule workSchedule;
-	static int staffId;
 	std::string password;
+ 	static int staffId;
 
 public:
 	Staff(int age, int wage);
+	Staff(int id, std::string name, int age, int wage, std::string pwd); //For file initialization
 	virtual ~Staff();
 
 	/**
@@ -26,6 +29,13 @@ public:
 		@return Returns staff's id
 	*/
 	virtual int getId() const;
+
+	/**
+		Returns staff's name
+
+		@return Returns staff's name
+	*/
+	virtual std::string getName() const;
 
 	/**
 		Returns staff's age

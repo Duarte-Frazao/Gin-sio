@@ -23,6 +23,7 @@ Client::Client(string clientName, Program *program, int clientAge,PersonalTraine
 	numDaysRemaining = program->getDays();
 }
 
+
 //Client destructor
 Client::~Client() {
 
@@ -236,7 +237,7 @@ std::ostream & operator<<(std::ostream & out, const Client &client)
 
 void Client::informationClient()
 {
-	//Pode-se adicionar mais opções como mostrar plano de treino
+	//Pode-se adicionar mais opï¿½ï¿½es como mostrar plano de treino
 	cout << *this;
 
 }

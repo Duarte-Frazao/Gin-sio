@@ -82,6 +82,13 @@ public:
 	*/
 	std::vector<Staff *> getStaff() const;
 
+	/**
+	Returns the vector of Personal Trainers pointers of the gym
+
+	@return Returns vector of pointers to personal trainers of the gym
+	*/
+	std::vector<PersonalTrainer *> getPT() const;
+
 	std::vector<Program *> getPrograms() const;
 
 	/**

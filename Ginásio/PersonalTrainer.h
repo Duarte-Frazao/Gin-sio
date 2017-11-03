@@ -13,10 +13,10 @@ class Gym;
 class PersonalTrainer : public Staff {
 	std::vector<Client *> clients;
 	std::string specializedArea;
-	Gym *gym;
 
 public:
 	PersonalTrainer(int age, int wage, std::string specializedArea);
+	PersonalTrainer(int id, std::string name, int age, int wage, std::string pwd, std::string specializedArea); //For file initialization
 
 	virtual ~PersonalTrainer();
 

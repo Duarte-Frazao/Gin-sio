@@ -2,15 +2,21 @@
 #include <iostream>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
-#include <conio.h>
 #include "Gym.h"
 #include "Client.h"
 
+#ifdef WIN32
+#include <conio.h>
+#else
+int _getch(void);
+#endif
 
 using namespace std;
 
 void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
 void inputClientId(int &optionClient, Gym &gym);
+
+
 
 // Gym Constructor
 Gym::Gym(string name, vector<Program *> &programs, vector<Client *> &clients,
@@ -51,6 +57,9 @@ int Gym::getNumberPrograms() const{return programs.size();}
 
 //Returns the vector of pointers to staff of the gym
 vector<Staff *> Gym::getStaff() const {return staff;}
+
+//Returns the vector of pointers to Personal Trainer of the gym
+vector<PersonalTrainer *> Gym::getPT() const {return profs;}
 
 //Returns the gym schedule
 Schedule Gym::getGymSchedule() const {return gymSchedule;}

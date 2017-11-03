@@ -13,11 +13,12 @@ void mainMenu(Gym &gym);
 void gymMenu(Gym &gym);
 void clientMenu(Gym &gym);
 void staffMenu(Gym &gym);
-
+Gym * readInformationFile(std::string fileName);
+void writeInformationFile(std::string fileName, Gym & gym);
 
 int main()
 {
-
+/*
 
 	vector <Program *> programs
 	{
@@ -55,9 +56,14 @@ int main()
 	GoGym.setClients(clients);
 	GoGym.setStaff(staff);
 	staff.at(0)->setPassword("123");
-
+	*/
 	//GoGym.login();
-	mainMenu(GoGym);
+
+
+
+	Gym * FitnessMx= readInformationFile("File");
+	mainMenu(*FitnessMx);
+	writeInformationFile("outFile", *FitnessMx);
     return 0;
 }
 

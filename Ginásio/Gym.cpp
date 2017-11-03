@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <conio.h>
 #include "Gym.h"
 #include "Client.h"
 
@@ -126,7 +127,7 @@ void Gym::addProgram(Program* program) {programs.push_back(program);}
 #pragma region Login authentication
 
 //Performs the login process for a certain staff's id
-void Gym::login(int staffId) {
+void Gym::login() {
 	cout << "    Welcome to Go Gym!      \n"
 		<< "--- AUTHENTICATION PORTAL ---\n";
 
@@ -134,19 +135,21 @@ void Gym::login(int staffId) {
 	bool staffFound = 0;
 	do
 	{
-		string staffName;
-		cout << "Login: ";
-		getline(cin, staffName);
+		int staffId;
+		cout << "Login ID: ";
+		cin >> staffId;
+		cin.ignore();
 
-		if (findStaff(staffId, staff_found))
+		if (findStaff(staffId, &staff_found))
 		{
 			staffFound = 1;
 			bool access = 0;
+			char ch;
 			do
 			{
 				string pass;
 				cout << "Password: ";
-				char ch = getchar(); //Now compatible with other compilers
+				ch = _getch();
 				while (ch != 13)
 				{
 					if (ch == 8)
@@ -162,7 +165,7 @@ void Gym::login(int staffId) {
 						pass.push_back(ch);
 						cout << "*";
 					}
-					ch = getchar();
+					ch = _getch();
 				}
 
 				if (staff_found->auth(pass))
@@ -200,22 +203,21 @@ void Gym::login(int staffId) {
 		}
 
 	} while (!staffFound);
+
+	delete staff_found;
 }
 
 #pragma endregion
 
 #pragma region Search algorithms
 
-
-
-
 //Finds gym's staff with a certain Id
-bool Gym::findStaff(int staffId, Staff* staff_found) {
-	for (auto staff_pointer : staff)
+bool Gym::findStaff(int staffId, Staff** staff_found) {
+	for (const auto staff_pointer : staff)
 	{
 		if (staff_pointer->getId() == staffId)
 		{
-			staff_found = staff_pointer;
+			*staff_found = staff_pointer;
 			return true;
 		}
 	}
@@ -225,12 +227,12 @@ bool Gym::findStaff(int staffId, Staff* staff_found) {
 }
 
 //Finds gym's client with a certain Id
-bool Gym::findClient(int clientId, Client* client_found) {
-	for (auto client_pointer : clients)
+bool Gym::findClient(int clientId, Client** client_found) {
+	for (const auto client_pointer : clients)
 	{
 		if (client_pointer->getId() == clientId)
 		{
-			client_found = client_pointer;
+			*client_found = client_pointer;
 			return true;
 		}
 	}
@@ -239,9 +241,6 @@ bool Gym::findClient(int clientId, Client* client_found) {
 	return false;
 }
 #pragma endregion
-
-
-
 
 
 # pragma region staffMenu

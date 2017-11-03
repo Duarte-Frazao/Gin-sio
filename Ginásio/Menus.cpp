@@ -123,9 +123,11 @@ void clientMenu(Gym &gym)
 			do
 			{
 				cin >> optionClient;
-			} while (!gym.findClient(optionClient, clientToEdit));
+			} while (!gym.findClient(optionClient, &clientToEdit));
+
 			clientToEdit->editClient();
 			break;
+		}
 		case 3:
 			gym.removeClient();
 			break;

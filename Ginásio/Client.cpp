@@ -137,7 +137,7 @@ void Client::problems(vector<string> &problems) const
 }
 
 //Edits a Client
-void Client::editClient()
+void Client::editClient(Gym &gym)
 {
 	bool continueInMenu = true;
 	string newName;
@@ -145,7 +145,6 @@ void Client::editClient()
 	int newProgramCode;
 	do
 	{
-		int numProg;
 		int option = editClientMenu();
 		switch (option)
 		{
@@ -155,33 +154,33 @@ void Client::editClient()
 		case 1:
 			cout << "What's the new Client's name? " << endl;
 			cout << "Previously: " << name << endl;
+			cout << "->";
 			cin >> newName;
 			setName(newName);
 			break;
 		case 2:
-			/*
 			//Error checking
 			problems(clientProblems);
 			if (clientProblems.size() != 0) throw EditingError(clientProblems);
+
 			cout << "What's the subscription you want to enrol?\n" << endl;
+			gym.displayProgramOptions();
 
 			//Selection of the new program
-			numProg = gym->getNumberPrograms();
-
-			newProgramCode = filterInput(1,(gym->getNumberPrograms()));
+			newProgramCode = filterInput(1,(gym.getNumberPrograms()));
 
 			//Checks if the program is the current one
 			if (newProgramCode == enrolledProgram->getCode())  throw EditingError(vector<string>{"Trying to change program to the current one"});
 
 			//Gets the respective program of the code
-			setProgram(gym->codeToProgram(newProgramCode));
+			setProgram(gym.codeToProgram(newProgramCode));
 
 			//Updates days, as there were changes to the program
 			updateNumDaysRemaining();
 
 			cout << "Program sucessfully changed to program number " << enrolledProgram->getCode() << endl << endl;
 			break;
-			*/
+			
 		case 3:
 			viewInfo();
 			break;
@@ -197,7 +196,7 @@ void Client::editClient()
 //Menu for editing client
 int Client::editClientMenu() const
 {
-	cout << "Select what you want to edit" << endl;
+	cout << "\nSelect what you want to edit" << endl<< endl;
 
 	vector<string> options = { "1 - Change name", "2 - Set a new program subscription", "3 - Show information", "0 - Sair\n" };
 
@@ -221,22 +220,22 @@ void Client::updateNumDaysRemaining()
 
 std::ostream & operator<<(std::ostream & out, const Client &client)
 {
-	out << "Client " << client.getId() << " information\n";
-	out << "Name: " << client.getName()<< "\n";
-	out << "Age: " << client.getAge() << "\n";
+	out << "\n---------- Client Information ----------" << endl << endl;
+	out << "Client " << client.id << " information\n";
+	out << "Name: " << client.name<< "\n";
+	out << "Age: " << client.age << "\n";
 	out << "Location: ";
-	if (client.getLocation()) out << "inside gym\n";
+	if (client.insideGym) out << "inside gym\n";
 	else out << "outside gym\n";
 	out << "Payment Status: ";
-	if (client.getPaymentStatus()) out << "Up-to-date\n";
-	else out << client.getDaysRemaining() << " late payments\n";
-	//out << "Responsible professor: " << responsiblePT->getName() << "\n\n";
+	if (client.paymentsUpToDate) out << "Up-to-date\n";
+	else out << client.numDaysRemaining << " late payments\n";
+	out << "Responsible professor: " << client.responsiblePT->getId() << endl << endl;
 	return out;
 }
 
 void Client::informationClient()
 {
-	cout << "teste" << endl;
 	//Pode-se adicionar mais opções como mostrar plano de treino
 	cout << *this;
 

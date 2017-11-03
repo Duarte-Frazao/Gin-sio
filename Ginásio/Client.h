@@ -146,7 +146,7 @@ public:
 	void informationClient();
 
 	/** Enters a menu handler to edit client*/
-	void editClient();
+	void editClient(Gym &gym);
 
 	/**
 	Displays and selects the option for the edit Client menu

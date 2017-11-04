@@ -1,0 +1,25 @@
+Gym
+[ FitnessMx 1000 50 ]
+
+Programs
+[ 1 31 20 ]
+[ 2 62 35 ]
+[ 3 365 150 ]
+;
+
+Staff
+[ 1 Maria 40 1500 password1 ]
+[ 2 Paulo 42 1500 password2 ]
+;
+
+PersonalTrainer
+[ 3 Carlos 25 1000 password3 bodybuilding ]
+[ 4 Mariana 27 1000 password4 crossfit ]
+;
+
+Clients
+[ Ana 1 18 1 ]
+[ Joaquim 1 20 1 ]
+;
+
+end

@@ -61,7 +61,7 @@ int main()
 
 
 
-	Gym * FitnessMx= readInformationFile("File");
+	Gym * FitnessMx= readInformationFile("File.txt");
 	mainMenu(*FitnessMx);
 	writeInformationFile("outFile", *FitnessMx);
     return 0;

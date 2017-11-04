@@ -125,7 +125,7 @@ Gym * readInformationFile(std::string fileName){
 				>> client_age >> client_responsiblePT_id >> brackets;
 
 		Program *enrolledProgram;
-		PersonalTrainer *responsiblePT;
+		PersonalTrainer *responsiblePT = NULL;
 
 		for(auto pProgram : programs){
 			if(pProgram->getCode() == client_enrolledProgram_code)

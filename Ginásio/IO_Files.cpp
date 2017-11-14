@@ -4,7 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <algorithm>
-
+#include <iomanip>
 
 #include "Gym.h"
 #include "Program.h"
@@ -38,6 +38,33 @@ Gym * readInformationFile(std::string fileName){
 	inFile >> brackets >> gym_name >> gym_maxNumClients >> gym_maxCapacity >> brackets;
 	//---------------------
 
+
+
+	//Schedule
+	//---------------------
+	int schedule_day;
+	int schedule_hour;
+	int schedule_min;
+
+	inFile >> controlWord;
+	if(controlWord != "Schedule"); //throw error
+
+	Schedule * schedule = new Schedule;
+
+	while(inFile.peek() != ';' ){
+		inFile >> brackets >> schedule_day >> schedule_hour >> brackets >> schedule_min;
+		Date date1(schedule_hour,schedule_min,schedule_day);
+
+		inFile >> schedule_hour >> brackets >> schedule_min  >> brackets;
+		Date date2(schedule_hour,schedule_min,schedule_day);
+
+		schedule->addDate(date1,date2);
+
+		inFile.get();
+	}
+	inFile.get();
+
+	//---------------------
 
 	//Programs
 	//----------------------------
@@ -148,7 +175,6 @@ Gym * readInformationFile(std::string fileName){
 	inFile >> controlWord;
 	if (controlWord != "end"); //throw error
 
-	Schedule *schedule = new Schedule();
 	Finance *finance = new Finance();
 
 
@@ -170,6 +196,22 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	outFile << "Gym" << std::endl;
 	outFile << "[ " << gym.getName() << " " << gym.getMaxNumClients() << " " << gym.getMaxCapacity() << " ]\n\n";
 	//---------------------
+
+
+	//Schedule
+	//----------------------------
+	outFile << "Schedule" << std::endl;
+
+	for(auto pPar : gym.getGymSchedule().getScheduleSet()){
+		outFile << "[ " << pPar->first.weekDay << " ";
+		outFile << std::setfill('0') << std::setw(2) << pPar->first.hour << ":" << std::setw(2)<<pPar->first.min;
+		outFile << " ";
+		outFile << std::setfill('0') << std::setw(2) << pPar->second.hour << ":" << std::setw(2)<<pPar->second.min;
+		outFile << " ]\n";
+	}
+
+	outFile << ";\n\n";
+	//----------------------------
 
 
 	//Programs

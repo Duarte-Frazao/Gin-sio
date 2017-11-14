@@ -1,6 +1,16 @@
 Gym
 [ FitnessMx 1000 50 ]
 
+Schedule
+[ 1 09:00 22:00 ]
+[ 2 09:00 22:00 ]
+[ 3 09:00 22:00 ]
+[ 4 09:00 22:00 ]
+[ 5 09:00 22:00 ]
+[ 6 08:00 20:00 ]
+[ 7 09:00 12:00 ]
+;
+
 Programs
 [ 1 31 20 ]
 [ 2 62 35 ]
@@ -15,11 +25,30 @@ Staff
 PersonalTrainer
 [ 3 Carlos 25 1000 password3 bodybuilding ]
 [ 4 Mariana 27 1000 password4 crossfit ]
+[ 5 Joao 25 1000 password5 crossfit ]
+[ 6 Ana 27 1000 password6 bodybuilding ]
 ;
 
 Clients
-[ Ana 1 18 1 ]
-[ Joaquim 1 20 1 ]
+[ Ana 1 18 4 ]
+[ Joaquim 1 20 3 ]
+[ Maria 1 31 6 ]
+[ Joao 1 40 5 ]
+[ Leonor 1 35 3 ]
+[ Martim 1 29 4 ]
+[ Matilde 1 25 6 ]
+[ Rodrigo 1 19 3 ]
+[ Beatriz 1 18 5 ]
+[ Francisco 1 20 3 ]
+[ Maria 1 50 4 ]
+[ Afonso 1 44 4 ]
+[ Ana 1 30 5 ]
+[ Tiago 1 31 6 ]
+[ Ana 1 29 3 ]
+[ Diogo 1 24 6 ]
+[ Ana 1 23 4 ]
+[ Martim 1 26 5 ]
+[ Maria 1 18 3 ]
 ;
 
 end

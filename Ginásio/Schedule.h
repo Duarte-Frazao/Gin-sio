@@ -18,6 +18,7 @@ struct APtrComp
 };
 
 class Schedule {
+
 public:
 	Schedule();
 	virtual ~Schedule();
@@ -34,8 +35,12 @@ public:
 	/**
 	 * @brief Prints in a user-friendly way the schedule
 	 * @param out Output stream
+	 * @param schedule Schedule object
 	 */
-	void printSchedule(std::ostream &out);
+	friend std::ostream & operator<<(std::ostream &out , const Schedule &schedule);
+
+	std::set<std::pair<Date,Date>*,APtrComp> getScheduleSet();
+
 private:
 	std::set<std::pair<Date,Date>*,APtrComp> schedule;
 };

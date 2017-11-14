@@ -6,7 +6,7 @@
 #include "ErrorClasses.h"
 
 //Functions
-int filterInput(int inf, int sup);
+int filterInput(int inf, int sup,std::string msg = "Selection: ");
 
 using namespace std;
 
@@ -164,11 +164,11 @@ void Client::editClient(Gym &gym)
 			problems(clientProblems);
 			if (clientProblems.size() != 0) throw EditingError(clientProblems);
 
-			cout << "What's the subscription you want to enrol?\n" << endl;
+			cout << "What's the subscription you want to enroll?\n" << endl;
 			gym.displayProgramOptions();
 
 			//Selection of the new program
-			newProgramCode = filterInput(1,(gym.getNumberPrograms()));
+			newProgramCode = filterInput(1,gym.getNumberPrograms(),"Select a new program: ");
 
 			//Checks if the program is the current one
 			if (newProgramCode == enrolledProgram->getCode())  throw EditingError(vector<string>{"Trying to change program to the current one"});
@@ -179,11 +179,11 @@ void Client::editClient(Gym &gym)
 			//Updates days, as there were changes to the program
 			updateNumDaysRemaining();
 
-			cout << "Program sucessfully changed to program number " << enrolledProgram->getCode() << endl << endl;
+			cout << "Program successfully changed to program number " << enrolledProgram->getCode() << endl << endl;
 			break;
 			
 		case 3:
-			viewInfo();
+			cout << *this;
 			break;
 		default:
 			cout << "Algum erro";
@@ -194,8 +194,6 @@ void Client::editClient(Gym &gym)
 	//setPT(PersonalTrainer *PT);
 }
 
-
-
 //Menu for editing client
 int Client::editClientMenu() const
 {
@@ -204,10 +202,7 @@ int Client::editClientMenu() const
 	vector<string> options = { "1 - Change name", "2 - Set a new program subscription", "3 - Show information", "0 - Sair\n" };
 
 	for (unsigned int i = 0; i < options.size(); i++)
-	{
 		cout << options.at(i) << endl;
-	}
-
 
 	int option = filterInput(0, options.size() - 1);
 
@@ -234,6 +229,7 @@ std::ostream & operator<<(std::ostream & out, const Client &client)
 	if (client.paymentsUpToDate) out << "Up-to-date\n";
 	else out << client.numDaysRemaining << " late payments\n";
 	out << "Responsible professor: " << client.responsiblePT->getId() << endl << endl;
+	out << *(client.getProgram())<<endl;
 	return out;
 }
 
@@ -241,20 +237,8 @@ void Client::informationClient()
 {
 	//Pode-se adicionar mais op��es como mostrar plano de treino
 	cout << *this;
-
 }
 
-//Displays information about Client
-void Client::viewInfo() const 
-{
-	cout << "Client " << id << " information\n";
-	cout << "Name: " << name << "\n";
-	cout << "Age: " << age << "\n";
-	cout << "Location: ";
-	if (insideGym) cout << "inside gym\n";
-	else cout << "outside gym\n";
-	cout << "Payment Status: ";
-	if (paymentsUpToDate) cout << "Up-to-date\n";
-	else cout << numDaysRemaining << " late payments\n";
-	//out << "Responsible professor: " << responsiblePT->getName() << "\n\n";
-}
+
+
+

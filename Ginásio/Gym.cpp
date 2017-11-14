@@ -4,6 +4,7 @@
 #include <time.h>       /* time */
 #include "Gym.h"
 #include "Client.h"
+#include <iomanip>
 
 #ifdef WIN32
 #include <conio.h>
@@ -16,7 +17,8 @@ using namespace std;
 void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
 void inputClientId(int &optionClient, Gym &gym);
 
-
+//Functions
+int filterInput(int inf, int sup,std::string msg = "Selection: ");
 
 // Gym Constructor
 Gym::Gym(string name, vector<Program *> &programs, vector<Client *> &clients,
@@ -139,9 +141,129 @@ void Gym::addProgram(Program* program) {programs.push_back(program);}
 #pragma region Login authentication
 
 //Performs the login process for a certain staff's id
+int Gym::login() {
+	cout << "    Welcome to " << name << " !      \n"
+		<< "--- AUTHENTICATION PORTAL ---\n\n";
+
+	cout << "1 - Client"  << endl;
+	cout << "2 - Staff"   << endl;
+	cout << "3 - Personal Trainer" << endl;
+	cout << "4 - Manager" << endl<<endl;
+
+	int option = filterInput(1,4,"Select an option: ");
+
+	Staff* staff_found = NULL;
+	Client* client_found = NULL;
+	bool personFound = false;
+
+	do
+	{
+		int id;
+		cout << "Login ID: ";
+		cin >> id;
+		cin.ignore();
+
+		switch(option){
+			case 1:
+				personFound = findClient(id, &client_found);
+				break;
+
+			case 2:
+				personFound = findStaff(id, &staff_found);
+				break;
+
+			case 3:
+				break;
+
+			case 4:
+				break;
+
+			default:
+				break;
+			}
+
+		if (personFound)
+		{
+			personFound = true;
+			bool access = false;
+
+			char ch;
+			do
+			{
+				string pass;
+				cout << "Password: ";
+				ch = _getch();
+				while (ch != '\n')
+				{
+					if (ch == 8)
+					{
+						if (pass.size() != 0)
+						{
+							pass.pop_back();
+							cout << "\b \b";
+						}
+					}
+					else
+					{
+						pass.push_back(ch);
+						cout << "*";
+					}
+					ch = _getch();
+				}
+
+
+				if (staff_found != NULL && staff_found->auth(pass))
+				{
+					cout << "\n\nACCESS GRANTED!\n" << "WELCOME STAFF NUMBER " << staff_found->getId() << "!\n\n";
+					access = 1;
+				}
+				else if (client_found != NULL /*&& client_found->auth(pass)*/)
+				{
+					cout << "\n\nACCESS GRANTED!\n" << "WELCOME " << client_found->getName() << "!\n\n";
+					access = 1;
+				}
+				else {
+					cout << "\n\nACESS DENIED!\n";
+					cout << "Try again: press 0 or Exit: press 1\n" << "--> ";
+					int incorrect_option;
+					cin >> incorrect_option;
+					while (incorrect_option != 0 && incorrect_option != 1) {
+						cout << "Enter a correct command ...\n";
+						cin >> incorrect_option;
+					}
+					if (incorrect_option) exit(0);
+					cin.ignore();
+				}
+
+			} while (!access);
+		}
+		else
+		{
+			cout << endl << "ID NOT FOUND!" << endl;
+			cout << "Try again: press 0 or Exit: press 1\n" << "--> ";
+			int incorrect_option2;
+			cin >> incorrect_option2;
+			while (incorrect_option2 != 0 && incorrect_option2 != 1) {
+				cout << "Enter a correct command ...\n";
+				cin >> incorrect_option2;
+			}
+			if (incorrect_option2) exit(0);
+			cin.ignore();
+		}
+
+	} while (!personFound);
+
+	return option;
+}
+
+
+
+//Performs the login process for a certain staff's id
+/*
 void Gym::login() {
-	cout << "    Welcome to Go Gym!      \n"
+	cout << "    Welcome to " << name << " !      \n"
 		<< "--- AUTHENTICATION PORTAL ---\n";
+
 
 	Staff* staff_found = NULL;
 	bool staffFound = 0;
@@ -162,7 +284,7 @@ void Gym::login() {
 				string pass;
 				cout << "Password: ";
 				ch = _getch();
-				while (ch != 13)
+				while (ch != '\n')
 				{
 					if (ch == 8)
 					{
@@ -215,16 +337,14 @@ void Gym::login() {
 		}
 
 	} while (!staffFound);
-
-	delete staff_found;
 }
 
+*/
 #pragma endregion
 
 #pragma region Search algorithms
+bool Gym::findStaff(int staffId, Staff **staff_found) {
 
-//Finds gym's staff with a certain Id
-bool Gym::findStaff(int staffId, Staff** staff_found) {
 	for (const auto staff_pointer : staff)
 	{
 		if (staff_pointer->getId() == staffId)
@@ -237,6 +357,7 @@ bool Gym::findStaff(int staffId, Staff** staff_found) {
 	staff_found = NULL;
 	return false;
 }
+
 
 //Finds gym's professor with a certain Id
 bool Gym::findProf(int profId, Staff** prof_found) {
@@ -252,6 +373,7 @@ bool Gym::findProf(int profId, Staff** prof_found) {
 	prof_found = NULL;
 	return false;
 }
+
 
 //Finds gym's client with a certain Id
 bool Gym::findClient(int clientId, Client** client_found) {
@@ -325,7 +447,7 @@ void Gym::menuStaff() {
 			} while (wage < 0);
 
 			staff.push_back(new Staff(age, wage));
-			cout << "Staff added sucessfully!\n";
+			cout << "Staff added successfully!\n";
 		}
 		break;
 		case 2:
@@ -358,12 +480,13 @@ void Gym::menuStaff() {
 //Prints the programs the gym has to offer, as well as the conditions
 void Gym::displayPrograms() const
 {
-	cout << name << " has the following programs to offer\n\n\n";
+	cout << name << " has the following programs to offer:\n\n";
 	for (unsigned int i = 0; i < programs.size(); i++)
 	{
-		cout << programs.at(i);
+		cout << *programs.at(i);
 	}
 }
+
 
 //Prints the staff the gym has contracted
 void Gym::displayStaffIds() const
@@ -398,11 +521,9 @@ Program* Gym::codeToProgram(int code)
 //Prints the programs the gym has to offer, as well as the conditions
 void Gym::displayProgramOptions()
 {
-	cout << "---Available program subscriptions---" << endl;
+	cout << "---Available program subscriptions---" << endl<<endl;
 	for (unsigned int i = 0; i < programs.size(); i++)
-	{
 		cout << *(this->getPrograms().at(i));
-	}
 }
 
 //Adds a client to the gym
@@ -429,12 +550,12 @@ void Gym::addClient()
 	//To-do arranjar maneira de em vez de usar staff ser um professor, porque pode dar errado
 	PersonalTrainer *professor = profs.at(rand() % profs.size());
 
-	Client novoCliente(name, codeToProgram(program), age, professor);
+	Client * newClient = new Client (name, codeToProgram(program), age, professor);
 
-	clients.push_back(&novoCliente);
+	clients.push_back(newClient);
 	cout << "Cliente adicionado com sucesso" << endl;
 	cout << "Informacao do novo cliente:" << endl;
-	cout << novoCliente;
+	cout << *newClient;
 }
 
 //Shows the menu of options for adding or removing clients
@@ -458,15 +579,19 @@ void Gym::displayClientsIds()
 {
 	for (size_t i = 0; i < clients.size(); i++)
 	{
-		cout << clients.at(i)->getName() << " ID: " << clients.at(i)->getId() << endl;
+		cout << std::setw(10) << std::left << clients.at(i)->getName() << " ID: " << clients.at(i)->getId() << endl;
 	}
 }
+
+
+
 
 /**
 Removes a client
 */
 void Gym::removeClient(Gym &gym)
 {
+
 	int optionClient;
 	Client *clientToEdit;
 	inputClientIdObj(optionClient, gym, &clientToEdit);
@@ -477,7 +602,7 @@ void Gym::removeClient(Gym &gym)
 	for (it_client = clients.begin(); it_client != clients.end(); it_client++) {
 		if ((*it_client)->getId() == optionClient) {
 			clients.erase(it_client);
-			cout << "Client with id " << optionClient << " erased sucessfully!\n";
+			cout << "Client with id " << optionClient << " erased successfully!\n";
 			return;
 		}
 	}
@@ -485,14 +610,15 @@ void Gym::removeClient(Gym &gym)
 
 //To-do falta dar overload de operator << no schedule para substituir printSchedule
 std::ostream &operator<<(ostream &out, const Gym &gym)
-{
-	out << "\t" <<gym.name << endl;
+{	out << string(gym.name.length()+2,'-')<<endl;
+	out << "|" <<gym.name << "|" << endl;
+	out << string(gym.name.length()+2,'-')<<endl<<endl;
 	gym.displayPrograms();
-	out <<gym.clients.size() << " Clients" << endl;
-	out << gym.staff.size() << " Staff Members" << endl;
-	out << gym.profs.size() << " Professors" << endl;
-	//out << gym.gymSchedule << endl;
-	out << "Maximun number of clients: " << gym.maxNumClients << endl;
-	out << "Maximum gym capacity: " << gym.maxCapacity << endl;
+	out << gym.clients.size() << " Clients" << endl<< endl;
+	out << gym.staff.size() << " Staff Members" << endl<< endl;
+	out << gym.profs.size() << " Professors" << endl<< endl;
+	out << gym.gymSchedule << endl<<endl;
+	out << "Maximum number of clients: " << gym.maxNumClients << endl<< endl;
+	out << "Maximum gym capacity: " << gym.maxCapacity << endl<< endl<< endl;
 	return out;
 }

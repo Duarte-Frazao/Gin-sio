@@ -1,15 +1,25 @@
 #include "stdafx.h"
 #include "Schedule.h"
+#include <iomanip>
+#include "Schedule.h"
+
+std::string weekDay_to_string(int weekDay);
 
 Schedule::Schedule() {}
 
-Schedule::~Schedule() {
-	//Delete all set's dynamic allocated variables
-	for(auto f : schedule){
-		delete f;
-	}
+/*
+Schedule::Schedule(const Schedule &source){
+	std::cout << "COpy constructor"<< std::endl;
+	for(auto pPar : source.schedule)
+		schedule.insert(new std::pair<Date, Date>(*pPar));
 }
 
+Schedule::~Schedule() {
+	std::cout << "Destruction"<<std::endl;
+	for(auto pPar : schedule)
+		delete pPar;
+}*/
+Schedule::~Schedule() {}
 
 bool Schedule::addDate(const Date &dateStart, const Date &dateFinish){
 
@@ -30,41 +40,35 @@ bool Schedule::addDate(const Date &dateStart, const Date &dateFinish){
 	//auto rVal = schedule.insert(pairDate); //Also valid
 	std::pair<std::set<std::pair<Date,Date>*>::iterator, bool> rVal = schedule.insert(pairDate);
 
+
 	return rVal.second;
 }
 
-
-
-
-std::string weekDay_to_string(int weekDay){
-	switch (weekDay){
-	case 1: return "Monday";
-	case 2: return "Tuesday";
-	case 3: return "Wednesday";
-	case 4: return "Thursday";
-	case 5: return "Friday";
-	case 6: return "Saturday";
-	case 7: return "Sunday";
-	default: return "";
-	}
+std::set<std::pair<Date,Date>*,APtrComp> Schedule::getScheduleSet(){
+	return schedule;
 }
+
 
 
 //PRINT : In development
-
-void Schedule::printSchedule(std::ostream &out){
+std::ostream & operator<<(std::ostream &out, const Schedule &schedule){
 
 	std::set<std::pair<Date,Date>*>::iterator it;
+	out << "Week schedule: " <<std::endl;
 
-	for(it = schedule.begin(); it != schedule.end(); ++it){
-		out << weekDay_to_string((*it)->first.weekDay) << "\t" << (*it)->first.hour << ":" << (*it)->first.min << std::endl;
-		out << weekDay_to_string((*it)->second.weekDay) << "\t" << (*it)->second.hour << ":" << (*it)->second.min << std::endl;
+
+	for(it = schedule.schedule.begin(); it != schedule.schedule.end(); ++it){
+		out << std::setfill(' ');
+		out << std::setw(10)<< std::left <<weekDay_to_string((*it)->first.weekDay) << ": " << std::right;
+		out << std::setfill('0') << std::setw(2) << (*it)->first.hour << ":" << std::setw(2)<<(*it)->first.min << " To ";
+		out << std::setfill('0') << std::setw(2) << (*it)->second.hour << ":" << std::setw(2) << (*it)->second.min;
 		out << std::endl;
 	}
 
-
-
+	return out;
 }
 
 //End print functions
+
+
 

@@ -219,7 +219,7 @@ public:
 	- staff_found is a pointer to the found staff
 	@return Returns true if staff was found, false otherwise
 	*/
-	bool findStaff(int staffId, Staff** staff_found);
+	bool findStaff(int staffId, Staff **staff_found);
 
 	/**
 	Finds gym's client with a certain Id
@@ -233,7 +233,7 @@ public:
 	/**
 	Performs the login process for a certain staff
 	*/
-	void login();
+	int login();
 
 
 	/**
@@ -263,6 +263,7 @@ public:
 	@return
 	*/
 	void displayClientsIds();
+
 
 	void displayStaffIds() const;
 

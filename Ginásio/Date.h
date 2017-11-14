@@ -4,16 +4,17 @@
 #include <string>
 #include "ErrorClasses.h"
 
-
 class Date {
 friend class Schedule;
+friend std::ostream & operator<<(std::ostream &out , const Date &date);
 public:
 	Date(int hour, int min, int weekDay);
 	friend bool operator<(const Date & date1, const Date & date2);
 	friend bool operator==(const Date & date1, const Date & date2);
+	int hour, min,weekDay;
 
 private:
-	int weekDay, hour, min;
+
 };
 
 

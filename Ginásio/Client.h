@@ -7,7 +7,6 @@
 #include "Program.h"
 #include "ErrorClasses.h"
 
-int filterInput(int inf, int sup);
 
 class PersonalTrainer;
 class Gym;
@@ -179,7 +178,6 @@ public:
 	*/
 	friend std::ostream & operator<<(std::ostream & out, const Client &client);
 	
-
 	/**
 	Displays information about Client
 	@param
@@ -187,10 +185,21 @@ public:
 	*/
 	void viewInfo() const;
 
+
+	/**
+	Login to a client account
+	@param
+	@return
+	*/
+	void login();
+
 	//void updatePayments() const;
 	//void changeProgram() const;
 	//void changePT() const;
 	//void editBasicSettings() const; client, name age
+
+
+
 };
 
 #endif /* CLIENT_H_ */

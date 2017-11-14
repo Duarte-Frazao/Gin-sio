@@ -26,3 +26,22 @@ bool operator==(const Date & date1, const Date & date2){
 
 	else return false;
 }
+
+std::string weekDay_to_string(int weekDay){
+	switch (weekDay){
+	case 1: return "Monday";
+	case 2: return "Tuesday";
+	case 3: return "Wednesday";
+	case 4: return "Thursday";
+	case 5: return "Friday";
+	case 6: return "Saturday";
+	case 7: return "Sunday";
+	default: return "";
+	}
+}
+
+std::ostream & operator<<(std::ostream &out , const Date &date){
+
+		out << weekDay_to_string(date.weekDay) << "\t" << date.hour << ":" << date.min;
+		return out;
+}

@@ -19,7 +19,7 @@ class Gym {
 	std::string name;
 	std::vector<Program*> programs;
 	std::vector<Client *> clients;
-	std::	vector<Staff *> staff;
+	std::vector<Staff *> staff;
 	std::vector<PersonalTrainer *> profs;
 	Schedule gymSchedule;
 	int maxNumClients;
@@ -263,6 +263,16 @@ public:
 	@return
 	*/
 	void displayClientsIds();
+
+	void displayStaffIds() const;
+
+	void displayProfsIds() const;
+
+	friend std::ostream & operator<<(std::ostream & out, const Gym &gym);
+
+	bool findProgram(int programId, Program** program_found);
+
+	bool findProf(int profId, Staff** prof_found);
 };
 
 #endif /* GYM_H_ */

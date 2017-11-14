@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 Program::Program(int code) : code(code) {
 	switch(code){
 	case 1:
@@ -39,4 +40,9 @@ ostream & operator<<(ostream &out, const Program &program)
 	cout << "Number of times allowed to enter the gym: " << program.days << "\n\n\n";
 
 	return out;
+}
+
+void Program::editProgram(Gym &gym)
+{
+
 }

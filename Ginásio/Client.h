@@ -179,6 +179,7 @@ public:
 	*/
 	friend std::ostream & operator<<(std::ostream & out, const Client &client);
 	
+
 	/**
 	Displays information about Client
 	@param

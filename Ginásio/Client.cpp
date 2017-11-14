@@ -194,6 +194,8 @@ void Client::editClient(Gym &gym)
 	//setPT(PersonalTrainer *PT);
 }
 
+
+
 //Menu for editing client
 int Client::editClientMenu() const
 {

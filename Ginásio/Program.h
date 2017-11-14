@@ -2,6 +2,9 @@
 #include <iostream>
 #include <utility>
 
+
+class Gym;
+
 class Program
 {
 	int code;
@@ -43,5 +46,6 @@ public:
 	*/
 	friend std::ostream & operator<<(std::ostream &out, const Program &program);
 
+	void editProgram(Gym &gym);
 };
 

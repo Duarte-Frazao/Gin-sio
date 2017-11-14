@@ -238,6 +238,21 @@ bool Gym::findStaff(int staffId, Staff** staff_found) {
 	return false;
 }
 
+//Finds gym's professor with a certain Id
+bool Gym::findProf(int profId, Staff** prof_found) {
+	for (const auto prof_pointer : profs)
+	{
+		if (prof_pointer->getId() == profId)
+		{
+			*prof_found = prof_pointer;
+			return true;
+		}
+	}
+
+	prof_found = NULL;
+	return false;
+}
+
 //Finds gym's client with a certain Id
 bool Gym::findClient(int clientId, Client** client_found) {
 	for (const auto client_pointer : clients)
@@ -250,6 +265,21 @@ bool Gym::findClient(int clientId, Client** client_found) {
 	}
 
 	client_found = NULL;
+	return false;
+}
+
+//Finds gym's program with a certain Id
+bool Gym::findProgram(int programId, Program** program_found) {
+	for (const auto program_pointer : programs)
+	{
+		if (program_pointer->getCode() == programId)
+		{
+			*program_found = program_pointer;
+			return true;
+		}
+	}
+
+	program_found = NULL;
 	return false;
 }
 #pragma endregion
@@ -332,6 +362,24 @@ void Gym::displayPrograms() const
 	for (unsigned int i = 0; i < programs.size(); i++)
 	{
 		cout << programs.at(i);
+	}
+}
+
+//Prints the staff the gym has contracted
+void Gym::displayStaffIds() const
+{
+	for (size_t i = 0; i < clients.size(); i++)
+	{
+		cout << staff.at(i)->getName() << " ID: " << staff.at(i)->getId() << endl;
+	}
+}
+
+//Prints the profs the gym has contracted
+void Gym::displayProfsIds() const
+{
+	for (size_t i = 0; i < profs.size(); i++)
+	{
+		cout << profs.at(i)->getName() << " ID: " << profs.at(i)->getId() << endl;
 	}
 }
 
@@ -433,4 +481,18 @@ void Gym::removeClient(Gym &gym)
 			return;
 		}
 	}
+}
+
+//To-do falta dar overload de operator << no schedule para substituir printSchedule
+std::ostream &operator<<(ostream &out, const Gym &gym)
+{
+	out << "\t" <<gym.name << endl;
+	gym.displayPrograms();
+	out <<gym.clients.size() << " Clients" << endl;
+	out << gym.staff.size() << " Staff Members" << endl;
+	out << gym.profs.size() << " Professors" << endl;
+	//out << gym.gymSchedule << endl;
+	out << "Maximun number of clients: " << gym.maxNumClients << endl;
+	out << "Maximum gym capacity: " << gym.maxCapacity << endl;
+	return out;
 }

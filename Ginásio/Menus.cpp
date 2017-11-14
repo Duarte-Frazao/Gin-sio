@@ -11,10 +11,10 @@ void mainMenu(Gym &gym);
 void gymMenu(Gym &gym);
 void clientMenu(Gym &gym);
 void staffMenu(Gym &gym);
-void displayClientIdHelp(Gym &gym);
 void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
 void inputClientId(int &optionClient, Gym &gym);
 void intervalFuntion();
+void subscriptionsMenu(Gym &gym);
 
 void mainMenu(Gym &gym)
 {
@@ -60,7 +60,7 @@ void gymMenu(Gym &gym)
 
 	cout << "What do you wish to do?" << endl;
 
-	vector<string> sections = { "1 - Finances", "2 - Change Schedule", "3 - Change capacity", "4 - Manage subscriptions", "0 - Leave\n" };
+	vector<string> sections = { "1 - Finances", "2 - Change Schedule", "3 - Change capacity", "4 - Manage subscriptions", "5 - Display Information",  "0 - Leave\n" };
 
 	for (unsigned int i = 0; i < sections.size(); i++)
 	{
@@ -88,6 +88,9 @@ void gymMenu(Gym &gym)
 			break;
 		case 4:
 			//subscriptionsMenu();
+			break;
+		case 5:
+			cout << gym ;
 			break;
 		default:
 			cout << "Algum erro";
@@ -187,32 +190,75 @@ void staffMenu(Gym &gym)
 	} while (continueInMenu);
 }
 
-void displayClientIdHelp(Gym &gym)
+void displayIdHelp(Gym &gym, int option)
 {
+	/*
+	0-Clients
+	1-Programs
+	2-Staff
+	3-Professors
+	*/
 	string temp;
 	cout << "Enter 'h' if you don't know the ID, anything else to proceed: ";
 	cin.ignore(100, '\n');
 	getline(cin, temp);
 	cout << endl;
-	if (temp == "h" || temp == "H" || temp == "help" || temp == "Help" || temp == "HELP") gym.displayClientsIds();
+
+	if (temp == "h" || temp == "H" || temp == "help" || temp == "Help" || temp == "HELP")
+	{
+		switch (option)
+		{
+			case 0:
+				gym.displayClientsIds();
+				break;
+			case 1:
+				gym.displayProgramOptions();
+				break;
+			case 2:
+				gym.displayStaffIds();
+			case 3:
+				gym.displayProfsIds();
+			default:
+				cout << "Algum erro" << endl;
+		}
+	}
 }
 
 void inputClientIdObj(int &optionClient,Gym &gym, Client** client_found)
 {
 	cout << "----------ID Selection----------" << endl ;
 	bool badInput = false;
-	displayClientIdHelp(gym);
+	displayIdHelp(gym, 0);
 	cout << endl << "Insira o id do cliente a alterar: ";
 	do
 	{
 		if (badInput)
 		{
 			cout << "Insira um id valido" << endl;
-			displayClientIdHelp(gym);
+			displayIdHelp(gym, 0);
 		}
 		cin >> optionClient;
 		badInput = true;
 	} while (!gym.findClient(optionClient, client_found));
+}
+
+//To-do ver se o id do programa corresponde ao id que o user insere
+void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found)
+{
+	cout << "----------ID Selection----------" << endl;
+	bool badInput = false;
+	displayIdHelp(gym, 1);
+	cout << endl << "Insira o id do programa a alterar: ";
+	do
+	{
+		if (badInput)
+		{
+			cout << "Insira um id valido" << endl;
+			displayIdHelp(gym, 1);
+		}
+		cin >> optionProgram;
+		badInput = true;
+	} while (!gym.findProgram(optionProgram, program_found));
 }
 
 void inputClientId(int &optionClient, Gym &gym)
@@ -225,7 +271,7 @@ void inputClientId(int &optionClient, Gym &gym)
 		if (badInput)
 		{
 			cout << "Insira um id valido" << endl;
-			displayClientIdHelp(gym);
+			displayIdHelp(gym, 0);
 		}
 		cin >> optionClient;
 		badInput = true;
@@ -240,4 +286,51 @@ void intervalFuntion()
 	cin.ignore(100, '\n');
 	getline(cin, temp);
 	cout << endl;
+}
+
+void subscriptionsMenu(Gym &gym)
+{
+
+	bool continueInMenu = true;
+	string newName;
+	do
+	{
+		cout << "What do you wish to do?" << endl;
+
+		vector<string> sections = { "1 - Add", "2 - Edit", "3 - Remove", "4 - Display Information", "0 - Leave\n" };
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+		{
+			cout << sections.at(i) << endl;
+		}
+		int option = filterInput(0, sections.size());
+
+		int optionProgram;
+		Program *programToUse = NULL;
+
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			//gym.addProgram();
+			break;
+		case 2:
+			inputProgramIdObj(optionProgram, gym, &programToUse);
+			programToUse->editProgram(gym);
+			break;
+		case 3:
+			//gym.removeProgram();
+			gym.removeClient(gym);
+			break;
+		case 4:
+			gym.displayProgramOptions();
+			break;
+		default:
+			cout << "Algum erro";
+			break;
+		}
+	} while (continueInMenu);
+
 }

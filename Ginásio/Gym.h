@@ -233,7 +233,7 @@ public:
 	/**
 	Performs the login process for a certain staff
 	*/
-	int login();
+	void login();
 
 
 	/**

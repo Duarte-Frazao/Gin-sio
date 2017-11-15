@@ -141,125 +141,6 @@ void Gym::addProgram(Program* program) {programs.push_back(program);}
 #pragma region Login authentication
 
 //Performs the login process for a certain staff's id
-int Gym::login() {
-	cout << "    Welcome to " << name << " !      \n"
-		<< "--- AUTHENTICATION PORTAL ---\n\n";
-
-	cout << "1 - Client"  << endl;
-	cout << "2 - Staff"   << endl;
-	cout << "3 - Personal Trainer" << endl;
-	cout << "4 - Manager" << endl<<endl;
-
-	int option = filterInput(1,4,"Select an option: ");
-
-	Staff* staff_found = NULL;
-	Client* client_found = NULL;
-	bool personFound = false;
-
-	do
-	{
-		int id;
-		cout << "Login ID: ";
-		cin >> id;
-		cin.ignore();
-
-		switch(option){
-			case 1:
-				personFound = findClient(id, &client_found);
-				break;
-
-			case 2:
-				personFound = findStaff(id, &staff_found);
-				break;
-
-			case 3:
-				break;
-
-			case 4:
-				break;
-
-			default:
-				break;
-			}
-
-		if (personFound)
-		{
-			personFound = true;
-			bool access = false;
-
-			char ch;
-			do
-			{
-				string pass;
-				cout << "Password: ";
-				ch = _getch();
-				while (ch != '\n')
-				{
-					if (ch == 8)
-					{
-						if (pass.size() != 0)
-						{
-							pass.pop_back();
-							cout << "\b \b";
-						}
-					}
-					else
-					{
-						pass.push_back(ch);
-						cout << "*";
-					}
-					ch = _getch();
-				}
-
-
-				if (staff_found != NULL && staff_found->auth(pass))
-				{
-					cout << "\n\nACCESS GRANTED!\n" << "WELCOME STAFF NUMBER " << staff_found->getId() << "!\n\n";
-					access = 1;
-				}
-				else if (client_found != NULL /*&& client_found->auth(pass)*/)
-				{
-					cout << "\n\nACCESS GRANTED!\n" << "WELCOME " << client_found->getName() << "!\n\n";
-					access = 1;
-				}
-				else {
-					cout << "\n\nACESS DENIED!\n";
-					cout << "Try again: press 0 or Exit: press 1\n" << "--> ";
-					int incorrect_option;
-					cin >> incorrect_option;
-					while (incorrect_option != 0 && incorrect_option != 1) {
-						cout << "Enter a correct command ...\n";
-						cin >> incorrect_option;
-					}
-					if (incorrect_option) exit(0);
-					cin.ignore();
-				}
-
-			} while (!access);
-		}
-		else
-		{
-			cout << endl << "ID NOT FOUND!" << endl;
-			cout << "Try again: press 0 or Exit: press 1\n" << "--> ";
-			int incorrect_option2;
-			cin >> incorrect_option2;
-			while (incorrect_option2 != 0 && incorrect_option2 != 1) {
-				cout << "Enter a correct command ...\n";
-				cin >> incorrect_option2;
-			}
-			if (incorrect_option2) exit(0);
-			cin.ignore();
-		}
-
-	} while (!personFound);
-
-	return option;
-}
-
-
-
-//Performs the login process for a certain staff's id
-/*
 void Gym::login() {
 	cout << "    Welcome to " << name << " !      \n"
 		<< "--- AUTHENTICATION PORTAL ---\n";
@@ -339,7 +220,7 @@ void Gym::login() {
 	} while (!staffFound);
 }
 
-*/
+
 #pragma endregion
 
 #pragma region Search algorithms

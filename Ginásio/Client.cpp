@@ -228,7 +228,7 @@ std::ostream & operator<<(std::ostream & out, const Client &client)
 	out << "Payment Status: ";
 	if (client.paymentsUpToDate) out << "Up-to-date\n";
 	else out << client.numDaysRemaining << " late payments\n";
-	out << "Responsible professor: " << client.responsiblePT->getId() << endl << endl;
+	out << "Responsible professor: " << "\tName: " << client.responsiblePT->getName() << "\tID: "<<client.responsiblePT->getId() << endl << endl;
 	out << *(client.getProgram())<<endl;
 	return out;
 }

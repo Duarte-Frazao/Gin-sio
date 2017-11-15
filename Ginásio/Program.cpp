@@ -36,7 +36,7 @@ ostream & operator<<(ostream &out, const Program &program)
 {
 	cout << "Program " << program.code << endl;
 	cout << "Monthly price: " << program.cost << endl;
-	cout << "Number of times allowed to enter the gym: " << program.days << "\n\n\n";
+	cout << "Number of times allowed to enter the gym: " << program.days << "\n\n";
 
 	return out;
 }

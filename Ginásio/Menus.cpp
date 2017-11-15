@@ -295,7 +295,7 @@ void inputClientId(int &optionClient, Gym &gym)
 
 void intervalFuntion()
 {
-	cout << "Press a key to continue...";
+	cout << "Press a key to continue...\n";
 	cin.clear();
 	string temp;
 	cin.ignore(1000, '\n');

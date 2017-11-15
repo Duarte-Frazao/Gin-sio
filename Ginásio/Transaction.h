@@ -17,6 +17,7 @@ class Transaction {
 public:
 	Transaction();
 	Transaction(std::string type, double amount);
+	Transaction(std::string type, std::string description, double amount, std::string dateTransaction);
 	~Transaction();
 
 	/**

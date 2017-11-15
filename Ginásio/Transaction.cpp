@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Transaction.h"
-
+#include <string>
+#include <sstream>
 using namespace std;
 
 // Transaction constructors
@@ -17,6 +18,12 @@ Transaction::Transaction(string type, double amount) {
 	dateTransaction = asctime(localtime(&date));
 }
 
+Transaction::Transaction(std::string type, std::string description,
+		double amount, std::string dateTransaction) :
+		type(type), description(description), amount(amount), dateTransaction(dateTransaction) {
+
+	date=NULL;//Date parameter not useful for file initialization
+}
 // Transaction destructor
 Transaction::~Transaction() {
 
@@ -64,6 +71,6 @@ void Transaction::setDateTransaction(string time) {
 
 ostream& operator<< (ostream &out, const Transaction &transaction) {
 	out << right << setw(10) << transaction.type << " ------- " 
-		<< left << setw(6) << transaction.amount << transaction.getDateTransaction();
+		<< left << setw(6) <<  transaction.amount  << transaction.getDateTransaction();
 	return out;
 }

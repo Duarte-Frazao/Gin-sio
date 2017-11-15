@@ -1,17 +1,17 @@
 #ifndef GYM_H_
 #define GYM_H_
 
-#include "Client.h"
-#include "Staff.h"
-#include "Finance.h"
-#include "Schedule.h"
-#include "Program.h"
 #include <string>
 #include <vector>
 #include <iostream>
+#include "Client.h"
+#include "Finance.h"
+#include "Schedule.h"
+#include "Program.h"
 #include "PersonalTrainer.h"
 
 class Client;
+class Staff;
 class PersonalTrainer;
 
 class Gym {
@@ -58,7 +58,6 @@ public:
 	@return
 	*/
 	~Gym();
-
 
 
 	/**
@@ -200,11 +199,6 @@ public:
 	void displayPrograms() const;
 
 	/**
-	Handles the editing of the staff in the gym
-	*/
-	void menuStaff();
-
-	/**
 	Returns the gym's program subscription that has the id code
 
 	@param	code Program subscription id code
@@ -253,7 +247,27 @@ public:
 	/**
 	Removes a client
 	*/
-	void removeClient(Gym &gym);
+	void removeClient();
+
+	/**
+	Adds a staff to the gym
+	*/
+	void addStaff();
+
+	/**
+	Removes a staff from the gym
+	*/
+	void removeStaff();
+
+	/**
+	Adds a personal trainer to the gym
+	*/
+	void addPersonalTrainer();
+
+	/**
+	Removes a personal trainer from the gym
+	*/
+	void removePersonalTrainer();
 
 	/**
 	Prints the gym's clients ids

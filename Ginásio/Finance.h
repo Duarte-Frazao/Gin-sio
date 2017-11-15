@@ -56,8 +56,6 @@ public:
 	*/
 	bool addTransaction(Transaction newTransaction);
 
-	
-
 private:
 
 	std::vector<Transaction> transactions;

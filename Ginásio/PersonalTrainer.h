@@ -16,6 +16,7 @@ class PersonalTrainer : public Staff {
 
 public:
 	PersonalTrainer(int age, int wage, std::string specializedArea);
+	PersonalTrainer(std::string name, int age, int wage, std::string pwd, std::string specializedArea);
 	PersonalTrainer(int id, std::string name, int age, int wage, std::string pwd, std::string specializedArea); //For file initialization
 
 	virtual ~PersonalTrainer();
@@ -65,6 +66,20 @@ public:
 	void editAssociatedClients(Gym &gym);
 
 	virtual bool recognizeProf() const;
+
+	/**
+	Overload of operator << for derived class Personal Trainer
+	@return ostream
+	*/
+	friend std::ostream& operator<<(std::ostream& out, const PersonalTrainer& staff);
+
+	/**
+	Displays information about Personal Trainer
+	@param
+	@return
+	*/
+	void printInfo();
+	
 };
 
 #endif /* PERSONALTRAINER_H_ */

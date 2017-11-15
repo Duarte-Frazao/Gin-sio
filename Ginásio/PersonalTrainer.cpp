@@ -4,9 +4,14 @@
 
 using namespace std;
 
+//Functions
+int filterInput(int inf, int sup, std::string msg = "Selection: ");
+
 PersonalTrainer::PersonalTrainer(int age, int wage, string specializedArea) :
-	Staff(age, wage), specializedArea(specializedArea) {
-}
+	Staff(age, wage), specializedArea(specializedArea) {}
+
+PersonalTrainer::PersonalTrainer(std::string name, int age, int wage, std::string pwd, std::string specializedArea) :
+	Staff(name, age, wage, pwd), specializedArea(specializedArea) {}
 
 PersonalTrainer::PersonalTrainer(int id, std::string name, int age, int wage, std::string pwd, std::string specializedArea) :
 	Staff(id, name, age, wage, pwd), specializedArea(specializedArea) {
@@ -55,79 +60,50 @@ and returns the option chosen
 */
 int editPersonalTrainerMenu() {
 
-	string options[] = { "1. Edit age", "2. Edit wage", "3. Edit location",
-		"4. Edit specialized area", "5. Edit associated clients", "0. Return" };
-	for (size_t i = 0; i < 6; i++) {
-		cout << options[i] << endl;
-	}
+	cout << "\nSelect what you want to edit" << endl;
 
-	/* insert function to accept option */
-	int option;
-	cin >> option;
+	vector<string> options = { "1. Edit specialized area", "2. Edit associated clients", "3. Show information", "0. Return" };
+
+	for (unsigned int i = 0; i < options.size(); i++)
+		cout << options.at(i) << endl;
+
+	int option = filterInput(0, options.size() - 1);
 
 	return option;
 }
 
 void PersonalTrainer::editPersonalTrainer(Gym &gym) {
 
-	int option;
-	while ((option = editPersonalTrainerMenu()) != 0) {
-		switch (option) {
+	bool continueInMenu = true;
+	string newSpecializedArea;
+	do
+	{
+		int option = editPersonalTrainerMenu();
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
 		case 1:
-		{
-			/* edit age */
-			int newAge;
-			cout << "Insert age to modify: ";
-			cin >> newAge;
-			while (cin.fail() || newAge < 0) {
-				cin.clear();
-				cin.ignore(1000, '\n');
-				cout << "Insert age to modify: ";
-				cin >> newAge;
-			}
-			setAge(newAge);
-			cout << "Staff's age sucessfully modified!\n";
-		}
-		break;
+			cout << "What's the PT's new specialized area? " << endl;
+			cout << "Previously: " << specializedArea << endl;
+			cout << "->";
+			cin.ignore(1000, '\n');
+			getline(cin, newSpecializedArea);
+			setSpecializedArea(newSpecializedArea);
+			cout << "PT's specialized area sucessfully modified!\n";
+			break;
 		case 2:
-		{
-			/* edit wage */
-			int newWage;
-			cout << "Insert wage to modify: ";
-			cin >> newWage;
-			while (cin.fail() || newWage < 0) {
-				cin.clear();
-				cin.ignore(1000, '\n');
-				cout << "Insert wage to modify: ";
-				cin >> newWage;
-			}
-			setWage(newWage);
-			cout << "Staff's wage sucessfully modified!\n";
-		}
-		break;
-		case 3:
-			/* edit location */
-			changeLocation();
-			break;
-		case 4:
-		{
-			/* edit specialized area */
-			string area;
-			getline(cin, area);
-			setSpecializedArea(area);
-			cout << "Specialized area modified successfully!\n";
-			break;
-		}
-		case 5:
-		{
-			/* add or remove clients to personal trainer */
 			editAssociatedClients(gym);
 			break;
-		}
+		case 3:
+			cout << *this;
+			break;
 		default:
-			cout << "Option unreachable ...\n";
+			cout << "Algum erro";
+			break;
 		}
-	}
+	} while (continueInMenu);
 }
 
 /**
@@ -137,32 +113,39 @@ associated clients and returns the option chosen
 @return Returns the chosen option of the personal trainer's
 associated clients' edit menu
 */
-int editAssociatedClientsMenu() {
+int editAssociatedClientsMenu() 
+{
+	cout << "\nSelect what you want to edit" << endl;
 
-	string options[] = { "1. Add client", "2. Remove client", "0. Return" };
-	for (size_t i = 0; i < 3; i++) {
-		cout << options[i] << endl;
-	}
+	vector<string> options = { "1. Add client", "2. Remove client", "0. Return" };
+	
+	for (unsigned int i = 0; i < options.size(); i++)
+		cout << options.at(i) << endl;
 
-	/* insert function to accept option */
-	int option;
-	cin >> option;
+	int option = filterInput(0, options.size() - 1);
 
 	return option;
 }
 
 void PersonalTrainer::editAssociatedClients(Gym &gym) {
 
-	int option;
-	while ((option = editAssociatedClientsMenu()) != 0) {
-		switch (option) {
+	string name;
+	int id, age;
+	bool continueInMenu = true;
+	do
+	{
+		int option = editAssociatedClientsMenu();
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
 		case 1:
 		{
 			/* add new client to Personal Trainer */
-			string name;
 			cout << "Insert the name of the client to add: ";
+			cin.ignore(1000, '\n');
 			getline(cin, name);
-			int age;
 			cout << "Insert client's age: ";
 			cin >> age;
 			cin.ignore();
@@ -173,11 +156,11 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 
 
 			bool clientExist = false;
-
 			//Search if the client already exists
 			for (auto pClient : gym.getClients()) {
 				if (pClient->getName() == name && pClient->getAge() == age && pClient->getProgram()->getCode() == program) {
 					pClient->setPT(this);
+					clients.push_back(pClient);
 					clientExist = true;
 					break;
 				}
@@ -191,14 +174,10 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 
 			cout << "Client added successfully to Personal Trainer!\n";
 			break;
-
 		}
-
-
 		case 2:
 		{
 			/* remove client associated with Personal Trainer, by Id */
-			int id;
 			cout << "Insert the id of the client to remove: ";
 			cin >> id;
 			cin.ignore();
@@ -215,10 +194,11 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 			break;
 		}
 		default:
-			cout << "Unreachable option ...\n";
+			cout << "Algum erro";
 			break;
 		}
-	}
+		
+	} while (continueInMenu);
 }
 
 #pragma endregion
@@ -226,4 +206,19 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 bool PersonalTrainer::recognizeProf() const
 {
 	return true;
+}
+
+void PersonalTrainer::printInfo() 
+{
+	cout << *this;
+}
+
+ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
+	out << static_cast<const Staff &>(pt);
+	out << "Specialized area: " << pt.specializedArea << endl;
+	out << "Clients by whom it is responsible: ";
+	if (pt.getClients().size() == 0) out << "NONE" << endl;
+	for (auto client : pt.getClients())
+		out << *client << endl;
+	return out;
 }

@@ -5,6 +5,8 @@
 #include "Schedule.h"
 #include "ErrorClasses.h"
 
+class Gym;
+
 class Staff {
 	int id;
 	std::string name;
@@ -18,8 +20,14 @@ class Staff {
 
 public:
 	Staff(int age, double wage);
+	Staff(std::string name, int age, double wage, std::string pwd);
 	Staff(int id, std::string name, int age, double wage, std::string pwd); //For file initialization
 	virtual ~Staff();
+
+	/**
+	Increments staff's static Id during file reading
+	*/
+	void incrementStaffId();
 
 	/**
 	Returns staff's id
@@ -72,6 +80,13 @@ public:
 	bool getWasPaid() const;
 
 	/**
+	Sets staff's name
+
+	@param Staff's name
+	*/
+	void setName(std::string name);
+
+	/**
 	Sets staff's age
 
 	@param Staff's age
@@ -116,7 +131,7 @@ public:
 	/**
 	Handles the editing of the staff's information
 	*/
-	void editStaff();
+	void editStaff(Gym &gym);
 
 	/**
 	Verifies if password is correct for the staff invoking the function
@@ -137,7 +152,7 @@ public:
 	@param
 	@return
 	*/
-	void informationStaff();
+	virtual void printInfo();
 };
 
 #endif /* STAFF_H_ */

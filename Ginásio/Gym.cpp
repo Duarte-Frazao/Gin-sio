@@ -2,9 +2,9 @@
 #include <iostream>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <iomanip>
 #include "Gym.h"
 #include "Client.h"
-#include <iomanip>
 
 #ifdef WIN32
 #include <conio.h>
@@ -16,6 +16,8 @@ using namespace std;
 
 void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
 void inputClientId(int &optionClient, Gym &gym);
+void inputStaffIdObj(int &optionStaff, Gym &gym, Staff** staff_found);
+void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found);
 
 //Functions
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
@@ -122,8 +124,6 @@ void Gym::setGymFinance(Finance gymFinance) {
 }
 
 #pragma endregion
-
-
 
 
 #pragma region Add
@@ -288,76 +288,6 @@ bool Gym::findProgram(int programId, Program** program_found) {
 #pragma endregion
 
 
-# pragma region staffMenu
-
-//Shows the menu of options for adding or removing staff
-int staffMenu() {
-
-	string options[] = { "1. Add Staff", "2. Remove staff" };
-	for (size_t i = 0; i < 3; i++) {
-		cout << options[i] << endl;
-	}
-
-	/* insert function to accept option */
-	int option = filterInput(1,options->size());
-
-	return option;
-}
-
-
-//Handles the editing of the staff in the gym
-void Gym::menuStaff() {
-
-	int option;
-	while ((option = staffMenu()) != 0) {
-		switch (option) {
-		case 1:
-		{
-			/* add staff */
-			int age, wage;
-			string name;
-			do {
-				cout << "Insert new staff's age: ";
-				cin >> age;
-				cin.ignore();
-			} while (age < 0);
-			do {
-				cout << "Insert new staff's wage: ";
-				cin >> wage;
-				cin.ignore();
-			} while (wage < 0);
-
-			staff.push_back(new Staff(age, wage));
-			cout << "Staff added successfully!\n";
-		}
-		break;
-		case 2:
-		{
-			/* remove staff by Id*/
-			int id;
-			cout << "Insert staff's id to remove: ";
-			cin >> id;
-			cin.ignore();
-			vector<Staff *>::iterator it_staff;
-			for (it_staff = staff.begin(); it_staff != staff.end(); it_staff++) {
-				if ((*it_staff)->getId() == id) {
-					staff.erase(it_staff);
-					cout << "Staff with id " << id << " erased sucessfully!\n";
-				}
-			}
-			if (it_staff == staff.end()) {
-				cout << "Staff with id " << id << " does not exist!\n";
-			}
-		}
-		break;
-		default:
-			cout << "Unreachable option ...\n";
-		}
-	}
-}
-
-#pragma endregion
-
 //Shows gym's clients id's
 void Gym::displayClientsIds()
 {
@@ -447,30 +377,15 @@ void Gym::addClient()
 	cout << *newClient;
 }
 
-//Shows the menu of options for adding or removing clients
-int clientMenu() {
-
-	string options[] = { "1. Add client", "2. Remove client" };
-	for (size_t i = 0; i < 3; i++) {
-		cout << options[i] << endl;
-	}
-
-	/* insert function to accept option */
-	int option = filterInput(1, options->size());
-
-	return option;
-}
-
 
 /**
 Removes a client
 */
-void Gym::removeClient(Gym &gym)
+void Gym::removeClient()
 {
-
 	int optionClient;
 	Client *clientToEdit;
-	inputClientIdObj(optionClient, gym, &clientToEdit);
+	inputClientIdObj(optionClient, *this, &clientToEdit);
 
 	//algo que mostre ids + fun��o que check ids
 
@@ -482,7 +397,119 @@ void Gym::removeClient(Gym &gym)
 			return;
 		}
 	}
+	cout << "Client with id " << optionClient << " does not exist!\n";
 }
+
+/**
+Adds a staff to the gym
+*/
+void Gym::addStaff() 
+{
+	int age; double wage;
+	string name, pass;
+
+	cout << "Insert new staff's name: ";
+	cin.ignore(1000, '\n');
+	getline(cin, name);
+	do {
+		cout << "Insert new staff's age: ";
+		cin >> age;
+		cin.ignore();
+	} while (age < 0);
+	do {
+		cout << "Insert new staff's wage: ";
+		cin >> wage;
+		cin.ignore();
+	} while (wage < 0);
+	cout << "Insert new staff's password: ";
+	cin.ignore(1000, '\n');
+	getline(cin, pass);
+
+	staff.push_back(new Staff(name, age, wage, pass));
+	cout << "Staff added successfully!\n";
+}
+
+/**
+Removes a staff from the gym
+*/
+void Gym::removeStaff() 
+{
+	int optionStaff;
+	Staff *staffToEdit;
+	inputStaffIdObj(optionStaff, *this, &staffToEdit);
+	
+	vector<Staff *>::iterator it_staff;
+	for (it_staff = staff.begin(); it_staff != staff.end(); it_staff++) {
+		if ((*it_staff)->getId() == optionStaff) {
+			staff.erase(it_staff);
+			cout << "Staff with id " << optionStaff << " erased sucessfully!\n";
+			return;
+		}
+	}
+	cout << "Staff with id " << optionStaff << " does not exist!\n";
+}
+
+/**
+Adds a personal trainer to the gym
+*/
+void Gym::addPersonalTrainer()
+{
+	int age; double wage;
+	string name, pass, specializedArea;
+
+	cout << "Insert new personal trainer's name: ";
+	cin.ignore(1000, '\n');
+	getline(cin, name);
+	do {
+		cout << "Insert new personal trainer's age: ";
+		cin >> age;
+		cin.ignore();
+	} while (age < 0);
+	cin.ignore(1000, '\n');
+	cout << "Insert new pt's specialized area: ";
+	getline(cin, specializedArea);
+	do {
+		cout << "Insert new personal trainer's wage: ";
+		cin >> wage;
+		cin.ignore();
+	} while (wage < 0);
+	cout << "Insert new pt's password: ";
+	cin.ignore(1000, '\n');
+	getline(cin, pass);
+	
+	PersonalTrainer* pt = new PersonalTrainer(name, age, wage, pass, specializedArea);
+	staff.push_back(pt);
+	profs.push_back(pt);
+	cout << "Personal trainer added successfully!\n";
+}
+
+/**
+Removes a personal trainer from the gym
+*/
+void Gym::removePersonalTrainer()
+{
+	int optionProf;
+	Staff *profToEdit;
+	inputPtIdObj(optionProf, *this, &profToEdit);
+	
+	vector<PersonalTrainer *>::iterator it_prof;
+	for (it_prof = profs.begin(); it_prof != profs.end(); it_prof++) {
+		if ((*it_prof)->getId() == optionProf) {
+			profs.erase(it_prof);
+			break;
+		}
+	}
+	vector<Staff *>::iterator it_staff;
+	for (it_staff = staff.begin(); it_staff != staff.end(); it_staff++) {
+		if ((*it_staff)->getId() == optionProf) {
+			staff.erase(it_staff);
+			cout << "Personal trainer with id " << optionProf << " erased sucessfully!\n";
+			return;
+		}
+	}
+	cout << "Personal trainer with id " << optionProf << " does not exist!\n";
+}
+
 
 /**
 Deposits amount

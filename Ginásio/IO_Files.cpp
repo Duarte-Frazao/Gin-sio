@@ -14,7 +14,6 @@
 #include "Schedule.h"
 #include "Finance.h"
 
-
 Gym * readInformationFile(std::string fileName){
 
 	std::ifstream inFile(fileName);
@@ -103,6 +102,7 @@ Gym * readInformationFile(std::string fileName){
 	while(inFile.peek() != ';'){
 		inFile >> brackets >> staff_id >> staff_name >> staff_age >> staff_wage >> staff_pwd >> brackets; //Only accepts one word name
 		staff.push_back(new Staff(staff_id, staff_name, staff_age, staff_wage, staff_pwd));
+		staff.at(staff.size() - 1)->incrementStaffId();
 		inFile.get();
 	}
 	inFile.get();
@@ -121,17 +121,17 @@ Gym * readInformationFile(std::string fileName){
 		//Only accepts one word name and one word Area
 		inFile >> brackets >> staff_id >> staff_name >> staff_age >> staff_wage
 				>> staff_pwd >> profs_specializedArea >> brackets;
-
+		
 
 		PersonalTrainer * PT = new PersonalTrainer(staff_id,staff_name, staff_age, staff_wage, staff_pwd, profs_specializedArea);
 		staff.push_back(PT);
 		profs.push_back(PT);
+		staff.at(staff.size() - 1)->incrementStaffId();
 		inFile.get();
 	}
 
 	inFile.get();
 	//----------------------------
-
 
 	//Clients
 	//----------------------------
@@ -232,18 +232,16 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	outFile << "Staff" << std::endl;
 
 	for(auto pStaff : gym.getStaff()){
-
-	if(dynamic_cast<PersonalTrainer *> (pStaff) == NULL){
-	outFile << "[ " << pStaff->getId() << " " << pStaff->getName() << " "
-			<< pStaff->getAge() << " " << pStaff->getWage() << " "
-			<< pStaff->getPassword() << " ]\n";
+		if(dynamic_cast<PersonalTrainer *> (pStaff) == NULL){
+		outFile << "[ " << pStaff->getId() << " " << pStaff->getName() << " "
+				<< pStaff->getAge() << " " << pStaff->getWage() << " "
+				<< pStaff->getPassword() << " ]\n";
+		}
 	}
-	}
-
 	outFile << ";\n\n";
 	//----------------------------
 
-
+	
 	//Personal Trainer
 	//----------------------------
 	outFile << "PersonalTrainer" << std::endl;

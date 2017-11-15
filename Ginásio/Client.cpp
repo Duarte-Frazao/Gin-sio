@@ -153,7 +153,7 @@ void Client::editClient(Gym &gym)
 			continueInMenu = false;
 			break;
 		case 1:
-			cout << "What's the new Client's name? " << endl;
+			cout << "What's the Client's new name? " << endl;
 			cout << "Previously: " << name << endl;
 			cout << "->";
 			cin >> newName;

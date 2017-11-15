@@ -238,7 +238,3 @@ void Client::informationClient()
 	//Pode-se adicionar mais op��es como mostrar plano de treino
 	cout << *this;
 }
-
-
-
-

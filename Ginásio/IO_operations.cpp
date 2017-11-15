@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include <iostream>
-
+#include <string>
 
 /**
 Filters an option by giving two limits, makes the user input and integer between them

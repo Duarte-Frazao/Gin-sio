@@ -15,7 +15,7 @@ class Client;
 class PersonalTrainer;
 
 class Gym {
-
+	
 	std::string name;
 	std::vector<Program*> programs;
 	std::vector<Client *> clients;
@@ -44,18 +44,18 @@ public:
 	@return
 	*/
 	Gym(std::string name, std::vector<Program *> &programs,
-			std::vector<Client *> &clients, std::vector<Staff *> &staff,
-			std::vector<PersonalTrainer *> &profs, Schedule &gymSchedule,
-			int maxNumClients, int maxCapacity, Finance &gymFinance);
-	
-	
+		std::vector<Client *> &clients, std::vector<Staff *> &staff,
+		std::vector<PersonalTrainer *> &profs, Schedule &gymSchedule,
+		int maxNumClients, int maxCapacity, Finance &gymFinance);
+
+
 	Gym(std::string name, std::vector<Program *> &programs, Schedule &gymSchedule,
-			int maxNumClients, int maxCapacity, Finance &gymFinance);
+		int maxNumClients, int maxCapacity, Finance &gymFinance);
 
 	/**
 	Gym destructor
 
-	@return 
+	@return
 	*/
 	~Gym();
 
@@ -67,7 +67,7 @@ public:
 	@return Returns the name of the gym
 	*/
 	std::string getName() const;
-	
+
 	/**
 	Returns the vector of client pointers of the gym
 
@@ -98,7 +98,7 @@ public:
 	*/
 	Schedule getGymSchedule() const;
 
-	
+
 	/**
 	Returns the max number of clients of the gym
 
@@ -191,7 +191,7 @@ public:
 	Adds a program to the vector
 
 	@param Program pointer
-	 */
+	*/
 	void addProgram(Program* program);
 
 	/**
@@ -219,7 +219,7 @@ public:
 	- staff_found is a pointer to the found staff
 	@return Returns true if staff was found, false otherwise
 	*/
-	bool findStaff(int staffId, Staff **staff_found);
+	bool findStaff(int staffId, Staff** staff_found);
 
 	/**
 	Finds gym's client with a certain Id
@@ -255,7 +255,6 @@ public:
 	*/
 	void removeClient(Gym &gym);
 
-
 	/**
 	Prints the gym's clients ids
 
@@ -264,16 +263,55 @@ public:
 	*/
 	void displayClientsIds();
 
+	/**
+	Prints the gym's staff ids
 
+	@param
+	@return
+	*/
 	void displayStaffIds() const;
 
+	/**
+	Prints the gym's personal trainer's ids
+
+	@param
+	@return
+	*/
 	void displayProfsIds() const;
 
+	/**
+	Overload of operator << for class Gym
+	@return ostream
+	*/
 	friend std::ostream & operator<<(std::ostream & out, const Gym &gym);
 
+	/**
+	Finds gym's program with a certain Id
+	@param 
+	programId - id of program to be searched 
+	program_found - pointer to return the program found
+	@return true if found, false otherwise
+	*/
 	bool findProgram(int programId, Program** program_found);
 
+	/**
+	Finds gym's personal trainer with a certain Id
+	@param
+	profId - id of personal trainer to be searched
+	prof_found - pointer to return the personal trainer found
+	@return true if found, false otherwise
+	*/
 	bool findProf(int profId, Staff** prof_found);
+
+	/**
+	Deposits amount to gym's account
+	*/
+	void depositAmount();
+
+	/**
+	Makes payments from the gym's account
+	*/
+	void makePayments();
 };
 
 #endif /* GYM_H_ */

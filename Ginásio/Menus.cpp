@@ -12,26 +12,27 @@ void mainMenu(Gym &gym);
 void gymMenu(Gym &gym);
 void clientMenu(Gym &gym);
 void staffMenu(Gym &gym);
-void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
+void financeMenu(Gym &gym);
+void subscriptionsMenu(Gym &gym);
 void inputClientId(int &optionClient, Gym &gym);
+void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
+void inputStaffIdObj(int &optionStaff, Gym &gym, Staff** staff_found);
+void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found);
 void intervalFuntion();
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
-void subscriptionsMenu(Gym &gym);
 
 
 void mainMenu(Gym &gym)
 {
+	vector<string> sections = { "1 - Gym related", "2 - Client related", "3 - Staff related", "0 - Leave\n" };
 
 	bool continueInMenu = true;
 	string newName;
 	do
 	{
 		cout << "What do you wish to do?" << endl;
-		vector<string> sections = { "1 - Gym related", "2 - Client related", "3 - Staff related", "0 - Leave\n" };
 		for (unsigned int i = 0; i < sections.size(); i++)
-		{
 			cout << sections.at(i) << endl;
-		}
 
 		int option = filterInput(0, sections.size());
 		switch (option)
@@ -58,18 +59,13 @@ void mainMenu(Gym &gym)
 
 void gymMenu(Gym &gym)
 {
-
-
+	vector<string> sections = { "1 - Finances", "2 - Change Schedule", "3 - Change capacity", "4 - Manage subscriptions", "5 - Display Information",  "0 - Leave\n" };
 
 	bool continueInMenu = true;
 	string newName;
 	do
 	{
-
 		cout << "What do you wish to do?" << endl;
-
-		vector<string> sections = { "1 - Finances", "2 - Change Schedule", "3 - Change capacity", "4 - Manage subscriptions", "5 - Display Information",  "0 - Leave\n" };
-
 		for (unsigned int i = 0; i < sections.size(); i++)
 			cout << sections.at(i) << endl;
 
@@ -80,7 +76,7 @@ void gymMenu(Gym &gym)
 			continueInMenu = false;
 			break;
 		case 1:
-			//financesMenu();
+			financeMenu(gym);
 			break;
 		case 2:
 			//scheduleMenu();
@@ -89,7 +85,7 @@ void gymMenu(Gym &gym)
 			//capacityMenu();
 			break;
 		case 4:
-			//subscriptionsMenu();
+			subscriptionsMenu(gym);
 			break;
 		case 5:
 			cout << gym ;
@@ -104,23 +100,19 @@ void gymMenu(Gym &gym)
 
 void clientMenu(Gym &gym)
 {
+	vector<string> sections = { "1 - Add", "2 - Edit", "3 - Remove", "4 - Display Information", "0 - Leave\n" };
 
 	bool continueInMenu = true;
 	string newName;
 	do
 	{
 		cout << "What do you wish to do?" << endl;
-
-		vector<string> sections = { "1 - Add", "2 - Edit", "3 - Remove", "4 - Display Information", "0 - Leave\n" };
-
 		for (unsigned int i = 0; i < sections.size(); i++)
-		{
 			cout << sections.at(i) << endl;
-		}
+
 		int optionClient;
 		Client *clientToUse = NULL;
 		int option = filterInput(0, sections.size());
-		bool badInput = false;
 		switch (option)
 		{
 		case 0:
@@ -146,24 +138,22 @@ void clientMenu(Gym &gym)
 			break;
 		}
 	} while (continueInMenu);
-
 }
 
 void staffMenu(Gym &gym)
 {
-	std::cout << "What do you wish to do?" << std::endl;
+	vector<string> sections = { "1 - Professor related", "2 - Add ", "3 - Edit", "4 - Remove",  "5 - Display Information", "0 - Leave\n" };
 
-	std::vector<std::string> sections = { "1 - Professor related", "2 - Add ", "3 - Edit", "4 - Remove",  "5 - Display Information", "0 - Leave\n" };
-
-	for (unsigned int i = 0; i < sections.size(); i++)
-	{
-		std::cout << sections.at(i) << std::endl;
-	}
-
+	int optionStaff;
+	Staff *staffToUse = NULL;
 	bool continueInMenu = true;
-	std::string newName;
+	string newName;
 	do
 	{
+		cout << "What do you wish to do?" << endl;
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
 		int option = filterInput(0, sections.size());
 		switch (option)
 		{
@@ -183,10 +173,86 @@ void staffMenu(Gym &gym)
 			//removeStaff();
 			break;
 		case 5:
-			//staffInformation();
+			inputStaffIdObj(optionStaff, gym, &staffToUse);
+			staffToUse->informationStaff();
+			intervalFuntion();
 			break;
 		default:
 			std::cout << "Algum erro";
+			break;
+		}
+	} while (continueInMenu);
+}
+
+void financeMenu(Gym &gym)
+{
+	vector<string> sections = { "1 - Obtain gym finance extract", "2 - Deposit amount ", "3 - Make a payment", "0 - Leave\n" };
+
+	bool continueInMenu = true;
+	do
+	{
+		cout << "What do you wish to do?" << endl;
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			cout << gym.getGymFinance();
+			break;
+		case 2:
+			gym.depositAmount();
+			break;
+		case 3:
+			gym.makePayments();
+			break;
+		default:
+			std::cout << "Algum erro";
+			break;
+		}
+	} while (continueInMenu);
+}
+
+void subscriptionsMenu(Gym &gym)
+{
+	vector<string> sections = { "1 - Add", "2 - Edit", "3 - Remove", "4 - Display Information", "0 - Leave\n" };
+
+	bool continueInMenu = true;
+	string newName;
+	do
+	{
+		cout << "What do you wish to do?" << endl;
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		int optionProgram;
+		Program *programToUse = NULL;
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			//gym.addProgram();
+			break;
+		case 2:
+			inputProgramIdObj(optionProgram, gym, &programToUse);
+			programToUse->editProgram(gym);
+			break;
+		case 3:
+			//gym.removeProgram();
+			gym.removeClient(gym);
+			break;
+		case 4:
+			gym.displayProgramOptions();
+			break;
+		default:
+			cout << "Algum erro";
 			break;
 		}
 	} while (continueInMenu);
@@ -253,11 +319,37 @@ void inputClientIdObj(int &optionClient,Gym &gym, Client** client_found)
 	} while (!gym.findClient(optionClient, client_found));
 }
 
+void inputStaffIdObj(int &optionStaff, Gym &gym, Staff** staff_found)
+{
+	if (gym.getStaff().empty()) {
+		cerr << "There are no staff in the gym" << std::endl;
+		return;
+	}
 
+	cout << "----------ID Selection----------" << endl;
+	bool badInput = false;
+	displayIdHelp(gym, 2);
+	cout << endl << "Insira o id do staff: ";
+	do
+	{
+		if (badInput)
+		{
+			cout << "Insira um id valido" << endl;
+			displayIdHelp(gym, 2);
+		}
+		cin >> optionStaff;
+		badInput = true;
+	} while (!gym.findStaff(optionStaff, staff_found));
+}
 
 //To-do ver se o id do programa corresponde ao id que o user insere
 void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found)
 {
+	if (gym.getPrograms().empty()) {
+		cerr << "There are no programs in the gym" << std::endl;
+		return;
+	}
+
 	cout << "----------ID Selection----------" << endl;
 	bool badInput = false;
 	displayIdHelp(gym, 1);
@@ -278,6 +370,11 @@ void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found)
 
 void inputClientId(int &optionClient, Gym &gym)
 {
+	if (gym.getClients().empty()) {
+		cerr << "There are no clients in the gym" << std::endl;
+		return;
+	}
+
 	Client** client_found = NULL;
 	bool badInput = false;
 	cout << "Insira o id do cliente: " << endl;
@@ -302,51 +399,3 @@ void intervalFuntion()
 	getline(cin, temp);
 	cout << endl;
 }
-
-
-void subscriptionsMenu(Gym &gym)
-{
-
-	bool continueInMenu = true;
-	string newName;
-	do
-	{
-		cout << "What do you wish to do?" << endl;
-
-		vector<string> sections = { "1 - Add", "2 - Edit", "3 - Remove", "4 - Display Information", "0 - Leave\n" };
-
-		for (unsigned int i = 0; i < sections.size(); i++)
-		{
-			cout << sections.at(i) << endl;
-		}
-		int option = filterInput(0, sections.size());
-
-		int optionProgram;
-		Program *programToUse = NULL;
-
-		switch (option)
-		{
-		case 0:
-			continueInMenu = false;
-			break;
-		case 1:
-			//gym.addProgram();
-			break;
-		case 2:
-			inputProgramIdObj(optionProgram, gym, &programToUse);
-			programToUse->editProgram(gym);
-			break;
-		case 3:
-			//gym.removeProgram();
-			gym.removeClient(gym);
-			break;
-		case 4:
-			gym.displayProgramOptions();
-			break;
-		default:
-			cout << "Algum erro";
-			break;
-		}
-} while (continueInMenu);
-}
-

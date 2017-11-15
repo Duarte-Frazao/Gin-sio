@@ -27,8 +27,6 @@ public:
 	*/
 	std::vector<Client *> getClients() const;
 
-
-
 	/**
 	Returns the specialized area of the personal trainer
 

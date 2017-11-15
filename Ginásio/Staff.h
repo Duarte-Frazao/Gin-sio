@@ -5,119 +5,139 @@
 #include "Schedule.h"
 #include "ErrorClasses.h"
 
-
-
-
 class Staff {
 	int id;
 	std::string name;
 	int age;
-	int wage;
+	double wage;
 	bool insideGym;
+	bool wasPaid;
 	Schedule workSchedule;
 	std::string password;
- 	static int staffId;
+	static int staffId;
 
 public:
-	Staff(int age, int wage);
-	Staff(int id, std::string name, int age, int wage, std::string pwd); //For file initialization
+	Staff(int age, double wage);
+	Staff(int id, std::string name, int age, double wage, std::string pwd); //For file initialization
 	virtual ~Staff();
 
 	/**
-		Returns staff's id
+	Returns staff's id
 
-		@return Returns staff's id
+	@return Returns staff's id
 	*/
 	virtual int getId() const;
 
 	/**
-		Returns staff's name
+	Returns staff's name
 
-		@return Returns staff's name
+	@return Returns staff's name
 	*/
 	virtual std::string getName() const;
 
 	/**
-		Returns staff's age
+	Returns staff's age
 
-		@return Returns staff's age
+	@return Returns staff's age
 	*/
 	virtual int getAge() const;
 
 	/**
-		Returns staff's wage
+	Returns staff's wage
 
-		@return Returns staff's wage
+	@return Returns staff's wage
 	*/
-	virtual int getWage() const;
+	virtual double getWage() const;
 	virtual bool recognizeProf() const;
 
 	/**
-		Returns staff's log-in password
+	Returns staff's log-in password
 
-		@return Returns staff's password
+	@return Returns staff's password
 	*/
 	std::string getPassword() const;
 
 	/**
-		Returns staff's location
+	Returns staff's location
 
-		@return Returns 1 if insideGym, 0 otherwise
+	@return Returns 1 if insideGym, 0 otherwise
 	*/
 	bool isInsideGym() const;
 
+	/**
+	Returns staff's payment situation
+
+	@return Returns 1 if was already paid, 0 otherwise
+	*/
+	bool getWasPaid() const;
 
 	/**
-		Sets staff's age
+	Sets staff's age
 
-		@param Staff's age
+	@param Staff's age
 	*/
 	void setAge(int age);
 
 	/**
-		Sets staff's working schedule
+	Sets staff's working schedule
 
-		@param Staff's working schedule
+	@param Staff's working schedule
 	*/
 	void setSchedule(Schedule workSchedule);
 
 
 	/**
-		Sets staff's wage and throws an InvalidWage
-		if the wage passed as the parameter is negative
+	Sets staff's wage and throws an InvalidWage
+	if the wage passed as the parameter is negative
 
-		@param Staff's wage
+	@param Staff's wage
 	*/
-	void setWage(int wage);
+	void setWage(double wage);
 
 	/**
-		Sets staff's password to the one
-		passed as the function's parameter
+	Sets staff's password to the one
+	passed as the function's parameter
 
-		@param Staff's password
+	@param Staff's password
 	*/
 	void setPassword(std::string pass);
 
 	/**
-		Changes staff's location only if the hour of entrance
-		is in between staff's working hours
+	Changes staff's payment situation
+	*/
+	void changeWasPaid();
+
+	/**
+	Changes staff's location only if the hour of entrance
+	is in between staff's working hours
 	*/
 	void changeLocation();
 
 	/**
-		Handles the editing of the staff's information
+	Handles the editing of the staff's information
 	*/
 	void editStaff();
 
 	/**
-		Verifies if password is correct for the staff invoking the function
+	Verifies if password is correct for the staff invoking the function
 
-		@param Staff's password
-		@return Returns true if password coincides, false otherwise
+	@param Staff's password
+	@return Returns true if password coincides, false otherwise
 	*/
 	bool auth(std::string pass);
 
-private:
+	/**
+	Overload of operator << for class Staff
+	@return ostream
+	*/
+	friend std::ostream& operator<<(std::ostream& out, const Staff& staff);
+
+	/**
+	Displays information about Staff
+	@param
+	@return
+	*/
+	void informationStaff();
 };
 
 #endif /* STAFF_H_ */

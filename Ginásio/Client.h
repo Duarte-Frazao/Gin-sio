@@ -142,6 +142,11 @@ public:
 	*/
 	void changeLocation();
 
+	/**
+	Displays information about Client
+	@param
+	@return
+	*/
 	void informationClient();
 
 	/** Enters a menu handler to edit client*/

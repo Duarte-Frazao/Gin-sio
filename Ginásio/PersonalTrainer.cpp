@@ -19,9 +19,9 @@ PersonalTrainer::~PersonalTrainer() {
 
 #pragma region Gets
 
-vector<Client *> PersonalTrainer::getClients() const {return clients;}
+vector<Client *> PersonalTrainer::getClients() const { return clients; }
 
-string PersonalTrainer::getSpecializedArea() const {return specializedArea;}
+string PersonalTrainer::getSpecializedArea() const { return specializedArea; }
 
 
 #pragma endregion
@@ -55,7 +55,7 @@ and returns the option chosen
 */
 int editPersonalTrainerMenu() {
 
-	string options[] = { "1. Edit age", "2. Edit wage", "3. Edit location", 
+	string options[] = { "1. Edit age", "2. Edit wage", "3. Edit location",
 		"4. Edit specialized area", "5. Edit associated clients", "0. Return" };
 	for (size_t i = 0; i < 6; i++) {
 		cout << options[i] << endl;
@@ -88,7 +88,7 @@ void PersonalTrainer::editPersonalTrainer(Gym &gym) {
 			setAge(newAge);
 			cout << "Staff's age sucessfully modified!\n";
 		}
-			break;
+		break;
 		case 2:
 		{
 			/* edit wage */
@@ -104,7 +104,7 @@ void PersonalTrainer::editPersonalTrainer(Gym &gym) {
 			setWage(newWage);
 			cout << "Staff's wage sucessfully modified!\n";
 		}
-			break;
+		break;
 		case 3:
 			/* edit location */
 			changeLocation();
@@ -132,10 +132,10 @@ void PersonalTrainer::editPersonalTrainer(Gym &gym) {
 
 /**
 Shows the menu of options for editing the personal trainer's
-	associated clients and returns the option chosen
+associated clients and returns the option chosen
 
-	@return Returns the chosen option of the personal trainer's 
-	associated clients' edit menu
+@return Returns the chosen option of the personal trainer's
+associated clients' edit menu
 */
 int editAssociatedClientsMenu() {
 
@@ -175,8 +175,8 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 			bool clientExist = false;
 
 			//Search if the client already exists
-			for(auto pClient : gym.getClients()){
-				if(pClient->getName() == name && pClient->getAge() == age && pClient->getProgram()->getCode() == program){
+			for (auto pClient : gym.getClients()) {
+				if (pClient->getName() == name && pClient->getAge() == age && pClient->getProgram()->getCode() == program) {
 					pClient->setPT(this);
 					clientExist = true;
 					break;
@@ -227,5 +227,3 @@ bool PersonalTrainer::recognizeProf() const
 {
 	return true;
 }
-
-#pragma endregion

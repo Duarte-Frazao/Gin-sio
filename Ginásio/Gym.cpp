@@ -165,7 +165,7 @@ void Gym::login() {
 				string pass;
 				cout << "Password: ";
 				ch = _getch();
-				while (ch != '\n')
+				while (ch != 13)
 				{
 					if (ch == 8)
 					{
@@ -358,21 +358,19 @@ void Gym::menuStaff() {
 
 #pragma endregion
 
-//Prints the programs the gym has to offer, as well as the conditions
-void Gym::displayPrograms() const
+//Shows gym's clients id's
+void Gym::displayClientsIds()
 {
-	cout << name << " has the following programs to offer:\n\n";
-	for (unsigned int i = 0; i < programs.size(); i++)
+	for (size_t i = 0; i < clients.size(); i++)
 	{
-		cout << *programs.at(i);
+		cout << std::setw(10) << std::left << clients.at(i)->getName() << " ID: " << clients.at(i)->getId() << endl;
 	}
 }
-
 
 //Prints the staff the gym has contracted
 void Gym::displayStaffIds() const
 {
-	for (size_t i = 0; i < clients.size(); i++)
+	for (size_t i = 0; i < staff.size(); i++)
 	{
 		cout << staff.at(i)->getName() << " ID: " << staff.at(i)->getId() << endl;
 	}
@@ -384,6 +382,16 @@ void Gym::displayProfsIds() const
 	for (size_t i = 0; i < profs.size(); i++)
 	{
 		cout << profs.at(i)->getName() << " ID: " << profs.at(i)->getId() << endl;
+	}
+}
+
+//Prints the programs the gym has to offer, as well as the conditions
+void Gym::displayPrograms() const
+{
+	cout << name << " has the following programs to offer:\n\n";
+	for (unsigned int i = 0; i < programs.size(); i++)
+	{
+		cout << *programs.at(i);
 	}
 }
 
@@ -454,19 +462,6 @@ int clientMenu() {
 }
 
 
-
-//Shows gym's clients id's
-void Gym::displayClientsIds()
-{
-	for (size_t i = 0; i < clients.size(); i++)
-	{
-		cout << std::setw(10) << std::left << clients.at(i)->getName() << " ID: " << clients.at(i)->getId() << endl;
-	}
-}
-
-
-
-
 /**
 Removes a client
 */
@@ -487,6 +482,56 @@ void Gym::removeClient(Gym &gym)
 			return;
 		}
 	}
+}
+
+/**
+Deposits amount
+*/
+void Gym::depositAmount()
+{
+	cout << "What is the amount to deposit to gym's account ? ";
+	double amount;
+	cin >> amount;
+	while (cin.fail() || amount < 0) {
+		cout << "Please insert a valid amount!\n";
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cin >> amount;
+	}
+	Transaction newTransaction("DEPOSIT", amount);
+	newTransaction.setDescription("BANK TRANSFER");
+
+	gymFinance.addTransaction(newTransaction);
+	cout << "Transaction performed successfully!\n\n";
+}
+
+/**
+Makes payments for every staff who hasn't been paid yet
+*/
+void Gym::makePayments()
+{
+	cout << "------------ Paid workers ------------ \n";
+	if (staff.size() == 0) {
+		cout << "No workers to be paid!\n\n";
+	}
+	else {
+		bool someonePaid = false, allPaid = true;
+		for (auto worker : staff) {
+			if (!worker->getWasPaid()) {
+				Transaction payment("WITHDRAWAL", worker->getWage());
+				payment.setDescription("MONTHLY PAYMENT");
+				if (gymFinance.addTransaction(payment)) {
+					someonePaid = true;
+					worker->changeWasPaid();
+					cout << "ID: " << worker->getId() << " | Name: " << worker->getName() << endl;
+				}
+				else allPaid = false;
+			}
+		}
+		if (allPaid && !someonePaid) cout << "Every worker is already paid!\n";
+		else if (!someonePaid) cout << "Insufficient balance to pay any salary!\n";
+	}
+	cout << endl;
 }
 
 //To-do falta dar overload de operator << no schedule para substituir printSchedule

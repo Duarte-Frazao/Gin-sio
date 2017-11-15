@@ -83,4 +83,3 @@ private:
 	std::string dateTransaction;
 };
 
-#endif

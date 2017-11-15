@@ -39,6 +39,36 @@ Gym * readInformationFile(std::string fileName){
 
 
 
+	//Finance
+	//---------------------
+	std::string transaction_type;
+	std::string transaction_description;
+	double transaction_amount;
+	std::string transaction_dateTransaction;
+
+	inFile >> controlWord;
+	if(controlWord != "Finance"); //throw error
+
+	Finance *finance = new Finance();
+
+	while(inFile.peek() != ';' ){
+
+		inFile >> brackets >> transaction_type >> transaction_amount;
+
+		std::string line;
+		getline(inFile, line);
+
+		transaction_description = line.substr(line.find_first_of("\"")+1, line.find_last_of("\"")-line.find_first_of("\"")-1);
+		transaction_dateTransaction = line.substr(line.find_first_of("\'")+1, line.find_last_of("\'")-line.find_first_of("\'")-1);
+
+		Transaction temp(transaction_type, transaction_description, transaction_amount, transaction_dateTransaction);
+		finance->addTransaction(temp);
+	}
+	inFile.get();
+
+	//---------------------
+
+
 	//Schedule
 	//---------------------
 	int schedule_day;
@@ -175,7 +205,7 @@ Gym * readInformationFile(std::string fileName){
 	inFile >> controlWord;
 	if (controlWord != "end"); //throw error
 
-	Finance *finance = new Finance();
+
 
 
 	return new Gym(gym_name, programs, clients, staff, profs,*schedule,
@@ -197,6 +227,21 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	outFile << "[ " << gym.getName() << " " << gym.getMaxNumClients() << " " << gym.getMaxCapacity() << " ]\n\n";
 	//---------------------
 
+
+	//Schedule
+	//----------------------------
+	outFile << "Finance" << std::endl;
+
+	for(auto transaction : gym.getGymFinance().getTransactions()) {
+		outFile << "[ " << std::setw(10) << std::left <<transaction.getType() << " ";
+		outFile  << std::setw(6) << std::right << transaction.getAmount() << " ";
+		outFile  << std::setw(20) << std::left << "\"" + transaction.getDescription() + "\"" << " ";
+		outFile  << std::setw(26) << std::right << "\'" + transaction.getDateTransaction() + "\'";
+		outFile << " ]\n";
+	}
+
+	outFile << ";\n\n";
+	//----------------------------
 
 	//Schedule
 	//----------------------------

@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Transaction.h"
-
 using namespace std;
 
 // Transaction constructors

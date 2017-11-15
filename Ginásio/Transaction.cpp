@@ -70,12 +70,7 @@ void Transaction::setDateTransaction(string time) {
 #pragma endregion
 
 ostream& operator<< (ostream &out, const Transaction &transaction) {
-<<<<<<< HEAD
 	out << right << setw(10) << transaction.type << " ------- "
 		<< left << setw(6) << transaction.amount << transaction.getDateTransaction();
-=======
-	out << right << setw(10) << transaction.type << " ------- " 
-		<< left << setw(6) <<  transaction.amount  << transaction.getDateTransaction();
->>>>>>> 2a4946d06b78802e236261a9d3e2b86a19463b26
 	return out;
 }

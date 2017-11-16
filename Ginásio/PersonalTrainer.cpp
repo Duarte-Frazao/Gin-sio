@@ -6,6 +6,7 @@ using namespace std;
 
 //Functions
 int filterInput(int inf, int sup, std::string msg = "Selection: ");
+void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
 
 PersonalTrainer::PersonalTrainer(int age, int wage, string specializedArea) :
 	Staff(age, wage), specializedArea(specializedArea) {}
@@ -130,8 +131,11 @@ int editAssociatedClientsMenu()
 void PersonalTrainer::editAssociatedClients(Gym &gym) {
 
 	string name;
-	int id, age;
+	int age;
 	bool continueInMenu = true;
+	Client *clientToAdd = NULL;
+	Client *clientToErase = NULL;
+	int optionClient;
 	do
 	{
 		int option = editAssociatedClientsMenu();
@@ -142,34 +146,56 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 			break;
 		case 1:
 		{
-			/* add new client to Personal Trainer */
-			cout << "Insert the name of the client to add: ";
-			cin.ignore(1000, '\n');
-			getline(cin, name);
-			cout << "Insert client's age: ";
-			cin >> age;
-			cin.ignore();
-
-			int program;
-			cout << "Insert the subscripted gym program: ";
-			cin >> program;
-
-
-			bool clientExist = false;
-			//Search if the client already exists
-			for (auto pClient : gym.getClients()) {
-				if (pClient->getName() == name && pClient->getAge() == age && pClient->getProgram()->getCode() == program) {
-					pClient->setPT(this);
-					clients.push_back(pClient);
-					clientExist = true;
-					break;
-				}
+			cout << "Willing to insert existent client (y/n) ?";
+			char answer;
+			cin >> answer;
+			answer = tolower(answer);
+			while (answer != 'Y' && answer != 'y' && answer != 'N' && answer != 'n') {
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cin >> answer;
+				answer = tolower(answer);
 			}
 
-			//If the client is new at the gym
-			if (!clientExist) {
+			if (answer == 'y') {
+
+				bool alreadyExists;
+				do {
+					alreadyExists = false;
+					inputClientIdObj(optionClient, gym, &clientToAdd);
+					for (auto client : clients) {
+						if (client->getId() == clientToAdd->getId()) {
+							alreadyExists = true;
+							cout << "Client already exists related to this personal trainer!\n";
+						}
+					}
+				} while (alreadyExists);
+
+				int program;
+				cout << "Insert the subscripted gym program: ";
+				cin >> program;
+
+				clientToAdd->setPT(this);
+				clients.push_back(clientToAdd);
+			}
+			else {
+
+				/* add new client to Personal Trainer */
+				cout << "Insert the name of the client to add: ";
+				cin.ignore(1000, '\n');
+				getline(cin, name);
+				cout << "Insert client's age: ";
+				cin >> age;
+				cin.ignore();
+
+				int program;
+				cout << "Insert the subscripted gym program: ";
+				cin >> program;
+
+				//If the client is new at the gym
 				Client * newClient = new Client(name, new Program(program), age, this);
 				gym.addClient(newClient); //Also add the client to the gym's clients vector
+				clients.push_back(newClient);
 			}
 
 			cout << "Client added successfully to Personal Trainer!\n";
@@ -177,20 +203,40 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 		}
 		case 2:
 		{
-			/* remove client associated with Personal Trainer, by Id */
-			cout << "Insert the id of the client to remove: ";
-			cin >> id;
-			cin.ignore();
+			if (gym.getClients().empty()) {
+				cerr << "There are no clients in the gym" << std::endl;
+				return;
+			}
+
+			cout << "----------ID Selection----------" << endl;
+			bool badInput = false;
+			for (auto client : clients) {
+				cout << setw(10) << left << client->getName() << " ID: " << client->getId() << endl;
+			}
+
+			cout << endl << "Insira o id do cliente: ";
+			do
+			{
+				if (badInput)
+				{
+					cout << "Insira um id valido" << endl;
+					for (auto client : clients)
+						cout << setw(10) << left << client->getName() << " ID: " << client->getId() << endl;
+				}
+				cin >> optionClient;
+				badInput = true;
+
+			} while (!gym.findClient(optionClient, &clientToErase));
+			
 			vector<Client *>::iterator it_clients;
 			for (it_clients = clients.begin(); it_clients != clients.end(); it_clients++) {
-				if ((*it_clients)->getId() == id) {
+				if ((*it_clients)->getId() == clientToErase->getId()) {
 					clients.erase(it_clients);
-					cout << "Client with id " << id << " erased successfully!\n";
-				}
-				if (it_clients == clients.end()) {
-					cout << "Client with id " << id << " does not exist!\n";
+					cout << "Client with id " << clientToErase->getId() << " erased successfully!\n";
+					return;
 				}
 			}
+			cout << "Client with id " << clientToErase->getId() << " does not exist!\n";
 			break;
 		}
 		default:
@@ -218,7 +264,8 @@ ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
 	out << "Specialized area: " << pt.specializedArea << endl;
 	out << "Clients by whom it is responsible: ";
 	if (pt.getClients().size() == 0) out << "NONE" << endl;
+	cout << endl;
 	for (auto client : pt.getClients())
-		out << *client << endl;
+		out << "-> ID: " << client->getId() << " | " << client->getName() << endl;
 	return out;
 }

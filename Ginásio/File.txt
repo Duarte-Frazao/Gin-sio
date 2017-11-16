@@ -1,6 +1,12 @@
 Gym
 [ FitnessMx 1000 50 ]
 
+Finance
+[ DEPOSIT      2000 "BANK TRANSFER"      'Wed Nov 15 18:11:47 2017' ]
+[ WITHDRAWAL   2000 "MONTHLY PAYMENT"    'Wed Nov 15 18:12:00 2017' ]
+[ DEPOSIT        20 "CLIENT PAYMENT"     'Wed Nov 15 18:13:00 2017' ]
+;
+
 Schedule
 [ 1 09:00 22:00 ]
 [ 2 09:00 22:00 ]

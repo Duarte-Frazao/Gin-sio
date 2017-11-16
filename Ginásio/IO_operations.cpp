@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include "termcolor.hpp"
+
 
 /**
 Filters an option by giving two limits, makes the user input and integer between them
@@ -18,11 +20,12 @@ int filterInput(int inf, int sup, std::string msg)
 
 	do
 	{
-		std::cout << msg;
+		if(msg != "")
+			std::cout<< sign::question <<msg;
 		std::cin >> option;
 		if (std::cin.fail() || option< inf || option > sup)
 		{
-			std::cout << "Please enter a valid value.\n\n";
+			std::cout << sign::error << "Please enter a valid value.\n\n";
 			std::cin.clear();
 			std::cin.ignore(1000, '\n');
 			validValue = false;
@@ -35,6 +38,7 @@ int filterInput(int inf, int sup, std::string msg)
 	return option;
 
 }
+
 
 
 

@@ -5,6 +5,7 @@
 #include <iomanip>
 #include "Gym.h"
 #include "Client.h"
+#include "termcolor.hpp"
 
 #ifdef WIN32
 #include <conio.h>
@@ -15,7 +16,6 @@ int _getch(void);
 using namespace std;
 
 void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
-void inputClientId(int &optionClient, Gym &gym);
 void inputStaffIdObj(int &optionStaff, Gym &gym, Staff** staff_found);
 void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found);
 
@@ -372,7 +372,7 @@ void Gym::addClient()
 	Client * newClient = new Client (name, codeToProgram(program), age, professor);
 
 	clients.push_back(newClient);
-	cout << "Cliente adicionado com sucesso" << endl;
+	cout << sign::success <<"Cliente adicionado com sucesso" << endl << endl << endl;
 	cout << "Informacao do novo cliente:" << endl;
 	cout << *newClient;
 }
@@ -393,7 +393,7 @@ void Gym::removeClient()
 	for (it_client = clients.begin(); it_client != clients.end(); it_client++) {
 		if ((*it_client)->getId() == optionClient) {
 			clients.erase(it_client);
-			cout << "Client with id " << optionClient << " erased successfully!\n";
+			cout << sign::success << "Client with id " << optionClient << " erased successfully!\n";
 			return;
 		}
 	}
@@ -426,7 +426,7 @@ void Gym::addStaff()
 	getline(cin, pass);
 
 	staff.push_back(new Staff(name, age, wage, pass));
-	cout << "Staff added successfully!\n";
+	cout << sign::success <<"Staff added successfully!\n";
 }
 
 /**
@@ -480,7 +480,7 @@ void Gym::addPersonalTrainer()
 	PersonalTrainer* pt = new PersonalTrainer(name, age, wage, pass, specializedArea);
 	staff.push_back(pt);
 	profs.push_back(pt);
-	cout << "Personal trainer added successfully!\n";
+	cout << sign::success <<"Personal trainer added successfully!\n";
 }
 
 /**
@@ -529,7 +529,7 @@ void Gym::depositAmount()
 	newTransaction.setDescription("BANK TRANSFER");
 
 	gymFinance.addTransaction(newTransaction);
-	cout << "Transaction performed successfully!\n\n";
+	cout << sign::success<<"Transaction performed successfully!\n\n";
 }
 
 /**

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "stdafx.h"
 #include "PersonalTrainer.h"
+#include "termcolor.hpp"
 
 using namespace std;
 
@@ -92,7 +93,7 @@ void PersonalTrainer::editPersonalTrainer(Gym &gym) {
 			cin.ignore(1000, '\n');
 			getline(cin, newSpecializedArea);
 			setSpecializedArea(newSpecializedArea);
-			cout << "PT's specialized area sucessfully modified!\n";
+			cout << sign::success <<"PT's specialized area sucessfully modified!\n";
 			break;
 		case 2:
 			editAssociatedClients(gym);
@@ -146,7 +147,7 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 			break;
 		case 1:
 		{
-			cout << "Willing to insert existent client (y/n) ?";
+			cout << sign::question << "Willing to insert existent client (y/n) ?";
 			char answer;
 			cin >> answer;
 			answer = tolower(answer);
@@ -166,7 +167,7 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 					for (auto client : clients) {
 						if (client->getId() == clientToAdd->getId()) {
 							alreadyExists = true;
-							cout << "Client already exists related to this personal trainer!\n";
+							cout << sign::error << "Client already exists related to this personal trainer!\n";
 						}
 					}
 				} while (alreadyExists);
@@ -198,7 +199,7 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 				clients.push_back(newClient);
 			}
 
-			cout << "Client added successfully to Personal Trainer!\n";
+			cout << sign::success << "Client added successfully to Personal Trainer!\n";
 			break;
 		}
 		case 2:
@@ -214,12 +215,12 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 				cout << setw(10) << left << client->getName() << " ID: " << client->getId() << endl;
 			}
 
-			cout << endl << "Insira o id do cliente: ";
+			cout << endl << sign::question << "Insira o id do cliente: ";
 			do
 			{
 				if (badInput)
 				{
-					cout << "Insira um id valido" << endl;
+					cout << sign::error << "Insira um id valido" << endl;
 					for (auto client : clients)
 						cout << setw(10) << left << client->getName() << " ID: " << client->getId() << endl;
 				}
@@ -232,11 +233,11 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 			for (it_clients = clients.begin(); it_clients != clients.end(); it_clients++) {
 				if ((*it_clients)->getId() == clientToErase->getId()) {
 					clients.erase(it_clients);
-					cout << "Client with id " << clientToErase->getId() << " erased successfully!\n";
+					cout << sign::success << "Client with id " << clientToErase->getId() << " erased successfully!\n";
 					return;
 				}
 			}
-			cout << "Client with id " << clientToErase->getId() << " does not exist!\n";
+			cout << sign::error <<"Client with id " << clientToErase->getId() << " does not exist!\n";
 			break;
 		}
 		default:

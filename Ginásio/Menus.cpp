@@ -28,7 +28,7 @@ int filterInput(int inf, int sup,std::string msg = "Selection: ");
 
 void mainMenu(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Gym related", "\t2.	Client related", "\t3.	Staff related", "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Gym related", "\t2.	Client related", "\t3.	Staff related","\t4.	Testing Hall", "\n\t0.	Leave\n" };
 
 	bool continueInMenu = true;
 	do
@@ -53,6 +53,9 @@ void mainMenu(Gym &gym)
 			break;
 		case 3:
 			staffMenu(gym);
+			break;
+		case 4:
+			//generateExercisePlan(gym);
 			break;
 		default:
 			cout << "Algum erro";

@@ -7,7 +7,10 @@
 
 #ifndef EXERCISE_H_
 #define EXERCISE_H_
-
+#include <string>
+#include <vector>
+#include <iostream>
+#include "Material.h"
 
 class Material;
 
@@ -23,12 +26,14 @@ private:
 	bool abdominals;
 	bool gluteus;
 	bool back;
+	std::string name;
 	std::string description;
-	std::vector<Material> necessaryMaterial;
+	std::vector<Material*> necessaryMaterial;
+	int intensity;
 public:
 	Exercise(bool legs, bool calves, bool cardio,bool chest,bool shoulders,bool biceps,
 			bool triceps, bool abdominals, bool gluteus,
-			bool back, std::string description, std::vector<Material> necessaryMaterial);
+			bool back,std::string name, std::string description, std::vector<Material*> necessaryMaterial, int intensity);
 	~Exercise();
 	bool isFunctional();
 	bool isCardio();
@@ -36,10 +41,20 @@ public:
 	bool chestExercise();
 	bool shoulderExercise();
 	bool bicepExercise();
-	std::vector<Material> getNecessaryMaterial();
+	bool calvesExercise();
+	bool shouldersExercise();
+	bool tricepsExercise();
+	bool bicepsExercise();
+	bool abdominalsExercise();
+	bool gluteusExercise();
+	bool backExercise();
+
+	std::vector<Material*> getNecessaryMaterial();
 	std::string getDescription();
-	std::ostream &operator<<(std::ostream &out);
-	int traiedMuscles();
+	friend std::ostream& operator<<(std::ostream& out,const  Exercise& e);
+	int trainedMuscles();
+	std::string getName();
+	int getIntensity();
 
 };
 

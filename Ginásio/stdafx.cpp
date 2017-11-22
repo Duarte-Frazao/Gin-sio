@@ -11,8 +11,8 @@
 #include "Program.h"
 #include "Date.h"
 #include "ErrorClasses.h"
-#include "Exercise.h"
 #include "Material.h"
-#include "Plan.h"
+#include "Exercise.h"
+#include "Program.h"
 // TODO: reference any additional headers you need in STDAFX.H
 // and not in this file

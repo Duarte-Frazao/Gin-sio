@@ -14,12 +14,16 @@
 
 class Plan {
 private:
-	std::vector<Exercise> exercises;
+	std::vector<Exercise*> exercises;
 	std::string planType; //Functional, cardio, hypertrophism...
-	//int date; data de criacao, para haver renovação de 3 em 3 meses
+	//int date; data de criacao, para haver renovação de 3 em 3 meses Adicionar objeto que criar tempo, para poder fazer cenas fiches com isto
 public:
-	Plan(std::vector<Exercise> exercises, std::string planType);
+	Plan();
+	Plan(std::vector<Exercise*> exercises, std::string planType);
 	~Plan();
+	std::ostream & operator<<(std::ostream &out);
+	std::vector<Exercise*> getExercises() ;
+	std::string  getPlanType();
 };
 
 #endif /* PLAN_H_ */

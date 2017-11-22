@@ -7,6 +7,7 @@
 
 #ifndef MATERIAL_H_
 #define MATERIAL_H_
+#include <string>
 
 
 class Material {
@@ -17,8 +18,9 @@ public:
 	bool isMachine();
 	int getMachineNumber();
 	std::string getMaterialName;
-	Material();
+	Material(bool machine, std::string materialName, int machineNumber);
 	~Material();
+	std::ostream & operator<<(std::ostream &out);
 };
 
 #endif /* MATERIAL_H_ */

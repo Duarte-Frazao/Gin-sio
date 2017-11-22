@@ -262,7 +262,7 @@ void PersonalTrainer::printInfo()
 
 ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
 	out << static_cast<const Staff &>(pt);
-	out << "Specialized area: " << pt.specializedArea << endl;
+	out << "Specialized area: " << pt.getSpecializedArea() << endl;
 	out << "Clients by whom it is responsible: ";
 	if (pt.getClients().size() == 0) out << "NONE" << endl;
 	cout << endl;

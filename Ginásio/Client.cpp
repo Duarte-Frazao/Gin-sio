@@ -238,3 +238,59 @@ void Client::informationClient()
 	//Pode-se adicionar mais op��es como mostrar plano de treino
 	cout << *this;
 }
+
+vector<Material*> generateMaterial()
+{
+	vector <Material *> m1;
+	Material *m= new Material(true, "colchao", 2);
+	m1.push_back(m);
+
+	cout << "vetor de material com tamanho: "<< m1.size() <<endl;
+	return m1;
+}
+
+void Client::setPlans()
+{
+	plans= generateStandardPlans();
+}
+
+vector<Exercise *> generateFiveExercises()
+{
+	int s=5;
+	vector<Exercise *> v;
+	while(s!=0)
+	{
+		//Exercise * e(vb.at(0),vb.at(1),vb.at(2),vb.at(3),vb.at(4),vb.at(5),vb.at(6),vb.at(7),vb.at(8),vb.at(9));
+		string s1 = "random";
+		string s2 = "flex";
+		Exercise * e = new Exercise(true,false,false,false,false,false,false,false,false,true, s1,s2, generateMaterial(), 9);
+		v.push_back(e);
+		s--;
+	}
+
+	cout << "vetor de exercisios com tamanho: "<< v.size() <<endl;
+	return v;
+}
+
+vector<Plan*> Client::generateStandardPlans(){
+
+	int numPlans= enrolledProgram->getDays()/4; //Dividir os dias por 4 semanas
+
+	cout << enrolledProgram->getDays()<< " "<< numPlans << endl;
+	vector<Plan*> v;
+
+
+
+	while(numPlans!=0)
+	{
+		string s= "random";
+		Plan *p = new Plan(generateFiveExercises(),s);
+		v.push_back(p);
+		numPlans--;
+	}
+	cout << "vetor de planos com tamanho: "<< v.size() <<endl;
+	return v;
+
+}
+
+std::vector<Plan *> Client::getPlans(){return plans;}

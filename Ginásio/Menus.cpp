@@ -24,11 +24,13 @@ void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found);
 void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found);
 void intervalFuntion();
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
-
+void teste(Gym &gym);
 
 void mainMenu(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Gym related", "\t2.	Client related", "\t3.	Staff related","\t4.	Testing Hall", "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Gym related", "\t2.	Client related", "\t3.	Staff related", "\t4. Testing Hall",  "\n\t0.	Leave\n" };
+
+
 
 	bool continueInMenu = true;
 	do
@@ -55,7 +57,7 @@ void mainMenu(Gym &gym)
 			staffMenu(gym);
 			break;
 		case 4:
-			//generateExercisePlan(gym);
+			teste(gym);
 			break;
 		default:
 			cout << "Algum erro";
@@ -501,4 +503,34 @@ void intervalFuntion()
 	cin.ignore(1000, '\n');
 	getline(cin, temp);
 	cout << endl;
+}
+
+
+
+
+void teste(Gym &gym)
+{
+	vector<string> sections = { "\t1.	Teste1" , "\n\t0.	Leave\n" };
+	for(uint i=0;i < gym.getClients().size();i++) gym.getClients().at(i)->setPlans();
+	bool continueInMenu = true;
+	do
+	{
+		cout << endl << "\t 	Testing Hall 	" << endl;
+		cout << "\t--------------------------" << endl << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			for(uint i = 0; i < gym.getClients().at(0)->getPlans().size();i++ ) cout <<  gym.getClients().at(0)->getPlans().at(i) << endl;
+			break;
+		}
+	} while (continueInMenu);
+
 }

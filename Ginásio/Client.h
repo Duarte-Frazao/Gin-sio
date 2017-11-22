@@ -6,6 +6,7 @@
 #include "Gym.h"
 #include "Program.h"
 #include "ErrorClasses.h"
+#include "Plan.h"
 
 
 class PersonalTrainer;
@@ -24,6 +25,7 @@ class Client {
 	bool insideGym;
 	bool paymentsUpToDate;
 	int numLatePayments;
+	std::vector<Plan *> plans;
 
 
 
@@ -202,6 +204,13 @@ public:
 	//void changeProgram() const;
 	//void changePT() const;
 	//void editBasicSettings() const; client, name age
+
+	std::vector<Plan*> generateStandardPlans();
+
+
+	std::vector<Plan *> getPlans();
+
+	void setPlans();
 
 
 

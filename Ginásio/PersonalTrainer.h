@@ -80,6 +80,8 @@ public:
 	*/
 	void printInfo();
 	
+
+
 };
 
 #endif /* PERSONALTRAINER_H_ */

@@ -6,9 +6,9 @@
  */
 
 #include "Material.h"
+#include <iostream>
 
-Material::Material() {
-	// TODO Auto-generated constructor stub
+Material::Material(bool machine, std::string materialName, int machineNumber): machine(machine), materialName(materialName), machineNumber(machineNumber) {
 
 }
 
@@ -16,3 +16,13 @@ Material::~Material() {
 	// TODO Auto-generated destructor stub
 }
 
+bool Material::isMachine(){ return machine;}
+
+int Material::getMachineNumber() {return machineNumber;}
+
+std::ostream & Material::operator<<(std::ostream &out)
+{
+	if (!machine) out << "Material: " <<materialName << "\n";
+	else out << "Machine: " << materialName << " Number: " << machineNumber << "\n";
+	return out;
+}

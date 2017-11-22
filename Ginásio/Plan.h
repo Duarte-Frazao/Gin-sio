@@ -21,7 +21,7 @@ public:
 	Plan();
 	Plan(std::vector<Exercise*> exercises, std::string planType);
 	~Plan();
-	std::ostream & operator<<(std::ostream &out);
+	friend std::ostream & operator<<(std::ostream &out,const Plan &p1);
 	std::vector<Exercise*> getExercises() ;
 	std::string  getPlanType();
 };

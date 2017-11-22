@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include "termcolor.hpp"
+#include "Plan.h"
 
 
 
@@ -528,7 +529,11 @@ void teste(Gym &gym)
 			continueInMenu = false;
 			break;
 		case 1:
-			for(uint i = 0; i < gym.getClients().at(0)->getPlans().size();i++ ) cout <<  gym.getClients().at(0)->getPlans().at(i) << endl;
+
+			for(uint i = 0; i < gym.getClients().at(0)->getPlans().size();i++) {
+				Plan * plan = gym.getClients().at(0)->getPlans().at(i);
+				std::cout <<  *plan << endl;
+			}
 			break;
 		}
 	} while (continueInMenu);

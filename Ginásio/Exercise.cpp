@@ -21,42 +21,42 @@ Exercise::~Exercise() {
 }
 
 
-bool Exercise::isFunctional(){
+bool Exercise::isFunctional()const{
 	if (legs && chest &&biceps) return true; //mudar
 	return false;
 }
 
-bool Exercise::isCardio() {return cardio;}
+bool Exercise::isCardio() const{return cardio;}
 
-bool Exercise::legExercise(){
+bool Exercise::legExercise()const{
 	if (legs ||calves ||gluteus) return true;
 	return false;
 }
 
-bool Exercise::chestExercise() {return chest;}
+bool Exercise::chestExercise() const{return chest;}
 
-bool Exercise::shoulderExercise(){return shoulders;}
+bool Exercise::shoulderExercise()const{return shoulders;}
 
-bool Exercise::bicepExercise(){return biceps;}
+bool Exercise::bicepExercise()const{return biceps;}
 
-std::vector<Material*> Exercise::getNecessaryMaterial(){return necessaryMaterial;}
+std::vector<Material*> Exercise::getNecessaryMaterial()const{return necessaryMaterial;}
 
-std::string Exercise::getDescription(){ return description;}
+std::string Exercise::getDescription()const{ return description;}
 
-std::string Exercise::getName(){ return name;}
+std::string Exercise::getName()const{ return name;}
 
-bool Exercise::calvesExercise(){return calves;}
-bool Exercise::shouldersExercise(){return shoulders;}
-bool Exercise::tricepsExercise(){return triceps;}
-bool Exercise::bicepsExercise(){return biceps;}
-bool Exercise::abdominalsExercise(){return abdominals;}
-bool Exercise::gluteusExercise(){return gluteus;}
-bool Exercise::backExercise(){return back;}
+bool Exercise::calvesExercise()const{return calves;}
+bool Exercise::shouldersExercise()const{return shoulders;}
+bool Exercise::tricepsExercise()const{return triceps;}
+bool Exercise::bicepsExercise()const{return biceps;}
+bool Exercise::abdominalsExercise()const{return abdominals;}
+bool Exercise::gluteusExercise()const{return gluteus;}
+bool Exercise::backExercise()const{return back;}
 
-int Exercise::getIntensity(){return intensity;}
+int Exercise::getIntensity()const{return intensity;}
 
 
-std::ostream& operator<<(std::ostream& out,  Exercise& e)
+std::ostream& operator<<(std::ostream& out, const Exercise & e)
 {
 	out << e.getName();
 	out << "\n";

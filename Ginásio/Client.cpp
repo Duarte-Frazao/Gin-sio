@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Client.h"
 #include "ErrorClasses.h"
+#include "Material.h"
 
 //Functions
 int filterInput(int inf, int sup,std::string msg = "Selection: ");

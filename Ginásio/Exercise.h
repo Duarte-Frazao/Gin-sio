@@ -35,26 +35,26 @@ public:
 			bool triceps, bool abdominals, bool gluteus,
 			bool back,std::string name, std::string description, std::vector<Material*> necessaryMaterial, int intensity);
 	~Exercise();
-	bool isFunctional();
-	bool isCardio();
-	bool legExercise();
-	bool chestExercise();
-	bool shoulderExercise();
-	bool bicepExercise();
-	bool calvesExercise();
-	bool shouldersExercise();
-	bool tricepsExercise();
-	bool bicepsExercise();
-	bool abdominalsExercise();
-	bool gluteusExercise();
-	bool backExercise();
+	bool isFunctional() const;
+	bool isCardio()const;
+	bool legExercise()const;
+	bool chestExercise()const;
+	bool shoulderExercise()const;
+	bool bicepExercise()const;
+	bool calvesExercise()const;
+	bool shouldersExercise()const;
+	bool tricepsExercise()const;
+	bool bicepsExercise()const;
+	bool abdominalsExercise()const;
+	bool gluteusExercise()const;
+	bool backExercise()const;
 
-	std::vector<Material*> getNecessaryMaterial();
-	std::string getDescription();
-	friend std::ostream& operator<<(std::ostream& out,const  Exercise& e);
+	std::vector<Material*> getNecessaryMaterial()const;
+	std::string getDescription()const;
+	friend std::ostream& operator<<(std::ostream& out,const Exercise & e);
 	int trainedMuscles();
-	std::string getName();
-	int getIntensity();
+	std::string getName()const;
+	int getIntensity()const;
 
 };
 

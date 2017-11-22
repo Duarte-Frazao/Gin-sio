@@ -7,6 +7,7 @@
 
 #include "Plan.h"
 #include <iostream>
+#include "Exercise.h"
 
 Plan::Plan(){}
 
@@ -19,9 +20,9 @@ Plan::~Plan() {
 	// TODO Auto-generated destructor stub
 }
 
-std::ostream & Plan::operator<<(std::ostream &out){
-	out << "Program objective: " << planType << "\n";
-	for (auto &exercise:exercises) out << exercise;
+std::ostream & operator<<(std::ostream &out,const Plan &p1){
+	out << "Program objective: " << p1.planType << "\n";
+	for (auto exercise : p1.exercises) out << *exercise;
 	return out;
 }
 

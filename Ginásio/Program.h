@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <string>
 #include <utility>
-
 
 class Gym;
 
@@ -42,10 +43,34 @@ public:
 	int getCode() const;
 
 	/**
+	Sets number of program's gym days
+
+	@param number of program's gym days
+	*/
+	void setDays(int days);
+
+	/**
+	Sets cost of program
+
+	@param program's cost
+	*/
+	void setCost(float cost);
+
+	/**
+	Sets program's code
+
+	@param program's code
+	*/
+	void setCode(int code);
+
+	/**
 	Prints the Program information
 	*/
 	friend std::ostream & operator<<(std::ostream &out, const Program &program);
 
+	/**
+	Edits program's information
+	*/
 	void editProgram(Gym &gym);
 };
 

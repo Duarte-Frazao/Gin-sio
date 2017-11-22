@@ -18,6 +18,7 @@ using namespace std;
 void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
 void inputStaffIdObj(int &optionStaff, Gym &gym, Staff** staff_found);
 void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found);
+void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found);
 
 //Functions
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
@@ -345,6 +346,38 @@ void Gym::displayProgramOptions()
 		cout << *(this->getPrograms().at(i));
 }
 
+/* Changes gym's capacity */
+void Gym::changeCapacity() 
+{
+	int newMaxCapacity;
+	cout << "What is the new gym's capacity? ";
+	cin >> newMaxCapacity;
+	while (cin.fail() || newMaxCapacity < 0) {
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << sign::error << "Insert a valid value! ";
+		cin >> newMaxCapacity;
+	}
+	setMaxCapacity(newMaxCapacity);
+	cout << sign::success << "Maximum capacity changed successfully!\n";
+}
+
+/* Changes gym's max number of clients */
+void Gym::changeMaxNumClients() 
+{
+	int newMaxNumClients;
+	cout << "What is the new gym's maximum number of clients? ";
+	cin >> newMaxNumClients;
+	while (cin.fail() || newMaxNumClients < 0) {
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cout << sign::error << "Insert a valid value! ";
+		cin >> newMaxNumClients;
+	}
+	setMaxNumClients(newMaxNumClients);
+	cout << sign::success << "Maximum number of clients changed successfully!\n";
+}
+
 //Adds a client to the gym
 void Gym::addClient()
 {
@@ -503,13 +536,75 @@ void Gym::removePersonalTrainer()
 	for (it_staff = staff.begin(); it_staff != staff.end(); it_staff++) {
 		if ((*it_staff)->getId() == optionProf) {
 			staff.erase(it_staff);
-			cout << "Personal trainer with id " << optionProf << " erased sucessfully!\n";
+			cout << sign::success << "Personal trainer with id " << optionProf << " erased sucessfully!\n";
 			return;
 		}
 	}
 	cout << "Personal trainer with id " << optionProf << " does not exist!\n";
 }
 
+/**
+Adds a program to the gym
+*/
+void Gym::addProgram()
+{
+	int programCode, gymDays;
+	float cost;
+	Program *programFound = NULL;
+
+	cout << "Insert new program's code: ";
+	cin >> programCode;
+	while (cin.fail() || findProgram(programCode, &programFound)) {
+		if (cin.fail()) {
+			cout << sign::error << "Insert a valid value! ";
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+		else cout << sign::error << "Insert a non-existent program! ";
+		cin >> programCode;
+	}
+	
+	cout << "Insert program number of gym days: ";
+	cin >> gymDays;
+	while (cin.fail() || gymDays < 0 || gymDays > 365) {
+		cout << sign::error << "Insert a valid value! ";
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cin >> gymDays;
+	}
+	
+	cout << "Insert program's monthly cost: ";
+	cin >> cost;
+	while (cin.fail() || cost < 0) {
+		cout << sign::error << "Insert a valid value! ";
+		cin.clear();
+		cin.ignore(1000, '\n');
+		cin >> cost;
+	}
+
+	programs.push_back(new Program(programCode, gymDays, cost));
+	cout << sign::success << "New program added successfully!\n";
+}
+
+/**
+Removes a program from the gym
+*/
+void Gym::removeProgram()
+{
+	int optionProgram;
+	Program *programToErase;
+	inputProgramIdObj(optionProgram, *this, &programToErase);
+
+	vector<Program *>::iterator it_prog;
+	for (it_prog = programs.begin(); it_prog != programs.end(); it_prog++) {
+		if ((*it_prog)->getCode() == optionProgram) {
+			programs.erase(it_prog);
+			cout << sign::success << "Program with code " << optionProgram << " erased sucessfully!\n";
+			return;
+		}
+	}
+	cout << sign::error << "Program with code " << optionProgram << " does not exist!\n";
+}
 
 /**
 Deposits amount

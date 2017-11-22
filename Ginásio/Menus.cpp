@@ -18,6 +18,7 @@ void staffMenu(Gym &gym);
 void personalTrainerMenu(Gym &gym);
 void financeMenu(Gym &gym);
 void subscriptionsMenu(Gym &gym);
+void capacityMenu(Gym &gym);
 void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
 void inputStaffIdObj(int &optionStaff, Gym &gym, Staff** staff_found);
 void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found);
@@ -88,13 +89,13 @@ void gymMenu(Gym &gym)
 			//scheduleMenu();
 			break;
 		case 3:
-			//capacityMenu();
+			capacityMenu(gym);
 			break;
 		case 4:
 			subscriptionsMenu(gym);
 			break;
 		case 5:
-			cout << gym ;
+			cout << gym;
 			break;
 		default:
 			cout << "Algum erro";
@@ -299,18 +300,48 @@ void subscriptionsMenu(Gym &gym)
 			continueInMenu = false;
 			break;
 		case 1:
-			//gym.addProgram();
+			gym.addProgram();
 			break;
 		case 2:
 			inputProgramIdObj(optionProgram, gym, &programToUse);
 			programToUse->editProgram(gym);
 			break;
 		case 3:
-			//gym.removeProgram();
-			gym.removeClient();
+			gym.removeProgram();
 			break;
 		case 4:
 			gym.displayProgramOptions();
+			break;
+		default:
+			cout << "Algum erro";
+			break;
+		}
+	} while (continueInMenu);
+}
+
+void capacityMenu(Gym &gym)
+{
+	vector<string> sections = { "\t1.	Change maximum capacity", "\t2.	Change maximum number of clients", "\n\t0.	Leave\n" };
+
+	bool continueInMenu = true;
+	do
+	{
+		cout << endl << "\t 	CAPACITY MENU 	" << endl;
+		cout << "\t-------------------------------" << endl << endl;
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			gym.changeCapacity();
+			break;
+		case 2:
+			gym.changeMaxNumClients();
 			break;
 		default:
 			cout << "Algum erro";

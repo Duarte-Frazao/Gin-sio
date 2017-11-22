@@ -229,12 +229,20 @@ public:
 	*/
 	void login();
 
+	/**
+	Changes gym's capacity
+	*/
+	void changeCapacity();
+
+	/**
+	Changes gym's max number of clients
+	*/
+	void changeMaxNumClients();
 
 	/**
 	Adds a client to the gym
 	*/
 	void addClient();
-
 
 	/**
 	Prints the programs the gym has to offer, as well as the conditions
@@ -268,6 +276,16 @@ public:
 	Removes a personal trainer from the gym
 	*/
 	void removePersonalTrainer();
+
+	/**
+	Adds a program to the gym
+	*/
+	void addProgram();
+
+	/**
+	Removes a program from the gym
+	*/
+	void removeProgram();
 
 	/**
 	Prints the gym's clients ids

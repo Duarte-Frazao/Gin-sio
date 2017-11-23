@@ -1,30 +1,12 @@
 #include "stdafx.h"
-#include "Gym.h"
-#include "Client.h"
 #include <string>
 #include <iostream>
 #include <vector>
 #include "termcolor.hpp"
-
-
-
+#include "ListElements.h"
+#include "Menus.h"
 
 using namespace std;
-
-void mainMenu(Gym &gym);
-void gymMenu(Gym &gym);
-void clientMenu(Gym &gym);
-void staffMenu(Gym &gym);
-void personalTrainerMenu(Gym &gym);
-void financeMenu(Gym &gym);
-void subscriptionsMenu(Gym &gym);
-void capacityMenu(Gym &gym);
-void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
-void inputStaffIdObj(int &optionStaff, Gym &gym, Staff** staff_found);
-void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found);
-void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found);
-void intervalFuntion();
-int filterInput(int inf, int sup,std::string msg = "Selection: ");
 
 
 void mainMenu(Gym &gym)
@@ -107,7 +89,7 @@ void gymMenu(Gym &gym)
 
 void clientMenu(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Add", "\t2.	Edit", "\t3.	Remove", "\t4.	Display Information", "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Add", "\t2.	Edit", "\t3.	Remove", "\t4.	Display Information", "\t5.	List Clients" ,"\n\t0.	Leave\n" };
 
 	bool continueInMenu = true;
 	do
@@ -140,6 +122,11 @@ void clientMenu(Gym &gym)
 			clientToUse->informationClient();
 			intervalFuntion();
 			break;
+
+		case 5:
+			listClient(gym);
+			intervalFuntion();
+			break;
 		default:
 			cout << "Algum erro";
 			break;
@@ -149,7 +136,7 @@ void clientMenu(Gym &gym)
 
 void staffMenu(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Professor related", "\t2.	Add", "\t3.	Edit", "\t4.	Remove",  "\t5.	Display Information", "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Professor related", "\t2.	Add", "\t3.	Edit", "\t4.	Remove",  "\t5.	Display Information", "\t6.	List Staff", "\n\t0.	Leave\n" };
 
 	int optionStaff;
 	Staff *staffToUse = NULL;
@@ -188,6 +175,11 @@ void staffMenu(Gym &gym)
 			staffToUse->printInfo();
 			intervalFuntion();
 			break;
+
+		case 6:
+			listStaff(gym);
+			intervalFuntion();
+			break;
 		default:
 			std::cout << "Algum erro";
 			break;
@@ -197,7 +189,7 @@ void staffMenu(Gym &gym)
 
 void personalTrainerMenu(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Add", "\t2.	Remove", "\t3.	Edit", "\t4.	Display Information", "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Add", "\t2.	Remove", "\t3.	Edit", "\t4.	Display Information", "\t5.	List Personal Trainers" ,"\n\t0.	Leave\n" };
 
 	int optionProf;
 	Staff *profToUse = NULL;
@@ -236,6 +228,12 @@ void personalTrainerMenu(Gym &gym)
 			profToUse->printInfo();
 			intervalFuntion();
 			break;
+
+		case 5:
+			listPT(gym);
+			intervalFuntion();
+			break;
+
 		default:
 			std::cout << "Algum erro";
 			break;
@@ -263,8 +261,10 @@ void financeMenu(Gym &gym)
 			continueInMenu = false;
 			break;
 		case 1:
+
 			cout << gym.getGymFinance();
 			break;
+
 		case 2:
 			gym.depositAmount();
 			break;
@@ -349,6 +349,7 @@ void capacityMenu(Gym &gym)
 		}
 	} while (continueInMenu);
 }
+
 
 void displayIdHelp(Gym &gym, int option)
 {
@@ -519,6 +520,99 @@ void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found)
 			repeat = true;
 		}
 	} while (repeat);
+}
+
+void listClient(Gym &gym){
+
+	cout << "	    List Clients by: \n";
+	cout << "	---------------------------\n\n";
+	cout << "	1.	ID\n";
+	cout << "	2.	Name\n";
+	cout << "	3.	Age\n\n";
+	cout << "	0. 	Leave\n\n";
+	unsigned char op = filterInput(0,3);
+
+
+	switch(op)
+	{
+	case 0:
+		return;
+
+	case 1:
+		listingByID(gym.getClients());
+		break;
+
+	case 2:
+		listingByName(gym.getClients());
+		break;
+
+	case 3:
+		listingByAge(gym.getClients());
+		break;
+	}
+
+}
+
+void listStaff(Gym &gym){
+
+	cout << "	    List Staff by: \n";
+	cout << "	---------------------------\n\n";
+	cout << "	1.	ID\n";
+	cout << "	2.	Name\n";
+	cout << "	3.	Age\n\n";
+	cout << "	0. 	Leave\n\n";
+	unsigned char op = filterInput(0,3);
+
+
+	switch(op)
+	{
+	case 0:
+		return;
+
+	case 1:
+		listingByID(gym.getStaff());
+		break;
+
+	case 2:
+		listingByName(gym.getStaff());
+		break;
+
+	case 3:
+		listingByAge(gym.getStaff());
+		break;
+	}
+
+}
+
+void listPT(Gym &gym){
+
+	cout << "	    List Personal Trainers by: \n";
+	cout << "	---------------------------\n\n";
+	cout << "	1.	ID\n";
+	cout << "	2.	Name\n";
+	cout << "	3.	Age\n\n";
+	cout << "	0. 	Leave\n\n";
+
+	unsigned char op = filterInput(0,3);
+
+	switch(op)
+	{
+	case 0:
+		return;
+
+	case 1:
+		listingByID(gym.getPT());
+		break;
+
+	case 2:
+		listingByName(gym.getPT());
+		break;
+
+	case 3:
+		listingByAge(gym.getPT());
+		break;
+	}
+
 }
 
 void intervalFuntion()

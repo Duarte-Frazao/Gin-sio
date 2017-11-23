@@ -69,6 +69,7 @@ public:
 };
 
 
+
 class InvalidValue {
 	std::string reason;
 public:

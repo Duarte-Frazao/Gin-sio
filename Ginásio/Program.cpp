@@ -8,22 +8,7 @@ using namespace std;
 //Functions
 int filterInput(int inf, int sup, std::string msg = "Selection: ");
 
-Program::Program(int code) : code(code) {
-	switch(code){
-	case 1:
-		days = 31;
-		cost = 10;
-		break;
-
-	case 2:
-		days = 62;
-		cost = 15;
-		break;
-
-	//default:
-		//throw Invalid Code;
-	}
-}
+Program::Program(int code) : code(code) {}
 
 Program::Program(int code, int days, float cost) : code(code), days(days), cost(cost){}
 

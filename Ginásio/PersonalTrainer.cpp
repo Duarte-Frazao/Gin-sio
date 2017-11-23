@@ -191,7 +191,7 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 
 				int program;
 				cout << "Insert the subscripted gym program: ";
-				cin >> program;
+				program = filterInput(1, gym.getPrograms().size());
 
 				//If the client is new at the gym
 				Client * newClient = new Client(name, new Program(program), age, this);

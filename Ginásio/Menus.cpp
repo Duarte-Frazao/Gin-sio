@@ -122,7 +122,6 @@ void clientMenu(Gym &gym)
 			clientToUse->informationClient();
 			intervalFuntion();
 			break;
-
 		case 5:
 			listClient(gym);
 			intervalFuntion();
@@ -620,7 +619,6 @@ void intervalFuntion()
 	cout << "Press a key to continue...\n";
 	cin.clear();
 	string temp;
-	cin.ignore(1000, '\n');
 	getline(cin, temp);
 	cout << endl;
 }

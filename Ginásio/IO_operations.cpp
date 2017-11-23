@@ -24,6 +24,9 @@ int filterInput(int inf, int sup, std::string msg)
 		if (msg != "")
 			std::cout << sign::question << msg;
 
+		std::cin.clear();
+		if (std::cin.peek() == '\n') std::cin.ignore();
+
 		validValue = true;
 
 		getline(std::cin, value_str);
@@ -53,5 +56,4 @@ int filterInput(int inf, int sup, std::string msg)
 	std::cout << std::endl << std::endl;
 
 	return option;
-
 }

@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Client.h"
 #include "ErrorClasses.h"
+#include "termcolor.hpp"
+#include "Input.h"
 
 //Functions
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
@@ -149,6 +151,7 @@ void Client::editClient(Gym &gym)
 {
 	bool continueInMenu = true;
 	string newName;
+	int newAge;
 	vector<string> clientProblems;
 	int newProgramCode;
 	do
@@ -163,10 +166,17 @@ void Client::editClient(Gym &gym)
 			cout << "What's the Client's new name? " << endl;
 			cout << "Previously: " << name << endl;
 			cout << "->";
-			cin >> newName;
+			getline(cin, newName);
 			setName(newName);
 			break;
 		case 2:
+			cout << "What's the Client's new age? " << endl;
+			cout << "Previously: " << age << endl;
+			getInput(newAge, "->");
+			setAge(newAge);
+			cout << sign::success << "Client's age sucessfully modified!\n";
+			break;
+		case 3:
 			//Error checking
 			problems(clientProblems);
 			if (clientProblems.size() != 0) throw EditingError(clientProblems);
@@ -188,8 +198,7 @@ void Client::editClient(Gym &gym)
 
 			cout << "Program successfully changed to program number " << enrolledProgram->getCode() << endl << endl;
 			break;
-			
-		case 3:
+		case 4:
 			cout << *this;
 			break;
 		default:
@@ -204,9 +213,9 @@ void Client::editClient(Gym &gym)
 //Menu for editing client
 int Client::editClientMenu() const
 {
-	cout << "\nSelect what you want to edit" << endl<< endl;
+	cout << "\nSelect what you want to edit" << endl;
 
-	vector<string> options = { "1 - Change name", "2 - Set a new program subscription", "3 - Show information", "0 - Sair\n" };
+	vector<string> options = { "1 - Change name", "2 - Change age", "3 - Set a new program subscription", "4 - Show information", "0 - Leave\n" };
 
 	for (unsigned int i = 0; i < options.size(); i++)
 		cout << options.at(i) << endl;

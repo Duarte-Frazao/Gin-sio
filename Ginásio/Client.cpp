@@ -114,6 +114,13 @@ void Client::setName(string newName)
 	name = newName;
 }
 
+//Sets a new age to Client
+void Client::setAge(int age)
+{
+	if (age < 0) throw InvalidValue("Negative age inserted!");
+	else this->age = age;
+}
+
 #pragma endregion
 
 //Changes the current location of Client.
@@ -220,7 +227,7 @@ std::ostream & operator<<(std::ostream & out, const Client &client)
 {
 	out << "\n---------- Client Information ----------" << endl << endl;
 	out << "Client " << client.id << " information\n";
-	out << "Name: " << client.name<< "\n";
+	out << "Name: " << client.name << "\n";
 	out << "Age: " << client.age << "\n";
 	out << "Location: ";
 	if (client.insideGym) out << "inside gym\n";
@@ -228,8 +235,9 @@ std::ostream & operator<<(std::ostream & out, const Client &client)
 	out << "Payment Status: ";
 	if (client.paymentsUpToDate) out << "Up-to-date\n";
 	else out << client.numDaysRemaining << " late payments\n";
-	out << "Responsible professor: " << "\tName: " << client.responsiblePT->getName() << "\tID: "<<client.responsiblePT->getId() << endl << endl;
-	out << *(client.getProgram())<<endl;
+	out << "Responsible professor: " << "\n->Name: " << client.responsiblePT->getName()
+		<< " | ID: " << client.responsiblePT->getId() << endl << endl;
+	out << *(client.getProgram()) << endl;
 	return out;
 }
 

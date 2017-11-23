@@ -134,6 +134,14 @@ public:
 	void setName(std::string newName);
 
 	/**
+	Sets a new age to Client
+
+	@param newName New age for Client
+	@return
+	*/
+	void setAge(int age);
+
+	/**
 	Changes the current location of Client.
 	Checks if he's allowed to enter, if not throws an exception
 

@@ -1,6 +1,8 @@
 #include <iostream>
 #include "stdafx.h"
 #include "Staff.h"
+#include "termcolor.hpp"
+#include "Input.h"
 using namespace std;
 
 //Functions
@@ -143,40 +145,26 @@ void Staff::editStaff(Gym &gym) {
 			continueInMenu = false;
 			break;
 		case 1:
-			cout << "What's the Staff's new name? " << endl;
+			cout << "What's the staff's new name?\n" << endl;
 			cout << "Previously: " << name << endl;
 			cout << "->";
-			cin >> newName;
+			getline(cin, newName);
 			setName(newName);
-			cout << "Staff's name sucessfully modified!\n";
+			cout << sign::success << "Staff's name sucessfully modified!\n";
 			break;
 		case 2:
-			cout << "What's the Staff's new age? ";
+			cout << "What's the staff's new age?\n";
 			cout << "Previously: " << age << endl;
-			cout << "->";
-			cin >> newAge;
-			while (cin.fail() || newAge < 0) {
-				cin.clear();
-				cin.ignore(1000, '\n');
-				cout << "Insert a valid value! ";
-				cin >> newAge;
-			}
+			getInput(newAge, "->");
 			setAge(newAge);
-			cout << "Staff's age sucessfully modified!\n";
+			cout << sign::success << "Staff's age sucessfully modified!\n";
 			break;
 		case 3:
-			cout << "What's the Staff's new wage? ";
+			cout << "What's the staff's new wage?\n";
 			cout << "Previously: " << wage << endl;
-			cout << "->";
-			cin >> newWage;
-			while (cin.fail() || newWage < 0) {
-				cin.clear();
-				cin.ignore(1000, '\n');
-				cout << "Insert a valid value! ";
-				cin >> newWage;
-			}
+			getInput(newWage, "->");
 			setWage(newWage);
-			cout << "Staff's wage sucessfully modified!\n";
+			cout << sign::success << "Staff's wage sucessfully modified!\n";
 			break;
 		case 4:
 			changeLocation();
@@ -206,6 +194,7 @@ void Staff::printInfo()
 
 ostream & operator<<(std::ostream & out, const Staff & staff)
 {
+	out << "\n---------- Staff Information ----------" << endl << endl;
 	out << "Staff ID " << staff.id << " information:\n";
 	out << "Name: " << staff.name << endl;
 	out << "Age: " << staff.age << endl;

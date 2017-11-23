@@ -6,6 +6,7 @@
 #include "Gym.h"
 #include "Client.h"
 #include "termcolor.hpp"
+#include "Input.h"
 
 #ifdef WIN32
 #include <conio.h>
@@ -153,8 +154,7 @@ void Gym::login() {
 	{
 		int staffId;
 		cout << "Login ID: ";
-		cin >> staffId;
-		cin.ignore();
+		getInput(staffId);
 
 		if (findStaff(staffId, &staff_found))
 		{
@@ -191,15 +191,9 @@ void Gym::login() {
 				}
 				else {
 					cout << "\n\nACESS DENIED!\n";
-					cout << "Try again: press 0 or Exit: press 1\n" << "--> ";
-					int incorrect_option;
-					cin >> incorrect_option;
-					while (incorrect_option != 0 && incorrect_option != 1) {
-						cout << "Enter a correct command ...\n";
-						cin >> incorrect_option;
-					}
+					cout << "Try again: press 0 or Exit: press 1\n";
+					int incorrect_option = filterInput(0, 1);
 					if (incorrect_option) exit(0);
-					cin.ignore();
 				}
 
 			} while (!access);
@@ -207,15 +201,9 @@ void Gym::login() {
 		else
 		{
 			cout << endl << "STAFF NOT FOUND!" << endl;
-			cout << "Try again: press 0 or Exit: press 1\n" << "--> ";
-			int incorrect_option2;
-			cin >> incorrect_option2;
-			while (incorrect_option2 != 0 && incorrect_option2 != 1) {
-				cout << "Enter a correct command ...\n";
-				cin >> incorrect_option2;
-			}
+			cout << "Try again: press 0 or Exit: press 1\n";
+			int incorrect_option2 = filterInput(0, 1);
 			if (incorrect_option2) exit(0);
-			cin.ignore();
 		}
 
 	} while (!staffFound);
@@ -347,36 +335,25 @@ void Gym::displayProgramOptions()
 }
 
 /* Changes gym's capacity */
-void Gym::changeCapacity() 
+void Gym::changeCapacity()
 {
 	int newMaxCapacity;
 	cout << "What is the new gym's capacity? ";
-	cin >> newMaxCapacity;
-	while (cin.fail() || newMaxCapacity < 0) {
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << sign::error << "Insert a valid value! ";
-		cin >> newMaxCapacity;
-	}
+	getInput(newMaxCapacity);
 	setMaxCapacity(newMaxCapacity);
 	cout << sign::success << "Maximum capacity changed successfully!\n";
 }
 
 /* Changes gym's max number of clients */
-void Gym::changeMaxNumClients() 
+void Gym::changeMaxNumClients()
 {
 	int newMaxNumClients;
 	cout << "What is the new gym's maximum number of clients? ";
-	cin >> newMaxNumClients;
-	while (cin.fail() || newMaxNumClients < 0) {
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cout << sign::error << "Insert a valid value! ";
-		cin >> newMaxNumClients;
-	}
+	getInput(newMaxNumClients);
 	setMaxNumClients(newMaxNumClients);
 	cout << sign::success << "Maximum number of clients changed successfully!\n";
 }
+
 
 //Adds a client to the gym
 void Gym::addClient()
@@ -384,29 +361,30 @@ void Gym::addClient()
 	//To-do alterar mecanismo de assgn de pt
 	string name;
 	int age, program;
-	cout << "Adicionar novo cliente" << endl << endl;
+	cout << "Add new client:" << endl << endl;
 
 	//Name
-	cout << "Nome: ";
+	cout << "Name: ";
 	cin >> name;
+	cout << endl;
+
+	//age
+	cout << "Age: ";
+	getInput(age);
+	cout << endl;
 
 	//Program subscription
 	displayProgramOptions();
-	cout << "Programa:";
-	program= filterInput(1, programs.size());
-
-	//age
-	cout << "Idade: ";
-	cin >> age;
+	program = filterInput(1, programs.size());
 
 	//To-do arranjar maneira de em vez de usar staff ser um professor, porque pode dar errado
 	PersonalTrainer *professor = profs.at(rand() % profs.size());
 
-	Client * newClient = new Client (name, codeToProgram(program), age, professor);
+	Client * newClient = new Client(name, codeToProgram(program), age, professor);
 
 	clients.push_back(newClient);
-	cout << sign::success <<"Cliente adicionado com sucesso" << endl << endl << endl;
-	cout << "Informacao do novo cliente:" << endl;
+	cout << sign::success << "Client added sucessfully!" << endl << endl << endl;
+	cout << "New client's information:" << endl;
 	cout << *newClient;
 }
 
@@ -436,30 +414,33 @@ void Gym::removeClient()
 /**
 Adds a staff to the gym
 */
-void Gym::addStaff() 
+void Gym::addStaff()
 {
 	int age; double wage;
 	string name, pass;
 
 	cout << "Insert new staff's name: ";
-	cin.ignore(1000, '\n');
-	getline(cin, name);
 	do {
-		cout << "Insert new staff's age: ";
-		cin >> age;
-		cin.ignore();
-	} while (age < 0);
-	do {
-		cout << "Insert new staff's wage: ";
-		cin >> wage;
-		cin.ignore();
-	} while (wage < 0);
+		getline(cin, name);
+		if (name.length() == 0)
+			cout << sign::error << "Insert a name! ";
+	} while (name.length() == 0);
+
+	cout << "Insert new staff's age: ";
+	getInput(age);
+
+	cout << "Insert new staff's wage: ";
+	getInput(wage);
+
 	cout << "Insert new staff's password: ";
-	cin.ignore(1000, '\n');
-	getline(cin, pass);
+	do {
+		getline(cin, pass);
+		if (pass.length() == 0)
+			cout << sign::error << "Insert a password! ";
+	} while (pass.length() == 0);
 
 	staff.push_back(new Staff(name, age, wage, pass));
-	cout << sign::success <<"Staff added successfully!\n";
+	cout << sign::success << "Staff added successfully!\n";
 }
 
 /**
@@ -491,29 +472,32 @@ void Gym::addPersonalTrainer()
 	string name, pass, specializedArea;
 
 	cout << "Insert new personal trainer's name: ";
-	cin.ignore(1000, '\n');
-	getline(cin, name);
 	do {
-		cout << "Insert new personal trainer's age: ";
-		cin >> age;
-		cin.ignore();
-	} while (age < 0);
-	cin.ignore(1000, '\n');
+		getline(cin, name);
+		if (name.length() == 0)
+			cout << sign::error << "Insert a name! ";
+	} while (name.length() == 0);
+
+	cout << "Insert new personal trainer's age: ";
+	getInput(age);
+
 	cout << "Insert new pt's specialized area: ";
 	getline(cin, specializedArea);
-	do {
-		cout << "Insert new personal trainer's wage: ";
-		cin >> wage;
-		cin.ignore();
-	} while (wage < 0);
+
+	cout << "Insert new personal trainer's wage: ";
+	getInput(wage);
+
 	cout << "Insert new pt's password: ";
-	cin.ignore(1000, '\n');
-	getline(cin, pass);
-	
+	do {
+		getline(cin, pass);
+		if (pass.length() == 0)
+			cout << sign::error << "Insert a password! ";
+	} while (pass.length() == 0);
+
 	PersonalTrainer* pt = new PersonalTrainer(name, age, wage, pass, specializedArea);
 	staff.push_back(pt);
 	profs.push_back(pt);
-	cout << sign::success <<"Personal trainer added successfully!\n";
+	cout << sign::success << "Personal trainer added successfully!\n";
 }
 
 /**
@@ -553,34 +537,21 @@ void Gym::addProgram()
 	Program *programFound = NULL;
 
 	cout << "Insert new program's code: ";
-	cin >> programCode;
-	while (cin.fail() || findProgram(programCode, &programFound)) {
-		if (cin.fail()) {
-			cout << sign::error << "Insert a valid value! ";
-			cin.clear();
-			cin.ignore(1000, '\n');
-		}
-		else cout << sign::error << "Insert a non-existent program! ";
-		cin >> programCode;
-	}
-	
+	do {
+		getInput(programCode);
+		if (findProgram(programCode, &programFound))
+			cout << sign::error << "Insert a non-existent program! ";
+	} while (findProgram(programCode, &programFound));
+
 	cout << "Insert program number of gym days: ";
-	cin >> gymDays;
-	while (cin.fail() || gymDays < 0 || gymDays > 365) {
-		cout << sign::error << "Insert a valid value! ";
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cin >> gymDays;
-	}
-	
+	do {
+		getInput(gymDays);
+		if (gymDays > 365)
+			cout << sign::error << "Please insert a valid value! ";
+	} while (gymDays > 365);
+
 	cout << "Insert program's monthly cost: ";
-	cin >> cost;
-	while (cin.fail() || cost < 0) {
-		cout << sign::error << "Insert a valid value! ";
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cin >> cost;
-	}
+	getInput(cost);
 
 	programs.push_back(new Program(programCode, gymDays, cost));
 	cout << sign::success << "New program added successfully!\n";
@@ -613,18 +584,13 @@ void Gym::depositAmount()
 {
 	cout << "What is the amount to deposit to gym's account ? ";
 	double amount;
-	cin >> amount;
-	while (cin.fail() || amount < 0) {
-		cout << "Please insert a valid amount!\n";
-		cin.clear();
-		cin.ignore(1000, '\n');
-		cin >> amount;
-	}
+	getInput(amount);
+
 	Transaction newTransaction("DEPOSIT", amount);
 	newTransaction.setDescription("BANK TRANSFER");
 
 	gymFinance.addTransaction(newTransaction);
-	cout << sign::success<<"Transaction performed successfully!\n\n";
+	cout << sign::success << "Transaction performed successfully!\n\n";
 }
 
 /**

@@ -16,21 +16,38 @@ Filters an option by giving two limits, makes the user input and integer between
 int filterInput(int inf, int sup, std::string msg)
 {
 	int option;
-	bool validValue = true;
+	bool validValue;
+	std::string value_str;
 
 	do
 	{
-		if(msg != "")
-			std::cout<< sign::question <<msg;
-		std::cin >> option;
-		if (std::cin.fail() || option< inf || option > sup)
-		{
-			std::cout << sign::error << "Please enter a valid value.\n\n";
-			std::cin.clear();
-			std::cin.ignore(1000, '\n');
+		if (msg != "")
+			std::cout << sign::question << msg;
+
+		validValue = true;
+
+		getline(std::cin, value_str);
+		if (value_str.length() == 0) {
+			std::cout << sign::error << "Please insert a value.\n\n";
 			validValue = false;
 		}
-		else if(validValue == false) validValue = true;
+
+		for (size_t i = 0; i < value_str.length(); i++) {
+			if (!isdigit(value_str.at(i))) {
+				std::cout << sign::error << "Please insert a valid value.\n\n";
+				validValue = false;
+				break;
+			}
+		}
+
+		if (validValue) {
+			option = stoi(value_str);
+			if (option< inf || option > sup)
+			{
+				std::cout << sign::error << "Please enter a valid value.\n\n";
+				validValue = false;
+			}
+		}
 
 	} while (!validValue);
 	std::cout << std::endl << std::endl;
@@ -38,8 +55,3 @@ int filterInput(int inf, int sup, std::string msg)
 	return option;
 
 }
-
-
-
-
-

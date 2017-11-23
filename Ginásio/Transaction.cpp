@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Transaction.h"
+#include "ErrorClasses.h"
 #include <string>
 #include <sstream>
 using namespace std;
@@ -60,6 +61,7 @@ void Transaction::setDescription(string description) {
 }
 
 void Transaction::setAmount(double amount) {
+	if (amount < 0) throw InvalidValue("Negative amount inserted!");
 	this->amount = amount;
 }
 

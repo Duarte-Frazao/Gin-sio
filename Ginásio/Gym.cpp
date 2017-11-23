@@ -18,6 +18,9 @@ using namespace std;
 void inputClientIdObj(int &optionClient, Gym &gym, Client** client_found);
 void inputStaffIdObj(int &optionStaff, Gym &gym, Staff** staff_found);
 void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found);
+int filterInput(int inf, int sup, std::string msg);
+vector<string> selectMuscles();
+void inputExerciseIdObj(string &optionExercise, Gym &gym, Exercise** exercise_found);
 
 //Functions
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
@@ -30,6 +33,22 @@ Gym::Gym(string name, vector<Program *> &programs, vector<Client *> &clients,
 		name(name), programs(programs), clients(clients), staff(staff), profs(
 				profs), gymSchedule(gymSchedule), maxNumClients(maxNumClients), maxCapacity(
 				maxCapacity), gymFinance(gymFinance) {
+	Exercise *e1 = new Exercise(false,false,false,true,true,true,true,false,false,true, (string)"Push ups", (string)"Performed in a prone position by raising and lowering the body", vector<Material *>{}, 8);
+	Exercise *e2 = new Exercise(false, false, false, false,false,false,false, true, false,false, (string)"Crunch" , (string)"The movement begins by curling the shoulders towards the pelvis", vector<Material *>{}, 6);
+	Exercise *e3 = new Exercise(true,true,true,true,true,true,true,false,true,true, (string)"Deadlift",(string)"A loaded barbell or bar is lifted off the ground to the level of the hips, then lowered to the ground", vector<Material *> {new Material(false, "Bar",-1)}, 10);
+	Exercise *e4 = new Exercise(true,true,true,false,false,false,false,false,true,false,(string)"Treadmill", (string)"Run or walk in the same place",vector<Material *>{ new Material(true,"Treadmill", 1)}, 7);
+	Exercise *e5 = new Exercise(false,false,false,true,true,false,true,false,false,true, (string)"Bench Press", (string)"Consists of pressing a weight upwards from a supine position", vector<Material *> {new Material(true, "Brench", 2)}, 8);
+	Exercise *e6 = new Exercise(true,true,true,true,true,true,true,true,true,true, (string)"Burpee", (string)"Move into a squat position with your hands on the ground, kick your feet back into a plank position, stand up  ", vector<Material *>{}, 10);
+	/*Exercise *e7 = new Exercise();
+	Exercise *e8 = new Exercise();
+	Exercise *e9 = new Exercise();
+	Exercise *e10 = new Exercise();
+	Exercise *e11 = new Exercise();
+	Exercise *e12 = new Exercise();
+	Exercise *e13 = new Exercise();*/
+
+	std::vector<Exercise *> e={e1,e2,e3,e4,e5,e6};
+	exercises = e;
 }
 
 // Gym Constructor
@@ -255,6 +274,21 @@ bool Gym::findProf(int profId, Staff** prof_found) {
 	return false;
 }
 
+//Finds gym's exercise with a certain name
+bool Gym::findExercise(string exerciseName, Exercise** exercise_found) {
+	for (const auto ex_pointer : exercises)
+	{
+		if (ex_pointer->getName() == exerciseName)
+		{
+			*exercise_found = ex_pointer;
+			return true;
+		}
+	}
+
+	exercise_found = NULL;
+	return false;
+}
+
 
 //Finds gym's client with a certain Id
 bool Gym::findClient(int clientId, Client** client_found) {
@@ -312,6 +346,15 @@ void Gym::displayProfsIds() const
 	for (size_t i = 0; i < profs.size(); i++)
 	{
 		cout << profs.at(i)->getName() << " ID: " << profs.at(i)->getId() << endl;
+	}
+}
+
+//Prints the exercises the gym software has saved
+void Gym::displayExerciseNames() const
+{
+	for (size_t i = 0; i < exercises.size(); i++)
+	{
+		cout << exercises.at(i)->getName() << "\nDescription: " << exercises.at(i)->getDescription() << endl<< endl;
 	}
 }
 
@@ -574,4 +617,119 @@ std::ostream &operator<<(ostream &out, const Gym &gym)
 	out << "Maximum number of clients: " << gym.maxNumClients << endl<< endl;
 	out << "Maximum gym capacity: " << gym.maxCapacity << endl<< endl<< endl;
 	return out;
+}
+
+void addMaterial(vector<Material *> &v)
+{
+	//To-do alterar mecanismo de assgn de
+	string materialName;
+	int machineNumber;
+	bool machine;
+	cout << "Add New Material" << endl << endl;
+
+	//Name
+	cout << "Material Name: ";
+	cin >> materialName;
+
+	cout <<"\n Is it a machine?(y/n)" <<endl;
+
+	if(toupper(std::cin.peek()) == ('y' || 'Y') ) machine= true;
+	else
+	{
+		machine = false;
+		machineNumber=-1;
+	}
+
+	if(machine)machineNumber=filterInput(0,50, "What's the machine number?");
+
+	Material *newMaterial = new Material(machine, materialName,machineNumber);
+
+	v.push_back(newMaterial);
+}
+
+vector<Material *> getMaterial()
+{
+	vector<Material *>v;
+	bool continueInMenu = true;
+	vector<string> sections = { "\t1.	Add material" ,"\n\t0.	Leave\n" };
+	do
+	{
+		cout << endl << "\t 	Materials Needed" << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			addMaterial(v);
+			break;
+		default:
+			break;
+		}
+	} while (continueInMenu);
+
+	return v;
+}
+
+//Adds an exercise to the gym
+void Gym::addExercise()
+{
+	//To-do alterar mecanismo de assgn de
+	string name, description;
+	int  intensity;
+	cout << "Add New Exercise" << endl << endl;
+
+	//Name
+	cout << "Name: ";
+	cin >> name;
+
+	//Description
+	cout << "\nDescription: ";
+	cin >> name;
+
+	//Material
+	vector <Material *> necessaryMaterial=getMaterial();
+
+	//Intensity
+	intensity=filterInput(0,10,"Program intensity (0-10):");
+
+
+	Exercise * newExercise = new Exercise (name,description, necessaryMaterial,intensity);
+
+	vector<string> vs= selectMuscles();
+	newExercise->includeMuscles(vs);
+
+	exercises.push_back(newExercise);
+	cout << sign::success <<"Exercise sucessfully added" << endl << endl << endl;
+	cout << "Information about new Exercise:" << endl;
+	cout << *newExercise;
+}
+
+
+/**
+Removes an Exercise
+*/
+void Gym::removeExercise()
+{
+	string optionExercise;
+	Exercise *exerciseToEdit;
+
+	inputExerciseIdObj(optionExercise, *this, &exerciseToEdit);
+
+	//algo que mostre ids + fun��o que check ids
+
+	vector<Exercise *>::iterator it_ex;
+	for (it_ex = exercises.begin(); it_ex != exercises.end(); it_ex++) {
+		if ((*it_ex)->getName() == optionExercise) {
+			exercises.erase(it_ex);
+			cout << sign::success << "Exercise with name" << optionExercise << " erased successfully!\n";
+			return;
+		}
+	}
+	cout << "Exercise with name " << optionExercise << " does not exist!\n";
 }

@@ -6,7 +6,15 @@
  */
 
 #include "Exercise.h"
+#include <string>
+#include <vector>
 
+using namespace std;
+
+
+int filterInput(int inf, int sup, std::string msg);
+vector<string> selectMuscles();
+vector<Material *> getMaterial();
 
 Exercise::Exercise(bool legsI, bool calvesI, bool cardioI,bool chestI,bool shouldersI,bool bicepsI,
 		bool tricepsI, bool abdominalsI,
@@ -15,6 +23,10 @@ Exercise::Exercise(bool legsI, bool calvesI, bool cardioI,bool chestI,bool shoul
 
 
 }
+
+Exercise::Exercise(std::string name, std::string description, std::vector<Material*> necessaryMaterial, int intensity):name(name),description(description), necessaryMaterial(necessaryMaterial){
+
+};
 
 Exercise::~Exercise() {
 	// TODO Auto-generated destructor stub
@@ -70,7 +82,7 @@ std::ostream& operator<<(std::ostream& out, const Exercise & e)
 			out << "\n";
 		}
 	}
-	out << "Description: " << e.getDescription() << "\n";
+	out << "\nDescription: " << e.getDescription() << "\n\n";
 	if (e.isCardio())
 	{
 		out << "Cardio exercise" << "\n";
@@ -90,7 +102,7 @@ std::ostream& operator<<(std::ostream& out, const Exercise & e)
 	return out;
 }
 
-int Exercise::trainedMuscles()
+int Exercise::trainedMuscles() const
 {
 
 	int muscleCounter=0;
@@ -106,4 +118,58 @@ int Exercise::trainedMuscles()
 	return muscleCounter;
 }
 
+bool Exercise::isHyper() const
+{
+	if(cardio) return false;
+	if(trainedMuscles()<= 3) return true;
+	return false;
+}
 
+//Edits a Client
+void Exercise::editExercise(Gym &gym)
+{
+	string name,description;
+	vector<string> vs;
+	vector<string> sections = { "\t1.	Change Muscles" ,"\t2.	Name" ,"\t3.	Necessary Material" ,"\t4.	Description" ,"\t5.	See current state of the exercise", "\n\t0.	Leave\n" };
+	bool continueInMenu = true;
+	vector <Material *> necessaryMaterial;
+	do{
+		cout << endl << "\t 	What do you want to change in the exercise: " <<getName() << endl;
+		cout << "\t--------------------------" << endl << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size(), "");
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			vs= selectMuscles();
+			this->includeMuscles(vs);
+			break;
+		case 2:
+			cout << "New name: ";
+			cin >> name;
+			this->setName(name);
+			break;
+		case 3:
+			getMaterial();
+			this->setMaterial(necessaryMaterial);
+			break;
+		case 4:
+			cout << "New description: ";
+			cin >> description;
+			this->setDescription(description);
+			break;
+		case 5:
+			cout <<*this;
+			break;
+		default:
+			break;
+		}
+	}while (continueInMenu);
+
+}

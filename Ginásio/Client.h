@@ -11,6 +11,7 @@
 
 class PersonalTrainer;
 class Gym;
+class Plan;
 
 
 class Client {
@@ -211,6 +212,16 @@ public:
 	std::vector<Plan *> getPlans();
 
 	void setPlans();
+
+	void generateNewPlans(Gym &gym);
+
+	void generateFunctionalPlan(Gym &gym);
+
+	void generateHyperPlan(Gym &gym);
+
+	void generateCardioPlan(Gym &gym);
+
+	void generateMusclesPlan(Gym &gym, std::vector<std::string> muscles);
 
 
 

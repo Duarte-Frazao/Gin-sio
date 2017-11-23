@@ -10,6 +10,8 @@
 
 #include "Exercise.h"
 
+class Exercise;
+
 
 
 class Plan {

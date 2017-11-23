@@ -11,6 +11,7 @@
 #include <vector>
 #include <iostream>
 #include "Material.h"
+#include "Gym.h"
 
 class Material;
 
@@ -34,9 +35,11 @@ public:
 	Exercise(bool legs, bool calves, bool cardio,bool chest,bool shoulders,bool biceps,
 			bool triceps, bool abdominals, bool gluteus,
 			bool back,std::string name, std::string description, std::vector<Material*> necessaryMaterial, int intensity);
+	Exercise(std::string name, std::string description, std::vector<Material*> necessaryMaterial, int intensity);
 	~Exercise();
 	bool isFunctional() const;
 	bool isCardio()const;
+	bool isHyper() const;
 	bool legExercise()const;
 	bool chestExercise()const;
 	bool shoulderExercise()const;
@@ -52,9 +55,16 @@ public:
 	std::vector<Material*> getNecessaryMaterial()const;
 	std::string getDescription()const;
 	friend std::ostream& operator<<(std::ostream& out,const Exercise & e);
-	int trainedMuscles();
+	int trainedMuscles() const;
+	void generateCardioPlan(Gym &gym);
 	std::string getName()const;
+	void setName(std::string namei) {namei=name;}
+	void setDescription(std::string dI) {description=dI;}
+	void setMaterial(std::vector<Material *> m) {necessaryMaterial=m;}
 	int getIntensity()const;
+	bool includeMuscles(std::vector<std::string> muscles);
+	bool includeMuscle(std::string muscle);
+	void editExercise(Gym &gym);
 
 };
 

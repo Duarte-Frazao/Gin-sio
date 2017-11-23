@@ -9,10 +9,12 @@
 #include "Schedule.h"
 #include "Program.h"
 #include "PersonalTrainer.h"
+#include "Exercise.h"
 
 class Client;
 class Staff;
 class PersonalTrainer;
+class Exercise;
 
 class Gym {
 	
@@ -25,6 +27,7 @@ class Gym {
 	int maxNumClients;
 	int maxCapacity;
 	Finance gymFinance;
+	std::vector<Exercise *> exercises;
 
 
 public:
@@ -326,6 +329,16 @@ public:
 	Makes payments from the gym's account
 	*/
 	void makePayments();
+
+	std::vector<Exercise *> getExercises(){return exercises;}
+
+	bool findExercise(std::string exerciseName, Exercise** exercise_found);
+
+	void displayExerciseNames() const;
+
+	void addExercise();
+
+	void removeExercise();
 };
 
 #endif /* GYM_H_ */

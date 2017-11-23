@@ -26,6 +26,7 @@ void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found);
 void intervalFuntion();
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
 void teste(Gym &gym);
+void manageExercises(Gym &gym);
 
 void mainMenu(Gym &gym)
 {
@@ -70,7 +71,7 @@ void mainMenu(Gym &gym)
 
 void gymMenu(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Finances", "\t2.	Change Schedule", "\t3.	Change capacity", "\t4.	Manage subscriptions", "\t5.	Display Information",  "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Finances", "\t2.	Change Schedule", "\t3.	Change capacity", "\t4.	Manage subscriptions","\t5.	Manage supported exercises", "\t6.	Display Information",  "\n\t0.	Leave\n" };
 
 	bool continueInMenu = true;
 	do
@@ -100,6 +101,9 @@ void gymMenu(Gym &gym)
 			subscriptionsMenu(gym);
 			break;
 		case 5:
+			manageExercises(gym);
+			break;
+		case 6:
 			cout << gym ;
 			break;
 		default:
@@ -332,6 +336,7 @@ void displayIdHelp(Gym &gym, int option)
 	1-Programs
 	2-Staff
 	3-Professors
+	4-Exercises
 	*/
 	
 	switch (option)
@@ -347,6 +352,9 @@ void displayIdHelp(Gym &gym, int option)
 			break;
 		case 3:
 			gym.displayProfsIds();
+			break;
+		case 4:
+			gym.displayExerciseNames();
 			break;
 		default:
 			cout << "Algum erro" << endl;
@@ -460,6 +468,40 @@ void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found)
 		} while (repeat);
 }
 
+void inputExerciseIdObj(string &optionExercise, Gym &gym, Exercise** exercise_found)
+{
+	if (gym.getExercises().empty()) {
+		cerr << "There are no exercises in the gym" << std::endl;
+		return;
+	}
+
+	cout << "----------Exercise  Selection----------" << endl;
+	bool repeat = false;
+
+	do
+	{
+		repeat = false;
+		cout << endl << sign::question<< "Insert Exercise's name (or h for help): ";
+
+		cin >> optionExercise;
+
+		if(std::cin.fail()){
+			cin.clear();
+			if(toupper(std::cin.peek()) == 'H'){
+				displayIdHelp(gym,4);
+			}
+			else cout << sign::error <<"Insert a number" << endl;
+			repeat = true;
+			cin.ignore(1000,'\n');
+		}
+
+		else if (!gym.findExercise(optionExercise, exercise_found)){
+			cout << sign::error <<"Insert a valid exercise name" << endl;
+			repeat = true;
+		}
+	} while (repeat);
+}
+
 
 //To-do ver se o id do programa corresponde ao id que o user insere
 void inputProgramIdObj(int &optionProgram, Gym &gym, Program** program_found)
@@ -506,12 +548,78 @@ void intervalFuntion()
 	cout << endl;
 }
 
+void editPlans(Gym &gym)
+{
+	vector<string> sections = { "\t1.	Generate new plan" ,"\t2.	" , "\n\t0.	Leave\n" };
+	bool continueInMenu = true;
+	do
+	{
+		cout << endl << "\t 	Testing Hall 	" << endl;
+		cout << "\t--------------------------" << endl << endl;
 
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			gym.getClients().at(0)->generateNewPlans(gym);
+
+			break;
+		case 2:
+			break;
+		default:
+			break;
+		}
+	} while (continueInMenu);
+
+}
+
+void manageExercises(Gym &gym)
+{
+	vector<string> sections = { "\t1.	Add Exercise" ,"\t2.	Edit Exercise" ,"\t3.	Delete Exercise" , "\n\t0.	Leave\n" };
+	bool continueInMenu = true;
+	string optionClient;
+	Exercise *exerciseToUse;
+	do
+	{
+		cout << endl << "\t 	Manage Supported Exercises 	" << endl;
+		cout << "\t--------------------------" << endl << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+
+			gym.addExercise();
+			break;
+		case 2:
+			inputExerciseIdObj(optionClient,gym, &exerciseToUse);
+			exerciseToUse->editExercise(gym);
+			break;
+		case 3:
+			gym.removeExercise();
+			break;
+		default:
+			break;
+		}
+	} while (continueInMenu);
+}
 
 
 void teste(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Teste1" , "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Display Planos de treino 1º objeto" ,"\t2.	Gerar plano de treino consoante o que a pessoa quer (1ºobj)" , "\n\t0.	Leave\n" };
 	for(uint i=0;i < gym.getClients().size();i++) gym.getClients().at(i)->setPlans();
 	bool continueInMenu = true;
 	do
@@ -534,6 +642,11 @@ void teste(Gym &gym)
 				Plan * plan = gym.getClients().at(0)->getPlans().at(i);
 				std::cout <<  *plan << endl;
 			}
+			break;
+		case 2:
+			editPlans(gym);
+			break;
+		default:
 			break;
 		}
 	} while (continueInMenu);

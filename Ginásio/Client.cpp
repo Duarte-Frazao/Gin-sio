@@ -5,6 +5,7 @@
 #include "Client.h"
 #include "ErrorClasses.h"
 #include "Material.h"
+#include <algorithm>
 
 //Functions
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
@@ -295,3 +296,294 @@ vector<Plan*> Client::generateStandardPlans(){
 }
 
 std::vector<Plan *> Client::getPlans(){return plans;}
+
+bool findInVector(vector<Exercise *> exercisios, Exercise e)
+{
+	for(auto &exercisio:exercisios) if(exercisio->getName() == e.getName()) return true;
+	return false;
+}
+
+void eliminatePotentialEqualExercises(vector <Exercise *> &exercisios)
+{
+	vector <Exercise *> nR;
+	for(uint i = 0; i < exercisios.size(); i++)
+	{
+		if (!findInVector(nR,*exercisios.at(i))) nR.push_back(exercisios.at(i));
+	}
+}
+
+void Client::generateFunctionalPlan(Gym &gym)
+{
+	vector<Exercise *> exercisios;
+	for(auto &exercise: gym.getExercises())
+	{
+		if (exercise->isFunctional()) exercisios.push_back(exercise);
+	}
+	eliminatePotentialEqualExercises(exercisios);
+	sort(exercisios.begin(),exercisios.end(), [&](Exercise *e1, Exercise *e2){
+			if (e1->trainedMuscles() > e2->trainedMuscles() ) return true;
+			else if (e1->trainedMuscles() < e2->trainedMuscles())return false;
+			else{
+				if(e1->getIntensity() > e2->getIntensity()) return true;
+				else if (e1->getIntensity() > e2->getIntensity()) return false;
+				else
+				{
+					if(e1->getName() < e2->getName()) return true;
+					else return false;
+				}
+			}
+	});
+
+	for(uint i = 10; i <exercisios.size() ;i++) exercisios.erase(exercisios.begin() + i);
+
+	cout << "The generated plan looks like this:" << endl;
+	for(auto &ex:exercisios) cout << *ex<< endl;
+
+}
+
+void Client::generateHyperPlan(Gym &gym)
+{
+	vector<Exercise *> exercisios;
+	for(auto &exercise: gym.getExercises())
+	{
+		if (exercise->isHyper()) exercisios.push_back(exercise);
+	}
+	eliminatePotentialEqualExercises(exercisios);
+	sort(exercisios.begin(),exercisios.end(), [&](Exercise *e1, Exercise *e2){
+			if (e1->trainedMuscles() < e2->trainedMuscles() ) return true;
+			else if (e1->trainedMuscles() > e2->trainedMuscles())return false;
+			else{
+				if(e1->getIntensity() > e2->getIntensity()) return true;
+				else if (e1->getIntensity() > e2->getIntensity()) return false;
+				else
+				{
+					if (e1->trainedMuscles() > e2->trainedMuscles() ) return true;
+					else if (e1->trainedMuscles() < e2->trainedMuscles())return false;
+					else
+					{
+						if(e1->getName() < e2->getName()) return true;
+						else return false;
+					}
+				}
+			}
+	});
+
+	for(uint i = 10; i <exercisios.size() ;i++) exercisios.erase(exercisios.begin() + i);
+
+	cout << "The generated plan looks like this:" << endl;
+	for(auto &ex:exercisios) cout << *ex<< endl;
+
+}
+
+void Client::generateCardioPlan(Gym &gym)
+{
+	vector<Exercise *> exercisios;
+	for(auto &exercise: gym.getExercises())
+	{
+		if (exercise->isCardio()) exercisios.push_back(exercise);
+	}
+	eliminatePotentialEqualExercises(exercisios);
+	sort(exercisios.begin(),exercisios.end(), [&](Exercise *e1, Exercise *e2){
+			if (e1->isCardio() && !e2->isCardio() ) return true;
+			else if (!e1->isCardio() && e2->isCardio() )return false;
+			else{
+				if(e1->getIntensity() > e2->getIntensity()) return true;
+				else if (e1->getIntensity() > e2->getIntensity()) return false;
+				else
+				{
+					if(e1->getName() < e2->getName()) return true;
+					else return false;
+				}
+			}
+	});
+
+	for(uint i = 10; i <exercisios.size() ;i++) exercisios.erase(exercisios.begin() + i);
+
+	cout << "The generated plan looks like this:" << endl;
+	for(auto &ex:exercisios) cout << *ex<< endl;
+
+}
+
+bool Exercise::includeMuscles(vector<string> muscles)
+{
+	for(auto &muscle:muscles)
+	{
+		if (muscle == "legs" && legExercise()) return true;
+		if (muscle == "calves" && calvesExercise()) return true;
+		if (muscle == "chest" && chestExercise()) return true;
+		if (muscle == "shoulders" && shouldersExercise()) return true;
+		if (muscle == "biceps" && bicepsExercise()) return true;
+		if (muscle == "triceps" && tricepsExercise()) return true;
+		if (muscle == "abdominals" && abdominalsExercise()) return true;
+		if (muscle == "gluteus" && gluteusExercise()) return true;
+		if (muscle == "back" && backExercise()) return true;
+
+	}
+	return false;
+
+}
+
+bool Exercise::includeMuscle(string muscle)
+{
+
+	if (muscle == "legs" && legExercise()) return true;
+	if (muscle == "calves" && calvesExercise()) return true;
+	if (muscle == "chest" && chestExercise()) return true;
+	if (muscle == "shoulders" && shouldersExercise()) return true;
+	if (muscle == "biceps" && bicepsExercise()) return true;
+	if (muscle == "triceps" && tricepsExercise()) return true;
+	if (muscle == "abdominals" && abdominalsExercise()) return true;
+	if (muscle == "gluteus" && gluteusExercise()) return true;
+	if (muscle == "back" && backExercise()) return true;
+	if (muscle == "cardio" && isCardio()) return true;
+
+	return false;
+
+}
+
+void Client::generateMusclesPlan(Gym &gym, vector<string> muscles)
+{
+	vector<Exercise *> exercisios;
+	for(auto &exercise: gym.getExercises())
+	{
+		if(exercise->includeMuscles(muscles)) exercisios.push_back(exercise);
+	}
+	eliminatePotentialEqualExercises(exercisios);
+
+	sort(exercisios.begin(),exercisios.end(), [&](Exercise *e1, Exercise *e2){
+			for(auto &muscle:muscles)
+			{
+				if (e1->includeMuscle(muscle) && !e2->includeMuscle(muscle)) return true;
+				else if(!e1->includeMuscle(muscle) && e2->includeMuscle(muscle)) return false;
+			}
+			if(e1->getName() <e2->getName()) return true;
+			else return false;
+	});
+
+	for(uint i = 10; i <exercisios.size() ;i++) exercisios.erase(exercisios.begin() + i);
+
+	cout << "The generated plan looks like this:" << endl;
+	for(auto &ex:exercisios) cout << *ex<< endl;
+
+}
+
+vector<string> selectMuscles()
+{
+	vector<string> muscles= {"legs", "calves", "chest", "shoulders", "biceps", "triceps", "abdominals", "gluteus", "back"};
+	vector<bool> musclesToUse(9,false);
+	cout << endl<<"Select the muscles" << endl << endl;
+	vector<string> sections = { "\t1.	Legs" ,"\t2.	Calves" ,"\t3.	Chest" ,"\t4. Shoulders","\t5. Biceps" ,"\t6. Triceps","\t7. Abdominals","\t8. Gluteus","\t9. Back",  "\n\t0.	Leave\n" };
+	bool continueInMenu = true;
+	do
+	{
+		cout << endl << "\t 	Available Muscles	" << endl;
+		cout << "\t--------------------------" << endl << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			musclesToUse.at(0) = true;
+			break;
+		case 2:
+			musclesToUse.at(1) = true;
+			break;
+		case 3:
+			musclesToUse.at(2) = true;
+			break;
+		case 4:
+			musclesToUse.at(3) = true;
+			break;
+		case 5:
+			musclesToUse.at(4) = true;
+			break;
+		case 6:
+			musclesToUse.at(5) = true;
+			break;
+		case 7:
+			musclesToUse.at(6) = true;
+			break;
+		case 8:
+			musclesToUse.at(7) = true;
+			break;
+		case 9:
+			musclesToUse.at(8) = true;
+			break;
+		default:
+			break;
+		}
+	} while (continueInMenu);
+
+	vector<string> finalMuscles;
+
+	for(uint i = 0; i < musclesToUse.size();i++)
+	{
+		if(musclesToUse.at(i) == false) finalMuscles.push_back(muscles.at(i));
+	}
+
+	return finalMuscles;
+}
+
+void displayTypePlanExplanation()
+{
+	cout << "\n 	---Different Plan Types---" << endl<< endl;
+	cout <<"\t		Functional" << endl;
+	cout << "Training that involves a wide range of muscles, with movements similar to daily activities" << endl;
+	cout << "Objective: Healthy lifestyle"<< endl << endl;
+
+	cout << "\t		Hypertrophism "<<endl;
+	cout << "Single muscle exercises, designed to maximaze muscle growth" << endl;
+	cout << "Objective: Gain muscle" << endl << endl;
+
+	cout << "\t		Cardio "<<endl;
+	cout << "Exercise that accelarates heart beating" << endl;
+	cout << "Objective: Lose weigth" << endl << endl;
+	cout << "\t 	--------------------------" << endl;
+
+}
+
+void Client::generateNewPlans(Gym &gym)
+{
+	cout << endl<<"Qual é o teu objetivo?" << endl << endl;
+	vector<string> sections = { "\t1.	Forma física (Funcional)" ,"\t2.	Ganhar musculo (Hipertrofismo)" ,"\t3.	Perder peso(cardio)" ,"\t4. Quais são as diferenças?" , "\n\t0.	Leave\n" };
+	bool continueInMenu = true;
+	do
+	{
+		cout << endl << "\t 	Training Plan Generator	" << endl;
+		cout << "\t--------------------------" << endl << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+
+			this->generateFunctionalPlan(gym);
+			break;
+		case 2:
+			this->generateHyperPlan(gym);
+			break;
+		case 3:
+			this->generateCardioPlan(gym);
+			break;
+		case 4:
+			displayTypePlanExplanation();
+			break;
+		default:
+			break;
+		}
+	} while (continueInMenu);
+
+}
+

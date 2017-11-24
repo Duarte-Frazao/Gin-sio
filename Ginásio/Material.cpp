@@ -26,3 +26,6 @@ std::ostream & Material::operator<<(std::ostream &out)
 	else out << "Machine: " << materialName << " Number: " << machineNumber << "\n";
 	return out;
 }
+std::string Material::getMaterialName(){
+	return materialName;
+}

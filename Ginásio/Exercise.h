@@ -35,6 +35,7 @@ public:
 	Exercise(bool legs, bool calves, bool cardio,bool chest,bool shoulders,bool biceps,
 			bool triceps, bool abdominals, bool gluteus,
 			bool back,std::string name, std::string description, std::vector<Material*> necessaryMaterial, int intensity);
+
 	Exercise(std::string name, std::string description, std::vector<Material*> necessaryMaterial, int intensity);
 	~Exercise();
 	bool isFunctional() const;
@@ -65,6 +66,7 @@ public:
 	bool includeMuscles(std::vector<std::string> muscles);
 	bool includeMuscle(std::string muscle);
 	void editExercise(Gym &gym);
+	std::vector<bool> getMuscles();
 
 };
 

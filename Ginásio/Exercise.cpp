@@ -16,10 +16,15 @@ int filterInput(int inf, int sup, std::string msg);
 vector<string> selectMuscles();
 vector<Material *> getMaterial();
 
-Exercise::Exercise(bool legsI, bool calvesI, bool cardioI,bool chestI,bool shouldersI,bool bicepsI,
-		bool tricepsI, bool abdominalsI,
+Exercise::Exercise(bool legsI, bool calvesI, bool cardioI, bool chestI,
+		bool shouldersI, bool bicepsI, bool tricepsI, bool abdominalsI,
 		bool gluteusI, bool backI, std::string name, std::string descriptionI,
-		std::vector<Material*> necessaryMaterialI, int intensity): intensity(intensity), name(name), legs(legsI), calves(calvesI), cardio(cardioI), chest(chestI), shoulders(shouldersI), biceps(bicepsI), triceps(tricepsI), abdominals(abdominalsI), gluteus(gluteusI), back(backI), description(descriptionI) {
+		std::vector<Material*> necessaryMaterialI, int intensity) :
+		intensity(intensity), name(name), legs(legsI), calves(calvesI), cardio(
+				cardioI), chest(chestI), shoulders(shouldersI), biceps(bicepsI), triceps(
+				tricepsI), abdominals(abdominalsI), gluteus(gluteusI), back(
+				backI), description(descriptionI),necessaryMaterial(necessaryMaterialI) {
+
 
 
 }
@@ -123,6 +128,11 @@ bool Exercise::isHyper() const
 	if(cardio) return false;
 	if(trainedMuscles()<= 3) return true;
 	return false;
+}
+
+std::vector<bool> Exercise::getMuscles(){
+	vector<bool> arrayBool = {legs, calves, cardio, chest, shoulders, biceps, triceps, abdominals, gluteus, back};
+	return arrayBool;
 }
 
 //Edits a Client

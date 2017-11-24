@@ -17,7 +17,7 @@ class Material {
 public:
 	bool isMachine();
 	int getMachineNumber();
-	std::string getMaterialName;
+	std::string getMaterialName();
 	Material(bool machine, std::string materialName, int machineNumber);
 	~Material();
 	std::ostream & operator<<(std::ostream &out);

@@ -202,6 +202,74 @@ Gym * readInformationFile(std::string fileName){
 
 	//----------------------------
 
+
+	//Material
+	//----------------------------
+	std::string material_machine_str;
+	std::string material_materialName;
+	int material_machineNumber;
+
+	inFile >> controlWord;
+	if(controlWord != "Material"); //throw error
+
+
+	std::vector<Material *> material;
+
+	while(inFile.peek() != ';' ){
+		inFile >> brackets >> material_machine_str >> material_materialName >> material_machineNumber >> brackets;
+
+		material.push_back(new Material(material_machine_str == "T", material_materialName, material_machineNumber));
+		inFile.get();
+	}
+	inFile.get();
+	//----------------------------
+
+
+	//Exercise
+	//----------------------------
+	char legs, calves, cardio, chest, shoulders, biceps, triceps, abdominals, gluteus, back;
+	std::string exercise_name;
+	std::string exercise_description;
+	std::vector<Material*> exercise_necessaryMaterial;
+	int exercise_intensity;
+
+	inFile >> controlWord;
+	if(controlWord != "Exercise"); //throw error
+
+
+	std::vector<Exercise *> exercises;
+
+	while(inFile.peek() != ';' ){
+		inFile >> brackets >> legs >> calves >> cardio >> chest >> shoulders
+				>> biceps >> triceps >> abdominals >> gluteus >> back >>  exercise_intensity >> brackets;
+
+		std::vector<Material*> exercise_necessaryMaterial;
+
+		char temp;
+		while(inFile >> temp, temp != ']'){
+			Material * pMaterial  = material.at(temp - 1 - '0');
+			exercise_necessaryMaterial.push_back(pMaterial);
+		}
+
+
+		inFile.ignore();
+
+		std::string line;
+		getline(inFile,line);
+		exercise_description = line.substr(line.find_first_of("\"")+1, line.find_last_of("\"")-line.find_first_of("\"")-1);
+
+		exercises.push_back(
+				new Exercise(legs == 'T', calves == 'T', cardio == 'T',
+						chest == 'T', shoulders == 'T', biceps == 'T',
+						triceps == 'T', abdominals == 'T', gluteus == 'T',
+						back == 'T', exercise_name, exercise_description,
+						exercise_necessaryMaterial, exercise_intensity));
+
+		//inFile.get();
+	}
+	inFile.get();
+	//----------------------------
+
 	inFile >> controlWord;
 	if (controlWord != "end"); //throw error
 
@@ -314,6 +382,56 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	outFile << ";\n\n";
 
 
+	//----------------------------
+
+
+
+	//Material
+	//----------------------------
+	std::vector<Material *> materialPrint;
+	outFile << "Material" << std::endl;
+	for (auto pExercise : gym.getExercises()) {
+		std::cerr << pExercise->getNecessaryMaterial().size()<<std::endl;
+		for (auto pMaterial : pExercise->getNecessaryMaterial()) {
+			if(! std::binary_search(materialPrint.begin(), materialPrint.end(), pMaterial)){
+				materialPrint.push_back(pMaterial);
+				sort(materialPrint.begin(), materialPrint.end(),
+						[](Material * m1, Material * m2) {return m1->getMachineNumber() <m2->getMachineNumber();});
+			}
+		}
+	}
+
+	for(auto pMaterial : materialPrint){
+		outFile << "[ " << (pMaterial->isMachine() ? "T " : "F ")
+				<< pMaterial->getMaterialName() << " "
+				<< pMaterial->getMachineNumber() << " ]\n";
+	}
+
+	outFile << ";\n\n";
+	//----------------------------
+
+
+	//Exercise
+	//----------------------------
+	outFile << "Exercise" << std::endl;
+	outFile << std::setfill(' ');
+		for (auto pExercise : gym.getExercises()) {
+			outFile << "[ ";
+			std::vector<bool> muscles = pExercise->getMuscles();
+			for(unsigned int i = 0; i < muscles.size(); i++){
+				outFile << (muscles.at(i) ? "T " : "F ");
+			}
+			outFile << std::setw(2) << std::left <<pExercise->getIntensity() << " [ ";
+
+			for (auto pMaterial : pExercise->getNecessaryMaterial()){
+				outFile << pMaterial->getMachineNumber() << " ";
+			}
+
+			outFile << " ] " << std::setw(11) <<std::left <<pExercise->getName() << " ";
+			outFile <<"\"" << pExercise->getDescription()<< "\"" << " ]\n";
+		}
+
+		outFile << ";\n\n";
 	//----------------------------
 
 

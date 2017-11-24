@@ -1,0 +1,408 @@
+\hypertarget{classStaff}{}\section{Staff Class Reference}
+\label{classStaff}\index{Staff@{Staff}}
+
+
+{\ttfamily \#include $<$Staff.\+h$>$}
+
+Inheritance diagram for Staff\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classStaff}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStaff_a94a7d66467d3946143dd9c5fe4ef4c6c}{Staff} (int \hyperlink{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{age}, double \hyperlink{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{wage})
+\item 
+\hyperlink{classStaff_a0b2629c64afc440decf47e6746def943}{Staff} (std\+::string \hyperlink{classStaff_ad0e56a6c5296a2138aed86dc0cf476cb}{name}, int \hyperlink{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{age}, double \hyperlink{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{wage}, std\+::string pwd)
+\item 
+\hyperlink{classStaff_a7d0a5c2377512828c73f88a4f7c2213c}{Staff} (int \hyperlink{classStaff_a2b5674cabb4b4e3a50cd130898d00c20}{id}, std\+::string \hyperlink{classStaff_ad0e56a6c5296a2138aed86dc0cf476cb}{name}, int \hyperlink{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{age}, double \hyperlink{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{wage}, std\+::string pwd)
+\item 
+virtual \hyperlink{classStaff_a1c2f98aad2fbd5ddf72e9ff92304cbfd}{$\sim$\+Staff} ()
+\item 
+void \hyperlink{classStaff_a440c94e1d94a37384bc0f54f2709c083}{increment\+Staff\+Id} ()
+\item 
+virtual int \hyperlink{classStaff_aaad9e092c09d644570cf4119e2c77368}{get\+Id} () const 
+\item 
+virtual std\+::string \hyperlink{classStaff_a75431ea3462f0862f00884842cb032a1}{get\+Name} () const 
+\item 
+virtual int \hyperlink{classStaff_acd4f7e81f745e6a5205acbdf9b6ada2c}{get\+Age} () const 
+\item 
+virtual double \hyperlink{classStaff_a191d2c46bc1b5be8899e55bc0823a920}{get\+Wage} () const 
+\item 
+virtual bool \hyperlink{classStaff_a3c0c4690bacca349c84f707004c3acb0}{recognize\+Prof} () const 
+\item 
+std\+::string \hyperlink{classStaff_a6cb9453d71022d92c93e364fe51c1c0c}{get\+Password} () const 
+\item 
+bool \hyperlink{classStaff_a3dc1d93121a3fe8630475f29fa68823f}{is\+Inside\+Gym} () const 
+\item 
+bool \hyperlink{classStaff_ab23c34f9b2807218af83802461cc44d8}{get\+Was\+Paid} () const 
+\item 
+void \hyperlink{classStaff_a6c6eb931f55c44a1cd21994f51807c54}{set\+Name} (std\+::string \hyperlink{classStaff_ad0e56a6c5296a2138aed86dc0cf476cb}{name})
+\item 
+void \hyperlink{classStaff_a710ece17d20ae2de66d9ed2a550b15f1}{set\+Age} (int \hyperlink{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{age})
+\item 
+void \hyperlink{classStaff_aa6584dd4ddea731360eb621b03a9216b}{set\+Schedule} (\hyperlink{classSchedule}{Schedule} \hyperlink{classStaff_ac2864b27c3cf1383c39916077b64b229}{work\+Schedule})
+\item 
+void \hyperlink{classStaff_a0a8faa8566d285282d7eb3848ea44249}{set\+Wage} (double \hyperlink{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{wage})
+\item 
+void \hyperlink{classStaff_aaf97f05a90562a808af9f8215b67a758}{set\+Password} (std\+::string pass)
+\item 
+void \hyperlink{classStaff_a70c5d5efb82fe587a69b3fe7ef44bf30}{change\+Was\+Paid} ()
+\item 
+void \hyperlink{classStaff_a7dc07b6a8330a7cf0117604d7cbd5138}{change\+Location} ()
+\item 
+void \hyperlink{classStaff_a139297bfe1533cf2b085e812365d1b38}{edit\+Staff} (\hyperlink{classGym}{Gym} \&gym)
+\item 
+bool \hyperlink{classStaff_a41f6fa58ad71fcb821edfbc2b838319e}{auth} (std\+::string pass)
+\item 
+virtual void \hyperlink{classStaff_a64b23946e927025bf5aec2938502305a}{print\+Info} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classStaff_a2b5674cabb4b4e3a50cd130898d00c20}{id}
+\item 
+std\+::string \hyperlink{classStaff_ad0e56a6c5296a2138aed86dc0cf476cb}{name}
+\item 
+int \hyperlink{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{age}
+\item 
+double \hyperlink{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{wage}
+\item 
+bool \hyperlink{classStaff_a352968c949ea47dd9a278bd2d35e1fb9}{inside\+Gym}
+\item 
+bool \hyperlink{classStaff_ae1f9f88528e62ba09e50966a46353208}{was\+Paid}
+\item 
+\hyperlink{classSchedule}{Schedule} \hyperlink{classStaff_ac2864b27c3cf1383c39916077b64b229}{work\+Schedule}
+\item 
+std\+::string \hyperlink{classStaff_a1500c35ca5bc4a9fedd5cfb960c9bee1}{password}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classStaff_a5eb1171ba3343325d4c999df8c29e6bf}{staff\+Id} = 0
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classStaff_a4edf96b40bf376890c80c952bae628c6}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classStaff}{Staff} \&staff)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Staff@{Staff}!Staff@{Staff}}
+\index{Staff@{Staff}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{Staff(int age, double wage)}{Staff(int age, double wage)}}]{\setlength{\rightskip}{0pt plus 5cm}Staff\+::\+Staff (
+\begin{DoxyParamCaption}
+\item[{int}]{age, }
+\item[{double}]{wage}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a94a7d66467d3946143dd9c5fe4ef4c6c}{}\label{classStaff_a94a7d66467d3946143dd9c5fe4ef4c6c}
+\index{Staff@{Staff}!Staff@{Staff}}
+\index{Staff@{Staff}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{Staff(std\+::string name, int age, double wage, std\+::string pwd)}{Staff(std::string name, int age, double wage, std::string pwd)}}]{\setlength{\rightskip}{0pt plus 5cm}Staff\+::\+Staff (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{int}]{age, }
+\item[{double}]{wage, }
+\item[{std\+::string}]{pwd}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a0b2629c64afc440decf47e6746def943}{}\label{classStaff_a0b2629c64afc440decf47e6746def943}
+\index{Staff@{Staff}!Staff@{Staff}}
+\index{Staff@{Staff}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{Staff(int id, std\+::string name, int age, double wage, std\+::string pwd)}{Staff(int id, std::string name, int age, double wage, std::string pwd)}}]{\setlength{\rightskip}{0pt plus 5cm}Staff\+::\+Staff (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{std\+::string}]{name, }
+\item[{int}]{age, }
+\item[{double}]{wage, }
+\item[{std\+::string}]{pwd}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a7d0a5c2377512828c73f88a4f7c2213c}{}\label{classStaff_a7d0a5c2377512828c73f88a4f7c2213c}
+\index{Staff@{Staff}!````~Staff@{$\sim$\+Staff}}
+\index{````~Staff@{$\sim$\+Staff}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{$\sim$\+Staff()}{~Staff()}}]{\setlength{\rightskip}{0pt plus 5cm}Staff\+::$\sim$\+Staff (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classStaff_a1c2f98aad2fbd5ddf72e9ff92304cbfd}{}\label{classStaff_a1c2f98aad2fbd5ddf72e9ff92304cbfd}
+
+
+\subsection{Member Function Documentation}
+\index{Staff@{Staff}!auth@{auth}}
+\index{auth@{auth}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{auth(std\+::string pass)}{auth(std::string pass)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Staff\+::auth (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{pass}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a41f6fa58ad71fcb821edfbc2b838319e}{}\label{classStaff_a41f6fa58ad71fcb821edfbc2b838319e}
+Verifies if password is correct for the staff invoking the function
+
+
+\begin{DoxyParams}{Parameters}
+{\em Staff\textquotesingle{}s} & password \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if password coincides, false otherwise 
+\end{DoxyReturn}
+\index{Staff@{Staff}!change\+Location@{change\+Location}}
+\index{change\+Location@{change\+Location}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{change\+Location()}{changeLocation()}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::change\+Location (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a7dc07b6a8330a7cf0117604d7cbd5138}{}\label{classStaff_a7dc07b6a8330a7cf0117604d7cbd5138}
+Changes staff\textquotesingle{}s location only if the hour of entrance is in between staff\textquotesingle{}s working hours \index{Staff@{Staff}!change\+Was\+Paid@{change\+Was\+Paid}}
+\index{change\+Was\+Paid@{change\+Was\+Paid}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{change\+Was\+Paid()}{changeWasPaid()}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::change\+Was\+Paid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a70c5d5efb82fe587a69b3fe7ef44bf30}{}\label{classStaff_a70c5d5efb82fe587a69b3fe7ef44bf30}
+Changes staff\textquotesingle{}s payment situation \index{Staff@{Staff}!edit\+Staff@{edit\+Staff}}
+\index{edit\+Staff@{edit\+Staff}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{edit\+Staff(\+Gym \&gym)}{editStaff(Gym &gym)}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::edit\+Staff (
+\begin{DoxyParamCaption}
+\item[{{\bf Gym} \&}]{gym}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a139297bfe1533cf2b085e812365d1b38}{}\label{classStaff_a139297bfe1533cf2b085e812365d1b38}
+Handles the editing of the staff\textquotesingle{}s information \index{Staff@{Staff}!get\+Age@{get\+Age}}
+\index{get\+Age@{get\+Age}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{get\+Age() const }{getAge() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Staff\+::get\+Age (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classStaff_acd4f7e81f745e6a5205acbdf9b6ada2c}{}\label{classStaff_acd4f7e81f745e6a5205acbdf9b6ada2c}
+Returns staff\textquotesingle{}s age
+
+\begin{DoxyReturn}{Returns}
+Returns staff\textquotesingle{}s age 
+\end{DoxyReturn}
+\index{Staff@{Staff}!get\+Id@{get\+Id}}
+\index{get\+Id@{get\+Id}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{get\+Id() const }{getId() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Staff\+::get\+Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classStaff_aaad9e092c09d644570cf4119e2c77368}{}\label{classStaff_aaad9e092c09d644570cf4119e2c77368}
+Returns staff\textquotesingle{}s id
+
+\begin{DoxyReturn}{Returns}
+Returns staff\textquotesingle{}s id 
+\end{DoxyReturn}
+\index{Staff@{Staff}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{get\+Name() const }{getName() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Staff\+::get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classStaff_a75431ea3462f0862f00884842cb032a1}{}\label{classStaff_a75431ea3462f0862f00884842cb032a1}
+Returns staff\textquotesingle{}s name
+
+\begin{DoxyReturn}{Returns}
+Returns staff\textquotesingle{}s name 
+\end{DoxyReturn}
+\index{Staff@{Staff}!get\+Password@{get\+Password}}
+\index{get\+Password@{get\+Password}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{get\+Password() const }{getPassword() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Staff\+::get\+Password (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classStaff_a6cb9453d71022d92c93e364fe51c1c0c}{}\label{classStaff_a6cb9453d71022d92c93e364fe51c1c0c}
+Returns staff\textquotesingle{}s log-\/in password
+
+\begin{DoxyReturn}{Returns}
+Returns staff\textquotesingle{}s password 
+\end{DoxyReturn}
+\index{Staff@{Staff}!get\+Wage@{get\+Wage}}
+\index{get\+Wage@{get\+Wage}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{get\+Wage() const }{getWage() const }}]{\setlength{\rightskip}{0pt plus 5cm}double Staff\+::get\+Wage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classStaff_a191d2c46bc1b5be8899e55bc0823a920}{}\label{classStaff_a191d2c46bc1b5be8899e55bc0823a920}
+Returns staff\textquotesingle{}s wage
+
+\begin{DoxyReturn}{Returns}
+Returns staff\textquotesingle{}s wage 
+\end{DoxyReturn}
+\index{Staff@{Staff}!get\+Was\+Paid@{get\+Was\+Paid}}
+\index{get\+Was\+Paid@{get\+Was\+Paid}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{get\+Was\+Paid() const }{getWasPaid() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Staff\+::get\+Was\+Paid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classStaff_ab23c34f9b2807218af83802461cc44d8}{}\label{classStaff_ab23c34f9b2807218af83802461cc44d8}
+Returns staff\textquotesingle{}s payment situation
+
+\begin{DoxyReturn}{Returns}
+Returns 1 if was already paid, 0 otherwise 
+\end{DoxyReturn}
+\index{Staff@{Staff}!increment\+Staff\+Id@{increment\+Staff\+Id}}
+\index{increment\+Staff\+Id@{increment\+Staff\+Id}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{increment\+Staff\+Id()}{incrementStaffId()}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::increment\+Staff\+Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a440c94e1d94a37384bc0f54f2709c083}{}\label{classStaff_a440c94e1d94a37384bc0f54f2709c083}
+Increments staff\textquotesingle{}s static Id during file reading \index{Staff@{Staff}!is\+Inside\+Gym@{is\+Inside\+Gym}}
+\index{is\+Inside\+Gym@{is\+Inside\+Gym}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{is\+Inside\+Gym() const }{isInsideGym() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Staff\+::is\+Inside\+Gym (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classStaff_a3dc1d93121a3fe8630475f29fa68823f}{}\label{classStaff_a3dc1d93121a3fe8630475f29fa68823f}
+Returns staff\textquotesingle{}s location
+
+\begin{DoxyReturn}{Returns}
+Returns 1 if inside\+Gym, 0 otherwise 
+\end{DoxyReturn}
+\index{Staff@{Staff}!print\+Info@{print\+Info}}
+\index{print\+Info@{print\+Info}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{print\+Info()}{printInfo()}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::print\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classStaff_a64b23946e927025bf5aec2938502305a}{}\label{classStaff_a64b23946e927025bf5aec2938502305a}
+Displays information about \hyperlink{classStaff}{Staff} 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classPersonalTrainer_a8dd995b0f78e00400fd0b859e90dea77}{Personal\+Trainer}.
+
+\index{Staff@{Staff}!recognize\+Prof@{recognize\+Prof}}
+\index{recognize\+Prof@{recognize\+Prof}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{recognize\+Prof() const }{recognizeProf() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Staff\+::recognize\+Prof (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classStaff_a3c0c4690bacca349c84f707004c3acb0}{}\label{classStaff_a3c0c4690bacca349c84f707004c3acb0}
+
+
+Reimplemented in \hyperlink{classPersonalTrainer_a04c0c022242027e043c6ca355f145bba}{Personal\+Trainer}.
+
+\index{Staff@{Staff}!set\+Age@{set\+Age}}
+\index{set\+Age@{set\+Age}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{set\+Age(int age)}{setAge(int age)}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::set\+Age (
+\begin{DoxyParamCaption}
+\item[{int}]{age}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a710ece17d20ae2de66d9ed2a550b15f1}{}\label{classStaff_a710ece17d20ae2de66d9ed2a550b15f1}
+Sets staff\textquotesingle{}s age
+
+
+\begin{DoxyParams}{Parameters}
+{\em Staff\textquotesingle{}s} & age \\
+\hline
+\end{DoxyParams}
+\index{Staff@{Staff}!set\+Name@{set\+Name}}
+\index{set\+Name@{set\+Name}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{set\+Name(std\+::string name)}{setName(std::string name)}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::set\+Name (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a6c6eb931f55c44a1cd21994f51807c54}{}\label{classStaff_a6c6eb931f55c44a1cd21994f51807c54}
+Sets staff\textquotesingle{}s name
+
+
+\begin{DoxyParams}{Parameters}
+{\em Staff\textquotesingle{}s} & name \\
+\hline
+\end{DoxyParams}
+\index{Staff@{Staff}!set\+Password@{set\+Password}}
+\index{set\+Password@{set\+Password}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{set\+Password(std\+::string pass)}{setPassword(std::string pass)}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::set\+Password (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{pass}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_aaf97f05a90562a808af9f8215b67a758}{}\label{classStaff_aaf97f05a90562a808af9f8215b67a758}
+Sets staff\textquotesingle{}s password to the one passed as the function\textquotesingle{}s parameter
+
+
+\begin{DoxyParams}{Parameters}
+{\em Staff\textquotesingle{}s} & password \\
+\hline
+\end{DoxyParams}
+\index{Staff@{Staff}!set\+Schedule@{set\+Schedule}}
+\index{set\+Schedule@{set\+Schedule}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{set\+Schedule(\+Schedule work\+Schedule)}{setSchedule(Schedule workSchedule)}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::set\+Schedule (
+\begin{DoxyParamCaption}
+\item[{{\bf Schedule}}]{work\+Schedule}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_aa6584dd4ddea731360eb621b03a9216b}{}\label{classStaff_aa6584dd4ddea731360eb621b03a9216b}
+Sets staff\textquotesingle{}s working schedule
+
+
+\begin{DoxyParams}{Parameters}
+{\em Staff\textquotesingle{}s} & working schedule \\
+\hline
+\end{DoxyParams}
+\index{Staff@{Staff}!set\+Wage@{set\+Wage}}
+\index{set\+Wage@{set\+Wage}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{set\+Wage(double wage)}{setWage(double wage)}}]{\setlength{\rightskip}{0pt plus 5cm}void Staff\+::set\+Wage (
+\begin{DoxyParamCaption}
+\item[{double}]{wage}
+\end{DoxyParamCaption}
+)}\hypertarget{classStaff_a0a8faa8566d285282d7eb3848ea44249}{}\label{classStaff_a0a8faa8566d285282d7eb3848ea44249}
+Sets staff\textquotesingle{}s wage and throws an Invalid\+Wage if the wage passed as the parameter is negative
+
+
+\begin{DoxyParams}{Parameters}
+{\em Staff\textquotesingle{}s} & wage \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{Staff@{Staff}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out, }
+\item[{const {\bf Staff} \&}]{staff}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classStaff_a4edf96b40bf376890c80c952bae628c6}{}\label{classStaff_a4edf96b40bf376890c80c952bae628c6}
+Overload of operator $<$$<$ for class \hyperlink{classStaff}{Staff} \begin{DoxyReturn}{Returns}
+ostream 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{Staff@{Staff}!age@{age}}
+\index{age@{age}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{age}{age}}]{\setlength{\rightskip}{0pt plus 5cm}int Staff\+::age\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{}\label{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}
+\index{Staff@{Staff}!id@{id}}
+\index{id@{id}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{id}{id}}]{\setlength{\rightskip}{0pt plus 5cm}int Staff\+::id\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classStaff_a2b5674cabb4b4e3a50cd130898d00c20}{}\label{classStaff_a2b5674cabb4b4e3a50cd130898d00c20}
+\index{Staff@{Staff}!inside\+Gym@{inside\+Gym}}
+\index{inside\+Gym@{inside\+Gym}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{inside\+Gym}{insideGym}}]{\setlength{\rightskip}{0pt plus 5cm}bool Staff\+::inside\+Gym\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classStaff_a352968c949ea47dd9a278bd2d35e1fb9}{}\label{classStaff_a352968c949ea47dd9a278bd2d35e1fb9}
+\index{Staff@{Staff}!name@{name}}
+\index{name@{name}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{name}{name}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Staff\+::name\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classStaff_ad0e56a6c5296a2138aed86dc0cf476cb}{}\label{classStaff_ad0e56a6c5296a2138aed86dc0cf476cb}
+\index{Staff@{Staff}!password@{password}}
+\index{password@{password}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{password}{password}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Staff\+::password\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classStaff_a1500c35ca5bc4a9fedd5cfb960c9bee1}{}\label{classStaff_a1500c35ca5bc4a9fedd5cfb960c9bee1}
+\index{Staff@{Staff}!staff\+Id@{staff\+Id}}
+\index{staff\+Id@{staff\+Id}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{staff\+Id}{staffId}}]{\setlength{\rightskip}{0pt plus 5cm}int Staff\+::staff\+Id = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classStaff_a5eb1171ba3343325d4c999df8c29e6bf}{}\label{classStaff_a5eb1171ba3343325d4c999df8c29e6bf}
+\index{Staff@{Staff}!wage@{wage}}
+\index{wage@{wage}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{wage}{wage}}]{\setlength{\rightskip}{0pt plus 5cm}double Staff\+::wage\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{}\label{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}
+\index{Staff@{Staff}!was\+Paid@{was\+Paid}}
+\index{was\+Paid@{was\+Paid}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{was\+Paid}{wasPaid}}]{\setlength{\rightskip}{0pt plus 5cm}bool Staff\+::was\+Paid\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classStaff_ae1f9f88528e62ba09e50966a46353208}{}\label{classStaff_ae1f9f88528e62ba09e50966a46353208}
+\index{Staff@{Staff}!work\+Schedule@{work\+Schedule}}
+\index{work\+Schedule@{work\+Schedule}!Staff@{Staff}}
+\subsubsection[{\texorpdfstring{work\+Schedule}{workSchedule}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Schedule} Staff\+::work\+Schedule\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classStaff_ac2864b27c3cf1383c39916077b64b229}{}\label{classStaff_ac2864b27c3cf1383c39916077b64b229}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Staff_8h}{Staff.\+h}\item 
+\hyperlink{Staff_8cpp}{Staff.\+cpp}\end{DoxyCompactItemize}

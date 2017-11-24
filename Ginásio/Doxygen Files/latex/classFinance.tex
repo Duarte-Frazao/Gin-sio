@@ -1,0 +1,153 @@
+\hypertarget{classFinance}{}\section{Finance Class Reference}
+\label{classFinance}\index{Finance@{Finance}}
+
+
+{\ttfamily \#include $<$Finance.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFinance_a0b739d7b6e4c3fbf1851d481e2771eb2}{Finance} ()
+\item 
+virtual \hyperlink{classFinance_a1e8ee7cfd4d1c4199bad7309ea24814b}{$\sim$\+Finance} ()
+\item 
+std\+::vector$<$ \hyperlink{classTransaction}{Transaction} $>$ \hyperlink{classFinance_a66837a67f11d3f535443437f059aee6d}{get\+Transactions} ()
+\item 
+double \hyperlink{classFinance_a6d7848d3d6ec4911d80ff62474172c36}{get\+Balance} ()
+\item 
+void \hyperlink{classFinance_ac21f2484c60fa79241348539562aa871}{set\+Transactions} (std\+::vector$<$ \hyperlink{classTransaction}{Transaction} $>$ \hyperlink{classFinance_a09c32851f7aa143176bbd995e096f34e}{transactions})
+\item 
+void \hyperlink{classFinance_acfb28629a949cb12a95be1099fa682c4}{set\+Balance} (double \hyperlink{classFinance_ac239c4085777ca86ba45c4c8d6723926}{balance})
+\item 
+bool \hyperlink{classFinance_a64c98d636692c83e875fad949e0feb69}{add\+Transaction} (\hyperlink{classTransaction}{Transaction} new\+Transaction)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classTransaction}{Transaction} $>$ \hyperlink{classFinance_a09c32851f7aa143176bbd995e096f34e}{transactions}
+\item 
+double \hyperlink{classFinance_ac239c4085777ca86ba45c4c8d6723926}{balance}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classFinance_a87860657710fe8b96d9c6a0ff13a312e}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classFinance}{Finance} \&finance)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Finance@{Finance}!Finance@{Finance}}
+\index{Finance@{Finance}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{Finance()}{Finance()}}]{\setlength{\rightskip}{0pt plus 5cm}Finance\+::\+Finance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFinance_a0b739d7b6e4c3fbf1851d481e2771eb2}{}\label{classFinance_a0b739d7b6e4c3fbf1851d481e2771eb2}
+\index{Finance@{Finance}!````~Finance@{$\sim$\+Finance}}
+\index{````~Finance@{$\sim$\+Finance}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{$\sim$\+Finance()}{~Finance()}}]{\setlength{\rightskip}{0pt plus 5cm}Finance\+::$\sim$\+Finance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classFinance_a1e8ee7cfd4d1c4199bad7309ea24814b}{}\label{classFinance_a1e8ee7cfd4d1c4199bad7309ea24814b}
+
+
+\subsection{Member Function Documentation}
+\index{Finance@{Finance}!add\+Transaction@{add\+Transaction}}
+\index{add\+Transaction@{add\+Transaction}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{add\+Transaction(\+Transaction new\+Transaction)}{addTransaction(Transaction newTransaction)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Finance\+::add\+Transaction (
+\begin{DoxyParamCaption}
+\item[{{\bf Transaction}}]{new\+Transaction}
+\end{DoxyParamCaption}
+)}\hypertarget{classFinance_a64c98d636692c83e875fad949e0feb69}{}\label{classFinance_a64c98d636692c83e875fad949e0feb69}
+Adds a new transaction to the vector of transactions
+
+\begin{DoxyReturn}{Returns}
+Returns if transaction is feasible 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em The} & new transaction \\
+\hline
+\end{DoxyParams}
+\index{Finance@{Finance}!get\+Balance@{get\+Balance}}
+\index{get\+Balance@{get\+Balance}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{get\+Balance()}{getBalance()}}]{\setlength{\rightskip}{0pt plus 5cm}double Finance\+::get\+Balance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFinance_a6d7848d3d6ec4911d80ff62474172c36}{}\label{classFinance_a6d7848d3d6ec4911d80ff62474172c36}
+Get gym\textquotesingle{}s account balance
+
+\begin{DoxyReturn}{Returns}
+Returns gym\textquotesingle{}s account balance 
+\end{DoxyReturn}
+\index{Finance@{Finance}!get\+Transactions@{get\+Transactions}}
+\index{get\+Transactions@{get\+Transactions}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{get\+Transactions()}{getTransactions()}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Transaction} $>$ Finance\+::get\+Transactions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classFinance_a66837a67f11d3f535443437f059aee6d}{}\label{classFinance_a66837a67f11d3f535443437f059aee6d}
+Get vector of transactions
+
+\begin{DoxyReturn}{Returns}
+Returns the vector of transactions 
+\end{DoxyReturn}
+\index{Finance@{Finance}!set\+Balance@{set\+Balance}}
+\index{set\+Balance@{set\+Balance}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{set\+Balance(double balance)}{setBalance(double balance)}}]{\setlength{\rightskip}{0pt plus 5cm}void Finance\+::set\+Balance (
+\begin{DoxyParamCaption}
+\item[{double}]{balance}
+\end{DoxyParamCaption}
+)}\hypertarget{classFinance_acfb28629a949cb12a95be1099fa682c4}{}\label{classFinance_acfb28629a949cb12a95be1099fa682c4}
+Sets the balance of the gym account
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & gym balance \\
+\hline
+\end{DoxyParams}
+\index{Finance@{Finance}!set\+Transactions@{set\+Transactions}}
+\index{set\+Transactions@{set\+Transactions}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{set\+Transactions(std\+::vector$<$ Transaction $>$ transactions)}{setTransactions(std::vector< Transaction > transactions)}}]{\setlength{\rightskip}{0pt plus 5cm}void Finance\+::set\+Transactions (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Transaction} $>$}]{transactions}
+\end{DoxyParamCaption}
+)}\hypertarget{classFinance_ac21f2484c60fa79241348539562aa871}{}\label{classFinance_ac21f2484c60fa79241348539562aa871}
+Sets the vector of transactions
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & vector of transactions \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{Finance@{Finance}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out, }
+\item[{const {\bf Finance} \&}]{finance}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classFinance_a87860657710fe8b96d9c6a0ff13a312e}{}\label{classFinance_a87860657710fe8b96d9c6a0ff13a312e}
+Overload of operator $<$$<$ for class \hyperlink{classFinance}{Finance} \begin{DoxyReturn}{Returns}
+ostream 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{Finance@{Finance}!balance@{balance}}
+\index{balance@{balance}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{balance}{balance}}]{\setlength{\rightskip}{0pt plus 5cm}double Finance\+::balance\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classFinance_ac239c4085777ca86ba45c4c8d6723926}{}\label{classFinance_ac239c4085777ca86ba45c4c8d6723926}
+\index{Finance@{Finance}!transactions@{transactions}}
+\index{transactions@{transactions}!Finance@{Finance}}
+\subsubsection[{\texorpdfstring{transactions}{transactions}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Transaction}$>$ Finance\+::transactions\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classFinance_a09c32851f7aa143176bbd995e096f34e}{}\label{classFinance_a09c32851f7aa143176bbd995e096f34e}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Finance_8h}{Finance.\+h}\item 
+\hyperlink{Finance_8cpp}{Finance.\+cpp}\end{DoxyCompactItemize}

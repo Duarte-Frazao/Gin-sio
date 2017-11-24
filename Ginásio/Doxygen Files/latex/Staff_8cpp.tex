@@ -1,0 +1,63 @@
+\hypertarget{Staff_8cpp}{}\section{Staff.\+cpp File Reference}
+\label{Staff_8cpp}\index{Staff.\+cpp@{Staff.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Staff.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}termcolor.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Input.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{Staff_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}{filter\+Input} (int inf, int sup, std\+::string msg=\char`\"{}Selection\+: \char`\"{})
+\item 
+int \hyperlink{Staff_8cpp_afa37a8d85387f3eb72ad8b937ac8f34e}{edit\+Staff\+Menu} ()
+\item 
+ostream \& \hyperlink{Staff_8cpp_a0096ae12dd2bc3507393ee68b0c97b9a}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classStaff}{Staff} \&staff)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{Staff.\+cpp@{Staff.\+cpp}!edit\+Staff\+Menu@{edit\+Staff\+Menu}}
+\index{edit\+Staff\+Menu@{edit\+Staff\+Menu}!Staff.\+cpp@{Staff.\+cpp}}
+\subsubsection[{\texorpdfstring{edit\+Staff\+Menu()}{editStaffMenu()}}]{\setlength{\rightskip}{0pt plus 5cm}int edit\+Staff\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{Staff_8cpp_afa37a8d85387f3eb72ad8b937ac8f34e}{}\label{Staff_8cpp_afa37a8d85387f3eb72ad8b937ac8f34e}
+Shows the menu of options for editing the staff\textquotesingle{}s information and returns the option chosen
+
+\begin{DoxyReturn}{Returns}
+Returns chosen option for the edit staff menu 
+\end{DoxyReturn}
+\index{Staff.\+cpp@{Staff.\+cpp}!filter\+Input@{filter\+Input}}
+\index{filter\+Input@{filter\+Input}!Staff.\+cpp@{Staff.\+cpp}}
+\subsubsection[{\texorpdfstring{filter\+Input(int inf, int sup, std\+::string msg=""Selection\+: "")}{filterInput(int inf, int sup, std::string msg="Selection: ")}}]{\setlength{\rightskip}{0pt plus 5cm}int filter\+Input (
+\begin{DoxyParamCaption}
+\item[{int}]{inf, }
+\item[{int}]{sup, }
+\item[{std\+::string}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{Staff_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}{}\label{Staff_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}
+Filters an option by giving two limits, makes the user input and integer between them
+
+
+\begin{DoxyParams}{Parameters}
+{\em inf} & Inferior Limit \\
+\hline
+{\em sup} & Superior Limit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Staff.\+cpp@{Staff.\+cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Staff.\+cpp@{Staff.\+cpp}}
+\subsubsection[{\texorpdfstring{operator$<$$<$(std\+::ostream \&out, const Staff \&staff)}{operator<<(std::ostream &out, const Staff &staff)}}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out, }
+\item[{const {\bf Staff} \&}]{staff}
+\end{DoxyParamCaption}
+)}\hypertarget{Staff_8cpp_a0096ae12dd2bc3507393ee68b0c97b9a}{}\label{Staff_8cpp_a0096ae12dd2bc3507393ee68b0c97b9a}
+Overload of operator $<$$<$ for class \hyperlink{classStaff}{Staff} \begin{DoxyReturn}{Returns}
+ostream 
+\end{DoxyReturn}

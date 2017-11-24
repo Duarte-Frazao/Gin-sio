@@ -1,0 +1,103 @@
+\hypertarget{Gym_8cpp}{}\section{Gym.\+cpp File Reference}
+\label{Gym_8cpp}\index{Gym.\+cpp@{Gym.\+cpp}}
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include \char`\"{}Gym.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Client.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}termcolor.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Input.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{Gym_8cpp_a66e9421eb5637365cbf9e2510fe87b2e}{\+\_\+getch} (void)
+\item 
+void \hyperlink{Gym_8cpp_a5435e5c8df38011b5cbaf529923a2d44}{input\+Client\+Id\+Obj} (int \&option\+Client, \hyperlink{classGym}{Gym} \&gym, \hyperlink{classClient}{Client} $\ast$$\ast$client\+\_\+found)
+\item 
+void \hyperlink{Gym_8cpp_aa19ad151611264e42c2ae9068f7d84ae}{input\+Staff\+Id\+Obj} (int \&option\+Staff, \hyperlink{classGym}{Gym} \&gym, \hyperlink{classStaff}{Staff} $\ast$$\ast$staff\+\_\+found)
+\item 
+void \hyperlink{Gym_8cpp_a8b8fdecfd11a9e7cd5bd11b6b6da413d}{input\+Pt\+Id\+Obj} (int \&option\+Pt, \hyperlink{classGym}{Gym} \&gym, \hyperlink{classStaff}{Staff} $\ast$$\ast$staff\+\_\+found)
+\item 
+void \hyperlink{Gym_8cpp_ad546bf19184a48d01ce81840d5b884ef}{input\+Program\+Id\+Obj} (int \&option\+Program, \hyperlink{classGym}{Gym} \&gym, \hyperlink{classProgram}{Program} $\ast$$\ast$program\+\_\+found)
+\item 
+int \hyperlink{Gym_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}{filter\+Input} (int inf, int sup, std\+::string msg=\char`\"{}Selection\+: \char`\"{})
+\item 
+std\+::ostream \& \hyperlink{Gym_8cpp_a9f1ed28d208a7bfc4353a2120acaf837}{operator$<$$<$} (ostream \&out, const \hyperlink{classGym}{Gym} \&gym)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{Gym.\+cpp@{Gym.\+cpp}!\+\_\+getch@{\+\_\+getch}}
+\index{\+\_\+getch@{\+\_\+getch}!Gym.\+cpp@{Gym.\+cpp}}
+\subsubsection[{\texorpdfstring{\+\_\+getch(void)}{_getch(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+getch (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{Gym_8cpp_a66e9421eb5637365cbf9e2510fe87b2e}{}\label{Gym_8cpp_a66e9421eb5637365cbf9e2510fe87b2e}
+\index{Gym.\+cpp@{Gym.\+cpp}!filter\+Input@{filter\+Input}}
+\index{filter\+Input@{filter\+Input}!Gym.\+cpp@{Gym.\+cpp}}
+\subsubsection[{\texorpdfstring{filter\+Input(int inf, int sup, std\+::string msg=""Selection\+: "")}{filterInput(int inf, int sup, std::string msg="Selection: ")}}]{\setlength{\rightskip}{0pt plus 5cm}int filter\+Input (
+\begin{DoxyParamCaption}
+\item[{int}]{inf, }
+\item[{int}]{sup, }
+\item[{std\+::string}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{Gym_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}{}\label{Gym_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}
+Filters an option by giving two limits, makes the user input and integer between them
+
+
+\begin{DoxyParams}{Parameters}
+{\em inf} & Inferior Limit \\
+\hline
+{\em sup} & Superior Limit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Gym.\+cpp@{Gym.\+cpp}!input\+Client\+Id\+Obj@{input\+Client\+Id\+Obj}}
+\index{input\+Client\+Id\+Obj@{input\+Client\+Id\+Obj}!Gym.\+cpp@{Gym.\+cpp}}
+\subsubsection[{\texorpdfstring{input\+Client\+Id\+Obj(int \&option\+Client, Gym \&gym, Client $\ast$$\ast$client\+\_\+found)}{inputClientIdObj(int &optionClient, Gym &gym, Client **client_found)}}]{\setlength{\rightskip}{0pt plus 5cm}void input\+Client\+Id\+Obj (
+\begin{DoxyParamCaption}
+\item[{int \&}]{option\+Client, }
+\item[{{\bf Gym} \&}]{gym, }
+\item[{{\bf Client} $\ast$$\ast$}]{client\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{Gym_8cpp_a5435e5c8df38011b5cbaf529923a2d44}{}\label{Gym_8cpp_a5435e5c8df38011b5cbaf529923a2d44}
+\index{Gym.\+cpp@{Gym.\+cpp}!input\+Program\+Id\+Obj@{input\+Program\+Id\+Obj}}
+\index{input\+Program\+Id\+Obj@{input\+Program\+Id\+Obj}!Gym.\+cpp@{Gym.\+cpp}}
+\subsubsection[{\texorpdfstring{input\+Program\+Id\+Obj(int \&option\+Program, Gym \&gym, Program $\ast$$\ast$program\+\_\+found)}{inputProgramIdObj(int &optionProgram, Gym &gym, Program **program_found)}}]{\setlength{\rightskip}{0pt plus 5cm}void input\+Program\+Id\+Obj (
+\begin{DoxyParamCaption}
+\item[{int \&}]{option\+Program, }
+\item[{{\bf Gym} \&}]{gym, }
+\item[{{\bf Program} $\ast$$\ast$}]{program\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{Gym_8cpp_ad546bf19184a48d01ce81840d5b884ef}{}\label{Gym_8cpp_ad546bf19184a48d01ce81840d5b884ef}
+\index{Gym.\+cpp@{Gym.\+cpp}!input\+Pt\+Id\+Obj@{input\+Pt\+Id\+Obj}}
+\index{input\+Pt\+Id\+Obj@{input\+Pt\+Id\+Obj}!Gym.\+cpp@{Gym.\+cpp}}
+\subsubsection[{\texorpdfstring{input\+Pt\+Id\+Obj(int \&option\+Pt, Gym \&gym, Staff $\ast$$\ast$staff\+\_\+found)}{inputPtIdObj(int &optionPt, Gym &gym, Staff **staff_found)}}]{\setlength{\rightskip}{0pt plus 5cm}void input\+Pt\+Id\+Obj (
+\begin{DoxyParamCaption}
+\item[{int \&}]{option\+Pt, }
+\item[{{\bf Gym} \&}]{gym, }
+\item[{{\bf Staff} $\ast$$\ast$}]{staff\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{Gym_8cpp_a8b8fdecfd11a9e7cd5bd11b6b6da413d}{}\label{Gym_8cpp_a8b8fdecfd11a9e7cd5bd11b6b6da413d}
+\index{Gym.\+cpp@{Gym.\+cpp}!input\+Staff\+Id\+Obj@{input\+Staff\+Id\+Obj}}
+\index{input\+Staff\+Id\+Obj@{input\+Staff\+Id\+Obj}!Gym.\+cpp@{Gym.\+cpp}}
+\subsubsection[{\texorpdfstring{input\+Staff\+Id\+Obj(int \&option\+Staff, Gym \&gym, Staff $\ast$$\ast$staff\+\_\+found)}{inputStaffIdObj(int &optionStaff, Gym &gym, Staff **staff_found)}}]{\setlength{\rightskip}{0pt plus 5cm}void input\+Staff\+Id\+Obj (
+\begin{DoxyParamCaption}
+\item[{int \&}]{option\+Staff, }
+\item[{{\bf Gym} \&}]{gym, }
+\item[{{\bf Staff} $\ast$$\ast$}]{staff\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{Gym_8cpp_aa19ad151611264e42c2ae9068f7d84ae}{}\label{Gym_8cpp_aa19ad151611264e42c2ae9068f7d84ae}
+\index{Gym.\+cpp@{Gym.\+cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Gym.\+cpp@{Gym.\+cpp}}
+\subsubsection[{\texorpdfstring{operator$<$$<$(ostream \&out, const Gym \&gym)}{operator<<(ostream &out, const Gym &gym)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{out, }
+\item[{const {\bf Gym} \&}]{gym}
+\end{DoxyParamCaption}
+)}\hypertarget{Gym_8cpp_a9f1ed28d208a7bfc4353a2120acaf837}{}\label{Gym_8cpp_a9f1ed28d208a7bfc4353a2120acaf837}

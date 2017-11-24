@@ -1,0 +1,124 @@
+\hypertarget{classSchedule}{}\section{Schedule Class Reference}
+\label{classSchedule}\index{Schedule@{Schedule}}
+
+
+{\ttfamily \#include $<$Schedule.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSchedule_a878716f4043a016224a14f78974edf1d}{Schedule} ()
+\item 
+virtual \hyperlink{classSchedule_a4806b985197d35c00b9e707c0ed87998}{$\sim$\+Schedule} ()
+\item 
+bool \hyperlink{classSchedule_ad7f876b27af5e115dd8dcfa2444a2897}{add\+Date} (const \hyperlink{classDate}{Date} \&date\+Start, const \hyperlink{classDate}{Date} \&date\+Finish)
+\begin{DoxyCompactList}\small\item\em Add a date to the schedule. \end{DoxyCompactList}\item 
+std\+::set$<$ std\+::pair$<$ \hyperlink{classDate}{Date}, \hyperlink{classDate}{Date} $>$ $\ast$, \hyperlink{structAPtrComp}{A\+Ptr\+Comp} $>$ \hyperlink{classSchedule_a8e7f2e6ddf3671f50d0c7393b5a76f13}{get\+Schedule\+Set} ()
+\begin{DoxyCompactList}\small\item\em Returns the schr. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::set$<$ std\+::pair$<$ \hyperlink{classDate}{Date}, \hyperlink{classDate}{Date} $>$ $\ast$, \hyperlink{structAPtrComp}{A\+Ptr\+Comp} $>$ \hyperlink{classSchedule_a1774807b89cc782ba1a3bafc93b1fb70}{schedule}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classSchedule_a601593037b72868ce945f1302d2a3b42}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classSchedule}{Schedule} \&\hyperlink{classSchedule_a1774807b89cc782ba1a3bafc93b1fb70}{schedule})
+\begin{DoxyCompactList}\small\item\em Prints in a user-\/friendly way the schedule. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Schedule@{Schedule}!Schedule@{Schedule}}
+\index{Schedule@{Schedule}!Schedule@{Schedule}}
+\subsubsection[{\texorpdfstring{Schedule()}{Schedule()}}]{\setlength{\rightskip}{0pt plus 5cm}Schedule\+::\+Schedule (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSchedule_a878716f4043a016224a14f78974edf1d}{}\label{classSchedule_a878716f4043a016224a14f78974edf1d}
+\index{Schedule@{Schedule}!````~Schedule@{$\sim$\+Schedule}}
+\index{````~Schedule@{$\sim$\+Schedule}!Schedule@{Schedule}}
+\subsubsection[{\texorpdfstring{$\sim$\+Schedule()}{~Schedule()}}]{\setlength{\rightskip}{0pt plus 5cm}Schedule\+::$\sim$\+Schedule (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classSchedule_a4806b985197d35c00b9e707c0ed87998}{}\label{classSchedule_a4806b985197d35c00b9e707c0ed87998}
+
+
+\subsection{Member Function Documentation}
+\index{Schedule@{Schedule}!add\+Date@{add\+Date}}
+\index{add\+Date@{add\+Date}!Schedule@{Schedule}}
+\subsubsection[{\texorpdfstring{add\+Date(const Date \&date\+Start, const Date \&date\+Finish)}{addDate(const Date &dateStart, const Date &dateFinish)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Schedule\+::add\+Date (
+\begin{DoxyParamCaption}
+\item[{const {\bf Date} \&}]{date\+Start, }
+\item[{const {\bf Date} \&}]{date\+Finish}
+\end{DoxyParamCaption}
+)}\hypertarget{classSchedule_ad7f876b27af5e115dd8dcfa2444a2897}{}\label{classSchedule_ad7f876b27af5e115dd8dcfa2444a2897}
+
+
+Add a date to the schedule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\+Start} & Time interval start date \\
+\hline
+{\em date\+Start} & Time interval finish date\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the time interval was added successfully and returns false otherwise 
+\end{DoxyReturn}
+\index{Schedule@{Schedule}!get\+Schedule\+Set@{get\+Schedule\+Set}}
+\index{get\+Schedule\+Set@{get\+Schedule\+Set}!Schedule@{Schedule}}
+\subsubsection[{\texorpdfstring{get\+Schedule\+Set()}{getScheduleSet()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::set$<$ std\+::pair$<$ {\bf Date}, {\bf Date} $>$ $\ast$, {\bf A\+Ptr\+Comp} $>$ Schedule\+::get\+Schedule\+Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSchedule_a8e7f2e6ddf3671f50d0c7393b5a76f13}{}\label{classSchedule_a8e7f2e6ddf3671f50d0c7393b5a76f13}
+
+
+Returns the schr. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output stream \\
+\hline
+{\em schedule} & \hyperlink{classSchedule}{Schedule} object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The a set representing the schedule 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{Schedule@{Schedule}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Schedule@{Schedule}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out, }
+\item[{const {\bf Schedule} \&}]{schedule}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classSchedule_a601593037b72868ce945f1302d2a3b42}{}\label{classSchedule_a601593037b72868ce945f1302d2a3b42}
+
+
+Prints in a user-\/friendly way the schedule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output stream \\
+\hline
+{\em schedule} & \hyperlink{classSchedule}{Schedule} object\\
+\hline
+\end{DoxyParams}
+@ output stream 
+
+\subsection{Member Data Documentation}
+\index{Schedule@{Schedule}!schedule@{schedule}}
+\index{schedule@{schedule}!Schedule@{Schedule}}
+\subsubsection[{\texorpdfstring{schedule}{schedule}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::set$<$std\+::pair$<${\bf Date},{\bf Date}$>$$\ast$,{\bf A\+Ptr\+Comp}$>$ Schedule\+::schedule\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classSchedule_a1774807b89cc782ba1a3bafc93b1fb70}{}\label{classSchedule_a1774807b89cc782ba1a3bafc93b1fb70}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Schedule_8h}{Schedule.\+h}\item 
+\hyperlink{Schedule_8cpp}{Schedule.\+cpp}\end{DoxyCompactItemize}

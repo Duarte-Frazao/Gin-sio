@@ -1,0 +1,232 @@
+\hypertarget{classPersonalTrainer}{}\section{Personal\+Trainer Class Reference}
+\label{classPersonalTrainer}\index{Personal\+Trainer@{Personal\+Trainer}}
+
+
+{\ttfamily \#include $<$Personal\+Trainer.\+h$>$}
+
+Inheritance diagram for Personal\+Trainer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPersonalTrainer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPersonalTrainer_ae327bfc36d13d337e1b4b8771f91fe1a}{Personal\+Trainer} (int \hyperlink{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{age}, double \hyperlink{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{wage}, std\+::string \hyperlink{classPersonalTrainer_aed2a4e21367c2cdd67aecba26924e17c}{specialized\+Area})
+\item 
+\hyperlink{classPersonalTrainer_a650aa788b90d10003feaf69e0d948fdf}{Personal\+Trainer} (std\+::string \hyperlink{classStaff_ad0e56a6c5296a2138aed86dc0cf476cb}{name}, int \hyperlink{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{age}, double \hyperlink{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{wage}, std\+::string pwd, std\+::string \hyperlink{classPersonalTrainer_aed2a4e21367c2cdd67aecba26924e17c}{specialized\+Area})
+\item 
+\hyperlink{classPersonalTrainer_ad3604f25652db9ee06b6bcd5c7790de6}{Personal\+Trainer} (int \hyperlink{classStaff_a2b5674cabb4b4e3a50cd130898d00c20}{id}, std\+::string \hyperlink{classStaff_ad0e56a6c5296a2138aed86dc0cf476cb}{name}, int \hyperlink{classStaff_ab36cd34fc6aa9c62ed9ca72263fd0ccc}{age}, double \hyperlink{classStaff_af84be4072f59d7c5c15d7c9cc07ea002}{wage}, std\+::string pwd, std\+::string \hyperlink{classPersonalTrainer_aed2a4e21367c2cdd67aecba26924e17c}{specialized\+Area})
+\item 
+virtual \hyperlink{classPersonalTrainer_ac6168e15ba23da6fae865ed923967fdd}{$\sim$\+Personal\+Trainer} ()
+\item 
+std\+::vector$<$ \hyperlink{classClient}{Client} $\ast$ $>$ \hyperlink{classPersonalTrainer_ad2f3a57cc4caabc6a1111f32615708a4}{get\+Clients} () const 
+\item 
+std\+::string \hyperlink{classPersonalTrainer_af83723e922ded3048beb9a9b3c329520}{get\+Specialized\+Area} () const 
+\item 
+void \hyperlink{classPersonalTrainer_a85af429825b072bbde67be03c47f604e}{set\+Schedule} (\hyperlink{classSchedule}{Schedule} \hyperlink{classStaff_ac2864b27c3cf1383c39916077b64b229}{work\+Schedule})
+\item 
+void \hyperlink{classPersonalTrainer_aef8f15c84017844ae7e2f38d072b9623}{set\+Clients} (std\+::vector$<$ \hyperlink{classClient}{Client} $\ast$ $>$ \hyperlink{classPersonalTrainer_a6317476679a0c3365fb02632f1af2aae}{clients})
+\item 
+void \hyperlink{classPersonalTrainer_a7f8580328de18489552e4f7a27448a49}{set\+Specialized\+Area} (std\+::string area)
+\item 
+void \hyperlink{classPersonalTrainer_a75733204b857d08f9c7db9acb5e812fc}{edit\+Personal\+Trainer} (\hyperlink{classGym}{Gym} \&gym)
+\item 
+void \hyperlink{classPersonalTrainer_ae864eec9478e62edc4bffea129786ea1}{edit\+Associated\+Clients} (\hyperlink{classGym}{Gym} \&gym)
+\item 
+virtual bool \hyperlink{classPersonalTrainer_a04c0c022242027e043c6ca355f145bba}{recognize\+Prof} () const 
+\item 
+void \hyperlink{classPersonalTrainer_a8dd995b0f78e00400fd0b859e90dea77}{print\+Info} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classClient}{Client} $\ast$ $>$ \hyperlink{classPersonalTrainer_a6317476679a0c3365fb02632f1af2aae}{clients}
+\item 
+std\+::string \hyperlink{classPersonalTrainer_aed2a4e21367c2cdd67aecba26924e17c}{specialized\+Area}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classPersonalTrainer_ad38066170f386e04ebc03724b00ee276}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classPersonalTrainer}{Personal\+Trainer} \&staff)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Personal\+Trainer@{Personal\+Trainer}!Personal\+Trainer@{Personal\+Trainer}}
+\index{Personal\+Trainer@{Personal\+Trainer}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{Personal\+Trainer(int age, double wage, std\+::string specialized\+Area)}{PersonalTrainer(int age, double wage, std::string specializedArea)}}]{\setlength{\rightskip}{0pt plus 5cm}Personal\+Trainer\+::\+Personal\+Trainer (
+\begin{DoxyParamCaption}
+\item[{int}]{age, }
+\item[{double}]{wage, }
+\item[{std\+::string}]{specialized\+Area}
+\end{DoxyParamCaption}
+)}\hypertarget{classPersonalTrainer_ae327bfc36d13d337e1b4b8771f91fe1a}{}\label{classPersonalTrainer_ae327bfc36d13d337e1b4b8771f91fe1a}
+\index{Personal\+Trainer@{Personal\+Trainer}!Personal\+Trainer@{Personal\+Trainer}}
+\index{Personal\+Trainer@{Personal\+Trainer}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{Personal\+Trainer(std\+::string name, int age, double wage, std\+::string pwd, std\+::string specialized\+Area)}{PersonalTrainer(std::string name, int age, double wage, std::string pwd, std::string specializedArea)}}]{\setlength{\rightskip}{0pt plus 5cm}Personal\+Trainer\+::\+Personal\+Trainer (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{int}]{age, }
+\item[{double}]{wage, }
+\item[{std\+::string}]{pwd, }
+\item[{std\+::string}]{specialized\+Area}
+\end{DoxyParamCaption}
+)}\hypertarget{classPersonalTrainer_a650aa788b90d10003feaf69e0d948fdf}{}\label{classPersonalTrainer_a650aa788b90d10003feaf69e0d948fdf}
+\index{Personal\+Trainer@{Personal\+Trainer}!Personal\+Trainer@{Personal\+Trainer}}
+\index{Personal\+Trainer@{Personal\+Trainer}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{Personal\+Trainer(int id, std\+::string name, int age, double wage, std\+::string pwd, std\+::string specialized\+Area)}{PersonalTrainer(int id, std::string name, int age, double wage, std::string pwd, std::string specializedArea)}}]{\setlength{\rightskip}{0pt plus 5cm}Personal\+Trainer\+::\+Personal\+Trainer (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{std\+::string}]{name, }
+\item[{int}]{age, }
+\item[{double}]{wage, }
+\item[{std\+::string}]{pwd, }
+\item[{std\+::string}]{specialized\+Area}
+\end{DoxyParamCaption}
+)}\hypertarget{classPersonalTrainer_ad3604f25652db9ee06b6bcd5c7790de6}{}\label{classPersonalTrainer_ad3604f25652db9ee06b6bcd5c7790de6}
+\index{Personal\+Trainer@{Personal\+Trainer}!````~Personal\+Trainer@{$\sim$\+Personal\+Trainer}}
+\index{````~Personal\+Trainer@{$\sim$\+Personal\+Trainer}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{$\sim$\+Personal\+Trainer()}{~PersonalTrainer()}}]{\setlength{\rightskip}{0pt plus 5cm}Personal\+Trainer\+::$\sim$\+Personal\+Trainer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classPersonalTrainer_ac6168e15ba23da6fae865ed923967fdd}{}\label{classPersonalTrainer_ac6168e15ba23da6fae865ed923967fdd}
+
+
+\subsection{Member Function Documentation}
+\index{Personal\+Trainer@{Personal\+Trainer}!edit\+Associated\+Clients@{edit\+Associated\+Clients}}
+\index{edit\+Associated\+Clients@{edit\+Associated\+Clients}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{edit\+Associated\+Clients(\+Gym \&gym)}{editAssociatedClients(Gym &gym)}}]{\setlength{\rightskip}{0pt plus 5cm}void Personal\+Trainer\+::edit\+Associated\+Clients (
+\begin{DoxyParamCaption}
+\item[{{\bf Gym} \&}]{gym}
+\end{DoxyParamCaption}
+)}\hypertarget{classPersonalTrainer_ae864eec9478e62edc4bffea129786ea1}{}\label{classPersonalTrainer_ae864eec9478e62edc4bffea129786ea1}
+Handles the editing of the personal trainer\textquotesingle{}s associated clients \index{Personal\+Trainer@{Personal\+Trainer}!edit\+Personal\+Trainer@{edit\+Personal\+Trainer}}
+\index{edit\+Personal\+Trainer@{edit\+Personal\+Trainer}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{edit\+Personal\+Trainer(\+Gym \&gym)}{editPersonalTrainer(Gym &gym)}}]{\setlength{\rightskip}{0pt plus 5cm}void Personal\+Trainer\+::edit\+Personal\+Trainer (
+\begin{DoxyParamCaption}
+\item[{{\bf Gym} \&}]{gym}
+\end{DoxyParamCaption}
+)}\hypertarget{classPersonalTrainer_a75733204b857d08f9c7db9acb5e812fc}{}\label{classPersonalTrainer_a75733204b857d08f9c7db9acb5e812fc}
+Handles the editing of the personal trainer\textquotesingle{}s information \index{Personal\+Trainer@{Personal\+Trainer}!get\+Clients@{get\+Clients}}
+\index{get\+Clients@{get\+Clients}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{get\+Clients() const }{getClients() const }}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Client} $\ast$ $>$ Personal\+Trainer\+::get\+Clients (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classPersonalTrainer_ad2f3a57cc4caabc6a1111f32615708a4}{}\label{classPersonalTrainer_ad2f3a57cc4caabc6a1111f32615708a4}
+Returns the vector of clients of the personal trainer
+
+\begin{DoxyReturn}{Returns}
+Returns vector of pointers to clients of the personal trainer 
+\end{DoxyReturn}
+\index{Personal\+Trainer@{Personal\+Trainer}!get\+Specialized\+Area@{get\+Specialized\+Area}}
+\index{get\+Specialized\+Area@{get\+Specialized\+Area}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{get\+Specialized\+Area() const }{getSpecializedArea() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Personal\+Trainer\+::get\+Specialized\+Area (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classPersonalTrainer_af83723e922ded3048beb9a9b3c329520}{}\label{classPersonalTrainer_af83723e922ded3048beb9a9b3c329520}
+Returns the specialized area of the personal trainer
+
+\begin{DoxyReturn}{Returns}
+Returns the specialized area as a string 
+\end{DoxyReturn}
+\index{Personal\+Trainer@{Personal\+Trainer}!print\+Info@{print\+Info}}
+\index{print\+Info@{print\+Info}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{print\+Info()}{printInfo()}}]{\setlength{\rightskip}{0pt plus 5cm}void Personal\+Trainer\+::print\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classPersonalTrainer_a8dd995b0f78e00400fd0b859e90dea77}{}\label{classPersonalTrainer_a8dd995b0f78e00400fd0b859e90dea77}
+Displays information about Personal Trainer 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classStaff_a64b23946e927025bf5aec2938502305a}{Staff}.
+
+\index{Personal\+Trainer@{Personal\+Trainer}!recognize\+Prof@{recognize\+Prof}}
+\index{recognize\+Prof@{recognize\+Prof}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{recognize\+Prof() const }{recognizeProf() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Personal\+Trainer\+::recognize\+Prof (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classPersonalTrainer_a04c0c022242027e043c6ca355f145bba}{}\label{classPersonalTrainer_a04c0c022242027e043c6ca355f145bba}
+
+
+Reimplemented from \hyperlink{classStaff_a3c0c4690bacca349c84f707004c3acb0}{Staff}.
+
+\index{Personal\+Trainer@{Personal\+Trainer}!set\+Clients@{set\+Clients}}
+\index{set\+Clients@{set\+Clients}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{set\+Clients(std\+::vector$<$ Client $\ast$ $>$ clients)}{setClients(std::vector< Client * > clients)}}]{\setlength{\rightskip}{0pt plus 5cm}void Personal\+Trainer\+::set\+Clients (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Client} $\ast$ $>$}]{clients}
+\end{DoxyParamCaption}
+)}\hypertarget{classPersonalTrainer_aef8f15c84017844ae7e2f38d072b9623}{}\label{classPersonalTrainer_aef8f15c84017844ae7e2f38d072b9623}
+Sets the clients of the personal trainer
+
+
+\begin{DoxyParams}{Parameters}
+{\em Vector} & of pointers to clients \\
+\hline
+\end{DoxyParams}
+\index{Personal\+Trainer@{Personal\+Trainer}!set\+Schedule@{set\+Schedule}}
+\index{set\+Schedule@{set\+Schedule}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{set\+Schedule(\+Schedule work\+Schedule)}{setSchedule(Schedule workSchedule)}}]{\setlength{\rightskip}{0pt plus 5cm}void Personal\+Trainer\+::set\+Schedule (
+\begin{DoxyParamCaption}
+\item[{{\bf Schedule}}]{work\+Schedule}
+\end{DoxyParamCaption}
+)}\hypertarget{classPersonalTrainer_a85af429825b072bbde67be03c47f604e}{}\label{classPersonalTrainer_a85af429825b072bbde67be03c47f604e}
+Sets the working schedule of the personal trainer 
+\begin{DoxyParams}{Parameters}
+{\em The} & working schedule of the personal trainer \\
+\hline
+\end{DoxyParams}
+\index{Personal\+Trainer@{Personal\+Trainer}!set\+Specialized\+Area@{set\+Specialized\+Area}}
+\index{set\+Specialized\+Area@{set\+Specialized\+Area}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{set\+Specialized\+Area(std\+::string area)}{setSpecializedArea(std::string area)}}]{\setlength{\rightskip}{0pt plus 5cm}void Personal\+Trainer\+::set\+Specialized\+Area (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{area}
+\end{DoxyParamCaption}
+)}\hypertarget{classPersonalTrainer_a7f8580328de18489552e4f7a27448a49}{}\label{classPersonalTrainer_a7f8580328de18489552e4f7a27448a49}
+Sets the specialized area of the personal trainer
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & specialized area of the personal trainer \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{Personal\+Trainer@{Personal\+Trainer}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out, }
+\item[{const {\bf Personal\+Trainer} \&}]{staff}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classPersonalTrainer_ad38066170f386e04ebc03724b00ee276}{}\label{classPersonalTrainer_ad38066170f386e04ebc03724b00ee276}
+Overload of operator $<$$<$ for derived class Personal Trainer \begin{DoxyReturn}{Returns}
+ostream 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{Personal\+Trainer@{Personal\+Trainer}!clients@{clients}}
+\index{clients@{clients}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{clients}{clients}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Client} $\ast$$>$ Personal\+Trainer\+::clients\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classPersonalTrainer_a6317476679a0c3365fb02632f1af2aae}{}\label{classPersonalTrainer_a6317476679a0c3365fb02632f1af2aae}
+\index{Personal\+Trainer@{Personal\+Trainer}!specialized\+Area@{specialized\+Area}}
+\index{specialized\+Area@{specialized\+Area}!Personal\+Trainer@{Personal\+Trainer}}
+\subsubsection[{\texorpdfstring{specialized\+Area}{specializedArea}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Personal\+Trainer\+::specialized\+Area\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classPersonalTrainer_aed2a4e21367c2cdd67aecba26924e17c}{}\label{classPersonalTrainer_aed2a4e21367c2cdd67aecba26924e17c}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PersonalTrainer_8h}{Personal\+Trainer.\+h}\item 
+\hyperlink{PersonalTrainer_8cpp}{Personal\+Trainer.\+cpp}\end{DoxyCompactItemize}

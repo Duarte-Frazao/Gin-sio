@@ -1,0 +1,231 @@
+\hypertarget{classTransaction}{}\section{Transaction Class Reference}
+\label{classTransaction}\index{Transaction@{Transaction}}
+
+
+{\ttfamily \#include $<$Transaction.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTransaction_ab47005b855d38bc324bb79fd023baa13}{Transaction} ()
+\item 
+\hyperlink{classTransaction_a659c102f81a38a3570bb6eac99ada5a6}{Transaction} (std\+::string \hyperlink{classTransaction_a0c0b931f105f8e7d2fe9865f75a4be9c}{type}, double \hyperlink{classTransaction_a79d18292be964d9196985f20474abe64}{amount})
+\item 
+\hyperlink{classTransaction_a3dd56eac06ccaf2b8ebc3c66bcab9999}{Transaction} (std\+::string \hyperlink{classTransaction_a0c0b931f105f8e7d2fe9865f75a4be9c}{type}, std\+::string \hyperlink{classTransaction_aae986091e9d65be398575a4699a8f1ac}{description}, double \hyperlink{classTransaction_a79d18292be964d9196985f20474abe64}{amount}, std\+::string \hyperlink{classTransaction_ae97bd67fb4e058bc7aac2dff1f1209db}{date\+Transaction})
+\item 
+\hyperlink{classTransaction_a362b0d2524d0c799165190517192dca9}{$\sim$\+Transaction} ()
+\item 
+std\+::string \hyperlink{classTransaction_a257cb67b873f06ecfc91934aebb3587c}{get\+Type} () const 
+\item 
+std\+::string \hyperlink{classTransaction_aa4eeb27808fec3a62f27c19f20262b0e}{get\+Description} () const 
+\item 
+double \hyperlink{classTransaction_afb4baa2f079dcb60ad3545dde79cd818}{get\+Amount} () const 
+\item 
+std\+::string \hyperlink{classTransaction_a5809112faa0b3e18f63811e1ad4ac6d0}{get\+Date\+Transaction} () const 
+\item 
+void \hyperlink{classTransaction_a0657733a02ef72e2b0a91d72e7ac9e6b}{set\+Type} (std\+::string \hyperlink{classTransaction_a0c0b931f105f8e7d2fe9865f75a4be9c}{type})
+\item 
+void \hyperlink{classTransaction_a215255f793c935956e92e8df4617a9ee}{set\+Description} (std\+::string \hyperlink{classTransaction_aae986091e9d65be398575a4699a8f1ac}{description})
+\item 
+void \hyperlink{classTransaction_a5739a6ee96902de5f2677979a51bd7e5}{set\+Amount} (double \hyperlink{classTransaction_a79d18292be964d9196985f20474abe64}{amount})
+\item 
+void \hyperlink{classTransaction_ad11438633ce5b8e29aaa68afc402a1a3}{set\+Date\+Transaction} (std\+::string time)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classTransaction_a0c0b931f105f8e7d2fe9865f75a4be9c}{type}
+\item 
+std\+::string \hyperlink{classTransaction_aae986091e9d65be398575a4699a8f1ac}{description}
+\item 
+double \hyperlink{classTransaction_a79d18292be964d9196985f20474abe64}{amount}
+\item 
+std\+::time\+\_\+t \hyperlink{classTransaction_afb804965e32bb32426dadfb87f07d36b}{date}
+\item 
+std\+::string \hyperlink{classTransaction_ae97bd67fb4e058bc7aac2dff1f1209db}{date\+Transaction}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classTransaction_a6d5445dea5067a3ba26f69d304f4d767}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classTransaction}{Transaction} \&transaction)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Transaction@{Transaction}!Transaction@{Transaction}}
+\index{Transaction@{Transaction}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{Transaction()}{Transaction()}}]{\setlength{\rightskip}{0pt plus 5cm}Transaction\+::\+Transaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTransaction_ab47005b855d38bc324bb79fd023baa13}{}\label{classTransaction_ab47005b855d38bc324bb79fd023baa13}
+\index{Transaction@{Transaction}!Transaction@{Transaction}}
+\index{Transaction@{Transaction}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{Transaction(std\+::string type, double amount)}{Transaction(std::string type, double amount)}}]{\setlength{\rightskip}{0pt plus 5cm}Transaction\+::\+Transaction (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{type, }
+\item[{double}]{amount}
+\end{DoxyParamCaption}
+)}\hypertarget{classTransaction_a659c102f81a38a3570bb6eac99ada5a6}{}\label{classTransaction_a659c102f81a38a3570bb6eac99ada5a6}
+\index{Transaction@{Transaction}!Transaction@{Transaction}}
+\index{Transaction@{Transaction}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{Transaction(std\+::string type, std\+::string description, double amount, std\+::string date\+Transaction)}{Transaction(std::string type, std::string description, double amount, std::string dateTransaction)}}]{\setlength{\rightskip}{0pt plus 5cm}Transaction\+::\+Transaction (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{type, }
+\item[{std\+::string}]{description, }
+\item[{double}]{amount, }
+\item[{std\+::string}]{date\+Transaction}
+\end{DoxyParamCaption}
+)}\hypertarget{classTransaction_a3dd56eac06ccaf2b8ebc3c66bcab9999}{}\label{classTransaction_a3dd56eac06ccaf2b8ebc3c66bcab9999}
+\index{Transaction@{Transaction}!````~Transaction@{$\sim$\+Transaction}}
+\index{````~Transaction@{$\sim$\+Transaction}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{$\sim$\+Transaction()}{~Transaction()}}]{\setlength{\rightskip}{0pt plus 5cm}Transaction\+::$\sim$\+Transaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTransaction_a362b0d2524d0c799165190517192dca9}{}\label{classTransaction_a362b0d2524d0c799165190517192dca9}
+
+
+\subsection{Member Function Documentation}
+\index{Transaction@{Transaction}!get\+Amount@{get\+Amount}}
+\index{get\+Amount@{get\+Amount}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{get\+Amount() const }{getAmount() const }}]{\setlength{\rightskip}{0pt plus 5cm}double Transaction\+::get\+Amount (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classTransaction_afb4baa2f079dcb60ad3545dde79cd818}{}\label{classTransaction_afb4baa2f079dcb60ad3545dde79cd818}
+Get amount of the transaction
+
+\begin{DoxyReturn}{Returns}
+Returns the amount of the transaction 
+\end{DoxyReturn}
+\index{Transaction@{Transaction}!get\+Date\+Transaction@{get\+Date\+Transaction}}
+\index{get\+Date\+Transaction@{get\+Date\+Transaction}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{get\+Date\+Transaction() const }{getDateTransaction() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Transaction\+::get\+Date\+Transaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classTransaction_a5809112faa0b3e18f63811e1ad4ac6d0}{}\label{classTransaction_a5809112faa0b3e18f63811e1ad4ac6d0}
+Get the date of the transaction
+
+\begin{DoxyReturn}{Returns}
+The date of the transaction 
+\end{DoxyReturn}
+\index{Transaction@{Transaction}!get\+Description@{get\+Description}}
+\index{get\+Description@{get\+Description}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{get\+Description() const }{getDescription() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Transaction\+::get\+Description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classTransaction_aa4eeb27808fec3a62f27c19f20262b0e}{}\label{classTransaction_aa4eeb27808fec3a62f27c19f20262b0e}
+Get description of the transaction
+
+\begin{DoxyReturn}{Returns}
+Returns the description of the transaction 
+\end{DoxyReturn}
+\index{Transaction@{Transaction}!get\+Type@{get\+Type}}
+\index{get\+Type@{get\+Type}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{get\+Type() const }{getType() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Transaction\+::get\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classTransaction_a257cb67b873f06ecfc91934aebb3587c}{}\label{classTransaction_a257cb67b873f06ecfc91934aebb3587c}
+Get type of the transaction
+
+\begin{DoxyReturn}{Returns}
+Returns the type of the transaction 
+\end{DoxyReturn}
+\index{Transaction@{Transaction}!set\+Amount@{set\+Amount}}
+\index{set\+Amount@{set\+Amount}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{set\+Amount(double amount)}{setAmount(double amount)}}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+::set\+Amount (
+\begin{DoxyParamCaption}
+\item[{double}]{amount}
+\end{DoxyParamCaption}
+)}\hypertarget{classTransaction_a5739a6ee96902de5f2677979a51bd7e5}{}\label{classTransaction_a5739a6ee96902de5f2677979a51bd7e5}
+Sets the amount of the transaction
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & amount of the transaction \\
+\hline
+\end{DoxyParams}
+\index{Transaction@{Transaction}!set\+Date\+Transaction@{set\+Date\+Transaction}}
+\index{set\+Date\+Transaction@{set\+Date\+Transaction}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{set\+Date\+Transaction(std\+::string time)}{setDateTransaction(std::string time)}}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+::set\+Date\+Transaction (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{time}
+\end{DoxyParamCaption}
+)}\hypertarget{classTransaction_ad11438633ce5b8e29aaa68afc402a1a3}{}\label{classTransaction_ad11438633ce5b8e29aaa68afc402a1a3}
+Sets the date of the transaction
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & date of the transaction \\
+\hline
+\end{DoxyParams}
+\index{Transaction@{Transaction}!set\+Description@{set\+Description}}
+\index{set\+Description@{set\+Description}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{set\+Description(std\+::string description)}{setDescription(std::string description)}}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+::set\+Description (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{description}
+\end{DoxyParamCaption}
+)}\hypertarget{classTransaction_a215255f793c935956e92e8df4617a9ee}{}\label{classTransaction_a215255f793c935956e92e8df4617a9ee}
+Sets the description of the transaction
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & description of the transaction \\
+\hline
+\end{DoxyParams}
+\index{Transaction@{Transaction}!set\+Type@{set\+Type}}
+\index{set\+Type@{set\+Type}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{set\+Type(std\+::string type)}{setType(std::string type)}}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+::set\+Type (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{classTransaction_a0657733a02ef72e2b0a91d72e7ac9e6b}{}\label{classTransaction_a0657733a02ef72e2b0a91d72e7ac9e6b}
+Sets the type of the transaction
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & type of the transaction \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{Transaction@{Transaction}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out, }
+\item[{const {\bf Transaction} \&}]{transaction}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classTransaction_a6d5445dea5067a3ba26f69d304f4d767}{}\label{classTransaction_a6d5445dea5067a3ba26f69d304f4d767}
+Overload of operator $<$$<$ for class \hyperlink{classTransaction}{Transaction} \begin{DoxyReturn}{Returns}
+ostream 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{Transaction@{Transaction}!amount@{amount}}
+\index{amount@{amount}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{amount}{amount}}]{\setlength{\rightskip}{0pt plus 5cm}double Transaction\+::amount\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classTransaction_a79d18292be964d9196985f20474abe64}{}\label{classTransaction_a79d18292be964d9196985f20474abe64}
+\index{Transaction@{Transaction}!date@{date}}
+\index{date@{date}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{date}{date}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::time\+\_\+t Transaction\+::date\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classTransaction_afb804965e32bb32426dadfb87f07d36b}{}\label{classTransaction_afb804965e32bb32426dadfb87f07d36b}
+\index{Transaction@{Transaction}!date\+Transaction@{date\+Transaction}}
+\index{date\+Transaction@{date\+Transaction}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{date\+Transaction}{dateTransaction}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Transaction\+::date\+Transaction\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classTransaction_ae97bd67fb4e058bc7aac2dff1f1209db}{}\label{classTransaction_ae97bd67fb4e058bc7aac2dff1f1209db}
+\index{Transaction@{Transaction}!description@{description}}
+\index{description@{description}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{description}{description}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Transaction\+::description\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classTransaction_aae986091e9d65be398575a4699a8f1ac}{}\label{classTransaction_aae986091e9d65be398575a4699a8f1ac}
+\index{Transaction@{Transaction}!type@{type}}
+\index{type@{type}!Transaction@{Transaction}}
+\subsubsection[{\texorpdfstring{type}{type}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Transaction\+::type\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classTransaction_a0c0b931f105f8e7d2fe9865f75a4be9c}{}\label{classTransaction_a0c0b931f105f8e7d2fe9865f75a4be9c}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Transaction_8h}{Transaction.\+h}\item 
+\hyperlink{Transaction_8cpp}{Transaction.\+cpp}\end{DoxyCompactItemize}

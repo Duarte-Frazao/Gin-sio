@@ -1,0 +1,468 @@
+\hypertarget{classClient}{}\section{Client Class Reference}
+\label{classClient}\index{Client@{Client}}
+
+
+{\ttfamily \#include $<$Client.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classClient_a4624a4770956657d197cb291aaf22159}{Client} (std\+::string client\+Name, \hyperlink{classProgram}{Program} $\ast$program, int client\+Age, \hyperlink{classPersonalTrainer}{Personal\+Trainer} $\ast$PT)
+\item 
+\hyperlink{classClient_a840e519ca781888cbd54181572ebe3a7}{$\sim$\+Client} ()
+\item 
+int \hyperlink{classClient_aa7a18574ee05278b0b09c93d3dcaa17f}{get\+Id} () const 
+\item 
+std\+::string \hyperlink{classClient_a28a677584ad4793b50b31c2e75039e2c}{get\+Name} () const 
+\item 
+int \hyperlink{classClient_a7c8a6eebab96ddf6dc7578ab6b823430}{get\+Age} () const 
+\item 
+bool \hyperlink{classClient_a3e74dcfb504ae74f36c10cc1acc1f9aa}{get\+Location} () const 
+\item 
+bool \hyperlink{classClient_af0ea565866db60311a27bc8e14ed626c}{get\+Payment\+Status} () const 
+\item 
+int \hyperlink{classClient_afcd9150adffb6e3dc61b31a78cf424b2}{get\+Num\+Late\+Payments} () const 
+\item 
+const \hyperlink{classProgram}{Program} $\ast$ \hyperlink{classClient_aac61a1ce19ef1689c8003f19a746134d}{get\+Program} () const 
+\item 
+int \hyperlink{classClient_a887d741f1de7907f2fa82f608770daed}{get\+Days\+Remaining} () const 
+\item 
+const \hyperlink{classPersonalTrainer}{Personal\+Trainer} $\ast$ \hyperlink{classClient_ac5a64ea1c1b31db70d432bbfa44b1d0d}{get\+PT} () const 
+\item 
+void \hyperlink{classClient_aa04435ec00bb2dea4e5f083910e8a399}{set\+Program} (\hyperlink{classProgram}{Program} $\ast$new\+Program)
+\item 
+void \hyperlink{classClient_a4545f9a6968a2ca02f2ba27dba240660}{set\+PT} (\hyperlink{classPersonalTrainer}{Personal\+Trainer} $\ast$PT)
+\item 
+void \hyperlink{classClient_a92f882c9a5d2afc428ae42812a197a0c}{set\+Name} (std\+::string new\+Name)
+\item 
+void \hyperlink{classClient_afbb916bd058495f4d54ab5d567a12933}{set\+Age} (int \hyperlink{classClient_a847a510d64446c994f541ef31fc85dfd}{age})
+\item 
+void \hyperlink{classClient_a227a384a1162fb48213c0676eaf727ed}{change\+Location} ()
+\item 
+void \hyperlink{classClient_a62469723bcb29e436f77671f8ec4b387}{information\+Client} ()
+\item 
+void \hyperlink{classClient_abfb69e6295d6b9d9cda15307b56b4a88}{edit\+Client} (\hyperlink{classGym}{Gym} \&gym)
+\item 
+int \hyperlink{classClient_a0d53b7a89786a889e58bb0747db0fb50}{edit\+Client\+Menu} () const 
+\item 
+void \hyperlink{classClient_ac58c1db7cd66a7f46fdbcf092b7d7ce4}{problems} (std\+::vector$<$ std\+::string $>$ \&problems) const 
+\item 
+void \hyperlink{classClient_a8265f9376eb389ad39d3773d241df027}{update\+Num\+Days\+Remaining} ()
+\item 
+void \hyperlink{classClient_acd85c53a285705923032e99a98631320}{view\+Info} () const 
+\item 
+void \hyperlink{classClient_a923c7418e192b80599e3a36565ac4649}{login} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classClient_a989817815d95a2a9d22826c310613456}{name}
+\item 
+\hyperlink{classProgram}{Program} $\ast$ \hyperlink{classClient_a0756fdfb15e4147754bfb12924d131ed}{enrolled\+Program}
+\item 
+int \hyperlink{classClient_a847a510d64446c994f541ef31fc85dfd}{age}
+\item 
+\hyperlink{classPersonalTrainer}{Personal\+Trainer} $\ast$ \hyperlink{classClient_a24e7555c9620eb1161a403982ffcb8c7}{responsible\+PT}
+\item 
+int \hyperlink{classClient_ab79ad95264939f089a2f0b8e0ca62d37}{id}
+\item 
+int \hyperlink{classClient_a28e52b4c9fd1c169c7abccdc8e41fa55}{num\+Days\+Remaining}
+\item 
+bool \hyperlink{classClient_acdff9ca6cf9b633b5c0e351afb10126e}{inside\+Gym}
+\item 
+bool \hyperlink{classClient_a3ddae3a0eb169cce62a3543f7fdd170e}{payments\+Up\+To\+Date}
+\item 
+int \hyperlink{classClient_aec7bf9db56a65daa90e29bf210885d97}{num\+Late\+Payments}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classClient_acda2dd3734dd095f5acdf6de762cdd8d}{client\+Id} = 0
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classClient_a758e986c707519c685472869e55b327c}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classClient}{Client} \&client)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Client@{Client}!Client@{Client}}
+\index{Client@{Client}!Client@{Client}}
+\subsubsection[{\texorpdfstring{Client(std\+::string client\+Name, Program $\ast$program, int client\+Age, Personal\+Trainer $\ast$\+P\+T)}{Client(std::string clientName, Program *program, int clientAge, PersonalTrainer *PT)}}]{\setlength{\rightskip}{0pt plus 5cm}Client\+::\+Client (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{client\+Name, }
+\item[{{\bf Program} $\ast$}]{program, }
+\item[{int}]{client\+Age, }
+\item[{{\bf Personal\+Trainer} $\ast$}]{PT}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_a4624a4770956657d197cb291aaf22159}{}\label{classClient_a4624a4770956657d197cb291aaf22159}
+\hyperlink{classClient}{Client} constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+Name} & Name of the client \\
+\hline
+{\em program} & Enrolled program subscription \\
+\hline
+{\em client\+Age} & Age of the client \\
+\hline
+{\em PT} & Professor responsible for the client \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Client@{Client}!````~Client@{$\sim$\+Client}}
+\index{````~Client@{$\sim$\+Client}!Client@{Client}}
+\subsubsection[{\texorpdfstring{$\sim$\+Client()}{~Client()}}]{\setlength{\rightskip}{0pt plus 5cm}Client\+::$\sim$\+Client (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_a840e519ca781888cbd54181572ebe3a7}{}\label{classClient_a840e519ca781888cbd54181572ebe3a7}
+\hyperlink{classClient}{Client} destructor 
+
+\subsection{Member Function Documentation}
+\index{Client@{Client}!change\+Location@{change\+Location}}
+\index{change\+Location@{change\+Location}!Client@{Client}}
+\subsubsection[{\texorpdfstring{change\+Location()}{changeLocation()}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::change\+Location (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_a227a384a1162fb48213c0676eaf727ed}{}\label{classClient_a227a384a1162fb48213c0676eaf727ed}
+Changes the current location of \hyperlink{classClient}{Client}. Checks if he\textquotesingle{}s allowed to enter, if not throws an exception
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!edit\+Client@{edit\+Client}}
+\index{edit\+Client@{edit\+Client}!Client@{Client}}
+\subsubsection[{\texorpdfstring{edit\+Client(\+Gym \&gym)}{editClient(Gym &gym)}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::edit\+Client (
+\begin{DoxyParamCaption}
+\item[{{\bf Gym} \&}]{gym}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_abfb69e6295d6b9d9cda15307b56b4a88}{}\label{classClient_abfb69e6295d6b9d9cda15307b56b4a88}
+Enters a menu handler to edit client \index{Client@{Client}!edit\+Client\+Menu@{edit\+Client\+Menu}}
+\index{edit\+Client\+Menu@{edit\+Client\+Menu}!Client@{Client}}
+\subsubsection[{\texorpdfstring{edit\+Client\+Menu() const }{editClientMenu() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::edit\+Client\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_a0d53b7a89786a889e58bb0747db0fb50}{}\label{classClient_a0d53b7a89786a889e58bb0747db0fb50}
+Displays and selects the option for the edit \hyperlink{classClient}{Client} menu
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+Age@{get\+Age}}
+\index{get\+Age@{get\+Age}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+Age() const }{getAge() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::get\+Age (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_a7c8a6eebab96ddf6dc7578ab6b823430}{}\label{classClient_a7c8a6eebab96ddf6dc7578ab6b823430}
+Returns the age of the client 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+Days\+Remaining@{get\+Days\+Remaining}}
+\index{get\+Days\+Remaining@{get\+Days\+Remaining}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+Days\+Remaining() const }{getDaysRemaining() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::get\+Days\+Remaining (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_a887d741f1de7907f2fa82f608770daed}{}\label{classClient_a887d741f1de7907f2fa82f608770daed}
+Returns the number of days remaining
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+Id@{get\+Id}}
+\index{get\+Id@{get\+Id}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+Id() const }{getId() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::get\+Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_aa7a18574ee05278b0b09c93d3dcaa17f}{}\label{classClient_aa7a18574ee05278b0b09c93d3dcaa17f}
+Returns the id of the client 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+Location@{get\+Location}}
+\index{get\+Location@{get\+Location}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+Location() const }{getLocation() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Client\+::get\+Location (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_a3e74dcfb504ae74f36c10cc1acc1f9aa}{}\label{classClient_a3e74dcfb504ae74f36c10cc1acc1f9aa}
+Returns if the \hyperlink{classClient}{Client} is inside or outside the gym
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+Name() const }{getName() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Client\+::get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_a28a677584ad4793b50b31c2e75039e2c}{}\label{classClient_a28a677584ad4793b50b31c2e75039e2c}
+Returns the name of the client 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+Num\+Late\+Payments@{get\+Num\+Late\+Payments}}
+\index{get\+Num\+Late\+Payments@{get\+Num\+Late\+Payments}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+Num\+Late\+Payments() const }{getNumLatePayments() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::get\+Num\+Late\+Payments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_afcd9150adffb6e3dc61b31a78cf424b2}{}\label{classClient_afcd9150adffb6e3dc61b31a78cf424b2}
+Returns the number of months not yet payed
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+Payment\+Status@{get\+Payment\+Status}}
+\index{get\+Payment\+Status@{get\+Payment\+Status}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+Payment\+Status() const }{getPaymentStatus() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Client\+::get\+Payment\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_af0ea565866db60311a27bc8e14ed626c}{}\label{classClient_af0ea565866db60311a27bc8e14ed626c}
+Returns the status of the payments
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+Program@{get\+Program}}
+\index{get\+Program@{get\+Program}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+Program() const }{getProgram() const }}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Program} $\ast$ Client\+::get\+Program (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_aac61a1ce19ef1689c8003f19a746134d}{}\label{classClient_aac61a1ce19ef1689c8003f19a746134d}
+Returns the enrolled \hyperlink{classProgram}{Program}
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!get\+PT@{get\+PT}}
+\index{get\+PT@{get\+PT}!Client@{Client}}
+\subsubsection[{\texorpdfstring{get\+P\+T() const }{getPT() const }}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Personal\+Trainer} $\ast$ Client\+::get\+PT (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_ac5a64ea1c1b31db70d432bbfa44b1d0d}{}\label{classClient_ac5a64ea1c1b31db70d432bbfa44b1d0d}
+Returns the personal trainer that is responsible for the \hyperlink{classClient}{Client}
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!information\+Client@{information\+Client}}
+\index{information\+Client@{information\+Client}!Client@{Client}}
+\subsubsection[{\texorpdfstring{information\+Client()}{informationClient()}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::information\+Client (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_a62469723bcb29e436f77671f8ec4b387}{}\label{classClient_a62469723bcb29e436f77671f8ec4b387}
+Displays information about \hyperlink{classClient}{Client} 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!login@{login}}
+\index{login@{login}!Client@{Client}}
+\subsubsection[{\texorpdfstring{login()}{login()}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::login (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_a923c7418e192b80599e3a36565ac4649}{}\label{classClient_a923c7418e192b80599e3a36565ac4649}
+Login to a client account 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!problems@{problems}}
+\index{problems@{problems}!Client@{Client}}
+\subsubsection[{\texorpdfstring{problems(std\+::vector$<$ std\+::string $>$ \&problems) const }{problems(std::vector< std::string > &problems) const }}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::problems (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ std\+::string $>$ \&}]{problems}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_ac58c1db7cd66a7f46fdbcf092b7d7ce4}{}\label{classClient_ac58c1db7cd66a7f46fdbcf092b7d7ce4}
+Returns in the argument vector problems the reasons for not being able to edit the \hyperlink{classClient}{Client} If the vector wasn\textquotesingle{}t empty it resets the vector to display only the current problems
+
+
+\begin{DoxyParams}{Parameters}
+{\em problems} & A vector to return the problems \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Client@{Client}!set\+Age@{set\+Age}}
+\index{set\+Age@{set\+Age}!Client@{Client}}
+\subsubsection[{\texorpdfstring{set\+Age(int age)}{setAge(int age)}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::set\+Age (
+\begin{DoxyParamCaption}
+\item[{int}]{age}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_afbb916bd058495f4d54ab5d567a12933}{}\label{classClient_afbb916bd058495f4d54ab5d567a12933}
+Sets a new age to \hyperlink{classClient}{Client}
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Name} & New age for \hyperlink{classClient}{Client} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Client@{Client}!set\+Name@{set\+Name}}
+\index{set\+Name@{set\+Name}!Client@{Client}}
+\subsubsection[{\texorpdfstring{set\+Name(std\+::string new\+Name)}{setName(std::string newName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::set\+Name (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{new\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_a92f882c9a5d2afc428ae42812a197a0c}{}\label{classClient_a92f882c9a5d2afc428ae42812a197a0c}
+Sets a new name to \hyperlink{classClient}{Client}
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Name} & New name for \hyperlink{classClient}{Client} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Client@{Client}!set\+Program@{set\+Program}}
+\index{set\+Program@{set\+Program}!Client@{Client}}
+\subsubsection[{\texorpdfstring{set\+Program(\+Program $\ast$new\+Program)}{setProgram(Program *newProgram)}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::set\+Program (
+\begin{DoxyParamCaption}
+\item[{{\bf Program} $\ast$}]{new\+Program}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_aa04435ec00bb2dea4e5f083910e8a399}{}\label{classClient_aa04435ec00bb2dea4e5f083910e8a399}
+Sets a new subscription to \hyperlink{classClient}{Client}
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Program} & The new subscription the \hyperlink{classClient}{Client} has choosen to replace the current one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Client@{Client}!set\+PT@{set\+PT}}
+\index{set\+PT@{set\+PT}!Client@{Client}}
+\subsubsection[{\texorpdfstring{set\+P\+T(\+Personal\+Trainer $\ast$\+P\+T)}{setPT(PersonalTrainer *PT)}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::set\+PT (
+\begin{DoxyParamCaption}
+\item[{{\bf Personal\+Trainer} $\ast$}]{PT}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_a4545f9a6968a2ca02f2ba27dba240660}{}\label{classClient_a4545f9a6968a2ca02f2ba27dba240660}
+Sets a new \hyperlink{classPersonalTrainer}{Personal\+Trainer} to \hyperlink{classClient}{Client}
+
+
+\begin{DoxyParams}{Parameters}
+{\em PT} & New Personal Trainer choosen to replace the current one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Client@{Client}!update\+Num\+Days\+Remaining@{update\+Num\+Days\+Remaining}}
+\index{update\+Num\+Days\+Remaining@{update\+Num\+Days\+Remaining}!Client@{Client}}
+\subsubsection[{\texorpdfstring{update\+Num\+Days\+Remaining()}{updateNumDaysRemaining()}}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::update\+Num\+Days\+Remaining (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classClient_a8265f9376eb389ad39d3773d241df027}{}\label{classClient_a8265f9376eb389ad39d3773d241df027}
+Updates the number of days remaining after setting a new program 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Client@{Client}!view\+Info@{view\+Info}}
+\index{view\+Info@{view\+Info}!Client@{Client}}
+\subsubsection[{\texorpdfstring{view\+Info() const }{viewInfo() const }}]{\setlength{\rightskip}{0pt plus 5cm}void Client\+::view\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classClient_acd85c53a285705923032e99a98631320}{}\label{classClient_acd85c53a285705923032e99a98631320}
+Displays information about \hyperlink{classClient}{Client} 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{Client@{Client}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Client@{Client}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out, }
+\item[{const {\bf Client} \&}]{client}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classClient_a758e986c707519c685472869e55b327c}{}\label{classClient_a758e986c707519c685472869e55b327c}
+Overload of operator $<$$<$ 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{Client@{Client}!age@{age}}
+\index{age@{age}!Client@{Client}}
+\subsubsection[{\texorpdfstring{age}{age}}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::age\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_a847a510d64446c994f541ef31fc85dfd}{}\label{classClient_a847a510d64446c994f541ef31fc85dfd}
+\index{Client@{Client}!client\+Id@{client\+Id}}
+\index{client\+Id@{client\+Id}!Client@{Client}}
+\subsubsection[{\texorpdfstring{client\+Id}{clientId}}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::client\+Id = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\hypertarget{classClient_acda2dd3734dd095f5acdf6de762cdd8d}{}\label{classClient_acda2dd3734dd095f5acdf6de762cdd8d}
+\index{Client@{Client}!enrolled\+Program@{enrolled\+Program}}
+\index{enrolled\+Program@{enrolled\+Program}!Client@{Client}}
+\subsubsection[{\texorpdfstring{enrolled\+Program}{enrolledProgram}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Program}$\ast$ Client\+::enrolled\+Program\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_a0756fdfb15e4147754bfb12924d131ed}{}\label{classClient_a0756fdfb15e4147754bfb12924d131ed}
+\index{Client@{Client}!id@{id}}
+\index{id@{id}!Client@{Client}}
+\subsubsection[{\texorpdfstring{id}{id}}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::id\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_ab79ad95264939f089a2f0b8e0ca62d37}{}\label{classClient_ab79ad95264939f089a2f0b8e0ca62d37}
+\index{Client@{Client}!inside\+Gym@{inside\+Gym}}
+\index{inside\+Gym@{inside\+Gym}!Client@{Client}}
+\subsubsection[{\texorpdfstring{inside\+Gym}{insideGym}}]{\setlength{\rightskip}{0pt plus 5cm}bool Client\+::inside\+Gym\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_acdff9ca6cf9b633b5c0e351afb10126e}{}\label{classClient_acdff9ca6cf9b633b5c0e351afb10126e}
+\index{Client@{Client}!name@{name}}
+\index{name@{name}!Client@{Client}}
+\subsubsection[{\texorpdfstring{name}{name}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Client\+::name\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_a989817815d95a2a9d22826c310613456}{}\label{classClient_a989817815d95a2a9d22826c310613456}
+\index{Client@{Client}!num\+Days\+Remaining@{num\+Days\+Remaining}}
+\index{num\+Days\+Remaining@{num\+Days\+Remaining}!Client@{Client}}
+\subsubsection[{\texorpdfstring{num\+Days\+Remaining}{numDaysRemaining}}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::num\+Days\+Remaining\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_a28e52b4c9fd1c169c7abccdc8e41fa55}{}\label{classClient_a28e52b4c9fd1c169c7abccdc8e41fa55}
+\index{Client@{Client}!num\+Late\+Payments@{num\+Late\+Payments}}
+\index{num\+Late\+Payments@{num\+Late\+Payments}!Client@{Client}}
+\subsubsection[{\texorpdfstring{num\+Late\+Payments}{numLatePayments}}]{\setlength{\rightskip}{0pt plus 5cm}int Client\+::num\+Late\+Payments\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_aec7bf9db56a65daa90e29bf210885d97}{}\label{classClient_aec7bf9db56a65daa90e29bf210885d97}
+\index{Client@{Client}!payments\+Up\+To\+Date@{payments\+Up\+To\+Date}}
+\index{payments\+Up\+To\+Date@{payments\+Up\+To\+Date}!Client@{Client}}
+\subsubsection[{\texorpdfstring{payments\+Up\+To\+Date}{paymentsUpToDate}}]{\setlength{\rightskip}{0pt plus 5cm}bool Client\+::payments\+Up\+To\+Date\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_a3ddae3a0eb169cce62a3543f7fdd170e}{}\label{classClient_a3ddae3a0eb169cce62a3543f7fdd170e}
+\index{Client@{Client}!responsible\+PT@{responsible\+PT}}
+\index{responsible\+PT@{responsible\+PT}!Client@{Client}}
+\subsubsection[{\texorpdfstring{responsible\+PT}{responsiblePT}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Personal\+Trainer}$\ast$ Client\+::responsible\+PT\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classClient_a24e7555c9620eb1161a403982ffcb8c7}{}\label{classClient_a24e7555c9620eb1161a403982ffcb8c7}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Client_8h}{Client.\+h}\item 
+\hyperlink{Client_8cpp}{Client.\+cpp}\end{DoxyCompactItemize}

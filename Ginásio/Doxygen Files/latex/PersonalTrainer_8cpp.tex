@@ -1,0 +1,96 @@
+\hypertarget{PersonalTrainer_8cpp}{}\section{Personal\+Trainer.\+cpp File Reference}
+\label{PersonalTrainer_8cpp}\index{Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}stdafx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Personal\+Trainer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}termcolor.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Input.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{PersonalTrainer_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}{filter\+Input} (int inf, int sup, std\+::string msg=\char`\"{}Selection\+: \char`\"{})
+\item 
+void \hyperlink{PersonalTrainer_8cpp_a5435e5c8df38011b5cbaf529923a2d44}{input\+Client\+Id\+Obj} (int \&option\+Client, \hyperlink{classGym}{Gym} \&gym, \hyperlink{classClient}{Client} $\ast$$\ast$client\+\_\+found)
+\item 
+void \hyperlink{PersonalTrainer_8cpp_ad546bf19184a48d01ce81840d5b884ef}{input\+Program\+Id\+Obj} (int \&option\+Program, \hyperlink{classGym}{Gym} \&gym, \hyperlink{classProgram}{Program} $\ast$$\ast$program\+\_\+found)
+\item 
+int \hyperlink{PersonalTrainer_8cpp_aa8359732496d9e6bed8e49557f4519b2}{edit\+Personal\+Trainer\+Menu} ()
+\item 
+int \hyperlink{PersonalTrainer_8cpp_aac36bd029d8761720ea84e56dd328c94}{edit\+Associated\+Clients\+Menu} ()
+\item 
+ostream \& \hyperlink{PersonalTrainer_8cpp_aefe831200217b0589dfff2922529cdb2}{operator$<$$<$} (ostream \&out, const \hyperlink{classPersonalTrainer}{Personal\+Trainer} \&pt)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}!edit\+Associated\+Clients\+Menu@{edit\+Associated\+Clients\+Menu}}
+\index{edit\+Associated\+Clients\+Menu@{edit\+Associated\+Clients\+Menu}!Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}}
+\subsubsection[{\texorpdfstring{edit\+Associated\+Clients\+Menu()}{editAssociatedClientsMenu()}}]{\setlength{\rightskip}{0pt plus 5cm}int edit\+Associated\+Clients\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{PersonalTrainer_8cpp_aac36bd029d8761720ea84e56dd328c94}{}\label{PersonalTrainer_8cpp_aac36bd029d8761720ea84e56dd328c94}
+Shows the menu of options for editing the personal trainer\textquotesingle{}s associated clients and returns the option chosen
+
+\begin{DoxyReturn}{Returns}
+Returns the chosen option of the personal trainer\textquotesingle{}s associated clients\textquotesingle{} edit menu 
+\end{DoxyReturn}
+\index{Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}!edit\+Personal\+Trainer\+Menu@{edit\+Personal\+Trainer\+Menu}}
+\index{edit\+Personal\+Trainer\+Menu@{edit\+Personal\+Trainer\+Menu}!Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}}
+\subsubsection[{\texorpdfstring{edit\+Personal\+Trainer\+Menu()}{editPersonalTrainerMenu()}}]{\setlength{\rightskip}{0pt plus 5cm}int edit\+Personal\+Trainer\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{PersonalTrainer_8cpp_aa8359732496d9e6bed8e49557f4519b2}{}\label{PersonalTrainer_8cpp_aa8359732496d9e6bed8e49557f4519b2}
+Shows the menu of options for editing the personal trainer and returns the option chosen
+
+\begin{DoxyReturn}{Returns}
+Returns the chosen option of the personal trainer\textquotesingle{}s edit menu 
+\end{DoxyReturn}
+\index{Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}!filter\+Input@{filter\+Input}}
+\index{filter\+Input@{filter\+Input}!Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}}
+\subsubsection[{\texorpdfstring{filter\+Input(int inf, int sup, std\+::string msg=""Selection\+: "")}{filterInput(int inf, int sup, std::string msg="Selection: ")}}]{\setlength{\rightskip}{0pt plus 5cm}int filter\+Input (
+\begin{DoxyParamCaption}
+\item[{int}]{inf, }
+\item[{int}]{sup, }
+\item[{std\+::string}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{PersonalTrainer_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}{}\label{PersonalTrainer_8cpp_a1bbfb58c6cff0d90b4fdcfae864d5c4d}
+Filters an option by giving two limits, makes the user input and integer between them
+
+
+\begin{DoxyParams}{Parameters}
+{\em inf} & Inferior Limit \\
+\hline
+{\em sup} & Superior Limit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}!input\+Client\+Id\+Obj@{input\+Client\+Id\+Obj}}
+\index{input\+Client\+Id\+Obj@{input\+Client\+Id\+Obj}!Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}}
+\subsubsection[{\texorpdfstring{input\+Client\+Id\+Obj(int \&option\+Client, Gym \&gym, Client $\ast$$\ast$client\+\_\+found)}{inputClientIdObj(int &optionClient, Gym &gym, Client **client_found)}}]{\setlength{\rightskip}{0pt plus 5cm}void input\+Client\+Id\+Obj (
+\begin{DoxyParamCaption}
+\item[{int \&}]{option\+Client, }
+\item[{{\bf Gym} \&}]{gym, }
+\item[{{\bf Client} $\ast$$\ast$}]{client\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{PersonalTrainer_8cpp_a5435e5c8df38011b5cbaf529923a2d44}{}\label{PersonalTrainer_8cpp_a5435e5c8df38011b5cbaf529923a2d44}
+\index{Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}!input\+Program\+Id\+Obj@{input\+Program\+Id\+Obj}}
+\index{input\+Program\+Id\+Obj@{input\+Program\+Id\+Obj}!Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}}
+\subsubsection[{\texorpdfstring{input\+Program\+Id\+Obj(int \&option\+Program, Gym \&gym, Program $\ast$$\ast$program\+\_\+found)}{inputProgramIdObj(int &optionProgram, Gym &gym, Program **program_found)}}]{\setlength{\rightskip}{0pt plus 5cm}void input\+Program\+Id\+Obj (
+\begin{DoxyParamCaption}
+\item[{int \&}]{option\+Program, }
+\item[{{\bf Gym} \&}]{gym, }
+\item[{{\bf Program} $\ast$$\ast$}]{program\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{PersonalTrainer_8cpp_ad546bf19184a48d01ce81840d5b884ef}{}\label{PersonalTrainer_8cpp_ad546bf19184a48d01ce81840d5b884ef}
+\index{Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Personal\+Trainer.\+cpp@{Personal\+Trainer.\+cpp}}
+\subsubsection[{\texorpdfstring{operator$<$$<$(ostream \&out, const Personal\+Trainer \&pt)}{operator<<(ostream &out, const PersonalTrainer &pt)}}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{out, }
+\item[{const {\bf Personal\+Trainer} \&}]{pt}
+\end{DoxyParamCaption}
+)}\hypertarget{PersonalTrainer_8cpp_aefe831200217b0589dfff2922529cdb2}{}\label{PersonalTrainer_8cpp_aefe831200217b0589dfff2922529cdb2}

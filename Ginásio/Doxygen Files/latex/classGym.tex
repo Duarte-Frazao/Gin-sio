@@ -1,0 +1,729 @@
+\hypertarget{classGym}{}\section{Gym Class Reference}
+\label{classGym}\index{Gym@{Gym}}
+
+
+{\ttfamily \#include $<$Gym.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGym_aea1e156d3dc49601413371e83a024a7f}{Gym} (std\+::string \hyperlink{classGym_a56d26a68f26527592d516348383aed25}{name}, std\+::vector$<$ \hyperlink{classProgram}{Program} $\ast$ $>$ \&\hyperlink{classGym_aeeff90e89fb7b1710886cbf85fc477de}{programs}, std\+::vector$<$ \hyperlink{classClient}{Client} $\ast$ $>$ \&\hyperlink{classGym_a30a9153e0d241801fdc55c3ef3008767}{clients}, std\+::vector$<$ \hyperlink{classStaff}{Staff} $\ast$ $>$ \&\hyperlink{classGym_a9108e2c97ee58a50e491461559aa12fe}{staff}, std\+::vector$<$ \hyperlink{classPersonalTrainer}{Personal\+Trainer} $\ast$ $>$ \&\hyperlink{classGym_afc05320302a5dac7d3b2cb4dfbe42371}{profs}, \hyperlink{classSchedule}{Schedule} \&\hyperlink{classGym_ad48bb78d56dcd88bb4f9f283084a9f37}{gym\+Schedule}, int \hyperlink{classGym_ae0ba7b88dfa18bf69a600dc6bbc437c0}{max\+Num\+Clients}, int \hyperlink{classGym_aa44c525d930ea2ef376d486927caf027}{max\+Capacity}, \hyperlink{classFinance}{Finance} \&\hyperlink{classGym_a3cb79db88f1d6463006e3db741b3992f}{gym\+Finance})
+\item 
+\hyperlink{classGym_adbb049146a417f3336891f10abbbddb1}{Gym} (std\+::string \hyperlink{classGym_a56d26a68f26527592d516348383aed25}{name}, std\+::vector$<$ \hyperlink{classProgram}{Program} $\ast$ $>$ \&\hyperlink{classGym_aeeff90e89fb7b1710886cbf85fc477de}{programs}, \hyperlink{classSchedule}{Schedule} \&\hyperlink{classGym_ad48bb78d56dcd88bb4f9f283084a9f37}{gym\+Schedule}, int \hyperlink{classGym_ae0ba7b88dfa18bf69a600dc6bbc437c0}{max\+Num\+Clients}, int \hyperlink{classGym_aa44c525d930ea2ef376d486927caf027}{max\+Capacity}, \hyperlink{classFinance}{Finance} \&\hyperlink{classGym_a3cb79db88f1d6463006e3db741b3992f}{gym\+Finance})
+\item 
+\hyperlink{classGym_ac36cb794c3c14ed73828a36e54f02df0}{$\sim$\+Gym} ()
+\item 
+std\+::string \hyperlink{classGym_a5501333659451f78c76e24370fb7fd7a}{get\+Name} () const 
+\item 
+std\+::vector$<$ \hyperlink{classClient}{Client} $\ast$ $>$ \hyperlink{classGym_aaf5c6971f484866ec9b06c07ed729c9b}{get\+Clients} () const 
+\item 
+std\+::vector$<$ \hyperlink{classStaff}{Staff} $\ast$ $>$ \hyperlink{classGym_aa441a21e10236a1b6046333399674775}{get\+Staff} () const 
+\item 
+std\+::vector$<$ \hyperlink{classPersonalTrainer}{Personal\+Trainer} $\ast$ $>$ \hyperlink{classGym_a66c34f89ebab7717ddb44190ff3eebad}{get\+PT} () const 
+\item 
+std\+::vector$<$ \hyperlink{classProgram}{Program} $\ast$ $>$ \hyperlink{classGym_a0dfcc7e8e43237f20926fdbc18e1d2d1}{get\+Programs} () const 
+\item 
+\hyperlink{classSchedule}{Schedule} \hyperlink{classGym_a35d53964a138bae3b5d43a5bcf9a92fc}{get\+Gym\+Schedule} () const 
+\item 
+int \hyperlink{classGym_a05e9aa0c7323a3d62ab548037b34c8ce}{get\+Max\+Num\+Clients} () const 
+\item 
+int \hyperlink{classGym_af72f16ba469bf2797cedea0c222d70d4}{get\+Number\+Programs} () const 
+\item 
+int \hyperlink{classGym_aa338e27dfc731ab09d5f97dd3029bce5}{get\+Max\+Capacity} () const 
+\item 
+\hyperlink{classFinance}{Finance} \hyperlink{classGym_a074ee7f6ddc777d8e2548efb61c8206b}{get\+Gym\+Finance} () const 
+\item 
+void \hyperlink{classGym_ad1c08f7d2e9ae1d5145519b787568e38}{set\+Clients} (std\+::vector$<$ \hyperlink{classClient}{Client} $\ast$ $>$)
+\item 
+void \hyperlink{classGym_a4971e6b588f4efb5bf26d00c7ec7ca96}{set\+Staff} (std\+::vector$<$ \hyperlink{classStaff}{Staff} $\ast$ $>$)
+\item 
+void \hyperlink{classGym_a1c3e6a842b0b18a9a42c61e25b595dac}{set\+Name} (std\+::string new\+Name)
+\item 
+void \hyperlink{classGym_a9de9ed60db03ef4ae27139429ad7f0b7}{set\+Gym\+Schedule} (\hyperlink{classSchedule}{Schedule})
+\item 
+void \hyperlink{classGym_a51b5bf6222862c232ad626bf243df7ba}{set\+Max\+Num\+Clients} (int)
+\item 
+void \hyperlink{classGym_ae115f7c1991fcb49ceec7cb5d94a6233}{set\+Max\+Capacity} (int)
+\item 
+void \hyperlink{classGym_a64286d629d0d2db01e9c880cbf1d69f7}{set\+Gym\+Finance} (\hyperlink{classFinance}{Finance})
+\item 
+void \hyperlink{classGym_acac736895e644c2d1d6bd18a90759e25}{add\+Client} (\hyperlink{classClient}{Client} $\ast$client)
+\item 
+void \hyperlink{classGym_a846e253b4e54365c8aa86a97def9a77f}{add\+Staff} (\hyperlink{classStaff}{Staff} $\ast$\hyperlink{classGym_a9108e2c97ee58a50e491461559aa12fe}{staff})
+\item 
+void \hyperlink{classGym_a1c83ad093ebea272ecc929a069952ffa}{add\+Program} (\hyperlink{classProgram}{Program} $\ast$program)
+\item 
+void \hyperlink{classGym_a7f526090a67c00b5bc4d79fd13a7ed61}{display\+Programs} () const 
+\item 
+\hyperlink{classProgram}{Program} $\ast$ \hyperlink{classGym_a27ed4e97c958ba5d38c14c1313f3a0b1}{code\+To\+Program} (int code)
+\item 
+bool \hyperlink{classGym_addda8ae9a7519b2efe2011ab351024b4}{find\+Staff} (int staff\+Id, \hyperlink{classStaff}{Staff} $\ast$$\ast$staff\+\_\+found)
+\item 
+bool \hyperlink{classGym_ae1645f954f54d7689fff985dbfc5bbae}{find\+Client} (int client\+Id, \hyperlink{classClient}{Client} $\ast$$\ast$client\+\_\+found)
+\item 
+void \hyperlink{classGym_a2e1031f5bb4e7d064a7d24fccaae0abe}{login} ()
+\item 
+void \hyperlink{classGym_affb825a0c5ab2d3b2039f6ba82080064}{change\+Capacity} ()
+\item 
+void \hyperlink{classGym_a1a8d882d2e0cb3df944546172505a6ea}{change\+Max\+Num\+Clients} ()
+\item 
+void \hyperlink{classGym_a5335d3e59e2365cef2044ad354cfc70a}{add\+Client} ()
+\item 
+void \hyperlink{classGym_a18c13a04b2c4d019a51df3594bda8cbb}{display\+Program\+Options} ()
+\item 
+void \hyperlink{classGym_a5b393a1de3a2785172c7539b7476c553}{remove\+Client} ()
+\item 
+void \hyperlink{classGym_a64978dffee81efbcf1fca38fe111f2b1}{add\+Staff} ()
+\item 
+void \hyperlink{classGym_a181fdf971e25b48dce26d24fa7f8d50d}{remove\+Staff} ()
+\item 
+void \hyperlink{classGym_a40d3f9a53f71c9f4e9fd3e05b48a25b1}{add\+Personal\+Trainer} ()
+\item 
+void \hyperlink{classGym_a723219b3a3f855f9ff90c00d4e8dfb81}{remove\+Personal\+Trainer} ()
+\item 
+void \hyperlink{classGym_a5e873ed60bba5fab835947eb7266b676}{add\+Program} ()
+\item 
+void \hyperlink{classGym_a01fba21147b2643b4423b935554eb411}{remove\+Program} ()
+\item 
+void \hyperlink{classGym_a39614ab4b405f66371cbdafb548b5cb9}{display\+Clients\+Ids} ()
+\item 
+void \hyperlink{classGym_ae966562c6dbed9558dc40d3f141026a9}{display\+Staff\+Ids} () const 
+\item 
+void \hyperlink{classGym_a97160287a92ea777c21df872cf5f8ea3}{display\+Profs\+Ids} () const 
+\item 
+bool \hyperlink{classGym_af21c245de67f3d30203352e2b4aa1dc4}{find\+Program} (int program\+Id, \hyperlink{classProgram}{Program} $\ast$$\ast$program\+\_\+found)
+\item 
+bool \hyperlink{classGym_a6a160af6f8732070dd0123bb9447409b}{find\+Prof} (int prof\+Id, \hyperlink{classStaff}{Staff} $\ast$$\ast$prof\+\_\+found)
+\item 
+void \hyperlink{classGym_ace102a44881da97b6e4bc287126875a2}{deposit\+Amount} ()
+\item 
+void \hyperlink{classGym_a96ee6c0fa0e156bc32baa54bf8fb9772}{make\+Payments} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classGym_a56d26a68f26527592d516348383aed25}{name}
+\item 
+std\+::vector$<$ \hyperlink{classProgram}{Program} $\ast$ $>$ \hyperlink{classGym_aeeff90e89fb7b1710886cbf85fc477de}{programs}
+\item 
+std\+::vector$<$ \hyperlink{classClient}{Client} $\ast$ $>$ \hyperlink{classGym_a30a9153e0d241801fdc55c3ef3008767}{clients}
+\item 
+std\+::vector$<$ \hyperlink{classStaff}{Staff} $\ast$ $>$ \hyperlink{classGym_a9108e2c97ee58a50e491461559aa12fe}{staff}
+\item 
+std\+::vector$<$ \hyperlink{classPersonalTrainer}{Personal\+Trainer} $\ast$ $>$ \hyperlink{classGym_afc05320302a5dac7d3b2cb4dfbe42371}{profs}
+\item 
+\hyperlink{classSchedule}{Schedule} \hyperlink{classGym_ad48bb78d56dcd88bb4f9f283084a9f37}{gym\+Schedule}
+\item 
+int \hyperlink{classGym_ae0ba7b88dfa18bf69a600dc6bbc437c0}{max\+Num\+Clients}
+\item 
+int \hyperlink{classGym_aa44c525d930ea2ef376d486927caf027}{max\+Capacity}
+\item 
+\hyperlink{classFinance}{Finance} \hyperlink{classGym_a3cb79db88f1d6463006e3db741b3992f}{gym\+Finance}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classGym_a3655657d2947d341023e38c0cbc4e1bd}{operator$<$$<$} (std\+::ostream \&out, const \hyperlink{classGym}{Gym} \&gym)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Gym@{Gym}!Gym@{Gym}}
+\index{Gym@{Gym}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{Gym(std\+::string name, std\+::vector$<$ Program $\ast$ $>$ \&programs, std\+::vector$<$ Client $\ast$ $>$ \&clients, std\+::vector$<$ Staff $\ast$ $>$ \&staff, std\+::vector$<$ Personal\+Trainer $\ast$ $>$ \&profs, Schedule \&gym\+Schedule, int max\+Num\+Clients, int max\+Capacity, Finance \&gym\+Finance)}{Gym(std::string name, std::vector< Program * > &programs, std::vector< Client * > &clients, std::vector< Staff * > &staff, std::vector< PersonalTrainer * > &profs, Schedule &gymSchedule, int maxNumClients, int maxCapacity, Finance &gymFinance)}}]{\setlength{\rightskip}{0pt plus 5cm}Gym\+::\+Gym (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{std\+::vector$<$ {\bf Program} $\ast$ $>$ \&}]{programs, }
+\item[{std\+::vector$<$ {\bf Client} $\ast$ $>$ \&}]{clients, }
+\item[{std\+::vector$<$ {\bf Staff} $\ast$ $>$ \&}]{staff, }
+\item[{std\+::vector$<$ {\bf Personal\+Trainer} $\ast$ $>$ \&}]{profs, }
+\item[{{\bf Schedule} \&}]{gym\+Schedule, }
+\item[{int}]{max\+Num\+Clients, }
+\item[{int}]{max\+Capacity, }
+\item[{{\bf Finance} \&}]{gym\+Finance}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_aea1e156d3dc49601413371e83a024a7f}{}\label{classGym_aea1e156d3dc49601413371e83a024a7f}
+\hyperlink{classGym}{Gym} Constructor 
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the gym \\
+\hline
+{\em programs} & Vector of pointers to program subscriptions \\
+\hline
+{\em clients} & Vector of pointers to clients of the gym \\
+\hline
+{\em staff} & Vector of pointers to gym\textquotesingle{}s staff \\
+\hline
+{\em profs} & Vector of pointers to gym\textquotesingle{}s profs \\
+\hline
+{\em profs} & Vector of pointers to gym\textquotesingle{}s profs\\
+\hline
+{\em schedule} & \hyperlink{classSchedule}{Schedule} of the gym \\
+\hline
+{\em max\+Num\+Clients} & Max number of clients subscribed to the gym \\
+\hline
+{\em max\+Capacity} & Max number of people inside the gym \\
+\hline
+{\em gym\+Finance} & Finances of the gym \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Gym@{Gym}!Gym@{Gym}}
+\index{Gym@{Gym}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{Gym(std\+::string name, std\+::vector$<$ Program $\ast$ $>$ \&programs, Schedule \&gym\+Schedule, int max\+Num\+Clients, int max\+Capacity, Finance \&gym\+Finance)}{Gym(std::string name, std::vector< Program * > &programs, Schedule &gymSchedule, int maxNumClients, int maxCapacity, Finance &gymFinance)}}]{\setlength{\rightskip}{0pt plus 5cm}Gym\+::\+Gym (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{std\+::vector$<$ {\bf Program} $\ast$ $>$ \&}]{programs, }
+\item[{{\bf Schedule} \&}]{gym\+Schedule, }
+\item[{int}]{max\+Num\+Clients, }
+\item[{int}]{max\+Capacity, }
+\item[{{\bf Finance} \&}]{gym\+Finance}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_adbb049146a417f3336891f10abbbddb1}{}\label{classGym_adbb049146a417f3336891f10abbbddb1}
+\index{Gym@{Gym}!````~Gym@{$\sim$\+Gym}}
+\index{````~Gym@{$\sim$\+Gym}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{$\sim$\+Gym()}{~Gym()}}]{\setlength{\rightskip}{0pt plus 5cm}Gym\+::$\sim$\+Gym (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_ac36cb794c3c14ed73828a36e54f02df0}{}\label{classGym_ac36cb794c3c14ed73828a36e54f02df0}
+\hyperlink{classGym}{Gym} destructor
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\index{Gym@{Gym}!add\+Client@{add\+Client}}
+\index{add\+Client@{add\+Client}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{add\+Client(\+Client $\ast$client)}{addClient(Client *client)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::add\+Client (
+\begin{DoxyParamCaption}
+\item[{{\bf Client} $\ast$}]{client}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_acac736895e644c2d1d6bd18a90759e25}{}\label{classGym_acac736895e644c2d1d6bd18a90759e25}
+Adds a client to the vector
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classClient}{Client}} & pointer \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!add\+Client@{add\+Client}}
+\index{add\+Client@{add\+Client}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{add\+Client()}{addClient()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::add\+Client (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a5335d3e59e2365cef2044ad354cfc70a}{}\label{classGym_a5335d3e59e2365cef2044ad354cfc70a}
+Adds a client to the gym \index{Gym@{Gym}!add\+Personal\+Trainer@{add\+Personal\+Trainer}}
+\index{add\+Personal\+Trainer@{add\+Personal\+Trainer}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{add\+Personal\+Trainer()}{addPersonalTrainer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::add\+Personal\+Trainer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a40d3f9a53f71c9f4e9fd3e05b48a25b1}{}\label{classGym_a40d3f9a53f71c9f4e9fd3e05b48a25b1}
+Adds a personal trainer to the gym \index{Gym@{Gym}!add\+Program@{add\+Program}}
+\index{add\+Program@{add\+Program}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{add\+Program(\+Program $\ast$program)}{addProgram(Program *program)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::add\+Program (
+\begin{DoxyParamCaption}
+\item[{{\bf Program} $\ast$}]{program}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a1c83ad093ebea272ecc929a069952ffa}{}\label{classGym_a1c83ad093ebea272ecc929a069952ffa}
+Adds a program to the vector
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classProgram}{Program}} & pointer \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!add\+Program@{add\+Program}}
+\index{add\+Program@{add\+Program}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{add\+Program()}{addProgram()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::add\+Program (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a5e873ed60bba5fab835947eb7266b676}{}\label{classGym_a5e873ed60bba5fab835947eb7266b676}
+Adds a program to the gym \index{Gym@{Gym}!add\+Staff@{add\+Staff}}
+\index{add\+Staff@{add\+Staff}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{add\+Staff(\+Staff $\ast$staff)}{addStaff(Staff *staff)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::add\+Staff (
+\begin{DoxyParamCaption}
+\item[{{\bf Staff} $\ast$}]{staff}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a846e253b4e54365c8aa86a97def9a77f}{}\label{classGym_a846e253b4e54365c8aa86a97def9a77f}
+Adds a staff to the vector
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{classStaff}{Staff}} & pointer \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!add\+Staff@{add\+Staff}}
+\index{add\+Staff@{add\+Staff}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{add\+Staff()}{addStaff()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::add\+Staff (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a64978dffee81efbcf1fca38fe111f2b1}{}\label{classGym_a64978dffee81efbcf1fca38fe111f2b1}
+Adds a staff to the gym \index{Gym@{Gym}!change\+Capacity@{change\+Capacity}}
+\index{change\+Capacity@{change\+Capacity}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{change\+Capacity()}{changeCapacity()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::change\+Capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_affb825a0c5ab2d3b2039f6ba82080064}{}\label{classGym_affb825a0c5ab2d3b2039f6ba82080064}
+Changes gym\textquotesingle{}s capacity \index{Gym@{Gym}!change\+Max\+Num\+Clients@{change\+Max\+Num\+Clients}}
+\index{change\+Max\+Num\+Clients@{change\+Max\+Num\+Clients}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{change\+Max\+Num\+Clients()}{changeMaxNumClients()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::change\+Max\+Num\+Clients (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a1a8d882d2e0cb3df944546172505a6ea}{}\label{classGym_a1a8d882d2e0cb3df944546172505a6ea}
+Changes gym\textquotesingle{}s max number of clients \index{Gym@{Gym}!code\+To\+Program@{code\+To\+Program}}
+\index{code\+To\+Program@{code\+To\+Program}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{code\+To\+Program(int code)}{codeToProgram(int code)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Program} $\ast$ Gym\+::code\+To\+Program (
+\begin{DoxyParamCaption}
+\item[{int}]{code}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a27ed4e97c958ba5d38c14c1313f3a0b1}{}\label{classGym_a27ed4e97c958ba5d38c14c1313f3a0b1}
+Returns the gym\textquotesingle{}s program subscription that has the id code
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & \hyperlink{classProgram}{Program} subscription id code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the gym\textquotesingle{}s program subscription that has the id code 
+\end{DoxyReturn}
+\index{Gym@{Gym}!deposit\+Amount@{deposit\+Amount}}
+\index{deposit\+Amount@{deposit\+Amount}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{deposit\+Amount()}{depositAmount()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::deposit\+Amount (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_ace102a44881da97b6e4bc287126875a2}{}\label{classGym_ace102a44881da97b6e4bc287126875a2}
+Deposits amount to gym\textquotesingle{}s account
+
+Deposits amount \index{Gym@{Gym}!display\+Clients\+Ids@{display\+Clients\+Ids}}
+\index{display\+Clients\+Ids@{display\+Clients\+Ids}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{display\+Clients\+Ids()}{displayClientsIds()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::display\+Clients\+Ids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a39614ab4b405f66371cbdafb548b5cb9}{}\label{classGym_a39614ab4b405f66371cbdafb548b5cb9}
+Prints the gym\textquotesingle{}s clients ids
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!display\+Profs\+Ids@{display\+Profs\+Ids}}
+\index{display\+Profs\+Ids@{display\+Profs\+Ids}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{display\+Profs\+Ids() const }{displayProfsIds() const }}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::display\+Profs\+Ids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_a97160287a92ea777c21df872cf5f8ea3}{}\label{classGym_a97160287a92ea777c21df872cf5f8ea3}
+Prints the gym\textquotesingle{}s personal trainer\textquotesingle{}s ids
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!display\+Program\+Options@{display\+Program\+Options}}
+\index{display\+Program\+Options@{display\+Program\+Options}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{display\+Program\+Options()}{displayProgramOptions()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::display\+Program\+Options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a18c13a04b2c4d019a51df3594bda8cbb}{}\label{classGym_a18c13a04b2c4d019a51df3594bda8cbb}
+Prints the programs the gym has to offer, as well as the conditions
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!display\+Programs@{display\+Programs}}
+\index{display\+Programs@{display\+Programs}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{display\+Programs() const }{displayPrograms() const }}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::display\+Programs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_a7f526090a67c00b5bc4d79fd13a7ed61}{}\label{classGym_a7f526090a67c00b5bc4d79fd13a7ed61}
+Prints the programs the gym has to offer, as well as the conditions \index{Gym@{Gym}!display\+Staff\+Ids@{display\+Staff\+Ids}}
+\index{display\+Staff\+Ids@{display\+Staff\+Ids}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{display\+Staff\+Ids() const }{displayStaffIds() const }}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::display\+Staff\+Ids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_ae966562c6dbed9558dc40d3f141026a9}{}\label{classGym_ae966562c6dbed9558dc40d3f141026a9}
+Prints the gym\textquotesingle{}s staff ids
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!find\+Client@{find\+Client}}
+\index{find\+Client@{find\+Client}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{find\+Client(int client\+Id, Client $\ast$$\ast$client\+\_\+found)}{findClient(int clientId, Client **client_found)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Gym\+::find\+Client (
+\begin{DoxyParamCaption}
+\item[{int}]{client\+Id, }
+\item[{{\bf Client} $\ast$$\ast$}]{client\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_ae1645f954f54d7689fff985dbfc5bbae}{}\label{classGym_ae1645f954f54d7689fff985dbfc5bbae}
+Finds gym\textquotesingle{}s client with a certain Id 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!find\+Prof@{find\+Prof}}
+\index{find\+Prof@{find\+Prof}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{find\+Prof(int prof\+Id, Staff $\ast$$\ast$prof\+\_\+found)}{findProf(int profId, Staff **prof_found)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Gym\+::find\+Prof (
+\begin{DoxyParamCaption}
+\item[{int}]{prof\+Id, }
+\item[{{\bf Staff} $\ast$$\ast$}]{prof\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a6a160af6f8732070dd0123bb9447409b}{}\label{classGym_a6a160af6f8732070dd0123bb9447409b}
+Finds gym\textquotesingle{}s personal trainer with a certain Id 
+\begin{DoxyParams}{Parameters}
+{\em prof\+Id} & -\/ id of personal trainer to be searched prof\+\_\+found -\/ pointer to return the personal trainer found \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if found, false otherwise 
+\end{DoxyReturn}
+\index{Gym@{Gym}!find\+Program@{find\+Program}}
+\index{find\+Program@{find\+Program}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{find\+Program(int program\+Id, Program $\ast$$\ast$program\+\_\+found)}{findProgram(int programId, Program **program_found)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Gym\+::find\+Program (
+\begin{DoxyParamCaption}
+\item[{int}]{program\+Id, }
+\item[{{\bf Program} $\ast$$\ast$}]{program\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_af21c245de67f3d30203352e2b4aa1dc4}{}\label{classGym_af21c245de67f3d30203352e2b4aa1dc4}
+Finds gym\textquotesingle{}s program with a certain Id 
+\begin{DoxyParams}{Parameters}
+{\em program\+Id} & -\/ id of program to be searched program\+\_\+found -\/ pointer to return the program found \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if found, false otherwise 
+\end{DoxyReturn}
+\index{Gym@{Gym}!find\+Staff@{find\+Staff}}
+\index{find\+Staff@{find\+Staff}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{find\+Staff(int staff\+Id, Staff $\ast$$\ast$staff\+\_\+found)}{findStaff(int staffId, Staff **staff_found)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Gym\+::find\+Staff (
+\begin{DoxyParamCaption}
+\item[{int}]{staff\+Id, }
+\item[{{\bf Staff} $\ast$$\ast$}]{staff\+\_\+found}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_addda8ae9a7519b2efe2011ab351024b4}{}\label{classGym_addda8ae9a7519b2efe2011ab351024b4}
+Finds gym\textquotesingle{}s staff with a certain Id 
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!get\+Clients@{get\+Clients}}
+\index{get\+Clients@{get\+Clients}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Clients() const }{getClients() const }}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Client} $\ast$ $>$ Gym\+::get\+Clients (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_aaf5c6971f484866ec9b06c07ed729c9b}{}\label{classGym_aaf5c6971f484866ec9b06c07ed729c9b}
+Returns the vector of client pointers of the gym
+
+\begin{DoxyReturn}{Returns}
+Returns vector of pointers to clients of the gym 
+\end{DoxyReturn}
+\index{Gym@{Gym}!get\+Gym\+Finance@{get\+Gym\+Finance}}
+\index{get\+Gym\+Finance@{get\+Gym\+Finance}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Gym\+Finance() const }{getGymFinance() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Finance} Gym\+::get\+Gym\+Finance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_a074ee7f6ddc777d8e2548efb61c8206b}{}\label{classGym_a074ee7f6ddc777d8e2548efb61c8206b}
+Returns the finance of the gym
+
+\begin{DoxyReturn}{Returns}
+Returns the finance of the gym 
+\end{DoxyReturn}
+\index{Gym@{Gym}!get\+Gym\+Schedule@{get\+Gym\+Schedule}}
+\index{get\+Gym\+Schedule@{get\+Gym\+Schedule}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Gym\+Schedule() const }{getGymSchedule() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Schedule} Gym\+::get\+Gym\+Schedule (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_a35d53964a138bae3b5d43a5bcf9a92fc}{}\label{classGym_a35d53964a138bae3b5d43a5bcf9a92fc}
+Returns the gym schedule
+
+\begin{DoxyReturn}{Returns}
+Returns the gym schedule 
+\end{DoxyReturn}
+\index{Gym@{Gym}!get\+Max\+Capacity@{get\+Max\+Capacity}}
+\index{get\+Max\+Capacity@{get\+Max\+Capacity}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Max\+Capacity() const }{getMaxCapacity() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Gym\+::get\+Max\+Capacity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_aa338e27dfc731ab09d5f97dd3029bce5}{}\label{classGym_aa338e27dfc731ab09d5f97dd3029bce5}
+Returns the max capacity of the gym
+
+\begin{DoxyReturn}{Returns}
+Returns the max capacity of the gym 
+\end{DoxyReturn}
+\index{Gym@{Gym}!get\+Max\+Num\+Clients@{get\+Max\+Num\+Clients}}
+\index{get\+Max\+Num\+Clients@{get\+Max\+Num\+Clients}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Max\+Num\+Clients() const }{getMaxNumClients() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Gym\+::get\+Max\+Num\+Clients (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_a05e9aa0c7323a3d62ab548037b34c8ce}{}\label{classGym_a05e9aa0c7323a3d62ab548037b34c8ce}
+Returns the max number of clients of the gym
+
+\begin{DoxyReturn}{Returns}
+Returns the max number of clients of the gym 
+\end{DoxyReturn}
+\index{Gym@{Gym}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Name() const }{getName() const }}]{\setlength{\rightskip}{0pt plus 5cm}string Gym\+::get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_a5501333659451f78c76e24370fb7fd7a}{}\label{classGym_a5501333659451f78c76e24370fb7fd7a}
+Get name of the gym
+
+\begin{DoxyReturn}{Returns}
+Returns the name of the gym 
+\end{DoxyReturn}
+\index{Gym@{Gym}!get\+Number\+Programs@{get\+Number\+Programs}}
+\index{get\+Number\+Programs@{get\+Number\+Programs}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Number\+Programs() const }{getNumberPrograms() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Gym\+::get\+Number\+Programs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_af72f16ba469bf2797cedea0c222d70d4}{}\label{classGym_af72f16ba469bf2797cedea0c222d70d4}
+Returns the number of program subscriptions the gym offers
+
+\begin{DoxyReturn}{Returns}
+Returns the number of program subscriptions the gym offers 
+\end{DoxyReturn}
+\index{Gym@{Gym}!get\+Programs@{get\+Programs}}
+\index{get\+Programs@{get\+Programs}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Programs() const }{getPrograms() const }}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Program} $\ast$ $>$ Gym\+::get\+Programs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_a0dfcc7e8e43237f20926fdbc18e1d2d1}{}\label{classGym_a0dfcc7e8e43237f20926fdbc18e1d2d1}
+\index{Gym@{Gym}!get\+PT@{get\+PT}}
+\index{get\+PT@{get\+PT}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+P\+T() const }{getPT() const }}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Personal\+Trainer} $\ast$ $>$ Gym\+::get\+PT (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_a66c34f89ebab7717ddb44190ff3eebad}{}\label{classGym_a66c34f89ebab7717ddb44190ff3eebad}
+Returns the vector of Personal Trainers pointers of the gym
+
+\begin{DoxyReturn}{Returns}
+Returns vector of pointers to personal trainers of the gym 
+\end{DoxyReturn}
+\index{Gym@{Gym}!get\+Staff@{get\+Staff}}
+\index{get\+Staff@{get\+Staff}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{get\+Staff() const }{getStaff() const }}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Staff} $\ast$ $>$ Gym\+::get\+Staff (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGym_aa441a21e10236a1b6046333399674775}{}\label{classGym_aa441a21e10236a1b6046333399674775}
+Returns the vector of staff pointers of the gym
+
+\begin{DoxyReturn}{Returns}
+Returns vector of pointers to staff of the gym 
+\end{DoxyReturn}
+\index{Gym@{Gym}!login@{login}}
+\index{login@{login}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{login()}{login()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::login (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a2e1031f5bb4e7d064a7d24fccaae0abe}{}\label{classGym_a2e1031f5bb4e7d064a7d24fccaae0abe}
+Performs the login process for a certain staff \index{Gym@{Gym}!make\+Payments@{make\+Payments}}
+\index{make\+Payments@{make\+Payments}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{make\+Payments()}{makePayments()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::make\+Payments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a96ee6c0fa0e156bc32baa54bf8fb9772}{}\label{classGym_a96ee6c0fa0e156bc32baa54bf8fb9772}
+Makes payments from the gym\textquotesingle{}s account
+
+Makes payments for every staff who hasn\textquotesingle{}t been paid yet \index{Gym@{Gym}!remove\+Client@{remove\+Client}}
+\index{remove\+Client@{remove\+Client}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{remove\+Client()}{removeClient()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::remove\+Client (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a5b393a1de3a2785172c7539b7476c553}{}\label{classGym_a5b393a1de3a2785172c7539b7476c553}
+Removes a client \index{Gym@{Gym}!remove\+Personal\+Trainer@{remove\+Personal\+Trainer}}
+\index{remove\+Personal\+Trainer@{remove\+Personal\+Trainer}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{remove\+Personal\+Trainer()}{removePersonalTrainer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::remove\+Personal\+Trainer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a723219b3a3f855f9ff90c00d4e8dfb81}{}\label{classGym_a723219b3a3f855f9ff90c00d4e8dfb81}
+Removes a personal trainer from the gym \index{Gym@{Gym}!remove\+Program@{remove\+Program}}
+\index{remove\+Program@{remove\+Program}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{remove\+Program()}{removeProgram()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::remove\+Program (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a01fba21147b2643b4423b935554eb411}{}\label{classGym_a01fba21147b2643b4423b935554eb411}
+Removes a program from the gym \index{Gym@{Gym}!remove\+Staff@{remove\+Staff}}
+\index{remove\+Staff@{remove\+Staff}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{remove\+Staff()}{removeStaff()}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::remove\+Staff (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a181fdf971e25b48dce26d24fa7f8d50d}{}\label{classGym_a181fdf971e25b48dce26d24fa7f8d50d}
+Removes a staff from the gym \index{Gym@{Gym}!set\+Clients@{set\+Clients}}
+\index{set\+Clients@{set\+Clients}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{set\+Clients(std\+::vector$<$ Client $\ast$ $>$)}{setClients(std::vector< Client * >)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::set\+Clients (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Client} $\ast$ $>$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_ad1c08f7d2e9ae1d5145519b787568e38}{}\label{classGym_ad1c08f7d2e9ae1d5145519b787568e38}
+Sets the vector of clients of the gym
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & vector of client pointers of the gym \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!set\+Gym\+Finance@{set\+Gym\+Finance}}
+\index{set\+Gym\+Finance@{set\+Gym\+Finance}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{set\+Gym\+Finance(\+Finance)}{setGymFinance(Finance)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::set\+Gym\+Finance (
+\begin{DoxyParamCaption}
+\item[{{\bf Finance}}]{gym\+Finance}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a64286d629d0d2db01e9c880cbf1d69f7}{}\label{classGym_a64286d629d0d2db01e9c880cbf1d69f7}
+Sets the gym finance
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & gym finance \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!set\+Gym\+Schedule@{set\+Gym\+Schedule}}
+\index{set\+Gym\+Schedule@{set\+Gym\+Schedule}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{set\+Gym\+Schedule(\+Schedule)}{setGymSchedule(Schedule)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::set\+Gym\+Schedule (
+\begin{DoxyParamCaption}
+\item[{{\bf Schedule}}]{gym\+Schedule}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a9de9ed60db03ef4ae27139429ad7f0b7}{}\label{classGym_a9de9ed60db03ef4ae27139429ad7f0b7}
+Sets the gym schedule
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & gym schedule \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!set\+Max\+Capacity@{set\+Max\+Capacity}}
+\index{set\+Max\+Capacity@{set\+Max\+Capacity}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{set\+Max\+Capacity(int)}{setMaxCapacity(int)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::set\+Max\+Capacity (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+Capacity}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_ae115f7c1991fcb49ceec7cb5d94a6233}{}\label{classGym_ae115f7c1991fcb49ceec7cb5d94a6233}
+Sets the max capacity of the gym
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & max capacity of the gym \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!set\+Max\+Num\+Clients@{set\+Max\+Num\+Clients}}
+\index{set\+Max\+Num\+Clients@{set\+Max\+Num\+Clients}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{set\+Max\+Num\+Clients(int)}{setMaxNumClients(int)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::set\+Max\+Num\+Clients (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+Num\+Clients}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a51b5bf6222862c232ad626bf243df7ba}{}\label{classGym_a51b5bf6222862c232ad626bf243df7ba}
+Sets the max number of clients of the gym
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & max number of clients of the gym \\
+\hline
+\end{DoxyParams}
+\index{Gym@{Gym}!set\+Name@{set\+Name}}
+\index{set\+Name@{set\+Name}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{set\+Name(std\+::string new\+Name)}{setName(std::string newName)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::set\+Name (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{new\+Name}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a1c3e6a842b0b18a9a42c61e25b595dac}{}\label{classGym_a1c3e6a842b0b18a9a42c61e25b595dac}
+\index{Gym@{Gym}!set\+Staff@{set\+Staff}}
+\index{set\+Staff@{set\+Staff}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{set\+Staff(std\+::vector$<$ Staff $\ast$ $>$)}{setStaff(std::vector< Staff * >)}}]{\setlength{\rightskip}{0pt plus 5cm}void Gym\+::set\+Staff (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Staff} $\ast$ $>$}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGym_a4971e6b588f4efb5bf26d00c7ec7ca96}{}\label{classGym_a4971e6b588f4efb5bf26d00c7ec7ca96}
+Sets the vector of staff of the gym
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & vector of staff pointers of the gym \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{Gym@{Gym}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out, }
+\item[{const {\bf Gym} \&}]{gym}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classGym_a3655657d2947d341023e38c0cbc4e1bd}{}\label{classGym_a3655657d2947d341023e38c0cbc4e1bd}
+Overload of operator $<$$<$ for class \hyperlink{classGym}{Gym} \begin{DoxyReturn}{Returns}
+ostream 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{Gym@{Gym}!clients@{clients}}
+\index{clients@{clients}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{clients}{clients}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Client} $\ast$$>$ Gym\+::clients\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_a30a9153e0d241801fdc55c3ef3008767}{}\label{classGym_a30a9153e0d241801fdc55c3ef3008767}
+\index{Gym@{Gym}!gym\+Finance@{gym\+Finance}}
+\index{gym\+Finance@{gym\+Finance}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{gym\+Finance}{gymFinance}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Finance} Gym\+::gym\+Finance\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_a3cb79db88f1d6463006e3db741b3992f}{}\label{classGym_a3cb79db88f1d6463006e3db741b3992f}
+\index{Gym@{Gym}!gym\+Schedule@{gym\+Schedule}}
+\index{gym\+Schedule@{gym\+Schedule}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{gym\+Schedule}{gymSchedule}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Schedule} Gym\+::gym\+Schedule\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_ad48bb78d56dcd88bb4f9f283084a9f37}{}\label{classGym_ad48bb78d56dcd88bb4f9f283084a9f37}
+\index{Gym@{Gym}!max\+Capacity@{max\+Capacity}}
+\index{max\+Capacity@{max\+Capacity}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{max\+Capacity}{maxCapacity}}]{\setlength{\rightskip}{0pt plus 5cm}int Gym\+::max\+Capacity\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_aa44c525d930ea2ef376d486927caf027}{}\label{classGym_aa44c525d930ea2ef376d486927caf027}
+\index{Gym@{Gym}!max\+Num\+Clients@{max\+Num\+Clients}}
+\index{max\+Num\+Clients@{max\+Num\+Clients}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{max\+Num\+Clients}{maxNumClients}}]{\setlength{\rightskip}{0pt plus 5cm}int Gym\+::max\+Num\+Clients\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_ae0ba7b88dfa18bf69a600dc6bbc437c0}{}\label{classGym_ae0ba7b88dfa18bf69a600dc6bbc437c0}
+\index{Gym@{Gym}!name@{name}}
+\index{name@{name}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{name}{name}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Gym\+::name\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_a56d26a68f26527592d516348383aed25}{}\label{classGym_a56d26a68f26527592d516348383aed25}
+\index{Gym@{Gym}!profs@{profs}}
+\index{profs@{profs}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{profs}{profs}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Personal\+Trainer} $\ast$$>$ Gym\+::profs\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_afc05320302a5dac7d3b2cb4dfbe42371}{}\label{classGym_afc05320302a5dac7d3b2cb4dfbe42371}
+\index{Gym@{Gym}!programs@{programs}}
+\index{programs@{programs}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{programs}{programs}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Program}$\ast$$>$ Gym\+::programs\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_aeeff90e89fb7b1710886cbf85fc477de}{}\label{classGym_aeeff90e89fb7b1710886cbf85fc477de}
+\index{Gym@{Gym}!staff@{staff}}
+\index{staff@{staff}!Gym@{Gym}}
+\subsubsection[{\texorpdfstring{staff}{staff}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Staff} $\ast$$>$ Gym\+::staff\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGym_a9108e2c97ee58a50e491461559aa12fe}{}\label{classGym_a9108e2c97ee58a50e491461559aa12fe}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Gym_8h}{Gym.\+h}\item 
+\hyperlink{Gym_8cpp}{Gym.\+cpp}\end{DoxyCompactItemize}

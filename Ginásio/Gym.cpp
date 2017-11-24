@@ -5,7 +5,7 @@
 #include <iomanip>
 #include "Gym.h"
 #include "Client.h"
-#include "termcolor.hpp"
+#include "colorWin.h"
 #include "Input.h"
 
 #ifdef WIN32

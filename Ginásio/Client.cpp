@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Client.h"
 #include "ErrorClasses.h"
-#include "termcolor.hpp"
+#include "colorWin.h"
 #include "Input.h"
 
 //Functions
@@ -210,7 +210,8 @@ void Client::editClient(Gym &gym)
 				cout << "Program successfully changed to program number " << enrolledProgram->getCode() << endl << endl;
 			}
 			catch (EditingError &e) {
-				cout << e.getReasons() << endl;
+				std::vector<std::string> reasons = e.getReasons();
+				for(auto reason :reasons) std::cout << reason << endl;
 			}
 			break;
 		case 4:

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "stdafx.h"
 #include "Staff.h"
-#include "termcolor.hpp"
+#include "colorWin.h"
 #include "Input.h"
 using namespace std;
 

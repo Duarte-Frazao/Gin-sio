@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
-#include "termcolor.hpp"
+#include "colorWin.h"
 
 
 /**

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Program.h"
 #include "Gym.h"
-#include "termcolor.hpp"
+#include "colorWin.h"
 
 using namespace std;
 

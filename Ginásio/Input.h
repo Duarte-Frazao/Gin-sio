@@ -16,16 +16,16 @@ void getInput(T &input, std::string msg = "") {
 	std::string value_str;
 	bool newInput, isDouble;
 	std::cin.clear();
-	if (cin.peek() == '\n') cin.ignore();
+	if (std::cin.peek() == '\n') std::cin.ignore();
 
-	cout << msg;
+	std::cout << msg;
 	do {
 		newInput = false;
 		isDouble = false;
 
 		getline(std::cin, value_str);
 		if (value_str.length() == 0) {
-			cout << sign::error << "Please insert a valid value! ";
+			std::cout << sign::error << "Please insert a valid value! ";
 			newInput = true;
 		}
 		else {

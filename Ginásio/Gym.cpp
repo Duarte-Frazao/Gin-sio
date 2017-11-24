@@ -294,7 +294,8 @@ void Gym::displayClientsIds()
 {
 	for (size_t i = 0; i < clients.size(); i++)
 	{
-		cout << std::setw(10) << std::left << clients.at(i)->getName() << " ID: " << clients.at(i)->getId() << endl;
+
+		cout << std::setw(10) << std::left << std::setfill(' ') << clients.at(i)->getName() << " ID: " << clients.at(i)->getId() << endl;
 	}
 }
 
@@ -303,7 +304,7 @@ void Gym::displayStaffIds() const
 {
 	for (size_t i = 0; i < staff.size(); i++)
 	{
-		cout << staff.at(i)->getName() << " ID: " << staff.at(i)->getId() << endl;
+		cout << std::setw(10) << std::left << std::setfill(' ') << staff.at(i)->getName() << " ID: " << staff.at(i)->getId() << endl;
 	}
 }
 
@@ -312,7 +313,7 @@ void Gym::displayProfsIds() const
 {
 	for (size_t i = 0; i < profs.size(); i++)
 	{
-		cout << profs.at(i)->getName() << " ID: " << profs.at(i)->getId() << endl;
+		cout << std::setw(10) << std::left << std::setfill(' ') << profs.at(i)->getName() << " ID: " << profs.at(i)->getId() << endl;
 	}
 }
 

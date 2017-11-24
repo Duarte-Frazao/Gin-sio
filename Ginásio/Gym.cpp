@@ -153,7 +153,7 @@ void Gym::login() {
 	do
 	{
 		int staffId;
-		cout << "Login ID: ";
+		cout << sign::question << "Login ID: ";
 		getInput(staffId);
 
 		if (findStaff(staffId, &staff_found))
@@ -164,7 +164,7 @@ void Gym::login() {
 			do
 			{
 				string pass;
-				cout << "Password: ";
+				cout << sign::question << "Password: ";
 				ch = _getch();
 				while (ch != 13)
 				{
@@ -186,11 +186,12 @@ void Gym::login() {
 
 				if (staff_found->auth(pass))
 				{
-					cout << "\n\nACCESS GRANTED!\n" << "WELCOME STAFF NUMBER " << staff_found->getId() << "!\n\n";
+					cout << endl << endl << sign::success << "ACCESS GRANTED!\n" 
+						<< "WELCOME STAFF NUMBER " << staff_found->getId() << "!\n\n";
 					access = 1;
 				}
 				else {
-					cout << "\n\nACESS DENIED!\n";
+					cout << endl << endl << sign::error << "ACCESS DENIED!\n";
 					cout << "Try again: press 0 or Exit: press 1\n";
 					int incorrect_option = filterInput(0, 1);
 					if (incorrect_option) exit(0);
@@ -200,7 +201,7 @@ void Gym::login() {
 		}
 		else
 		{
-			cout << endl << "STAFF NOT FOUND!" << endl;
+			cout << endl << sign::error << "STAFF NOT FOUND!" << endl;
 			cout << "Try again: press 0 or Exit: press 1\n";
 			int incorrect_option2 = filterInput(0, 1);
 			if (incorrect_option2) exit(0);
@@ -408,7 +409,7 @@ void Gym::removeClient()
 			return;
 		}
 	}
-	cout << "Client with id " << optionClient << " does not exist!\n";
+	cout << sign::error << "Client with id " << optionClient << " does not exist!\n";
 }
 
 /**
@@ -456,11 +457,11 @@ void Gym::removeStaff()
 	for (it_staff = staff.begin(); it_staff != staff.end(); it_staff++) {
 		if ((*it_staff)->getId() == optionStaff) {
 			staff.erase(it_staff);
-			cout << "Staff with id " << optionStaff << " erased sucessfully!\n";
+			cout << sign::success << "Staff with id " << optionStaff << " erased sucessfully!\n";
 			return;
 		}
 	}
-	cout << "Staff with id " << optionStaff << " does not exist!\n";
+	cout << sign::error << "Staff with id " << optionStaff << " does not exist!\n";
 }
 
 /**

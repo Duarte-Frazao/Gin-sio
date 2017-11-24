@@ -27,10 +27,9 @@ void intervalFuntion();
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
 void teste(Gym &gym);
 void manageExercises(Gym &gym);
-
 void mainMenu(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Gym related", "\t2.	Client related", "\t3.	Staff related", "\t4. Testing Hall",  "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Gym related", "\t2.	Client related", "\t3.	Staff related",   "\n\t0.	Leave\n" };
 
 
 
@@ -57,9 +56,6 @@ void mainMenu(Gym &gym)
 			break;
 		case 3:
 			staffMenu(gym);
-			break;
-		case 4:
-			teste(gym);
 			break;
 		default:
 			cout << "Algum erro";
@@ -116,7 +112,7 @@ void gymMenu(Gym &gym)
 
 void clientMenu(Gym &gym)
 {
-	vector<string> sections = { "\t1.	Add", "\t2.	Edit", "\t3.	Remove", "\t4.	Display Information", "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Add", "\t2.	Edit", "\t3.	Remove", "\t4.	Display Information","\t5.	Manage Plans",  "\n\t0.	Leave\n" };
 
 	bool continueInMenu = true;
 	do
@@ -148,6 +144,10 @@ void clientMenu(Gym &gym)
 			inputClientIdObj(optionClient, gym, &clientToUse);
 			clientToUse->informationClient();
 			intervalFuntion();
+			break;
+		case 5:
+			inputClientIdObj(optionClient, gym, &clientToUse);
+			clientToUse->plansMenu(gym);
 			break;
 		default:
 			cout << "Algum erro";
@@ -468,6 +468,40 @@ void inputPtIdObj(int &optionPt, Gym &gym, Staff** staff_found)
 		} while (repeat);
 }
 
+void inputPlanIdObj(int &optionPlan,Client *c, Plan** plan_found)
+{
+	if (c->getPlans().empty()) {
+		cerr << "There are no plans assigned to the client" << std::endl;
+		return;
+	}
+
+	cout << "----------Plan Selection----------" << endl;
+	bool repeat = false;
+
+		do
+		{
+			repeat = false;
+			cout << endl << sign::question<< "Insert Plan Position (or h for help): ";
+
+			cin >> optionPlan;
+
+			if(std::cin.fail()){
+				cin.clear();
+				if(toupper(std::cin.peek()) == 'H'){
+					for (size_t i = 0; i < c->getPlans().size(); i++)
+						{
+							cout << c->getPlans().at(i)->getPlanType() << " ID: " << i+1 << endl;
+						}
+				}
+				else cout << sign::error <<"Insert a number" << endl;
+				repeat = true;
+				cin.ignore(1000,'\n');
+			}
+			optionPlan--;
+
+		} while (repeat);
+}
+
 void inputExerciseIdObj(string &optionExercise, Gym &gym, Exercise** exercise_found)
 {
 	if (gym.getExercises().empty()) {
@@ -616,7 +650,7 @@ void manageExercises(Gym &gym)
 	} while (continueInMenu);
 }
 
-
+/*
 void teste(Gym &gym)
 {
 	vector<string> sections = { "\t1.	Display Planos de treino 1º objeto" ,"\t2.	Gerar plano de treino consoante o que a pessoa quer (1ºobj)" , "\n\t0.	Leave\n" };
@@ -651,4 +685,4 @@ void teste(Gym &gym)
 		}
 	} while (continueInMenu);
 
-}
+}*/

@@ -274,6 +274,7 @@ bool Gym::findProf(int profId, Staff** prof_found) {
 	return false;
 }
 
+
 //Finds gym's exercise with a certain name
 bool Gym::findExercise(string exerciseName, Exercise** exercise_found) {
 	for (const auto ex_pointer : exercises)
@@ -633,10 +634,11 @@ void addMaterial(vector<Material *> &v)
 
 	cout <<"\n Is it a machine?(y/n)" <<endl;
 
-	if(toupper(std::cin.peek()) == ('y' || 'Y') ) machine= true;
-	else
-	{
-		machine = false;
+	string response;
+	cin >>response;
+	if(response[0] == ('y' || 'Y')) machine=true;
+	else {
+		machine=false;
 		machineNumber=-1;
 	}
 
@@ -654,7 +656,7 @@ vector<Material *> getMaterial()
 	vector<string> sections = { "\t1.	Add material" ,"\n\t0.	Leave\n" };
 	do
 	{
-		cout << endl << "\t 	Materials Needed" << endl;
+		cout << endl << "\t 	Materials Needed\n" << endl;
 
 		for (unsigned int i = 0; i < sections.size(); i++)
 			cout << sections.at(i) << endl;
@@ -696,7 +698,7 @@ void Gym::addExercise()
 	vector <Material *> necessaryMaterial=getMaterial();
 
 	//Intensity
-	intensity=filterInput(0,10,"Program intensity (0-10):");
+	intensity=filterInput(1,10,"Program intensity (1-10):");
 
 
 	Exercise * newExercise = new Exercise (name,description, necessaryMaterial,intensity);

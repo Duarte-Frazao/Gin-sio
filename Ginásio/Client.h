@@ -215,15 +215,19 @@ public:
 
 	void generateNewPlans(Gym &gym);
 
-	void generateFunctionalPlan(Gym &gym);
+	void generateFunctionalPlan(Gym &gym, int numPlans, int numExercises);
 
-	void generateHyperPlan(Gym &gym);
+	void generateHyperPlan(Gym &gym, int numPlans, int numExercises);
 
-	void generateCardioPlan(Gym &gym);
+	void generateCardioPlan(Gym &gym, int numPlans, int numExercises);
 
-	void generateMusclesPlan(Gym &gym, std::vector<std::string> muscles);
+	void generateMusclesPlan(Gym &gym, std::vector<std::string> muscles, int numPlans, int numberExercises);
 
+	void plansMenu(Gym &gym);
 
+	void editPlan(Gym &gym);
+
+	void generateNewPlan(Gym &gym);
 
 };
 

@@ -339,6 +339,8 @@ public:
 	void addExercise();
 
 	void removeExercise();
+
+	void editExercise();
 };
 
 #endif /* GYM_H_ */

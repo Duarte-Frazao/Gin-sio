@@ -80,7 +80,6 @@ void gymMenu(Gym &gym)
 			cout << gym;
 			break;
 		default:
-			cout << "Algum erro";
 			break;
 		}
 	} while (continueInMenu);
@@ -127,7 +126,6 @@ void clientMenu(Gym &gym)
 			intervalFuntion();
 			break;
 		default:
-			cout << "Algum erro";
 			break;
 		}
 	} while (continueInMenu);
@@ -180,7 +178,6 @@ void staffMenu(Gym &gym)
 			intervalFuntion();
 			break;
 		default:
-			std::cout << "Algum erro";
 			break;
 		}
 	} while (continueInMenu);
@@ -234,7 +231,6 @@ void personalTrainerMenu(Gym &gym)
 			break;
 
 		default:
-			std::cout << "Algum erro";
 			break;
 		}
 	} while (continueInMenu);
@@ -269,7 +265,6 @@ void financeMenu(Gym &gym)
 			gym.makePayments();
 			break;
 		default:
-			std::cout << "Algum erro";
 			break;
 		}
 	} while (continueInMenu);
@@ -310,7 +305,6 @@ void subscriptionsMenu(Gym &gym)
 			gym.displayProgramOptions();
 			break;
 		default:
-			cout << "Algum erro";
 			break;
 		}
 	} while (continueInMenu);
@@ -341,7 +335,6 @@ void capacityMenu(Gym &gym)
 			gym.changeMaxNumClients();
 			break;
 		default:
-			cout << "Algum erro";
 			break;
 		}
 	} while (continueInMenu);
@@ -556,9 +549,10 @@ void listStaff(Gym &gym){
 	cout << "	---------------------------\n\n";
 	cout << "	1.	ID\n";
 	cout << "	2.	Name\n";
-	cout << "	3.	Age\n\n";
+	cout << "	3.	Age\n";
+	cout << "	4.	Wage\n\n";
 	cout << "	0. 	Leave\n\n";
-	unsigned char op = filterInput(0,3);
+	unsigned char op = filterInput(0,4);
 
 
 	switch(op)
@@ -577,6 +571,9 @@ void listStaff(Gym &gym){
 	case 3:
 		listingByAge(gym.getStaff());
 		break;
+	case 4:
+		listingByWage(gym.getStaff());
+		break;
 	}
 
 }
@@ -587,7 +584,8 @@ void listPT(Gym &gym){
 	cout << "	---------------------------\n\n";
 	cout << "	1.	ID\n";
 	cout << "	2.	Name\n";
-	cout << "	3.	Age\n\n";
+	cout << "	3.	Age\n;";
+	cout << "	4.	Wage\n\n";
 	cout << "	0. 	Leave\n\n";
 
 	unsigned char op = filterInput(0,3);
@@ -607,6 +605,10 @@ void listPT(Gym &gym){
 
 	case 3:
 		listingByAge(gym.getPT());
+		break;
+
+	case 4:
+		listingByWage(gym.getPT());
 		break;
 	}
 

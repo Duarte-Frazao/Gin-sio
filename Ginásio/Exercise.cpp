@@ -150,7 +150,7 @@ void Exercise::editExercise(Gym &gym)
 		for (unsigned int i = 0; i < sections.size(); i++)
 			cout << sections.at(i) << endl;
 
-		int option = filterInput(0, sections.size(), "");
+		int option = filterInput(0, sections.size(), ""	);
 		switch (option)
 		{
 		case 0:

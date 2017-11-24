@@ -6,9 +6,11 @@
 #include "ErrorClasses.h"
 #include "Material.h"
 #include <algorithm>
+#include "Plan.h"
 
 //Functions
 int filterInput(int inf, int sup,std::string msg = "Selection: ");
+void inputPlanIdObj(int &optionPlan,Client *c, Plan** plan_found);
 
 using namespace std;
 
@@ -312,14 +314,17 @@ void eliminatePotentialEqualExercises(vector <Exercise *> &exercisios)
 	}
 }
 
-void Client::generateFunctionalPlan(Gym &gym)
+void Client::generateFunctionalPlan(Gym &gym, int numPlans, int numExercises)
 {
 	vector<Exercise *> exercisios;
 	for(auto &exercise: gym.getExercises())
 	{
+		cout <<"hye " << endl;
 		if (exercise->isFunctional()) exercisios.push_back(exercise);
 	}
+	cout << "ola" << endl;
 	eliminatePotentialEqualExercises(exercisios);
+	cout << "2"<< endl;
 	sort(exercisios.begin(),exercisios.end(), [&](Exercise *e1, Exercise *e2){
 			if (e1->trainedMuscles() > e2->trainedMuscles() ) return true;
 			else if (e1->trainedMuscles() < e2->trainedMuscles())return false;
@@ -333,15 +338,32 @@ void Client::generateFunctionalPlan(Gym &gym)
 				}
 			}
 	});
+	cout << "3" << endl;
 
-	for(uint i = 10; i <exercisios.size() ;i++) exercisios.erase(exercisios.begin() + i);
+	vector<Exercise *> toAdd;
+	vector <Plan *> plansF;
+	for (int j=0;j < numPlans ;j++)
+	{
+		cout << "4" << endl;
+		toAdd.clear();
+		for(int i = 0; i <numExercises&& exercisios.size() > 0;i++)
+		{
+			cout << "5" << endl;
 
-	cout << "The generated plan looks like this:" << endl;
-	for(auto &ex:exercisios) cout << *ex<< endl;
+			toAdd.push_back(exercisios.at(0));
+			exercisios.erase(exercisios.begin());
+		}
+		Plan *p= new Plan(toAdd,"functional");
+		plansF.push_back(p);
+
+	}
+	cout << "6" << endl;
+	if(numPlans==1) plans.push_back(plansF.at(0));
+	else plans= plansF;
 
 }
 
-void Client::generateHyperPlan(Gym &gym)
+void Client::generateHyperPlan(Gym &gym, int numPlans, int numExercises)
 {
 	vector<Exercise *> exercisios;
 	for(auto &exercise: gym.getExercises())
@@ -368,14 +390,28 @@ void Client::generateHyperPlan(Gym &gym)
 			}
 	});
 
-	for(uint i = 10; i <exercisios.size() ;i++) exercisios.erase(exercisios.begin() + i);
+	vector<Exercise *> toAdd;
+	vector <Plan *> plansF;
+	for (int j=0;j < numPlans;j++)
+	{
+		toAdd.clear();
+		for(int i = 0; i <numExercises|| exercisios.empty();i++)
+		{
 
-	cout << "The generated plan looks like this:" << endl;
-	for(auto &ex:exercisios) cout << *ex<< endl;
+			toAdd.push_back(exercisios.at(0));
+			exercisios.erase(exercisios.begin());
+		}
+		Plan *p= new Plan(toAdd,"functional");
+		plansF.push_back(p);
+
+	}
+
+	if(numPlans==1) plans.push_back(plansF.at(0));
+	else plans= plansF;
 
 }
 
-void Client::generateCardioPlan(Gym &gym)
+void Client::generateCardioPlan(Gym &gym, int numPlans, int numExercises)
 {
 	vector<Exercise *> exercisios;
 	for(auto &exercise: gym.getExercises())
@@ -397,10 +433,24 @@ void Client::generateCardioPlan(Gym &gym)
 			}
 	});
 
-	for(uint i = 10; i <exercisios.size() ;i++) exercisios.erase(exercisios.begin() + i);
+	vector<Exercise *> toAdd;
+	vector <Plan *> plansF;
+	for (int j=0;j < numPlans;j++)
+	{
+		toAdd.clear();
+		for(int i = 0; i <numExercises|| exercisios.empty();i++)
+		{
 
-	cout << "The generated plan looks like this:" << endl;
-	for(auto &ex:exercisios) cout << *ex<< endl;
+			toAdd.push_back(exercisios.at(0));
+			exercisios.erase(exercisios.begin());
+		}
+		Plan *p= new Plan(toAdd,"functional");
+		plansF.push_back(p);
+
+	}
+
+	if(numPlans==1) plans.push_back(plansF.at(0));
+	else plans= plansF;
 
 }
 
@@ -441,7 +491,7 @@ bool Exercise::includeMuscle(string muscle)
 
 }
 
-void Client::generateMusclesPlan(Gym &gym, vector<string> muscles)
+void Client::generateMusclesPlan(Gym &gym, vector<string> muscles, int numPlans, int numExercises)
 {
 	vector<Exercise *> exercisios;
 	for(auto &exercise: gym.getExercises())
@@ -460,10 +510,25 @@ void Client::generateMusclesPlan(Gym &gym, vector<string> muscles)
 			else return false;
 	});
 
-	for(uint i = 10; i <exercisios.size() ;i++) exercisios.erase(exercisios.begin() + i);
+	vector<Exercise *> toAdd;
+	vector <Plan *> plansF;
+	for (int j=0;j < numPlans;j++)
+	{
+		toAdd.clear();
+		for(int i = 0; i <numExercises|| exercisios.empty();i++)
+		{
 
-	cout << "The generated plan looks like this:" << endl;
-	for(auto &ex:exercisios) cout << *ex<< endl;
+			toAdd.push_back(exercisios.at(0));
+			exercisios.erase(exercisios.begin());
+		}
+		Plan *p= new Plan(toAdd,"functional");
+		plansF.push_back(p);
+
+	}
+
+	if(numPlans==1) plans.push_back(plansF.at(0));
+	else plans= plansF;
+
 
 }
 
@@ -472,7 +537,7 @@ vector<string> selectMuscles()
 	vector<string> muscles= {"legs", "calves", "chest", "shoulders", "biceps", "triceps", "abdominals", "gluteus", "back"};
 	vector<bool> musclesToUse(9,false);
 	cout << endl<<"Select the muscles" << endl << endl;
-	vector<string> sections = { "\t1.	Legs" ,"\t2.	Calves" ,"\t3.	Chest" ,"\t4. Shoulders","\t5. Biceps" ,"\t6. Triceps","\t7. Abdominals","\t8. Gluteus","\t9. Back",  "\n\t0.	Leave\n" };
+	vector<string> sections = { "\t1.	Legs" ,"\t2.	Calves" ,"\t3.	Chest" ,"\t4. 	Shoulders","\t5. 	Biceps" ,"\t6. 	Triceps","\t7. 	Abdominals","\t8. 	Gluteus","\t9. 	Back",  "\n\t0.	Leave\n" };
 	bool continueInMenu = true;
 	do
 	{
@@ -480,7 +545,9 @@ vector<string> selectMuscles()
 		cout << "\t--------------------------" << endl << endl;
 
 		for (unsigned int i = 0; i < sections.size(); i++)
-			cout << sections.at(i) << endl;
+		{
+			if(musclesToUse.at(i) == true) cout << sections.at(i) << endl;
+		}
 
 		int option = filterInput(0, sections.size());
 		switch (option)
@@ -550,9 +617,15 @@ void displayTypePlanExplanation()
 
 void Client::generateNewPlans(Gym &gym)
 {
-	cout << endl<<"Qual é o teu objetivo?" << endl << endl;
-	vector<string> sections = { "\t1.	Forma física (Funcional)" ,"\t2.	Ganhar musculo (Hipertrofismo)" ,"\t3.	Perder peso(cardio)" ,"\t4. Quais são as diferenças?" , "\n\t0.	Leave\n" };
+	cout << endl<<"What is your objective?" << endl << endl;
+
+	//Days per week
+	int days=this->getProgram()->getDays();
+	days/=4;
+	if(days>7) days=7;
+	vector<string> sections = { "\t1.	 Healthy lifestyle (Functional)" ,"\t2.		Gain Muscle (Hipertrofismo)" ,"\t3.		Lose weigth (cardio)" ,"\t4. 	What are the differences?" , "\n\t0.	Leave\n" };
 	bool continueInMenu = true;
+	int numEx;
 	do
 	{
 		cout << endl << "\t 	Training Plan Generator	" << endl;
@@ -568,14 +641,16 @@ void Client::generateNewPlans(Gym &gym)
 			continueInMenu = false;
 			break;
 		case 1:
-
-			this->generateFunctionalPlan(gym);
+			numEx= filterInput(1,20,"How many exercises do you wish to do every training?");
+			this->getPlans().clear();
+			cout <<"Days:" << days << " numEx:"<< numEx << endl;
+			this->generateFunctionalPlan(gym,days,numEx );
 			break;
 		case 2:
-			this->generateHyperPlan(gym);
+			this->generateHyperPlan(gym,days,numEx);
 			break;
 		case 3:
-			this->generateCardioPlan(gym);
+			this->generateCardioPlan(gym,days, numEx);
 			break;
 		case 4:
 			displayTypePlanExplanation();
@@ -587,3 +662,130 @@ void Client::generateNewPlans(Gym &gym)
 
 }
 
+void Client::generateNewPlan(Gym &gym)
+{
+	cout << endl<<"What is your objective?" << endl << endl;
+
+	vector<string> sections = { "\t1.	 Healthy lifestyle (Functional)" ,"\t2.	Gain Muscle (Hipertrofismo)" ,"\t3.	Lose weigth (cardio)" ,"\t4. What are the differences?" , "\n\t0.	Leave\n" };
+	bool continueInMenu = true;
+	int numEx;
+	do
+	{
+		cout << endl << "\t 	Training Plan Generator	" << endl;
+		cout << "\t--------------------------" << endl << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			numEx= filterInput(1,20,"How many exercises do you wish to do every training?");
+			this->getPlans().clear();
+			this->generateFunctionalPlan(gym,1,numEx );
+			break;
+		case 2:
+			this->generateHyperPlan(gym,1,numEx);
+			break;
+		case 3:
+			this->generateCardioPlan(gym,1, numEx);
+			break;
+		case 4:
+			displayTypePlanExplanation();
+			break;
+		default:
+			break;
+		}
+	} while (continueInMenu);
+
+}
+/*
+void Plan::editPlan(Gym &gym)
+{
+
+	string planType;
+	vector<Exercise *> vE;
+	vector<string> sections = { "\t1.	 Exercises" ,"\t2.	Plan Type Indentifier" ,"\t3.	Display plan" , "\n\t0.	Leave\n" };
+	bool continueInMenu = true;
+	do{
+		cout << endl << "\t 	What do you want to change in the plan: " << endl;
+		cout << "\t--------------------------" << endl << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size(), ""	);
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			if(planType == "functional") this->generateFunctionalPlan(gym,1,this->getExercises().size());
+			break;
+		case 2:
+			cout << "New name: ";
+			cin >> name;
+			this->setName(name);
+			break;
+		case 3:
+			getMaterial();
+			this->setMaterial(necessaryMaterial);
+			break;
+
+		case 5:
+			cout <<*this;
+			break;
+		default:
+			break;
+		}
+	}while (continueInMenu);
+}*/
+
+void Client::plansMenu(Gym &gym)
+{
+
+	cout << endl<<"What is your objective?" << endl << endl;
+	vector<string> sections = { "\t1.	Generate new weekly plan" ,"\t2. 	Remove plan ","\t3. 	Add plan ","\t4. 	Display weekly plan " , "\n\t0.	Leave\n" };
+	bool continueInMenu = true;
+	int optionPlan,numEx;
+	Plan *p;
+	do
+	{
+		cout << endl << "\t 	Training Plan Editor	" << endl;
+		cout << "\t--------------------------" << endl << endl;
+
+		for (unsigned int i = 0; i < sections.size(); i++)
+			cout << sections.at(i) << endl;
+
+		int option = filterInput(0, sections.size());
+		switch (option)
+		{
+		case 0:
+			continueInMenu = false;
+			break;
+		case 1:
+			this->generateNewPlans(gym);
+			break;
+		case 2:
+			inputPlanIdObj(optionPlan,this, &p);
+			plans.erase(plans.begin() + optionPlan);
+			break;
+		case 3:
+			numEx= filterInput(1,20,"How many exercises do you wish to do in the training?");
+			this->generateNewPlan(gym);
+			break;
+		case 4:
+			for(auto &plan:plans) cout << *plan;
+			break;
+		default:
+			break;
+		}
+	} while (continueInMenu);
+
+
+}

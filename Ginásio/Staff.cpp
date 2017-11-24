@@ -73,8 +73,13 @@ void Staff::setSchedule(Schedule workSchedule) {
 }
 
 void Staff::setWage(double wage) {
-	if (wage < 0) throw InvalidValue("Negative wage inserted!");
-	else this->wage = wage;
+	try {
+		if (wage < 0) throw InvalidValue("Negative wage inserted!");
+		else this->wage = wage;
+	}
+	catch (InvalidValue &e) {
+		cout << e.getReason() << endl;
+	}
 }
 
 void Staff::setPassword(string pass) {
@@ -118,7 +123,7 @@ and returns the option chosen
 */
 int editStaffMenu()
 {
-	cout << "\nSelect what you want to edit" << endl << endl;
+	cout << "\nSelect what you want to edit" << endl;
 
 	vector<string> options = { "1. Edit name", "2. Edit age", "3. Edit wage", "4. Edit location", "5. Show information", "0. Return" };
 

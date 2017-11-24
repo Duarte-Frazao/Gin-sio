@@ -100,8 +100,7 @@ void Gym::setStaff(vector<Staff *> staff) {
 
 
 //Sets the gym schedule
-void Gym::setName(string newName)
-{
+void Gym::setName(string newName) {
 	name = newName;
 }
 
@@ -111,12 +110,24 @@ void Gym::setGymSchedule(Schedule gymSchedule) {
 
 //Sets the max number of clients of the gym
 void Gym::setMaxNumClients(int maxNumClients) {
-	this->maxNumClients = maxNumClients;
+	try {
+		if (maxNumClients < 0) throw InvalidValue("Negative number of clients inserted!");
+		this->maxNumClients = maxNumClients;
+	}
+	catch (InvalidValue &e) {
+		cout << e.getReason() << endl;
+	}
 }
 
 //Sets the max capacity of the gym
 void Gym::setMaxCapacity(int maxCapacity) {
-	this->maxCapacity = maxCapacity;
+	try {
+		if (maxCapacity < 0) throw InvalidValue("Negative capacity inserted!");
+		this->maxCapacity = maxCapacity;
+	}
+	catch (InvalidValue &e) {
+		cout << e.getReason() << endl;
+	}
 }
 
 
@@ -366,7 +377,7 @@ void Gym::addClient()
 
 	//Name
 	cout << "Name: ";
-	cin >> name;
+	getline(cin, name);
 	cout << endl;
 
 	//age

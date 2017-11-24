@@ -260,10 +260,8 @@ void financeMenu(Gym &gym)
 			continueInMenu = false;
 			break;
 		case 1:
-
 			cout << gym.getGymFinance();
 			break;
-
 		case 2:
 			gym.depositAmount();
 			break;

@@ -65,6 +65,13 @@ private:
 
 public:
 	ErrorDate(std::string reason) : reason(reason){};
+
+	/** Returns the reason for the error
+	@param
+	@return Reason causing the error
+	*/
+	std::string getReason() const { return reason; }
+
 	friend std::ostream & operator<<(std::ostream & out, const ErrorDate & errorDate);
 };
 
@@ -74,7 +81,13 @@ class InvalidValue {
 	std::string reason;
 public:
 	InvalidValue(std::string rz) : reason(rz) {}
+
+	/** Returns the reason for the error
+	@param
+	@return Reason causing the error
+	*/
 	std::string getReason() const {return reason;}
+
 	friend std::ostream & operator << (std::ostream &out, const InvalidValue &error);
 };
 #endif

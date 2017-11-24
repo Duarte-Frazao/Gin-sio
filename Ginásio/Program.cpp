@@ -22,18 +22,33 @@ float Program::getCost() const { return cost; }
 int Program::getCode() const { return code; }
 
 void Program::setDays(int days) {
-	if (days < 0) throw InvalidValue("Negative number of days inserted!");
-	else this->days = days;
+	try {
+		if (days < 0) throw InvalidValue("Negative number of days inserted!");
+		else this->days = days;
+	}
+	catch (InvalidValue &e) {
+		cout << e.getReason() << endl;
+	}
 }
 
 void Program::setCost(float cost) {
-	if (cost < 0) throw InvalidValue("Negative cost inserted!");
-	else this->cost = cost;
+	try {
+		if (cost < 0) throw InvalidValue("Negative cost inserted!");
+		else this->cost = cost;
+	}
+	catch (InvalidValue &e) {
+		cout << e.getReason() << endl;
+	}
 }
 
 void Program::setCode(int code) {
-	if (code < 0) throw InvalidValue("Negative code inserted!");
-	else this->code = code;
+	try {
+		if (code < 0) throw InvalidValue("Negative code inserted!");
+		else this->code = code;
+	}
+	catch (InvalidValue &e) {
+		cout << e.getReason() << endl;
+	}
 }
 
 ostream & operator<<(ostream &out, const Program &program)

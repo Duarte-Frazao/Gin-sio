@@ -2,12 +2,17 @@
 #include "Date.h"
 
 Date::Date(int hour, int min, int weekDay){
-	if(weekDay < 1 || weekDay > 7 || hour < 0 || hour > 24 || min < 0 || min > 60)
-		throw ErrorDate("Invalid date inserted");
+	try {
+		if (weekDay < 1 || weekDay > 7 || hour < 0 || hour > 24 || min < 0 || min > 60)
+			throw ErrorDate("Invalid date inserted");
 
-	this->hour = hour;
-	this->min = min;
-	this->weekDay = weekDay;
+		this->hour = hour;
+		this->min = min;
+		this->weekDay = weekDay;
+	}
+	catch (ErrorDate &e) {
+		std::cout << e.getReason() << std::endl;
+	}
 }
 
 

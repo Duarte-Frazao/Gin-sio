@@ -23,25 +23,29 @@ Schedule::~Schedule() {}
 
 bool Schedule::addDate(const Date &dateStart, const Date &dateFinish){
 
-	//New element to be added to set of dates
-	std::pair<Date, Date> * pairDate;
+	try {
+		//New element to be added to set of dates
+		std::pair<Date, Date> * pairDate;
 
-	//Prevents unordered or equal dates
-	if(dateStart < dateFinish)
-		pairDate = new std::pair<Date, Date>(dateStart, dateFinish);
+		//Prevents unordered or equal dates
+		if (dateStart < dateFinish)
+			pairDate = new std::pair<Date, Date>(dateStart, dateFinish);
 
-	else if(dateStart == dateFinish)
-		throw ErrorDate("Dates are equal");
+		else if (dateStart == dateFinish)
+			throw ErrorDate("Dates are equal");
 
-	else
-		pairDate = new std::pair<Date, Date>(dateFinish, dateStart);
-
-
-	//auto rVal = schedule.insert(pairDate); //Also valid
-	std::pair<std::set<std::pair<Date,Date>*>::iterator, bool> rVal = schedule.insert(pairDate);
+		else
+			pairDate = new std::pair<Date, Date>(dateFinish, dateStart);
 
 
-	return rVal.second;
+		//auto rVal = schedule.insert(pairDate); //Also valid
+		std::pair<std::set<std::pair<Date, Date>*>::iterator, bool> rVal = schedule.insert(pairDate);
+
+		return rVal.second;
+	}
+	catch (ErrorDate &e) {
+		std::cout << e.getReason() << std::endl;
+	}
 }
 
 std::set<std::pair<Date,Date>*,APtrComp> Schedule::getScheduleSet(){

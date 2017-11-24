@@ -119,8 +119,13 @@ void Client::setName(string newName)
 //Sets a new age to Client
 void Client::setAge(int age)
 {
-	if (age < 0) throw InvalidValue("Negative age inserted!");
-	else this->age = age;
+	try {
+		if (age < 0) throw InvalidValue("Negative age inserted!");
+		else this->age = age;
+	}
+	catch (InvalidValue &e) {
+		cout << e.getReason() << endl;
+	}
 }
 
 #pragma endregion
@@ -128,12 +133,17 @@ void Client::setAge(int age)
 //Changes the current location of Client.
 void Client::changeLocation()
 {
-	if(insideGym)  insideGym = !insideGym; //Can always get out of the gym
+	try {
+		if (insideGym)  insideGym = !insideGym; //Can always get out of the gym
 
-	else{//But can only enter under some conditions
-		if (!paymentsUpToDate) throw EntranceError("Payments not up to date");
-		else if (numDaysRemaining == 0 && !insideGym) throw EntranceError("Maximum number of entries exceeded, see our other program offers!");
-		else insideGym = !insideGym;
+		else {//But can only enter under some conditions
+			if (!paymentsUpToDate) throw EntranceError("Payments not up to date");
+			else if (numDaysRemaining == 0 && !insideGym) throw EntranceError("Maximum number of entries exceeded, see our other program offers!");
+			else insideGym = !insideGym;
+		}
+	}
+	catch (EntranceError &e) {
+		cout << e << endl;
 	}
 }
 
@@ -177,26 +187,31 @@ void Client::editClient(Gym &gym)
 			cout << sign::success << "Client's age sucessfully modified!\n";
 			break;
 		case 3:
-			//Error checking
-			problems(clientProblems);
-			if (clientProblems.size() != 0) throw EditingError(clientProblems);
+			try {
+				//Error checking
+				problems(clientProblems);
+				if (clientProblems.size() != 0) throw EditingError(clientProblems);
 
-			cout << "What's the subscription you want to enroll?\n" << endl;
-			gym.displayProgramOptions();
+				cout << "What's the subscription you want to enroll?\n" << endl;
+				gym.displayProgramOptions();
 
-			//Selection of the new program
-			newProgramCode = filterInput(1,gym.getNumberPrograms(),"Select a new program: ");
+				//Selection of the new program
+				newProgramCode = filterInput(1, gym.getNumberPrograms(), "Select a new program: ");
 
-			//Checks if the program is the current one
-			if (newProgramCode == enrolledProgram->getCode())  throw EditingError(vector<string>{"Trying to change program to the current one"});
+				//Checks if the program is the current one
+				if (newProgramCode == enrolledProgram->getCode())  throw EditingError(vector<string>{"Trying to change program to the current one"});
 
-			//Gets the respective program of the code
-			setProgram(gym.codeToProgram(newProgramCode));
+				//Gets the respective program of the code
+				setProgram(gym.codeToProgram(newProgramCode));
 
-			//Updates days, as there were changes to the program
-			updateNumDaysRemaining();
+				//Updates days, as there were changes to the program
+				updateNumDaysRemaining();
 
-			cout << "Program successfully changed to program number " << enrolledProgram->getCode() << endl << endl;
+				cout << "Program successfully changed to program number " << enrolledProgram->getCode() << endl << endl;
+			}
+			catch (EditingError &e) {
+				cout << e.getReasons() << endl;
+			}
 			break;
 		case 4:
 			cout << *this;

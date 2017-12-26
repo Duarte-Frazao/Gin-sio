@@ -5,7 +5,6 @@
 #include <string>
 #include <queue>
 #include "Staff.h"
-#include "Client.h"
 
 class Client;
 class Gym;

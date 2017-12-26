@@ -3,6 +3,9 @@
 #include "PersonalTrainer.h"
 #include "colorWin.h"
 #include "Input.h"
+#include "Staff.h"
+#include "Client.h"
+#include "Gym.h"
 
 using namespace std;
 
@@ -265,3 +268,5 @@ ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
 		out << "-> ID: " << client->getId() << " | Name: " << client->getName() << endl;
 	return out;
 }
+
+

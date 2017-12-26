@@ -7,15 +7,11 @@
 #include <iostream>
 #include "Program.h"
 #include "Client.h"
-#include "Staff.h"
 #include "PersonalTrainer.h"
 #include "Finance.h"
 #include "Schedule.h"
 
-class Client;
-class Staff;
-class PersonalTrainer;
-class CmpPtPointers;
+typedef std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> PTQUEUE;
 
 class Gym {
 	
@@ -23,7 +19,7 @@ class Gym {
 	std::vector<Program*> programs;
 	std::vector<Client *> clients;
 	std::vector<Staff *> staff;
-	std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> profs;
+	PTQUEUE profs;
 	Schedule gymSchedule;
 	int maxNumClients;
 	int maxCapacity;
@@ -47,7 +43,7 @@ public:
 	*/
 	Gym(std::string name, std::vector<Program *> &programs,
 		std::vector<Client *> &clients, std::vector<Staff *> &staff,
-		std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> &profs, 
+		PTQUEUE &profs,
 		Schedule &gymSchedule, int maxNumClients, int maxCapacity, Finance &gymFinance);
 
 
@@ -88,7 +84,7 @@ public:
 
 	@return Returns priority queue of pointers to personal trainers of the gym
 	*/
-	std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> getPT() const;
+	PTQUEUE getPT() const;
 
 	std::vector<Program *> getPrograms() const;
 

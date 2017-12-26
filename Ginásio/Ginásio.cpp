@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Gym.h"
+#include "PersonalTrainer.h"
 #include <ctime>
 #include <iostream>
 #include <string>

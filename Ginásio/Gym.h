@@ -3,16 +3,19 @@
 
 #include <string>
 #include <vector>
+#include <queue>
 #include <iostream>
+#include "Program.h"
 #include "Client.h"
+#include "Staff.h"
+#include "PersonalTrainer.h"
 #include "Finance.h"
 #include "Schedule.h"
-#include "Program.h"
-#include "PersonalTrainer.h"
 
 class Client;
 class Staff;
 class PersonalTrainer;
+class CmpPtPointers;
 
 class Gym {
 	
@@ -20,7 +23,7 @@ class Gym {
 	std::vector<Program*> programs;
 	std::vector<Client *> clients;
 	std::vector<Staff *> staff;
-	std::vector<PersonalTrainer *> profs;
+	std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> profs;
 	Schedule gymSchedule;
 	int maxNumClients;
 	int maxCapacity;
@@ -34,8 +37,7 @@ public:
 	@param programs Vector of pointers to program subscriptions
 	@param clients Vector of pointers to clients of the gym
 	@param staff Vector of pointers to gym's staff
-	@param profs Vector of pointers to gym's profs
-	@param profs Vector of pointers to gym's profs
+	@param profs Priority queue of pointers to gym's profs
 
 	@param schedule Schedule of the gym
 	@param maxNumClients Max number of clients subscribed to the gym
@@ -45,8 +47,8 @@ public:
 	*/
 	Gym(std::string name, std::vector<Program *> &programs,
 		std::vector<Client *> &clients, std::vector<Staff *> &staff,
-		std::vector<PersonalTrainer *> &profs, Schedule &gymSchedule,
-		int maxNumClients, int maxCapacity, Finance &gymFinance);
+		std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> &profs, 
+		Schedule &gymSchedule, int maxNumClients, int maxCapacity, Finance &gymFinance);
 
 
 	Gym(std::string name, std::vector<Program *> &programs, Schedule &gymSchedule,
@@ -84,9 +86,9 @@ public:
 	/**
 	Returns the vector of Personal Trainers pointers of the gym
 
-	@return Returns vector of pointers to personal trainers of the gym
+	@return Returns priority queue of pointers to personal trainers of the gym
 	*/
-	std::vector<PersonalTrainer *> getPT() const;
+	std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> getPT() const;
 
 	std::vector<Program *> getPrograms() const;
 

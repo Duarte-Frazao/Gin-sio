@@ -3,12 +3,13 @@
 
 #include <vector>
 #include <string>
+#include <queue>
 #include "Staff.h"
 #include "Client.h"
-#include "Gym.h"
 
 class Client;
 class Gym;
+
 
 class PersonalTrainer : public Staff {
 	std::vector<Client *> clients;
@@ -65,8 +66,6 @@ public:
 	*/
 	void editAssociatedClients(Gym &gym);
 
-	virtual bool recognizeProf() const;
-
 	/**
 	Overload of operator << for derived class Personal Trainer
 	@return ostream
@@ -79,7 +78,13 @@ public:
 	@return
 	*/
 	void printInfo();
-	
+};
+
+class CmpPtPointers {
+public:
+	bool operator()(const PersonalTrainer* p1, const PersonalTrainer* p2) {
+		return p1->getClients().size() > p2->getClients().size();
+	}
 };
 
 #endif /* PERSONALTRAINER_H_ */

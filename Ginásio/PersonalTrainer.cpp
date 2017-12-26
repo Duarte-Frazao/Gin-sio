@@ -250,11 +250,6 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 
 #pragma endregion
 
-bool PersonalTrainer::recognizeProf() const
-{
-	return true;
-}
-
 void PersonalTrainer::printInfo() 
 {
 	cout << *this;

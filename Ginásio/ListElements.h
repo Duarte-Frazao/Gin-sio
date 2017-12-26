@@ -157,3 +157,145 @@ bool listingByWage( std::vector<T *> vec) {
 	return true;
 
 }
+
+bool listingByID(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> pq) {
+	int init, final;
+
+	if (pq.size() == 0)
+		return false;
+
+	std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> temp(pq);
+	std::vector<PersonalTrainer *> vec;
+	while (!temp.empty()) {
+		vec.push_back(temp.top());
+		temp.pop();
+	}
+
+	sort(vec.begin(), vec.end(), comparePtrByID<PersonalTrainer>);
+
+	std::cout << "Minimum value available: " << vec.at(0)->getId() << std::endl;
+	std::cout << "Maximum value available: " << vec.at(vec.size() - 1)->getId() << std::endl << std::endl;
+	std::cout << "Between which values: " << std::endl;
+	std::cout << "Minimum: "; std::cin >> init;
+	std::cout << "Maximum: "; std::cin >> final;
+
+	if (!(init >= vec.at(0)->getId() && final <= vec.at(vec.size() - 1)->getId())) {
+		std::cout << std::endl << sign::error << "Invalid ID's" << std::endl;
+		return false;
+	}
+
+	for (unsigned int i = 0; i < vec.size(); i++) {
+		if (vec.at(i)->getId() >= init && vec.at(i)->getId() <= final)
+			std::cout << *(vec.at(i));
+	}
+
+	return true;
+}
+
+bool listingByName(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> pq) {
+	std::string init, final;
+
+	if (pq.size() == 0)
+		return false;
+
+	bool all = false;
+
+	std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> temp(pq);
+	std::vector<PersonalTrainer *> vec;
+	while (!temp.empty()) {
+		vec.push_back(temp.top());
+		temp.pop();
+	}
+
+	sort(vec.begin(), vec.end(), comparePtrByName<PersonalTrainer>);
+
+	std::cout << "First name: " << vec.at(0)->getName() << std::endl;
+	std::cout << "Last name: " << vec.at(vec.size() - 1)->getName() << std::endl << std::endl;
+	std::cout << "Between which values (-1 for all): " << std::endl;
+	std::cout << "Minimum: "; std::cin >> init;
+
+	try {
+		if (std::stoi(init) == -1)
+			all = true;
+	}
+	catch (...) {
+		all = false;
+	}
+
+	if (!all) {
+		std::cout << "Maximum: "; std::cin >> final;
+	}
+	else {
+		init = vec.at(0)->getName();
+		final = vec.at(vec.size() - 1)->getName();
+	}
+
+	for (unsigned int i = 0; i < vec.size(); i++) {
+		if (vec.at(i)->getName() >= init && vec.at(i)->getName() <= final)
+			std::cout << *(vec.at(i));
+	}
+	return true;
+
+}
+
+bool listingByAge(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> pq) {
+
+	int init, final;
+	if (pq.size() == 0)
+		return false;
+
+	std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> temp(pq);
+	std::vector<PersonalTrainer *> vec;
+	while (!temp.empty()) {
+		vec.push_back(temp.top());
+		temp.pop();
+	}
+
+	sort(vec.begin(), vec.end(), comparePtrByAge<PersonalTrainer>);
+
+	std::cout << "Minimum age available: " << vec.at(0)->getAge() << std::endl;
+	std::cout << "Maximum age available: " << vec.at(vec.size() - 1)->getAge() << std::endl << std::endl;
+	std::cout << "Between which values: " << std::endl;
+	std::cout << "Minimum: "; std::cin >> init;
+	std::cout << "Maximum: "; std::cin >> final;
+
+
+	if (!(init >= vec.at(0)->getAge() && final <= vec.at(vec.size() - 1)->getAge()))
+		return false;
+
+	for (unsigned int i = 0; i < vec.size(); i++) {
+		if (vec.at(i)->getAge() >= init && vec.at(i)->getAge() <= final)
+			std::cout << *(vec.at(i));
+	}
+	return true;
+
+}
+
+bool listingByWage(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> pq) {
+
+	int init, final;
+	if (pq.size() == 0)
+		return false;
+
+	std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> temp(pq);
+	std::vector<PersonalTrainer *> vec;
+	while (!temp.empty()) {
+		vec.push_back(temp.top());
+		temp.pop();
+	}
+
+	sort(vec.begin(), vec.end(), comparePtrByWage<PersonalTrainer>);
+
+	std::cout << "Minimum wage available: " << vec.at(0)->getWage() << std::endl;
+	std::cout << "Maximum wage available: " << vec.at(vec.size() - 1)->getWage() << std::endl << std::endl;
+	std::cout << "Between which values: " << std::endl;
+	std::cout << "Minimum: "; std::cin >> init;
+	std::cout << "Maximum: "; std::cin >> final;
+
+	for (unsigned int i = 0; i < vec.size(); i++) {
+		if (vec.at(i)->getWage() >= init && vec.at(i)->getWage() <= final)
+			std::cout << *(vec.at(i));
+	}
+	return true;
+
+}

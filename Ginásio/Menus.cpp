@@ -587,7 +587,7 @@ void listPT(Gym &gym){
 	cout << "	3.	Age\n;";
 	cout << "	4.	Wage\n\n";
 	cout << "	0. 	Leave\n\n";
-
+	
 	unsigned char op = filterInput(0,3);
 
 	switch(op)
@@ -611,7 +611,6 @@ void listPT(Gym &gym){
 		listingByWage(gym.getPT());
 		break;
 	}
-
 }
 
 void intervalFuntion()

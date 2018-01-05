@@ -413,8 +413,9 @@ void Gym::addClient()
 	PersonalTrainer *professor = temp.top();
 
 	Client * newClient = new Client(name, codeToProgram(program), age, professor);
+	addClient(newClient);
+	professor->addClient(newClient);
 
-	clients.push_back(newClient);
 	cout << sign::success << "Client added sucessfully!" << endl << endl << endl;
 	cout << "New client's information:" << endl;
 	cout << *newClient;
@@ -429,8 +430,6 @@ void Gym::removeClient()
 	int optionClient;
 	Client *clientToEdit;
 	inputClientIdObj(optionClient, *this, &clientToEdit);
-
-	//algo que mostre ids + fun��o que check ids
 	
 	vector<Client *>::iterator it_client;
 	for (it_client = clients.begin(); it_client != clients.end(); it_client++) {
@@ -480,6 +479,7 @@ Removes a staff from the gym
 */
 void Gym::removeStaff() 
 {
+	bool staff_found = false;
 	int optionStaff;
 	Staff *staffToEdit;
 	inputStaffIdObj(optionStaff, *this, &staffToEdit);
@@ -488,11 +488,25 @@ void Gym::removeStaff()
 	for (it_staff = staff.begin(); it_staff != staff.end(); it_staff++) {
 		if ((*it_staff)->getId() == optionStaff) {
 			staff.erase(it_staff);
+			staff_found = true;
 			cout << sign::success << "Staff with id " << optionStaff << " erased sucessfully!\n";
-			return;
+			break;
 		}
 	}
-	cout << sign::error << "Staff with id " << optionStaff << " does not exist!\n";
+	
+	if (staff_found) {
+		priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> temp;
+		while (!profs.empty()) {
+			if (profs.top()->getId() != optionStaff) {
+				temp.push(profs.top());
+			}
+			profs.pop();
+		}
+		setPq(temp);
+	}
+	else {
+		cout << sign::error << "Staff with id " << optionStaff << " does not exist!\n";
+	}
 }
 
 /**
@@ -542,7 +556,7 @@ void Gym::removePersonalTrainer()
 	Staff *profToEdit;
 	inputPtIdObj(optionProf, *this, &profToEdit);
 	
-	priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> temp(profs);
+	priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> temp;
 	while (!profs.empty()) {
 		if (profs.top()->getId() != optionProf) {
 			temp.push(profs.top());
@@ -550,7 +564,7 @@ void Gym::removePersonalTrainer()
 		pt_found = true;
 		profs.pop();
 	}
-	profs = temp;
+	setPq(temp);
 
 	if (pt_found) {
 		vector<Staff *>::iterator it_staff;

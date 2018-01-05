@@ -213,6 +213,7 @@ Gym * readInformationFile(std::string fileName){
 			temp.pop();
 		}
 		clients.push_back(new Client(client_name, enrolledProgram, client_age, responsiblePT));
+		responsiblePT->addClient(clients.at(clients.size()-1));
 
 		inFile.get();
 	}

@@ -15,7 +15,6 @@
 #include "Schedule.h"
 #include "Finance.h"
 
-<<<<<<< HEAD
 
 Schedule * readSchedule(std::ifstream &inFile){
 	int schedule_day;
@@ -65,15 +64,6 @@ Gym * readInformationFile(std::string fileName){
 		std::cerr << "Erro a abrir o ficheiro " << fileName << ". " <<std::endl;
 		throw InvalidValue("File Inexistent!");
 	}
-=======
-Gym * readInformationFile(std::string fileName) {
-
-	std::ifstream inFile(fileName);
-
-	if (!inFile.is_open())
-		std::cerr << "Erro a abrir";
->>>>>>> SandroBranch-AEDA-part-2
-
 	std::string controlWord;
 	char brackets;
 
@@ -121,36 +111,6 @@ Gym * readInformationFile(std::string fileName) {
 
 	//---------------------
 
-<<<<<<< HEAD
-=======
-
-	//Schedule
-	//---------------------
-	int schedule_day;
-	int schedule_hour;
-	int schedule_min;
-
-	inFile >> controlWord;
-	if (controlWord != "Schedule"); //throw error
-
-	Schedule * schedule = new Schedule;
-
-	while (inFile.peek() != ';') {
-		inFile >> brackets >> schedule_day >> schedule_hour >> brackets >> schedule_min;
-		Date date1(schedule_hour, schedule_min, schedule_day);
-
-		inFile >> schedule_hour >> brackets >> schedule_min >> brackets;
-		Date date2(schedule_hour, schedule_min, schedule_day);
-
-		schedule->addDate(date1, date2);
-
-		inFile.get();
-	}
-	inFile.get();
-
-	//---------------------
-
->>>>>>> SandroBranch-AEDA-part-2
 	//Programs
 	//----------------------------
 	int program_code;
@@ -303,13 +263,8 @@ void writeInformationFile(std::string fileName, Gym & gym) {
 
 	std::ofstream outFile(fileName);
 
-<<<<<<< HEAD
 	if(!outFile.is_open())
 		std::cerr << "Erro a abrir o ficheiro "<< fileName << ". "<<std::endl;
-=======
-	if (!outFile.is_open())
-		std::cerr << "Erro a abrir";
->>>>>>> SandroBranch-AEDA-part-2
 
 
 	//GYM
@@ -334,24 +289,6 @@ void writeInformationFile(std::string fileName, Gym & gym) {
 	outFile << ";\n\n";
 	//----------------------------
 
-<<<<<<< HEAD
-=======
-	//Schedule
-	//----------------------------
-	outFile << "Schedule" << std::endl;
-
-	for (auto pPar : gym.getGymSchedule().getScheduleSet()) {
-		outFile << "[ " << pPar->first.weekDay << " ";
-		outFile << std::setfill('0') << std::setw(2) << pPar->first.hour << ":" << std::setw(2) << pPar->first.min;
-		outFile << " ";
-		outFile << std::setfill('0') << std::setw(2) << pPar->second.hour << ":" << std::setw(2) << pPar->second.min;
-		outFile << " ]\n";
-	}
-
-	outFile << ";\n\n";
-	//----------------------------
-
->>>>>>> SandroBranch-AEDA-part-2
 
 	//Programs
 	//----------------------------

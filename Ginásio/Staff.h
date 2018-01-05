@@ -61,7 +61,6 @@ public:
 	std::string getPassword() const;
 
 	/**
-<<<<<<< HEAD
 	Returns staff's schedule
 	@return Returns staff's schedule
 	*/
@@ -69,10 +68,7 @@ public:
 
 	/**
 	Returns staff's location
-
-=======
 	@brief Returns staff's location
->>>>>>> SandroBranch-AEDA-part-2
 	@return Returns 1 if insideGym, 0 otherwise
 	*/
 	bool isInsideGym() const;

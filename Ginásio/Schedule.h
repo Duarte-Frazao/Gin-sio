@@ -132,20 +132,10 @@ public:
 	friend std::ostream & operator<<(std::ostream &out , const Schedule &schedule);
 
 	/**
-<<<<<<< HEAD
 	 * @brief Return Set of Task Ptr
 	 * @return Schedule
 	 */
 	std::set<Task *, Task::TaskPtrCmp> getScheduleSet() const;
-=======
-	* @brief Gets schedule set
-	* @return Returns schedule set
-	*/
-	std::set<std::pair<Date,Date>*,APtrComp> getScheduleSet();
-
-private:
-	std::set<std::pair<Date,Date>*,APtrComp> schedule;
->>>>>>> SandroBranch-AEDA-part-2
 };
 
 #endif /* SCHEDULE_H_ */

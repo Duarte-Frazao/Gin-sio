@@ -34,9 +34,7 @@ public:
 	std::string getSpecializedArea() const;
 
 	/**
-<<<<<<< HEAD
 	Sets the clients of the personal trainer
-=======
 	@brief Sets the working schedule of the personal trainer
 	@param workSchedule The working schedule of the personal trainer
 	*/
@@ -47,7 +45,6 @@ public:
 	@param client The client to be added
 	*/
 	void addClient(Client* client);
->>>>>>> SandroBranch-AEDA-part-2
 
 	/**
 	@brief Sets the clients of the personal trainer

@@ -41,8 +41,6 @@ string PersonalTrainer::getSpecializedArea() const { return specializedArea; }
 # pragma region Sets
 
 
-<<<<<<< HEAD
-=======
 void PersonalTrainer::setSchedule(Schedule workSchedule) {
 	Staff::setSchedule(workSchedule);
 }
@@ -52,8 +50,6 @@ void PersonalTrainer::addClient(Client * client)
 	clients.push_back(client);
 }
 
-
->>>>>>> SandroBranch-AEDA-part-2
 void PersonalTrainer::setClients(vector<Client *> clients) {
 	this->clients = clients;
 }

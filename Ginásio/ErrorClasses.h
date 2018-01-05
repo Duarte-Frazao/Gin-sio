@@ -11,23 +11,24 @@
 class EntranceError {
 	std::string reason;
 public:
-	/** Entrance error constructor
-		@param rz Reason for the error
-		@return
-		*/
+	/** 
+	@brief Entrance error constructor
+	@param rz Reason for the error
+	*/
 	EntranceError(std::string rz) : reason(rz) {}
 
-	/** Returns the reason for the error
-		@param
-		@return Reason causing the error
-		*/
+	/** 
+	@brief Returns the reason for the error
+	@return Reason causing the error
+	*/
 	std::string getReason() const { return reason; }
 
-	/**Overload of the << operator
-		@param out Output Stream
-		@param error Entrance Error object
-		@return out Output Stream
-		*/
+	/** 
+	@brief Overload of the << operator
+	@param out Output Stream
+	@param error Entrance Error object
+	@return out Output Stream
+	*/
 	friend std::ostream & operator << (std::ostream &out, const EntranceError &error);
 };
 
@@ -37,23 +38,24 @@ public:
 class EditingError {
 	std::vector<std::string> reasons;
 public:
-	/** Editing error constructor
-		@param rz Reason for the error
-		@return
-		*/
+	/** 
+	@brief Editing error constructor
+	@param rz Reason for the error
+	*/
 	EditingError(std::vector<std::string> rz) : reasons(rz) {}
 
-	/** Returns the reasons for the error
-		@param
-		@return Reasons causing the error
-		*/
+	/**
+	@brief Returns the reasons for the error
+	@return Reasons causing the error
+	*/
 	std::vector<std::string> getReasons() const { return reasons; }
 
-	/**Overload of the << operator
-		@param out Output Stream
-		@param error Editing Error object
-		@return out Output Stream
-		*/
+	/** 
+	@brief Overload of the << operator
+	@param out Output Stream
+	@param error Editing Error object
+	@return out Output Stream
+	*/
 	friend std::ostream & operator << (std::ostream &out, const EditingError &error);
 };
 
@@ -66,12 +68,18 @@ private:
 public:
 	ErrorDate(std::string reason) : reason(reason){};
 
-	/** Returns the reason for the error
-	@param
+	/** 
+	@brief Returns the reason for the error
 	@return Reason causing the error
 	*/
 	std::string getReason() const { return reason; }
 
+	/**
+	@brief Overload of the << operator
+	@param out Output Stream
+	@param error Editing Error object
+	@return out Output Stream
+	*/
 	friend std::ostream & operator<<(std::ostream & out, const ErrorDate & errorDate);
 };
 
@@ -82,12 +90,18 @@ class InvalidValue {
 public:
 	InvalidValue(std::string rz) : reason(rz) {}
 
-	/** Returns the reason for the error
-	@param
+	/** 
+	@brief Returns the reason for the error
 	@return Reason causing the error
 	*/
 	std::string getReason() const {return reason;}
 
+	/**
+	@brief Overload of the << operator
+	@param out Output Stream
+	@param error Editing Error object
+	@return out Output Stream
+	*/
 	friend std::ostream & operator << (std::ostream &out, const InvalidValue &error);
 };
 #endif

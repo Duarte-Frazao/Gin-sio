@@ -39,6 +39,10 @@ public:
 	 */
 	friend std::ostream & operator<<(std::ostream &out , const Schedule &schedule);
 
+	/**
+	* @brief Gets schedule set
+	* @return Returns schedule set
+	*/
 	std::set<std::pair<Date,Date>*,APtrComp> getScheduleSet();
 
 private:

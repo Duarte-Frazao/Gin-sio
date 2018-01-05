@@ -143,7 +143,6 @@ bool listingByWage( std::vector<T *> vec) {
 
 	sort(vec.begin(), vec.end(),comparePtrByWage<T>);
 
-
 	std::cout << "Minimum wage available: " << vec.at(0)->getWage() << std::endl;
 	std::cout << "Maximum wage available: " << vec.at(vec.size()-1)->getWage() << std::endl<<std::endl;
 	std::cout << "Between which values: " << std::endl;
@@ -158,6 +157,11 @@ bool listingByWage( std::vector<T *> vec) {
 
 }
 
+/**
+Function to list personal trainers by ID
+@param pq Personal trainers' priority queue
+@return Returns true if priority queue is not empty, false otherwise
+*/
 bool listingByID(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> pq) {
 	int init, final;
 
@@ -192,6 +196,11 @@ bool listingByID(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrain
 	return true;
 }
 
+/**
+Function to list personal trainers by name
+@param pq Personal trainers' priority queue
+@return Returns true if priority queue is not empty, false otherwise
+*/
 bool listingByName(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> pq) {
 	std::string init, final;
 
@@ -238,6 +247,11 @@ bool listingByName(std::priority_queue<PersonalTrainer*, std::vector<PersonalTra
 
 }
 
+/**
+Function to list personal trainers by age
+@param pq Personal trainers' priority queue
+@return Returns true if priority queue is not empty, false otherwise
+*/
 bool listingByAge(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> pq) {
 
 	int init, final;
@@ -271,6 +285,11 @@ bool listingByAge(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrai
 
 }
 
+/**
+Function to list personal trainers by wage
+@param pq Personal trainers' priority queue
+@return Returns true if priority queue is not empty, false otherwise
+*/
 bool listingByWage(std::priority_queue<PersonalTrainer*, std::vector<PersonalTrainer*>, CmpPtPointers> pq) {
 
 	int init, final;

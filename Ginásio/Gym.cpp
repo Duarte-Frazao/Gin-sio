@@ -97,6 +97,11 @@ void Gym::setStaff(vector<Staff *> staff) {
 	this->staff = staff;
 }
 
+void Gym::setPq(PTQUEUE pq)
+{
+	profs = pq;
+}
+
 
 //Sets the gym schedule
 void Gym::setName(string newName) {
@@ -314,6 +319,7 @@ void Gym::displayStaffIds() const
 //Prints the profs the gym has contracted
 void Gym::displayProfsIds() const
 {
+	cout << "Personal Trainers displayed in descending availability\n";
 	priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers>temp(profs);
 	while (!temp.empty())
 	{
@@ -558,6 +564,11 @@ void Gym::removePersonalTrainer()
 	}
 	
 	cout << "Personal trainer with id " << optionProf << " does not exist!\n";
+}
+
+void Gym::popPqElem()
+{
+	profs.pop();
 }
 
 /**

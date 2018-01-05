@@ -584,11 +584,11 @@ void listPT(Gym &gym){
 	cout << "	---------------------------\n\n";
 	cout << "	1.	ID\n";
 	cout << "	2.	Name\n";
-	cout << "	3.	Age\n;";
+	cout << "	3.	Age\n";
 	cout << "	4.	Wage\n\n";
 	cout << "	0. 	Leave\n\n";
 	
-	unsigned char op = filterInput(0,3);
+	unsigned char op = filterInput(0,4);
 
 	switch(op)
 	{

@@ -6,9 +6,8 @@ Accepts a string of input and returns
 the respective T value. iI it contains
 any alphabetic char, requires new input
 
-@param
-- input as a template T
-- msg as a string to output
+@param input Input as a template T
+@param msg Message as a string to output
 */
 template<class T>
 void getInput(T &input, std::string msg = "") {

@@ -413,8 +413,9 @@ void Gym::addClient()
 	PersonalTrainer *professor = temp.top();
 
 	Client * newClient = new Client(name, codeToProgram(program), age, professor);
+	addClient(newClient);
+	professor->addClient(newClient);
 
-	clients.push_back(newClient);
 	cout << sign::success << "Client added sucessfully!" << endl << endl << endl;
 	cout << "New client's information:" << endl;
 	cout << *newClient;
@@ -429,8 +430,6 @@ void Gym::removeClient()
 	int optionClient;
 	Client *clientToEdit;
 	inputClientIdObj(optionClient, *this, &clientToEdit);
-
-	//algo que mostre ids + fun��o que check ids
 	
 	vector<Client *>::iterator it_client;
 	for (it_client = clients.begin(); it_client != clients.end(); it_client++) {

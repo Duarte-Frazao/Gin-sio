@@ -38,11 +38,6 @@ string PersonalTrainer::getSpecializedArea() const { return specializedArea; }
 # pragma region Sets
 
 
-void PersonalTrainer::setSchedule(Schedule workSchedule) {
-	Staff::setSchedule(workSchedule);
-}
-
-
 void PersonalTrainer::setClients(vector<Client *> clients) {
 	this->clients = clients;
 }

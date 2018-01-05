@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include "colorWin.h"
 
 /**
 Accepts a string of input and returns

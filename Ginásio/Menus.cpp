@@ -67,9 +67,11 @@ void gymMenu(Gym &gym)
 		case 1:
 			financeMenu(gym);
 			break;
-		case 2:
-			//scheduleMenu();
-			break;
+		case 2:{
+			Schedule schedule = gym.getGymSchedule();
+			schedule.editScheduleMenu();
+			gym.setGymSchedule(schedule);
+			break;}
 		case 3:
 			capacityMenu(gym);
 			break;

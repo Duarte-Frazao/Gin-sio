@@ -14,12 +14,55 @@
 #include "Schedule.h"
 #include "Finance.h"
 
+
+Schedule * readSchedule(std::ifstream &inFile){
+	int schedule_day;
+	int schedule_hour;
+	int schedule_min;
+	char brackets;
+	std::string desc;
+
+	Schedule * schedule = new Schedule;
+
+	while(inFile.peek() != ';' ){
+		inFile >> brackets >> schedule_day >> schedule_hour >> brackets >> schedule_min;
+		Date date1(schedule_hour,schedule_min,schedule_day);
+
+		inFile >> schedule_day >> schedule_hour >> brackets >> schedule_min;
+		Date date2(schedule_hour,schedule_min,schedule_day);
+
+		inFile.ignore();
+		getline(inFile, desc);
+		desc = desc.substr(1, desc.length() - 4);
+		schedule->addTask(date1,date2,desc);
+	}
+	inFile.get();
+
+	return schedule;
+}
+
+
+
+void writeSchedule(std::ofstream &outFile, const Schedule & schedule){
+	for(auto pTask : schedule.getScheduleSet()){
+		outFile << "[ " << pTask->start.getWeekDay() << " ";
+		outFile << std::setfill('0') << std::setw(2) << pTask->start.getHour() << ":" << std::setw(2)<<pTask->start.getMin();
+		outFile << " " << pTask->end.getWeekDay() << " ";
+		outFile << std::setfill('0') << std::setw(2) << pTask->end.getHour() << ":" << std::setw(2)<<pTask->end.getMin();
+		outFile << " " << "\"" << pTask->desc << "\"";
+		outFile << " ]\n";
+	}
+	outFile << ";\n";
+}
+
 Gym * readInformationFile(std::string fileName){
 
 	std::ifstream inFile(fileName);
 
-	if(!inFile.is_open())
-		std::cerr << "Erro a abrir";
+	if(!inFile.is_open()){
+		std::cerr << "Erro a abrir o ficheiro " << fileName << ". " <<std::endl;
+		throw InvalidValue("File Inexistent!");
+	}
 
 	std::string controlWord;
 	char brackets;
@@ -63,33 +106,6 @@ Gym * readInformationFile(std::string fileName){
 
 		Transaction temp(transaction_type, transaction_description, transaction_amount, transaction_dateTransaction);
 		finance->addTransaction(temp);
-	}
-	inFile.get();
-
-	//---------------------
-
-
-	//Schedule
-	//---------------------
-	int schedule_day;
-	int schedule_hour;
-	int schedule_min;
-
-	inFile >> controlWord;
-	if(controlWord != "Schedule"); //throw error
-
-	Schedule * schedule = new Schedule;
-
-	while(inFile.peek() != ';' ){
-		inFile >> brackets >> schedule_day >> schedule_hour >> brackets >> schedule_min;
-		Date date1(schedule_hour,schedule_min,schedule_day);
-
-		inFile >> schedule_hour >> brackets >> schedule_min  >> brackets;
-		Date date2(schedule_hour,schedule_min,schedule_day);
-
-		schedule->addDate(date1,date2);
-
-		inFile.get();
 	}
 	inFile.get();
 
@@ -200,7 +216,34 @@ Gym * readInformationFile(std::string fileName){
 
 	inFile.get();
 
+	inFile >> controlWord;
+	if(controlWord != "Schedule"); //throw error
+
+
+	inFile >> controlWord;
+	if(controlWord != "Gym"); //throw error
+
+	Schedule * schedule = readSchedule(inFile);
+	int id;
+
+	inFile >> controlWord;
+	if(controlWord != "Staff"); //throw error
+
+
+	Schedule * workSchedule;
 	//----------------------------
+	while (inFile.peek() != ';') {
+
+		inFile >> controlWord >> id;
+		if(controlWord != "ID:"); //throw error
+
+		workSchedule = readSchedule(inFile);
+
+		staff.at(id-1)->setSchedule(*workSchedule);
+		inFile.get();
+	}
+	inFile.get();
+
 
 	inFile >> controlWord;
 	if (controlWord != "end"); //throw error
@@ -218,7 +261,7 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	std::ofstream outFile(fileName);
 
 	if(!outFile.is_open())
-		std::cerr << "Erro a abrir";
+		std::cerr << "Erro a abrir o ficheiro "<< fileName << ". "<<std::endl;
 
 
 	//GYM
@@ -228,7 +271,7 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	//---------------------
 
 
-	//Schedule
+	//Finance
 	//----------------------------
 	outFile << "Finance" << std::endl;
 
@@ -237,21 +280,6 @@ void writeInformationFile(std::string fileName, Gym & gym){
 		outFile  << std::setw(6) << std::right << transaction.getAmount() << " ";
 		outFile  << std::setw(20) << std::left << "\"" + transaction.getDescription() + "\"" << " ";
 		outFile  << std::setw(26) << std::right << "\'" + transaction.getDateTransaction() + "\'";
-		outFile << " ]\n";
-	}
-
-	outFile << ";\n\n";
-	//----------------------------
-
-	//Schedule
-	//----------------------------
-	outFile << "Schedule" << std::endl;
-
-	for(auto pPar : gym.getGymSchedule().getScheduleSet()){
-		outFile << "[ " << pPar->first.weekDay << " ";
-		outFile << std::setfill('0') << std::setw(2) << pPar->first.hour << ":" << std::setw(2)<<pPar->first.min;
-		outFile << " ";
-		outFile << std::setfill('0') << std::setw(2) << pPar->second.hour << ":" << std::setw(2)<<pPar->second.min;
 		outFile << " ]\n";
 	}
 
@@ -312,12 +340,29 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	}
 
 	outFile << ";\n\n";
-
-
 	//----------------------------
 
 
-	outFile << "end";
+	//Schedule
+	//----------------------------
+	outFile << "Schedule" << std::endl<<std::endl;
 
+	outFile << "Gym" << std::endl;
+	writeSchedule(outFile, gym.getGymSchedule());
+
+	outFile << "Staff" << std::endl;
+
+	for(unsigned int i = 0; i < gym.getStaff().size(); i++){
+		Staff * staff = gym.getStaff().at(i);
+		outFile << "ID: " << staff->getId() << std::endl;
+		writeSchedule(outFile, staff->getSchedule());
+
+		if(i + 1 == gym.getStaff().size())
+			outFile << ";\n";
+		else outFile << "\n";
+	}
+	//----------------------------
+
+	outFile << "end";
 
 }

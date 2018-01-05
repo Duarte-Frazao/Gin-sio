@@ -177,7 +177,7 @@ void Gym::login() {
 				string pass;
 				cout << sign::question << "Password: ";
 				ch = _getch();
-				while (ch != 13)
+				while (ch != '\n')
 				{
 					if (ch == 8)
 					{

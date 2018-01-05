@@ -15,7 +15,7 @@ int main()
 	Gym * FitnessMx= readInformationFile("File.txt");
 	FitnessMx->login();
 	mainMenu(*FitnessMx);
-	writeInformationFile("outFile.txt", *FitnessMx);
+	writeInformationFile("File.txt", *FitnessMx);
 	return 0;
 }
 

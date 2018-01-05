@@ -7,16 +7,6 @@ Finance
 [ DEPOSIT        20 "CLIENT PAYMENT"     'Wed Nov 15 18:13:00 2017' ]
 ;
 
-Schedule
-[ 1 09:00 22:00 ]
-[ 2 09:00 22:00 ]
-[ 3 09:00 22:00 ]
-[ 4 09:00 22:00 ]
-[ 5 09:00 22:00 ]
-[ 6 08:00 20:00 ]
-[ 7 09:00 12:00 ]
-;
-
 Programs
 [ 1 31 20 ]
 [ 2 62 35 ]
@@ -31,8 +21,8 @@ Staff
 PersonalTrainer
 [ 3 Carlos 25 1000 password3 bodybuilding ]
 [ 4 Mariana 27 1000 password4 crossfit ]
-[ 5 Joao 25 1000 password5 crossfit ]
-[ 6 Ana 27 1000 password6 bodybuilding ]
+[ 5 Joao 25 1000 password5 bodybuilding ]
+[ 6 Ana 27 1000 password6 yoga ]
 ;
 
 Clients
@@ -57,4 +47,57 @@ Clients
 [ Maria 1 18 3 ]
 ;
 
+Schedule
+
+Gym
+[ 1 09:00 1 22:00 "Open" ]
+[ 2 09:00 2 22:00 "Open" ]
+[ 3 09:00 3 22:00 "Open" ]
+[ 4 09:00 4 22:00 "Open" ]
+[ 5 09:00 5 22:00 "Open" ]
+[ 6 08:00 6 20:00 "Open" ]
+;
+Staff
+ID: 1
+[ 1 09:00 1 12:00 "Fitness evaluation" ]
+[ 5 09:00 5 12:00 "Fitness evaluation" ]
+;
+
+ID: 2
+[ 1 09:00 1 22:00 "Accounting" ]
+[ 3 09:00 3 22:00 "Accounting" ]
+;
+
+ID: 3
+[ 1 09:00 1 11:00 "bodybuilding" ]
+[ 1 17:30 1 20:00 "bodybuilding" ]
+[ 3 09:00 3 11:00 "bodybuilding" ]
+[ 3 17:30 3 20:00 "bodybuilding" ]
+[ 5 09:00 5 11:00 "bodybuilding" ]
+[ 5 17:30 5 20:00 "bodybuilding" ]
+;
+
+ID: 4
+[ 2 11:00 2 14:00 "crossfit" ]
+[ 2 18:00 2 20:00 "crossfit" ]
+[ 4 11:00 4 14:00 "crossfit" ]
+[ 4 18:00 4 20:00 "crossfit" ]
+;
+
+ID: 5
+[ 2 09:00 2 11:00 "bodybuilding" ]
+[ 2 17:30 2 20:00 "bodybuilding" ]
+[ 4 09:00 4 11:00 "bodybuilding" ]
+[ 4 17:30 4 20:00 "bodybuilding" ]
+[ 6 09:00 6 11:00 "bodybuilding" ]
+;
+
+ID: 6
+[ 3 09:00 3 11:00 "yoga" ]
+[ 3 17:30 3 20:00 "yoga" ]
+[ 5 09:00 5 11:00 "yoga" ]
+[ 5 17:30 5 20:00 "yoga" ]
+[ 6 09:00 6 12:00 "yoga" ]
+;
+;
 end

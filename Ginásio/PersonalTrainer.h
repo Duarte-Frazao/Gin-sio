@@ -36,12 +36,6 @@ public:
 	std::string getSpecializedArea() const;
 
 	/**
-	Sets the working schedule of the personal trainer
-	@param The working schedule of the personal trainer
-	*/
-	void setSchedule(Schedule workSchedule);
-
-	/**
 	Sets the clients of the personal trainer
 
 	@param Vector of pointers to clients

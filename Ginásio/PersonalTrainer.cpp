@@ -3,6 +3,9 @@
 #include "PersonalTrainer.h"
 #include "colorWin.h"
 #include "Input.h"
+#include "Staff.h"
+#include "Client.h"
+#include "Gym.h"
 
 using namespace std;
 
@@ -38,6 +41,19 @@ string PersonalTrainer::getSpecializedArea() const { return specializedArea; }
 # pragma region Sets
 
 
+<<<<<<< HEAD
+=======
+void PersonalTrainer::setSchedule(Schedule workSchedule) {
+	Staff::setSchedule(workSchedule);
+}
+
+void PersonalTrainer::addClient(Client * client)
+{
+	clients.push_back(client);
+}
+
+
+>>>>>>> SandroBranch-AEDA-part-2
 void PersonalTrainer::setClients(vector<Client *> clients) {
 	this->clients = clients;
 }
@@ -175,8 +191,24 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 				cout << endl;
 
 				inputProgramIdObj(optionProgram, gym, &programFound);
-				clientToAdd->setPT(this);
-				clients.push_back(clientToAdd);
+
+				PersonalTrainer* changed_PT = NULL;
+				priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> temp;
+				while (!gym.getPT().empty()) {
+					if (gym.getPT().top()->getId() != this->getId()) {
+						temp.push(gym.getPT().top());
+					}
+					else {
+						changed_PT = gym.getPT().top();
+					}
+					gym.popPqElem();
+				}
+
+				changed_PT->addClient(clientToAdd);
+				clientToAdd->setPT(changed_PT);
+				temp.push(changed_PT);
+
+				gym.setPq(temp);
 			}
 			else {
 				/* add new client to Personal Trainer */
@@ -188,12 +220,27 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 				cout << endl << endl;
 				inputProgramIdObj(optionProgram, gym, &programFound);
 
-				//If the client is new at the gym
-				Client * newClient = new Client(name, new Program(optionProgram), age, this);
-				gym.addClient(newClient); //Also add the client to the gym's clients vector
-				clients.push_back(newClient);
-			}
+				PersonalTrainer* changed_PT = NULL;
+				priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> temp;
+				while (!gym.getPT().empty()) {
+					if (gym.getPT().top()->getId() != this->getId()) {
+						temp.push(gym.getPT().top());
+					}
+					else {
+						changed_PT = gym.getPT().top();
+					}
+					gym.popPqElem();
+				}
 
+				//If the client is new at the gym
+				Client * newClient = new Client(name, new Program(optionProgram), age, changed_PT);
+				gym.addClient(newClient); //Also add the client to the gym's clients vector
+				changed_PT->addClient(newClient);
+				temp.push(changed_PT);
+
+				gym.setPq(temp);
+			}
+			
 			cout << endl << sign::success << "Client added successfully to Personal Trainer!\n";
 			break;
 		}
@@ -244,11 +291,6 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 }
 
 #pragma endregion
-
-bool PersonalTrainer::recognizeProf() const
-{
-	return true;
-}
 
 void PersonalTrainer::printInfo() 
 {

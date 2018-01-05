@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <queue>
 #include <sstream>
 #include <fstream>
 #include <algorithm>
@@ -14,6 +15,7 @@
 #include "Schedule.h"
 #include "Finance.h"
 
+<<<<<<< HEAD
 
 Schedule * readSchedule(std::ifstream &inFile){
 	int schedule_day;
@@ -63,6 +65,14 @@ Gym * readInformationFile(std::string fileName){
 		std::cerr << "Erro a abrir o ficheiro " << fileName << ". " <<std::endl;
 		throw InvalidValue("File Inexistent!");
 	}
+=======
+Gym * readInformationFile(std::string fileName) {
+
+	std::ifstream inFile(fileName);
+
+	if (!inFile.is_open())
+		std::cerr << "Erro a abrir";
+>>>>>>> SandroBranch-AEDA-part-2
 
 	std::string controlWord;
 	char brackets;
@@ -75,7 +85,7 @@ Gym * readInformationFile(std::string fileName){
 	int gym_maxCapacity;
 
 	inFile >> controlWord;
-	if(controlWord != "Gym"); //throw error
+	if (controlWord != "Gym"); //throw error
 
 	inFile >> brackets >> gym_name >> gym_maxNumClients >> gym_maxCapacity >> brackets;
 	//---------------------
@@ -90,19 +100,19 @@ Gym * readInformationFile(std::string fileName){
 	std::string transaction_dateTransaction;
 
 	inFile >> controlWord;
-	if(controlWord != "Finance"); //throw error
+	if (controlWord != "Finance"); //throw error
 
 	Finance *finance = new Finance();
 
-	while(inFile.peek() != ';' ){
+	while (inFile.peek() != ';') {
 
 		inFile >> brackets >> transaction_type >> transaction_amount;
 
 		std::string line;
 		getline(inFile, line);
 
-		transaction_description = line.substr(line.find_first_of("\"")+1, line.find_last_of("\"")-line.find_first_of("\"")-1);
-		transaction_dateTransaction = line.substr(line.find_first_of("\'")+1, line.find_last_of("\'")-line.find_first_of("\'")-1);
+		transaction_description = line.substr(line.find_first_of("\"") + 1, line.find_last_of("\"") - line.find_first_of("\"") - 1);
+		transaction_dateTransaction = line.substr(line.find_first_of("\'") + 1, line.find_last_of("\'") - line.find_first_of("\'") - 1);
 
 		Transaction temp(transaction_type, transaction_description, transaction_amount, transaction_dateTransaction);
 		finance->addTransaction(temp);
@@ -111,6 +121,36 @@ Gym * readInformationFile(std::string fileName){
 
 	//---------------------
 
+<<<<<<< HEAD
+=======
+
+	//Schedule
+	//---------------------
+	int schedule_day;
+	int schedule_hour;
+	int schedule_min;
+
+	inFile >> controlWord;
+	if (controlWord != "Schedule"); //throw error
+
+	Schedule * schedule = new Schedule;
+
+	while (inFile.peek() != ';') {
+		inFile >> brackets >> schedule_day >> schedule_hour >> brackets >> schedule_min;
+		Date date1(schedule_hour, schedule_min, schedule_day);
+
+		inFile >> schedule_hour >> brackets >> schedule_min >> brackets;
+		Date date2(schedule_hour, schedule_min, schedule_day);
+
+		schedule->addDate(date1, date2);
+
+		inFile.get();
+	}
+	inFile.get();
+
+	//---------------------
+
+>>>>>>> SandroBranch-AEDA-part-2
 	//Programs
 	//----------------------------
 	int program_code;
@@ -118,12 +158,12 @@ Gym * readInformationFile(std::string fileName){
 	float program_cost;
 
 	inFile >> controlWord;
-	if(controlWord != "Programs"); //throw error
+	if (controlWord != "Programs"); //throw error
 
 
 	std::vector<Program *> programs;
 
-	while(inFile.peek() != ';' ){
+	while (inFile.peek() != ';') {
 		inFile >> brackets >> program_code >> program_days >> program_cost >> brackets;
 
 		programs.push_back(new Program(program_code, program_days, program_cost));
@@ -142,10 +182,10 @@ Gym * readInformationFile(std::string fileName){
 	std::string staff_pwd;
 
 	inFile >> controlWord;
-	if(controlWord != "Staff"); //throw error
+	if (controlWord != "Staff"); //throw error
 	std::vector<Staff *> staff;
 
-	while(inFile.peek() != ';'){
+	while (inFile.peek() != ';') {
 		inFile >> brackets >> staff_id >> staff_name >> staff_age >> staff_wage >> staff_pwd >> brackets; //Only accepts one word name
 		staff.push_back(new Staff(staff_id, staff_name, staff_age, staff_wage, staff_pwd));
 		staff.at(staff.size() - 1)->incrementStaffId();
@@ -161,17 +201,17 @@ Gym * readInformationFile(std::string fileName){
 	inFile >> controlWord;
 	if (controlWord != "PersonalTrainer"); //throw error
 
-	std::vector<PersonalTrainer *> profs;
+	std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> profs;
 
 	while (inFile.peek() != ';') {
 		//Only accepts one word name and one word Area
 		inFile >> brackets >> staff_id >> staff_name >> staff_age >> staff_wage
-				>> staff_pwd >> profs_specializedArea >> brackets;
-		
+			>> staff_pwd >> profs_specializedArea >> brackets;
 
-		PersonalTrainer * PT = new PersonalTrainer(staff_id,staff_name, staff_age, staff_wage, staff_pwd, profs_specializedArea);
+
+		PersonalTrainer * PT = new PersonalTrainer(staff_id, staff_name, staff_age, staff_wage, staff_pwd, profs_specializedArea);
 		staff.push_back(PT);
-		profs.push_back(PT);
+		profs.push(PT);
 		staff.at(staff.size() - 1)->incrementStaffId();
 		inFile.get();
 	}
@@ -195,19 +235,22 @@ Gym * readInformationFile(std::string fileName){
 
 	while (inFile.peek() != ';') {
 		inFile >> brackets >> client_name >> client_enrolledProgram_code
-				>> client_age >> client_responsiblePT_id >> brackets;
+			>> client_age >> client_responsiblePT_id >> brackets;
 
 		Program *enrolledProgram;
 		PersonalTrainer *responsiblePT = NULL;
 
-		for(auto pProgram : programs){
-			if(pProgram->getCode() == client_enrolledProgram_code)
+		for (auto pProgram : programs) {
+			if (pProgram->getCode() == client_enrolledProgram_code)
 				enrolledProgram = pProgram;
 		}
 
-		for(auto pPT : profs){
-			if(pPT->getId() == client_responsiblePT_id)
-				responsiblePT = pPT;
+		std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> temp(profs);
+		while (!temp.empty()) {
+			if (temp.top()->getId() == client_responsiblePT_id)
+				responsiblePT = temp.top();
+
+			temp.pop();
 		}
 		clients.push_back(new Client(client_name, enrolledProgram, client_age, responsiblePT));
 
@@ -251,17 +294,22 @@ Gym * readInformationFile(std::string fileName){
 
 
 
-	return new Gym(gym_name, programs, clients, staff, profs,*schedule,
-			gym_maxNumClients, gym_maxCapacity, *finance);
+	return new Gym(gym_name, programs, clients, staff, profs, *schedule,
+		gym_maxNumClients, gym_maxCapacity, *finance);
 
 }
 
-void writeInformationFile(std::string fileName, Gym & gym){
+void writeInformationFile(std::string fileName, Gym & gym) {
 
 	std::ofstream outFile(fileName);
 
+<<<<<<< HEAD
 	if(!outFile.is_open())
 		std::cerr << "Erro a abrir o ficheiro "<< fileName << ". "<<std::endl;
+=======
+	if (!outFile.is_open())
+		std::cerr << "Erro a abrir";
+>>>>>>> SandroBranch-AEDA-part-2
 
 
 	//GYM
@@ -275,25 +323,43 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	//----------------------------
 	outFile << "Finance" << std::endl;
 
-	for(auto transaction : gym.getGymFinance().getTransactions()) {
-		outFile << "[ " << std::setw(10) << std::left <<transaction.getType() << " ";
-		outFile  << std::setw(6) << std::right << transaction.getAmount() << " ";
-		outFile  << std::setw(20) << std::left << "\"" + transaction.getDescription() + "\"" << " ";
-		outFile  << std::setw(26) << std::right << "\'" + transaction.getDateTransaction() + "\'";
+	for (auto transaction : gym.getGymFinance().getTransactions()) {
+		outFile << "[ " << std::setw(10) << std::left << transaction.getType() << " ";
+		outFile << std::setw(6) << std::right << transaction.getAmount() << " ";
+		outFile << std::setw(20) << std::left << "\"" + transaction.getDescription() + "\"" << " ";
+		outFile << std::setw(26) << std::right << "\'" + transaction.getDateTransaction() + "\'";
 		outFile << " ]\n";
 	}
 
 	outFile << ";\n\n";
 	//----------------------------
 
+<<<<<<< HEAD
+=======
+	//Schedule
+	//----------------------------
+	outFile << "Schedule" << std::endl;
+
+	for (auto pPar : gym.getGymSchedule().getScheduleSet()) {
+		outFile << "[ " << pPar->first.weekDay << " ";
+		outFile << std::setfill('0') << std::setw(2) << pPar->first.hour << ":" << std::setw(2) << pPar->first.min;
+		outFile << " ";
+		outFile << std::setfill('0') << std::setw(2) << pPar->second.hour << ":" << std::setw(2) << pPar->second.min;
+		outFile << " ]\n";
+	}
+
+	outFile << ";\n\n";
+	//----------------------------
+
+>>>>>>> SandroBranch-AEDA-part-2
 
 	//Programs
 	//----------------------------
 	outFile << "Programs" << std::endl;
 
-	for(auto pProgram : gym.getPrograms()){
-		outFile << "[ " << pProgram->getCode() << " " <<  pProgram->getDays() << " "
-				<< pProgram->getCost() << " ]\n";
+	for (auto pProgram : gym.getPrograms()) {
+		outFile << "[ " << pProgram->getCode() << " " << pProgram->getDays() << " "
+			<< pProgram->getCost() << " ]\n";
 	}
 
 	outFile << ";\n\n";
@@ -304,9 +370,9 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	//----------------------------
 	outFile << "Staff" << std::endl;
 
-	for(auto pStaff : gym.getStaff()){
-		if(dynamic_cast<PersonalTrainer *> (pStaff) == NULL){
-		outFile << "[ " << pStaff->getId() << " " << pStaff->getName() << " "
+	for (auto pStaff : gym.getStaff()) {
+		if (dynamic_cast<PersonalTrainer *> (pStaff) == NULL) {
+			outFile << "[ " << pStaff->getId() << " " << pStaff->getName() << " "
 				<< pStaff->getAge() << " " << pStaff->getWage() << " "
 				<< pStaff->getPassword() << " ]\n";
 		}
@@ -314,16 +380,19 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	outFile << ";\n\n";
 	//----------------------------
 
-	
+
 	//Personal Trainer
 	//----------------------------
 	outFile << "PersonalTrainer" << std::endl;
 
-	for(auto pPT : gym.getPT()){
-	outFile << "[ " <<  pPT->getId( )<< " " << pPT->getName() << " "
-			<< pPT->getAge() << " " << pPT->getWage() << " "
-			<< pPT->getPassword() << " "
-			<< pPT->getSpecializedArea() << " ]\n";
+	std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> temp(gym.getPT());
+	while (!temp.empty()) {
+		outFile << "[ " << temp.top()->getId() << " " << temp.top()->getName() << " "
+			<< temp.top()->getAge() << " " << temp.top()->getWage() << " "
+			<< temp.top()->getPassword() << " "
+			<< temp.top()->getSpecializedArea() << " ]\n";
+
+		temp.pop();
 	}
 
 	outFile << ";\n\n";
@@ -334,9 +403,9 @@ void writeInformationFile(std::string fileName, Gym & gym){
 	//----------------------------
 	outFile << "Clients" << std::endl;
 
-	for(auto pClient : gym.getClients()){
-	outFile << "[ " << pClient->getName() << " " << pClient->getProgram()->getCode() << " "
-			<< pClient->getAge() << " " << pClient->getPT()->getId() <<" ]\n";
+	for (auto pClient : gym.getClients()) {
+		outFile << "[ " << pClient->getName() << " " << pClient->getProgram()->getCode() << " "
+			<< pClient->getAge() << " " << pClient->getPT()->getId() << " ]\n";
 	}
 
 	outFile << ";\n\n";

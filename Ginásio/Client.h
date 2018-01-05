@@ -2,8 +2,6 @@
 #define CLIENT_H_
 
 #include <string>
-#include "PersonalTrainer.h"
-#include "Gym.h"
 #include "Program.h"
 #include "ErrorClasses.h"
 

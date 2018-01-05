@@ -19,57 +19,51 @@ public:
 	~Program();
 
 	/**
-	Returns the number of days a the Program gives
-
-	@param
+	@brief Returns the number of days a the Program gives
 	@return Returns the number of days a the Program gives
 	*/
 	int getDays() const;
 
 	/**
-	Returns the cost of the Program
-
-	@param
+	@brief Returns the cost of the Program
 	@return Returns the cost of the Program
 	*/
 	float getCost() const;
 
 	/**
-	Returns the code of the Program
-
-	@param
+	@brief Returns the code of the Program
 	@return Returns the code of the Program
 	*/
 	int getCode() const;
 
 	/**
-	Sets number of program's gym days
-
-	@param number of program's gym days
+	@brief Sets number of program's gym days
+	@param days Number of program's gym days
 	*/
 	void setDays(int days);
 
 	/**
-	Sets cost of program
-
-	@param program's cost
+	@brief Sets cost of program
+	@param cost Program's cost
 	*/
 	void setCost(float cost);
 
 	/**
-	Sets program's code
-
-	@param program's code
+	@brief Sets program's code
+	@param code Program's code
 	*/
 	void setCode(int code);
 
 	/**
-	Prints the Program information
+	@brief Prints the Program information
+	@param out ostream
+	@param program Program
 	*/
 	friend std::ostream & operator<<(std::ostream &out, const Program &program);
 
 	/**
-	Edits program's information
+	@brief Edits program's information
+	@param gym Gym
 	*/
 	void editProgram(Gym &gym);
 };

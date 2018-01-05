@@ -11,5 +11,6 @@
 #include "Program.h"
 #include "Date.h"
 #include "ErrorClasses.h"
+#include "PersonalTrainer.h"
 // TODO: reference any additional headers you need in STDAFX.H
 // and not in this file

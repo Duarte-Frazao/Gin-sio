@@ -3,6 +3,7 @@
 #include "Gym.h"
 #include <iostream>
 #include "Client.h"
+#include "PersonalTrainer.h"
 #include "ErrorClasses.h"
 #include "colorWin.h"
 #include "Input.h"

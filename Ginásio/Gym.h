@@ -10,8 +10,10 @@
 #include "PersonalTrainer.h"
 #include "Finance.h"
 #include "Schedule.h"
+#include <unordered_set>
 
 typedef std::priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> PTQUEUE;
+
 
 class Gym {
 	

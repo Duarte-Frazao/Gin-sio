@@ -5,27 +5,45 @@
 #include <string>
 #include <queue>
 #include "Staff.h"
+#include <unordered_set>
+#include "Client.h"
+
+struct clientHash
+{
+	int operator() ( Client* const&  c) const
+	{
+		return (c->getId());
+	}
+
+	bool operator() (Client* const&  c1, Client* const&  c2) const
+	{
+		if(c1->getId()!=c2->getId()) return false;
+
+		return true;
+	}
+};
+
+typedef std::unordered_set<Client*, clientHash, clientHash> AssociatedClientsHash;
 
 class Client;
 class Gym;
 
 
 class PersonalTrainer : public Staff {
-	std::vector<Client *> clients;
 	std::string specializedArea;
+	AssociatedClientsHash clients;
 
 public:
 	PersonalTrainer(int age, double wage, std::string specializedArea);
 	PersonalTrainer(std::string name, int age, double wage, std::string pwd, std::string specializedArea);
 	PersonalTrainer(int id, std::string name, int age, double wage, std::string pwd, std::string specializedArea); //For file initialization
-
 	virtual ~PersonalTrainer();
 
 	/**
-	@brief Returns the vector of clients of the personal trainer
-	@return Returns vector of pointers to clients of the personal trainer
-	*/
-	std::vector<Client *> getClients() const;
+		@brief Returns the hash table of clients of the personal trainer
+		@return Returns hash table of pointers to clients of the personal trainer
+		*/
+	AssociatedClientsHash getClients() const;
 
 	/**
 	@brief Returns the specialized area of the personal trainer
@@ -45,11 +63,13 @@ public:
 	*/
 	void addClient(Client* client);
 
+
 	/**
 	@brief Sets the clients of the personal trainer
-	@param clients Vector of pointers to clients
+	@param clients vector of pointers to clients
 	*/
 	void setClients(std::vector<Client *> clients);
+
 
 	/**
 	@brief Sets the specialized area of the personal trainer

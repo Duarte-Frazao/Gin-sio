@@ -13,8 +13,8 @@ void writeInformationFile(std::string fileName, Gym & gym);
 
 int main()
 {
-	Gym * FitnessMx= readInformationFile("File.txt");
-	FitnessMx->login();
+	Gym * FitnessMx= readInformationFile("outFile.txt");
+	//FitnessMx->login();
 	mainMenu(*FitnessMx);
 	writeInformationFile("outFile.txt", *FitnessMx);
 	return 0;

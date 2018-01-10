@@ -367,12 +367,11 @@ std::vector<Client* > PersonalTrainer::getVClients() const
 ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
 
 	vector<Client*> v;
-
+	int size;
 	if(pt.getClients().size() >0)
 	{
 		int optionSize= displayAssociatedClientsMenu(pt);
 
-		int size;
 
 		if(optionSize == 2)
 		{
@@ -420,7 +419,7 @@ ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
 	out << "Clients by whom it is responsible: ";
 	if (v.size() == 0) out << "NONE" << endl;
 	cout << endl;
-	for(int i = 0; i< v.size();i++) out << "-> ID: " << v.at(i)->getId() << " | Name: " << v.at(i)->getName()<< " | Age: " << v.at(i)->getAge()<< " | Number of late payments: " << v.at(i)->getNumLatePayments() << endl;
+	for(int i = 0; i<size;i++) out << "-> ID: " << v.at(i)->getId() << " | Name: " << v.at(i)->getName()<< " | Age: " << v.at(i)->getAge()<< " | Number of late payments: " << v.at(i)->getNumLatePayments() << endl;
 
 
 	return out;

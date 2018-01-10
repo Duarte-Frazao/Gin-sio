@@ -60,6 +60,11 @@ bool Staff::getWasPaid() const {
 	return wasPaid;
 }
 
+Schedule Staff::getSchedule() const {
+	return workSchedule;
+}
+
+
 #pragma endregion
 
 #pragma region Sets
@@ -123,9 +128,10 @@ and returns the option chosen
 */
 int editStaffMenu()
 {
-	cout << "\nSelect what you want to edit" << endl;
+	cout << endl <<"\t	STAFF EDIT MENU"<< endl;
+	std::cout << "\t------------------------------" << std::endl << std::endl;
 
-	vector<string> options = { "1. Edit name", "2. Edit age", "3. Edit wage", "4. Edit location", "5. Show information", "0. Return" };
+	vector<string> options = { "\t1.	Edit name", "\t2.	Edit age", "\t3.	Edit wage", "\t4.	Edit location", "\t5.	Edit Schedule", "\t6.	Show information", "\n\t0.	Leave\n" };
 
 	for (unsigned int i = 0; i < options.size(); i++)
 		cout << options.at(i) << endl;
@@ -155,27 +161,30 @@ void Staff::editStaff(Gym &gym) {
 			cout << "->";
 			getline(cin, newName);
 			setName(newName);
-			cout << sign::success << "Staff's name sucessfully modified!\n";
+			cout << sign::success << "Staff's name successfully modified!\n";
 			break;
 		case 2:
 			cout << "What's the staff's new age?\n";
 			cout << "Previously: " << age << endl;
 			getInput(newAge, "->");
 			setAge(newAge);
-			cout << sign::success << "Staff's age sucessfully modified!\n";
+			cout << sign::success << "Staff's age successfully modified!\n";
 			break;
 		case 3:
 			cout << "What's the staff's new wage?\n";
 			cout << "Previously: " << wage << endl;
 			getInput(newWage, "->");
 			setWage(newWage);
-			cout << sign::success << "Staff's wage sucessfully modified!\n";
+			cout << sign::success << "Staff's wage successfully modified!\n";
 			break;
 		case 4:
 			changeLocation();
-			cout << "Staff's location sucessfully modified!\n";
+			cout << "Staff's location successfully modified!\n";
 			break;
 		case 5:
+			workSchedule.editScheduleMenu();
+			break;
+		case 6:
 			cout << *this;
 			break;
 		default:
@@ -210,5 +219,8 @@ ostream & operator<<(std::ostream & out, const Staff & staff)
 	out << "Location: ";
 	if (staff.insideGym) out << "INSIDE GYM\n";
 	else out << "OUTSIDE GYM\n";
+
+	out << staff.workSchedule;
+
 	return out;
 }

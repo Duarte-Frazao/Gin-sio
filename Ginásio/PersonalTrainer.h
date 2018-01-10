@@ -45,6 +45,8 @@ public:
 		*/
 	AssociatedClientsHash getClients() const;
 
+	std::vector<Client* > getVClients() const;
+
 	/**
 	@brief Returns the specialized area of the personal trainer
 	@return Returns the specialized area as a string
@@ -52,7 +54,6 @@ public:
 	std::string getSpecializedArea() const;
 
 	/**
-	Sets the clients of the personal trainer
 	@brief Sets the working schedule of the personal trainer
 	@param workSchedule The working schedule of the personal trainer
 	*/

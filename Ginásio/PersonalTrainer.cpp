@@ -56,6 +56,7 @@ void PersonalTrainer::addClient(Client * client)
 	clients.insert(client);
 }
 
+
 void PersonalTrainer::setClients(vector<Client *> clients) {
 	for(uint i =0; i < clients.size();i++)
 	{
@@ -281,10 +282,29 @@ void PersonalTrainer::editAssociatedClients(Gym &gym) {
 
 			std::pair<AssociatedClientsHash::iterator, bool > result;
 			result = clients.insert(clientToErase);
-			if(result.second == false) cout << sign::success << "Client with id " << clientToErase->getId() << " erased successfully!\n";
-			else cout << sign::error << "Client with id " << clientToErase->getId() << " does not exist!\n";
+			if(result.second == false)
+			{
+				cout << sign::success << "Client with id " << clientToErase->getId() << " erased successfully!\n";
+				PersonalTrainer* pNew;
+				priority_queue<PersonalTrainer *, std::vector<PersonalTrainer*>, CmpPtPointers> temp;
+				bool find=true;
+				while (!gym.getPT().empty()) {
+					if (gym.getPT().top()->getId() == this->getId() ||!find) {
+						temp.push(gym.getPT().top());
+					}
+					else {
+						find=false;
+						clientToErase->setPT(gym.getPT().top());
+						temp.push(gym.getPT().top());
+					}
+					gym.popPqElem();
+				}
+				gym.setPq(temp);
+			}else cout << sign::error << "Client with id " << clientToErase->getId() << " does not exist!\n";
 
-			clients.erase(clientToErase);
+			clients.erase(result.first);
+
+			//free(clientToErase);
 
 
 			break;
@@ -332,11 +352,23 @@ int displayAssociatedClientsTypeMenu(const PersonalTrainer& pt)
 	return option;
 }
 
+std::vector<Client* > PersonalTrainer::getVClients() const
+{
+	auto it=clients.begin();
+	vector<Client*> v;
+	while(it!= clients.end())
+	{
+		v.push_back(*it);
+		it++;
+	}
+	return v;
+}
+
 ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
 
 	vector<Client*> v;
 
-	/*if(pt.clients.size() >0)
+	if(pt.getClients().size() >0)
 	{
 		int optionSize= displayAssociatedClientsMenu(pt);
 
@@ -346,20 +378,14 @@ ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
 		{
 			cout << "How many client's long should the list be? ";
 			size= filterInput(0, 200);
-			if(size>pt.clients.size()) size= pt.clients.size();
+			if(size>pt.getClients().size()) size= pt.getClients().size();
 			cout<< endl;
-		}else size= pt.clients.size();
+		}else size= pt.getClients().size();
 
 
 		int optionType=displayAssociatedClientsTypeMenu(pt);
 
-
-		AssociatedClientsHash::iterator it= pt.clients.begin();
-		while(it!= pt.clients.end() && size-- > 0)
-		{
-			v.push_back(*it);
-			it++;
-		}
+		v=pt.getVClients();
 
 		switch(optionType)
 		{
@@ -390,11 +416,11 @@ ostream& operator<<(ostream& out, const PersonalTrainer& pt) {
 	}
 
 	out << static_cast<const Staff &>(pt);
-	out << "Specialized area: " << pt.specializedArea << endl;
-	out << "Clients by whom it is responsible: ";*/
+	out << "Specialized area: " << pt.getSpecializedArea() << endl;
+	out << "Clients by whom it is responsible: ";
 	if (v.size() == 0) out << "NONE" << endl;
 	cout << endl;
-	//for(int i = 0; i< v.size();i++) out << "-> ID: " << v.at(i)->getId() << " | Name: " << v.at(i)->getName()<< " | Age: " << v.at(i)->getAge()<< " | Number of late payments: " << v.at(i)->getNumLatePayments() << endl;
+	for(int i = 0; i< v.size();i++) out << "-> ID: " << v.at(i)->getId() << " | Name: " << v.at(i)->getName()<< " | Age: " << v.at(i)->getAge()<< " | Number of late payments: " << v.at(i)->getNumLatePayments() << endl;
 
 
 	return out;

@@ -1,7 +1,3 @@
-#ifndef __COLOR_WIN_H
-#define __COLOR_WIN_H
-
-
 #if defined(_WIN32)
 #include <Windows.h>
 #endif
@@ -57,5 +53,3 @@ namespace sign{
 		return stream;
 	}
 }
-
-#endif

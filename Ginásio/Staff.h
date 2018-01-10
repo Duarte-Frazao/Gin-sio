@@ -61,13 +61,6 @@ public:
 	std::string getPassword() const;
 
 	/**
-	Returns staff's schedule
-	@return Returns staff's schedule
-	*/
-	Schedule getSchedule() const;
-
-	/**
-	Returns staff's location
 	@brief Returns staff's location
 	@return Returns 1 if insideGym, 0 otherwise
 	*/

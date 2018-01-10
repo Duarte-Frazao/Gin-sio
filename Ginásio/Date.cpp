@@ -1,28 +1,17 @@
-#include <utility>
-#include <string>
-#include <iomanip>
-#include "ErrorClasses.h"
+#include "stdafx.h"
 #include "Date.h"
 
 Date::Date(int hour, int min, int weekDay){
-	if (weekDay < 1 || weekDay > 7 || hour < 0 || hour > 24 || min < 0 || min > 60)
-		throw ErrorDate("Invalid date inserted");
+	try {
+		if (weekDay < 1 || weekDay > 7 || hour < 0 || hour > 24 || min < 0 || min > 60)
+			throw ErrorDate("Invalid date inserted");
 
-	this->hour = hour;
-	this->min = min;
-	this->weekDay = weekDay;
-}
-
-Date::Date(){
-	int hrs, min, wkd;
-	std::cout << "Write date in format (Weekday Hrs Min): ";
-	std::cin >> wkd >> hrs >> min;
-
-	try{
-		*this = Date(hrs, min, wkd);
+		this->hour = hour;
+		this->min = min;
+		this->weekDay = weekDay;
 	}
-	catch(ErrorDate &e){
-		throw e;
+	catch (ErrorDate &e) {
+		std::cout << e.getReason() << std::endl;
 	}
 }
 
@@ -57,7 +46,7 @@ std::string weekDay_to_string(int weekDay){
 }
 
 std::ostream & operator<<(std::ostream &out , const Date &date){
-	out << std::left <<weekDay_to_string(date.weekDay) << ", " << std::right;
-	out << std::setfill('0') << std::setw(2) << date.hour << ":" << std::setw(2)<<date.min << std::endl;
-	return out;
+
+		out << weekDay_to_string(date.weekDay) << "\t" << date.hour << ":" << date.min;
+		return out;
 }

@@ -29,10 +29,10 @@ public:
 
 	/**Client constructor
 
-	@param clientName	Name of the client
-	@param program		Enrolled program subscription
-	@param clientAge	Age of the client
-	@param PT			Professor responsible for the client
+	@param clientName Name of the client
+	@param program	  Enrolled program subscription
+	@param clientAge  Age of the client
+	@param PT		Professor responsible for the client
 	@return
 	*/
 	Client(std::string clientName, Program *program, int clientAge, PersonalTrainer *PT);
